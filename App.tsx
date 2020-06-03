@@ -1,10 +1,16 @@
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React from "react";
+import { StyleSheet, View } from "react-native";
+import * as ScreenOrientation from "expo-screen-orientation";
+
+import Map from "./components/Map";
+import { INITIAL_REGION } from "./assets/peloponnesian_war";
+
+ScreenOrientation.unlockAsync();
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
+      <Map initialRegion={INITIAL_REGION} />
     </View>
   );
 }
@@ -12,8 +18,8 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    backgroundColor: "#fff",
+    alignItems: "center",
+    justifyContent: "center",
   },
 });
