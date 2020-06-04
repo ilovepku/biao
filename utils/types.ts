@@ -24,6 +24,6 @@ export interface Battle {
   location: string;
   type: string;
   result: string;
-  color: string;
+  pinColor: string;
   link: string;
 }
