@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { StyleSheet, Dimensions, View } from "react-native";
 import MapView, { Marker } from "react-native-maps";
 
-import { InitialRegion, Cities } from "../utils/types";
+import { InitialRegion, City } from "../utils/types";
 
 const { width, height } = Dimensions.get("window");
 const aspectRadio = width / height;
@@ -12,7 +12,7 @@ const Map = ({
   cities,
 }: {
   initialRegion: InitialRegion;
-  cities: Cities[];
+  cities: City[];
 }) => {
   const [region, setRegion] = useState({
     latitude,
@@ -29,13 +29,13 @@ const Map = ({
         mapType="terrain" // add switch / fallback for iOS
         onRegionChangeComplete={(region) => setRegion(region)}
       >
-        {cities.map((city) => (
+        {cities.map(({ title, description, pinColor, coordinate }) => (
           <Marker
-            key={`city_${city.latlng.latitude.toString()}_${city.latlng.longitude.toString()}`}
-            title={city.name}
-            description={city.description}
-            pinColor={city.color}
-            coordinate={city.latlng}
+            key={`city_${JSON.stringify(coordinate)}`}
+            title={title}
+            description={description}
+            pinColor={pinColor}
+            coordinate={coordinate}
             tracksViewChanges={false}
           />
         ))}

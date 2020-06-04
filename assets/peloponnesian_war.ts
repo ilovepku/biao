@@ -6,549 +6,550 @@ export const INITIAL_REGION = {
 
 const COLOR_THEME = {
   delian: "teal",
-  delianHQ: "navy",
+  delianHighlight: "navy",
   peloponnesian: "tomato",
-  peloponnesianHQ: "red",
+  peloponnesianHighlight: "red",
   neutral: "gold",
 };
 
 export const CITIES = [
   {
-    latlng: {
+    title: "Sparta",
+    description: "Peloponnesian League HQ",
+    pinColor: COLOR_THEME.peloponnesianHighlight,
+    coordinate: {
       latitude: 37.081944,
       longitude: 22.423611,
     },
-    name: "Sparta",
-    description: "Peloponnesian League HQ",
-    color: COLOR_THEME.peloponnesianHQ,
   },
   {
-    latlng: {
+    title: "Corinth",
+    description: "Peloponnesian League",
+    pinColor: COLOR_THEME.peloponnesian,
+    coordinate: {
       latitude: 37.905346,
       longitude: 22.880192,
     },
-    name: "Corinth",
-    description: "Peloponnesian League",
-    color: COLOR_THEME.peloponnesian,
   },
   {
-    latlng: {
+    title: "Elis",
+    description: "Peloponnesian League",
+    pinColor: COLOR_THEME.peloponnesian,
+    coordinate: {
       latitude: 37.89131,
       longitude: 21.37493,
     },
-    name: "Elis",
-    description: "Peloponnesian League",
-    color: COLOR_THEME.peloponnesian,
   },
   {
-    latlng: {
+    title: "Megara",
+    description: "Peloponnesian League",
+    pinColor: COLOR_THEME.peloponnesian,
+    coordinate: {
       latitude: 37.996389,
       longitude: 23.344444,
     },
-    name: "Megara",
-    description: "Peloponnesian League",
-    color: COLOR_THEME.peloponnesian,
   },
   {
-    latlng: {
+    title: "Thebes",
+    description: "Dominant power in Boeotia",
+    pinColor: COLOR_THEME.peloponnesian,
+    coordinate: {
       latitude: 38.316667,
       longitude: 23.316667,
     },
-    name: "Thebes",
-    description: "Dominant power in Boeotia",
-    color: COLOR_THEME.peloponnesian,
   },
   {
-    latlng: {
+    title: "Athens",
+    description: "Delian League HQ",
+    pinColor: COLOR_THEME.delianHighlight,
+    coordinate: {
       latitude: 37.97,
       longitude: 23.72,
     },
-    name: "Athens",
-    description: "Delian League HQ",
-    color: COLOR_THEME.delianHQ,
   },
   {
-    latlng: {
+    title: "Piraeus",
+    description: "Port city of Athens",
+    pinColor: COLOR_THEME.delian,
+    coordinate: {
       latitude: 37.943,
       longitude: 23.646944,
     },
-    name: "Piraeus",
-    description: "Port city of Athens",
-    color: COLOR_THEME.delian,
   },
   {
-    latlng: {
+    title: "Delos",
+    description: "Delian League Treasury",
+    pinColor: COLOR_THEME.delian,
+    coordinate: {
       latitude: 37.393333,
       longitude: 25.271111,
     },
-    name: "Delos",
-    description: "Delian League Treasury",
-    color: COLOR_THEME.delian,
   },
   {
-    latlng: {
+    title: "Naxos",
+    description: "Delian League",
+    pinColor: COLOR_THEME.delian,
+    coordinate: {
       latitude: 37.0875,
       longitude: 25.403889,
     },
-    name: "Naxos",
-    description: "Delian League",
-    color: COLOR_THEME.delian,
   },
   {
-    latlng: {
+    title: "Chios",
+    description: "Delian League",
+    pinColor: COLOR_THEME.delian,
+    coordinate: {
       latitude: 38.4,
       longitude: 26.016667,
     },
-    name: "Chios",
-    description: "Delian League",
-    color: COLOR_THEME.delian,
   },
   {
-    latlng: {
+    title: "Lesbos",
+    description: "Delian League",
+    pinColor: COLOR_THEME.delian,
+    coordinate: {
       latitude: 39.21,
       longitude: 26.28,
     },
-    name: "Lesbos",
-    description: "Delian League",
-    color: COLOR_THEME.delian,
   },
   {
-    latlng: {
+    title: "Samos",
+    description: "Delian League",
+    pinColor: COLOR_THEME.delian,
+    coordinate: {
       latitude: 37.75,
       longitude: 26.833333,
     },
-    name: "Samos",
-    description: "Delian League",
-    color: COLOR_THEME.delian,
   },
   {
-    latlng: {
+    title: "Corcyra",
+    description: "Delian League",
+    pinColor: COLOR_THEME.delian,
+    coordinate: {
       latitude: 39.583333,
       longitude: 19.866667,
     },
-    name: "Corcyra",
-    description: "Delian League",
-    color: COLOR_THEME.delian,
   },
   {
-    latlng: {
+    title: "Argos",
+    description: "Neutral",
+    pinColor: COLOR_THEME.neutral,
+    coordinate: {
       latitude: 37.616667,
       longitude: 22.716667,
     },
-    name: "Argos",
-    description: "Neutral",
-    color: COLOR_THEME.neutral,
   },
   {
-    latlng: {
+    title: "Melos",
+    description: "Neutral",
+    pinColor: COLOR_THEME.neutral,
+    coordinate: {
       latitude: 36.683333,
       longitude: 24.416667,
     },
-    name: "Melos",
-    description: "Neutral",
-    color: COLOR_THEME.neutral,
   },
 ];
 
 export const BATTLES = [
   {
-    latlng: {
+    title: "Battle of Sybota",
+    pinColor: COLOR_THEME.neutral,
+    coordinate: {
       latitude: 39.4033333,
       longitude: 20.2152778,
     },
-    name: "Battle of Sybota",
     year: -433,
-    location: "Off Corcyra",
     type: "naval",
+    location: "Off Corcyra",
     result: "Stalemate, both Corinth and Corcyra claimed victory",
-    color: COLOR_THEME.neutral,
     link: "https://en.wikipedia.org/wiki/Battle_of_Sybota",
   },
   {
-    latlng: {
+    title: "Battle of Potidaea",
+    pinColor: COLOR_THEME.delian,
+    coordinate: {
       latitude: 40.1937,
       longitude: 23.3278,
     },
-    name: "Battle of Potidaea",
     year: -432,
-    location: "Potidaea",
     type: "siege",
+    location: "Potidaea",
     result: "Athenian victory",
-    color: COLOR_THEME.delian,
     link: "https://en.wikipedia.org/wiki/Battle_of_Potidaea",
   },
   {
-    latlng: {
+    title: "Battle of Spartolos",
+    pinColor: COLOR_THEME.peloponnesian,
+    coordinate: {
       latitude: 40.2832,
       longitude: 23.2954,
     },
-    name: "Battle of Spartolos",
     year: -429,
-    location: "Chalcidice",
     type: "land",
+    location: "Chalcidice",
     result: "Chalcidian victory",
-    color: COLOR_THEME.peloponnesian,
     link: "https://en.wikipedia.org/wiki/Battle_of_Spartolos",
   },
   {
-    latlng: {
+    title: "Battle of Rhium",
+    pinColor: COLOR_THEME.delian,
+    coordinate: {
       latitude: 38.3,
       longitude: 21.783333,
     },
-    name: "Battle of Rhium",
     year: -429,
-    location: "Mouth of the Corinthian Gulf, near present-day Rio, Greece",
     type: "naval",
+    location: "Mouth of the Corinthian Gulf, near present-day Rio, Greece",
     result: "Athenian victory",
-    color: COLOR_THEME.delian,
     link: "https://en.wikipedia.org/wiki/Battle_of_Rhium",
   },
   {
-    latlng: {
+    title: "Battle of Naupactus",
+    pinColor: COLOR_THEME.delian,
+    coordinate: {
       latitude: 38.393889,
       longitude: 21.830556,
     },
-    name: "Battle of Naupactus",
     year: -429,
-    location: "Off Naupactus",
     type: "naval",
+    location: "Off Naupactus",
     result: "Athenian victory",
-    color: COLOR_THEME.delian,
     link: "https://en.wikipedia.org/wiki/Battle_of_Naupactus",
   },
   {
-    latlng: {
+    title: "Siege of Plataea",
+    pinColor: COLOR_THEME.peloponnesian,
+    coordinate: {
       latitude: 38.219992,
       longitude: 23.273853,
     },
-    name: "Siege of Plataea",
     year: -429,
     endYear: -427,
-    location: "Plataea",
     type: "siege",
+    location: "Plataea",
     result: "Theban victory, Plataea razed to the ground",
-    color: COLOR_THEME.peloponnesian,
     link: "https://en.wikipedia.org/wiki/Siege_of_Plataea",
   },
   {
-    latlng: {
+    title: "Mytilenean revolt",
+    pinColor: COLOR_THEME.delian,
+    coordinate: {
       latitude: 39.21,
       longitude: 26.28,
     },
-    name: "Mytilenean revolt",
     year: -428,
     endYear: -427,
-    location: "Lesbos",
     type: "revolt",
+    location: "Lesbos",
     result: "Athenian victory",
-    color: COLOR_THEME.delian,
     link: "https://en.wikipedia.org/wiki/Mytilenean_revolt",
   },
   {
-    latlng: {
+    title: "Battle of Tanagra",
+    pinColor: COLOR_THEME.delian,
+    coordinate: {
       latitude: 38.316667,
       longitude: 23.533333,
     },
-    name: "Battle of Tanagra",
     year: -426,
-    location: "Tanagra",
     type: "land",
+    location: "Tanagra",
     result: "Athenian victory",
-    color: COLOR_THEME.delian,
     link: "https://en.wikipedia.org/wiki/Battle_of_Tanagra_(426_BC)",
   },
   {
-    latlng: {
+    title: "Aetolian campaign",
+    pinColor: COLOR_THEME.peloponnesian,
+    coordinate: {
       latitude: 38.5054294,
       longitude: 21.8091625,
     },
-    name: "Aetolian campaign",
     year: -426,
-    location: "Aetolia",
     type: "land",
+    location: "Aetolia",
     result: "Aetolian victory",
-    color: COLOR_THEME.peloponnesian,
     link: "https://en.wikipedia.org/wiki/Aetolian_campaign",
   },
   {
-    latlng: {
+    title: "Battle of Olpae",
+    pinColor: COLOR_THEME.delian,
+    coordinate: {
       latitude: 38.949996,
       longitude: 21.149835,
     },
-    name: "Battle of Olpae",
     year: -426,
-    location: "Olpae",
     type: "land",
+    location: "Olpae",
     result: "Athenian victory",
-    color: COLOR_THEME.delian,
     link: "https://en.wikipedia.org/wiki/Battle_of_Olpae",
   },
   {
-    latlng: {
+    title: "Battle of Idomene",
+    pinColor: COLOR_THEME.delian,
+    coordinate: {
       latitude: 38.85,
       longitude: 21.166667,
     },
-    name: "Battle of Idomene",
     year: -426,
-    location: "Idomene",
     type: "land",
+    location: "Idomene",
     result: "Athenian Victory",
-    color: COLOR_THEME.delian,
     link: "https://en.wikipedia.org/wiki/Battle_of_Idomene",
   },
   {
-    latlng: {
+    title: "Battle of Pylos",
+    pinColor: COLOR_THEME.delian,
+    coordinate: {
       latitude: 36.916667,
       longitude: 21.7,
     },
-    name: "Battle of Pylos",
     year: -425,
-    location: "Pylos",
     type: "land",
+    location: "Pylos",
     result: "Athenian victory",
-    color: COLOR_THEME.delian,
     link: "https://en.wikipedia.org/wiki/Battle_of_Pylos",
   },
   {
-    latlng: {
+    title: "Battle of Sphacteria",
+    pinColor: COLOR_THEME.delian,
+    coordinate: {
       latitude: 36.930136,
       longitude: 21.665725,
     },
-    name: "Battle of Sphacteria",
     year: -425,
-    location: "Sphacteria, a small island at the entrance to the bay of Pylos",
     type: "land",
+    location: "Sphacteria, a small island at the entrance to the bay of Pylos",
     result: "Athenian victory",
-    color: COLOR_THEME.delian,
     link: "https://en.wikipedia.org/wiki/Battle_of_Sphacteria",
   },
   {
-    latlng: {
+    title: "Battle of Megara",
+    pinColor: COLOR_THEME.delian,
+    coordinate: {
       latitude: 37.996389,
       longitude: 23.344444,
     },
-    name: "Battle of Megara",
     year: -424,
-    location: "Megara, Greece",
     type: "land",
+    location: "Megara, Greece",
     result: "Athenian victory",
-    color: COLOR_THEME.delian,
     link: "https://en.wikipedia.org/wiki/Battle_of_Megara",
   },
   {
-    latlng: {
+    title: "Battle of Delium",
+    pinColor: COLOR_THEME.peloponnesian,
+    coordinate: {
       latitude: 38.346208,
       longitude: 23.661354,
     },
-    name: "Battle of Delium",
     year: -424,
-    location: "Delium",
     type: "land",
+    location: "Delium",
     result: "Boeotian victory",
-    color: COLOR_THEME.peloponnesian,
     link: "https://en.wikipedia.org/wiki/Battle_of_Delium",
   },
   {
-    latlng: {
+    title: "Battle of Amphipolis",
+    pinColor: COLOR_THEME.peloponnesianHighlight,
+    coordinate: {
       latitude: 40.818333,
       longitude: 23.84,
     },
-    name: "Battle of Amphipolis",
     year: -422,
-    location: "Amphipolis",
     type: "land",
+    location: "Amphipolis",
     result: "Decisive Spartan victory",
-    color: COLOR_THEME.peloponnesian,
     link: "https://en.wikipedia.org/wiki/Battle_of_Amphipolis",
   },
   {
-    latlng: {
+    title: "Battle of Mantinea",
+    pinColor: COLOR_THEME.peloponnesian,
+    coordinate: {
       latitude: 37.617642,
       longitude: 22.392869,
     },
-    name: "Battle of Mantinea",
     year: -418,
-    location: "Mantinea",
     type: "land",
+    location: "Mantinea",
     result: "Spartan victory",
-    color: COLOR_THEME.peloponnesian,
     link: "https://en.wikipedia.org/wiki/Battle_of_Mantinea_(418_BC)",
   },
   {
-    latlng: {
+    title: "Battle of Hysiae",
+    pinColor: COLOR_THEME.peloponnesianHighlight,
+    coordinate: {
       latitude: 37.519836,
       longitude: 22.585884,
     },
-    name: "Battle of Hysiae",
     year: -417,
-    location: "Hysiae, Argolis",
     type: "siege",
+    location: "Hysiae, Argolis",
     result: "Decisive Spartan victory",
-    color: COLOR_THEME.peloponnesian,
     link: "https://en.wikipedia.org/wiki/Battle_of_Hysiae_(417_BC)",
   },
   {
-    latlng: {
+    title: "Battle of Orneae",
+    pinColor: COLOR_THEME.delian,
+    coordinate: {
       latitude: 37.713973,
       longitude: 22.557292,
     },
-    name: "Battle of Orneae",
     year: -417,
-    location: "Orneae, Argolis",
     type: "siege",
+    location: "Orneae, Argolis",
     result: "Athenian/Argive Victory",
-    color: COLOR_THEME.delian,
     link: "https://en.wikipedia.org/wiki/Battle_of_Orneae",
   },
   {
-    latlng: {
+    title: "Siege of Melos",
+    pinColor: COLOR_THEME.delian,
+    coordinate: {
       latitude: 36.683333,
       longitude: 24.416667,
     },
-    name: "Siege of Melos",
     year: -416,
-    location: "Melos",
     type: "siege",
+    location: "Melos",
     result: "Athenian victory",
-    color: COLOR_THEME.delian,
     link: "https://en.wikipedia.org/wiki/Siege_of_Melos",
   },
   {
-    latlng: {
+    title: "Sicilian Expedition",
+    pinColor: COLOR_THEME.peloponnesianHighlight,
+    coordinate: {
       latitude: 37.0833,
       longitude: 15.2833,
     },
-    name: "Sicilian Expedition",
     year: -415,
     endYear: -413,
-    location: "Sicily, Italy",
     type: "land",
+    location: "Sicily, Italy",
     result:
       "Decisive Spartan/Syracusan victory, Athenian expeditionary force completely destroyed",
-    color: COLOR_THEME.peloponnesian,
     link: "https://en.wikipedia.org/wiki/Sicilian_Expedition",
   },
   {
-    latlng: {
+    title: "Battle of Syme",
+    pinColor: COLOR_THEME.peloponnesian,
+    coordinate: {
       latitude: 36.583333,
       longitude: 27.833333,
     },
-    name: "Battle of Syme",
     year: -411,
     month: 8,
-    location: "Off Syme",
     type: "naval",
+    location: "Off Syme",
     result: "Spartan victory",
-    color: COLOR_THEME.peloponnesian,
     link: "https://en.wikipedia.org/wiki/Battle_of_Syme",
   },
   {
-    latlng: {
+    title: "Battle of Eretria",
+    pinColor: COLOR_THEME.peloponnesian,
+    coordinate: {
       latitude: 38.3927202,
       longitude: 23.7930669,
     },
-    name: "Battle of Eretria",
     year: -411,
     month: 8,
-    location: "Off the coast of Euboea",
     type: "naval",
+    location: "Off the coast of Euboea",
     result: "Spartan victory",
-    color: COLOR_THEME.peloponnesian,
     link: "https://en.wikipedia.org/wiki/Battle_of_Eretria",
   },
   {
-    latlng: {
+    title: "Battle of Cynossema",
+    pinColor: COLOR_THEME.delian,
+    coordinate: {
       latitude: 40.148611,
       longitude: 26.379167,
     },
-    name: "Battle of Cynossema",
     year: -411,
-    location: "Off Cynossema, in the Thracian Chersonese",
     type: "naval",
+    location: "Off Cynossema, in the Thracian Chersonese",
     result: "Athenian victory",
-    color: COLOR_THEME.delian,
     link: "https://en.wikipedia.org/wiki/Battle_of_Cynossema",
   },
   {
-    latlng: {
+    title: "Battle of Abydos",
+    pinColor: COLOR_THEME.delian,
+    coordinate: {
       latitude: 40.195278,
       longitude: 26.405,
     },
-    name: "Battle of Abydos",
     year: -411,
     month: 10,
-    location: "Near Abydos, in the Hellespont",
     type: "naval",
+    location: "Near Abydos, in the Hellespont",
     result: "Athenian victory",
-    color: COLOR_THEME.delian,
     link: "https://en.wikipedia.org/wiki/Battle_of_Abydos",
   },
   {
-    latlng: {
+    title: "Battle of Cyzicus",
+    pinColor: COLOR_THEME.delianHighlight,
+    coordinate: {
       latitude: 40.38,
       longitude: 27.89,
     },
-    name: "Battle of Cyzicus",
     year: -410,
-    location: "Near Cyzicus, Hellespont, modern-day Turkey",
     type: "naval",
+    location: "Near Cyzicus, Hellespont, modern-day Turkey",
     result:
       "Decisive Athenian victory, Cyzicus and other cities in the region captured by Athens",
-    color: COLOR_THEME.delian,
     link: "https://en.wikipedia.org/wiki/Battle_of_Cyzicus",
   },
   {
-    latlng: {
+    title: "Battle of Notium",
+    pinColor: COLOR_THEME.peloponnesian,
+    coordinate: {
       latitude: 37.992778,
       longitude: 26.8475,
     },
-    name: "Battle of Notium",
     year: -406,
-    location: "Near Ephesus and Notium",
     type: "naval",
+    location: "Near Ephesus and Notium",
     result: "Spartan victory",
-    color: COLOR_THEME.peloponnesian,
     link: "https://en.wikipedia.org/wiki/Battle_of_Notium",
   },
   {
-    latlng: {
+    title: "Battle of Mytilene",
+    pinColor: COLOR_THEME.peloponnesian,
+    coordinate: {
       latitude: 39.1,
       longitude: 26.55,
     },
-    name: "Battle of Mytilene",
     year: -406,
-    location: "Mytilene",
     type: "naval",
+    location: "Mytilene",
     result: "Spartan victory",
-    color: COLOR_THEME.peloponnesian,
+
     link: "https://en.wikipedia.org/wiki/Battle_of_Mytilene_(406_BC)",
   },
   {
-    latlng: {
+    title: "Battle of Arginusae",
+    pinColor: COLOR_THEME.delian,
+    coordinate: {
       latitude: 39.033333,
       longitude: 26.8,
     },
-    name: "Battle of Arginusae",
     year: -406,
-    location: "Arginusae Islands",
     type: "naval",
+    location: "Arginusae Islands",
     result: "Athenian victory",
-    color: COLOR_THEME.delian,
     link: "https://en.wikipedia.org/wiki/Battle_of_Arginusae",
   },
   {
-    latlng: {
+    title: "Battle of Aegospotami",
+    pinColor: COLOR_THEME.peloponnesianHighlight,
+    coordinate: {
       latitude: 40.25,
       longitude: 26.55,
     },
-    name: "Battle of Aegospotami",
     year: -405,
+    type: "naval",
     location:
       "Aegospotami, Hellespont (present-day Çanakkale Province, Turkey)",
-    type: "naval",
     result:
       "Decisive Spartan victory: - Athens besieged and then surrendered in March 404 BC, ending the Peloponnesian War",
-    color: COLOR_THEME.delian,
     link: "https://en.wikipedia.org/wiki/Battle_of_Aegospotami",
   },
 ];

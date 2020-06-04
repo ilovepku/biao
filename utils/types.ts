@@ -4,12 +4,26 @@ export interface InitialRegion {
   latitudeDelta: number;
 }
 
-export interface Cities {
-  latlng: {
+export interface City {
+  title: string;
+  description: string;
+  pinColor: string;
+  coordinate: {
     latitude: number;
     longitude: number;
   };
-  name: string;
-  description: string;
+}
+
+export interface Battle {
+  coordinate: {
+    latitude: number;
+    longitude: number;
+  };
+  title: string;
+  year: number;
+  location: string;
+  type: string;
+  result: string;
   color: string;
+  link: string;
 }
