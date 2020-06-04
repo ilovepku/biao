@@ -6,7 +6,9 @@ export const INITIAL_REGION = {
 
 const COLOR_THEME = {
   delian: "teal",
+  delianHQ: "navy",
   peloponnesian: "tomato",
+  peloponnesianHQ: "red",
   neutral: "gold",
 };
 
@@ -17,8 +19,8 @@ export const CITIES = [
       longitude: 22.423611,
     },
     name: "Sparta",
-    result: "Peloponnesian League HQ",
-    color: COLOR_THEME.peloponnesian,
+    description: "Peloponnesian League HQ",
+    color: COLOR_THEME.peloponnesianHQ,
   },
   {
     latlng: {
@@ -26,7 +28,7 @@ export const CITIES = [
       longitude: 22.880192,
     },
     name: "Corinth",
-    result: "Peloponnesian League",
+    description: "Peloponnesian League",
     color: COLOR_THEME.peloponnesian,
   },
   {
@@ -35,7 +37,7 @@ export const CITIES = [
       longitude: 21.37493,
     },
     name: "Elis",
-    result: "Peloponnesian League",
+    description: "Peloponnesian League",
     color: COLOR_THEME.peloponnesian,
   },
   {
@@ -44,7 +46,7 @@ export const CITIES = [
       longitude: 23.344444,
     },
     name: "Megara",
-    result: "Peloponnesian League",
+    description: "Peloponnesian League",
     color: COLOR_THEME.peloponnesian,
   },
   {
@@ -53,7 +55,7 @@ export const CITIES = [
       longitude: 23.316667,
     },
     name: "Thebes",
-    result: "Dominant power in Boeotia",
+    description: "Dominant power in Boeotia",
     color: COLOR_THEME.peloponnesian,
   },
   {
@@ -62,8 +64,8 @@ export const CITIES = [
       longitude: 23.72,
     },
     name: "Athens",
-    result: "Delian League HQ",
-    color: COLOR_THEME.delian,
+    description: "Delian League HQ",
+    color: COLOR_THEME.delianHQ,
   },
   {
     latlng: {
@@ -71,7 +73,7 @@ export const CITIES = [
       longitude: 23.646944,
     },
     name: "Piraeus",
-    result: "Port city of Athens",
+    description: "Port city of Athens",
     color: COLOR_THEME.delian,
   },
   {
@@ -80,7 +82,7 @@ export const CITIES = [
       longitude: 25.271111,
     },
     name: "Delos",
-    result: "Delian League Treasury",
+    description: "Delian League Treasury",
     color: COLOR_THEME.delian,
   },
   {
@@ -89,7 +91,7 @@ export const CITIES = [
       longitude: 25.403889,
     },
     name: "Naxos",
-    result: "Delian League",
+    description: "Delian League",
     color: COLOR_THEME.delian,
   },
   {
@@ -98,7 +100,7 @@ export const CITIES = [
       longitude: 26.016667,
     },
     name: "Chios",
-    result: "Delian League",
+    description: "Delian League",
     color: COLOR_THEME.delian,
   },
   {
@@ -107,7 +109,7 @@ export const CITIES = [
       longitude: 26.28,
     },
     name: "Lesbos",
-    result: "Delian League",
+    description: "Delian League",
     color: COLOR_THEME.delian,
   },
   {
@@ -116,7 +118,7 @@ export const CITIES = [
       longitude: 26.833333,
     },
     name: "Samos",
-    result: "Delian League",
+    description: "Delian League",
     color: COLOR_THEME.delian,
   },
   {
@@ -125,7 +127,7 @@ export const CITIES = [
       longitude: 19.866667,
     },
     name: "Corcyra",
-    result: "Delian League",
+    description: "Delian League",
     color: COLOR_THEME.delian,
   },
   {
@@ -134,7 +136,7 @@ export const CITIES = [
       longitude: 22.716667,
     },
     name: "Argos",
-    result: "Neutral",
+    description: "Neutral",
     color: COLOR_THEME.neutral,
   },
   {
@@ -143,7 +145,7 @@ export const CITIES = [
       longitude: 24.416667,
     },
     name: "Melos",
-    result: "Neutral",
+    description: "Neutral",
     color: COLOR_THEME.neutral,
   },
 ];
