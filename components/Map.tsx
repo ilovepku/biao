@@ -97,10 +97,14 @@ const Map = ({
             key={`city_${JSON.stringify(coordinate)}`}
             title={title}
             description={description}
-            pinColor={color}
             coordinate={coordinate}
+            anchor={{ x: 1, y: 1 }}
+            calloutAnchor={{ x: 0, y: 0 }}
+            rotation={45}
             tracksViewChanges={false}
-          />
+          >
+            <IconMarker name={"home-map-marker"} color={color} />
+          </Marker>
         ))}
 
         {battles.map(({ title, color, coordinate, type }, index) => (
@@ -110,6 +114,9 @@ const Map = ({
             title={title}
             coordinate={coordinate}
             anchor={{ x: 1, y: 1 }}
+            calloutAnchor={{ x: 0, y: 0 }}
+            rotation={45}
+            tracksViewChanges={false}
             onPress={() => onMarkerPressed(coordinate, index)}
           >
             <IconMarker name={MARKER_ICONS[type]} color={color} />
