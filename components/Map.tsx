@@ -9,8 +9,6 @@ import { InitialRegion, Coordinate, City, Battle } from "../utils/types";
 import { MARKER_ICONS } from "../utils/markerIcons";
 import carouselItem from "./CarouselItem";
 
-const { width, height } = Dimensions.get("window");
-const aspectRadio = width / height;
 const DEFAULT_LATITUDE_DELTA = 1;
 const DEFAULT_ANIMATE_DURATION = 2000;
 
@@ -23,6 +21,8 @@ const Map = ({
   cities: City[];
   battles: Battle[];
 }) => {
+  const [viewport, setViewport] = useState(Dimensions.get("window"));
+  const aspectRadio = viewport.width / viewport.height;
   const [region, setRegion] = useState({
     latitude,
     longitude,
@@ -69,8 +69,8 @@ const Map = ({
         ref={carouselRef}
         data={battles}
         renderItem={carouselItem}
-        itemWidth={(width * 3) / 4} // add itemHeight & sliderHeight for vertical carousel in landscape mode
-        sliderWidth={width}
+        itemWidth={Math.round(viewport.width * 0.7)} // add itemHeight & sliderHeight for vertical carousel in landscape mode
+        sliderWidth={viewport.width}
         onSnapToItem={(index) => onCarouselItemChange(index)}
       />
     </View>
@@ -85,7 +85,12 @@ const Map = ({
   );
 
   return (
-    <View style={styles.container}>
+    <View
+      style={styles.container}
+      onLayout={() => {
+        setViewport(Dimensions.get("window"));
+      }}
+    >
       <MapView
         style={styles.map}
         ref={mapRef}
