@@ -12,13 +12,13 @@ export interface Coordinate {
 export interface City {
   title: string;
   description: string;
-  pinColor: string;
+  color: string;
   coordinate: Coordinate;
 }
 
 export interface Battle {
   title: string;
-  pinColor: string;
+  color: string;
   coordinate: Coordinate;
   year: number;
   type: string;

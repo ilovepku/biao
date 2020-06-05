@@ -10,7 +10,7 @@ ScreenOrientation.unlockAsync();
 export default function App() {
   return (
     <View style={styles.container}>
-      <Map initialRegion={INITIAL_REGION} cities={CITIES} battles={BATTLES} />
+      <Map initialRegion={INITIAL_REGION} cities={CITIES} battles={BATTLES}/>
     </View>
   );
 }

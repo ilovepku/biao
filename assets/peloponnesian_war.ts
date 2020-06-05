@@ -16,7 +16,7 @@ export const CITIES = [
   {
     title: "Sparta",
     description: "Peloponnesian League HQ",
-    pinColor: COLOR_THEME.peloponnesianHighlight,
+    color: COLOR_THEME.peloponnesianHighlight,
     coordinate: {
       latitude: 37.081944,
       longitude: 22.423611,
@@ -25,7 +25,7 @@ export const CITIES = [
   {
     title: "Corinth",
     description: "Peloponnesian League",
-    pinColor: COLOR_THEME.peloponnesian,
+    color: COLOR_THEME.peloponnesian,
     coordinate: {
       latitude: 37.905346,
       longitude: 22.880192,
@@ -34,7 +34,7 @@ export const CITIES = [
   {
     title: "Elis",
     description: "Peloponnesian League",
-    pinColor: COLOR_THEME.peloponnesian,
+    color: COLOR_THEME.peloponnesian,
     coordinate: {
       latitude: 37.89131,
       longitude: 21.37493,
@@ -43,7 +43,7 @@ export const CITIES = [
   {
     title: "Megara",
     description: "Peloponnesian League",
-    pinColor: COLOR_THEME.peloponnesian,
+    color: COLOR_THEME.peloponnesian,
     coordinate: {
       latitude: 37.996389,
       longitude: 23.344444,
@@ -52,7 +52,7 @@ export const CITIES = [
   {
     title: "Thebes",
     description: "Dominant power in Boeotia",
-    pinColor: COLOR_THEME.peloponnesian,
+    color: COLOR_THEME.peloponnesian,
     coordinate: {
       latitude: 38.316667,
       longitude: 23.316667,
@@ -61,7 +61,7 @@ export const CITIES = [
   {
     title: "Athens",
     description: "Delian League HQ",
-    pinColor: COLOR_THEME.delianHighlight,
+    color: COLOR_THEME.delianHighlight,
     coordinate: {
       latitude: 37.97,
       longitude: 23.72,
@@ -70,7 +70,7 @@ export const CITIES = [
   {
     title: "Piraeus",
     description: "Port city of Athens",
-    pinColor: COLOR_THEME.delian,
+    color: COLOR_THEME.delian,
     coordinate: {
       latitude: 37.943,
       longitude: 23.646944,
@@ -79,7 +79,7 @@ export const CITIES = [
   {
     title: "Delos",
     description: "Delian League Treasury",
-    pinColor: COLOR_THEME.delian,
+    color: COLOR_THEME.delian,
     coordinate: {
       latitude: 37.393333,
       longitude: 25.271111,
@@ -88,7 +88,7 @@ export const CITIES = [
   {
     title: "Naxos",
     description: "Delian League",
-    pinColor: COLOR_THEME.delian,
+    color: COLOR_THEME.delian,
     coordinate: {
       latitude: 37.0875,
       longitude: 25.403889,
@@ -97,7 +97,7 @@ export const CITIES = [
   {
     title: "Chios",
     description: "Delian League",
-    pinColor: COLOR_THEME.delian,
+    color: COLOR_THEME.delian,
     coordinate: {
       latitude: 38.4,
       longitude: 26.016667,
@@ -106,7 +106,7 @@ export const CITIES = [
   {
     title: "Lesbos",
     description: "Delian League",
-    pinColor: COLOR_THEME.delian,
+    color: COLOR_THEME.delian,
     coordinate: {
       latitude: 39.21,
       longitude: 26.28,
@@ -115,7 +115,7 @@ export const CITIES = [
   {
     title: "Samos",
     description: "Delian League",
-    pinColor: COLOR_THEME.delian,
+    color: COLOR_THEME.delian,
     coordinate: {
       latitude: 37.75,
       longitude: 26.833333,
@@ -124,7 +124,7 @@ export const CITIES = [
   {
     title: "Corcyra",
     description: "Delian League",
-    pinColor: COLOR_THEME.delian,
+    color: COLOR_THEME.delian,
     coordinate: {
       latitude: 39.583333,
       longitude: 19.866667,
@@ -133,7 +133,7 @@ export const CITIES = [
   {
     title: "Argos",
     description: "Neutral",
-    pinColor: COLOR_THEME.neutral,
+    color: COLOR_THEME.neutral,
     coordinate: {
       latitude: 37.616667,
       longitude: 22.716667,
@@ -142,7 +142,7 @@ export const CITIES = [
   {
     title: "Melos",
     description: "Neutral",
-    pinColor: COLOR_THEME.neutral,
+    color: COLOR_THEME.neutral,
     coordinate: {
       latitude: 36.683333,
       longitude: 24.416667,
@@ -153,7 +153,7 @@ export const CITIES = [
 export const BATTLES = [
   {
     title: "Battle of Sybota",
-    pinColor: COLOR_THEME.neutral,
+    color: COLOR_THEME.neutral,
     coordinate: {
       latitude: 39.4033333,
       longitude: 20.2152778,
@@ -166,7 +166,7 @@ export const BATTLES = [
   },
   {
     title: "Battle of Potidaea",
-    pinColor: COLOR_THEME.delian,
+    color: COLOR_THEME.delian,
     coordinate: {
       latitude: 40.1937,
       longitude: 23.3278,
@@ -179,7 +179,7 @@ export const BATTLES = [
   },
   {
     title: "Battle of Spartolos",
-    pinColor: COLOR_THEME.peloponnesian,
+    color: COLOR_THEME.peloponnesian,
     coordinate: {
       latitude: 40.2832,
       longitude: 23.2954,
@@ -192,7 +192,7 @@ export const BATTLES = [
   },
   {
     title: "Battle of Rhium",
-    pinColor: COLOR_THEME.delian,
+    color: COLOR_THEME.delian,
     coordinate: {
       latitude: 38.3,
       longitude: 21.783333,
@@ -205,7 +205,7 @@ export const BATTLES = [
   },
   {
     title: "Battle of Naupactus",
-    pinColor: COLOR_THEME.delian,
+    color: COLOR_THEME.delian,
     coordinate: {
       latitude: 38.393889,
       longitude: 21.830556,
@@ -218,7 +218,7 @@ export const BATTLES = [
   },
   {
     title: "Siege of Plataea",
-    pinColor: COLOR_THEME.peloponnesian,
+    color: COLOR_THEME.peloponnesian,
     coordinate: {
       latitude: 38.219992,
       longitude: 23.273853,
@@ -232,7 +232,7 @@ export const BATTLES = [
   },
   {
     title: "Mytilenean revolt",
-    pinColor: COLOR_THEME.delian,
+    color: COLOR_THEME.delian,
     coordinate: {
       latitude: 39.21,
       longitude: 26.28,
@@ -246,7 +246,7 @@ export const BATTLES = [
   },
   {
     title: "Battle of Tanagra",
-    pinColor: COLOR_THEME.delian,
+    color: COLOR_THEME.delian,
     coordinate: {
       latitude: 38.316667,
       longitude: 23.533333,
@@ -259,7 +259,7 @@ export const BATTLES = [
   },
   {
     title: "Aetolian campaign",
-    pinColor: COLOR_THEME.peloponnesian,
+    color: COLOR_THEME.peloponnesian,
     coordinate: {
       latitude: 38.5054294,
       longitude: 21.8091625,
@@ -272,7 +272,7 @@ export const BATTLES = [
   },
   {
     title: "Battle of Olpae",
-    pinColor: COLOR_THEME.delian,
+    color: COLOR_THEME.delian,
     coordinate: {
       latitude: 38.949996,
       longitude: 21.149835,
@@ -285,7 +285,7 @@ export const BATTLES = [
   },
   {
     title: "Battle of Idomene",
-    pinColor: COLOR_THEME.delian,
+    color: COLOR_THEME.delian,
     coordinate: {
       latitude: 38.85,
       longitude: 21.166667,
@@ -298,7 +298,7 @@ export const BATTLES = [
   },
   {
     title: "Battle of Pylos",
-    pinColor: COLOR_THEME.delian,
+    color: COLOR_THEME.delian,
     coordinate: {
       latitude: 36.916667,
       longitude: 21.7,
@@ -311,7 +311,7 @@ export const BATTLES = [
   },
   {
     title: "Battle of Sphacteria",
-    pinColor: COLOR_THEME.delian,
+    color: COLOR_THEME.delian,
     coordinate: {
       latitude: 36.930136,
       longitude: 21.665725,
@@ -324,7 +324,7 @@ export const BATTLES = [
   },
   {
     title: "Battle of Megara",
-    pinColor: COLOR_THEME.delian,
+    color: COLOR_THEME.delian,
     coordinate: {
       latitude: 37.996389,
       longitude: 23.344444,
@@ -337,7 +337,7 @@ export const BATTLES = [
   },
   {
     title: "Battle of Delium",
-    pinColor: COLOR_THEME.peloponnesian,
+    color: COLOR_THEME.peloponnesian,
     coordinate: {
       latitude: 38.346208,
       longitude: 23.661354,
@@ -350,7 +350,7 @@ export const BATTLES = [
   },
   {
     title: "Battle of Amphipolis",
-    pinColor: COLOR_THEME.peloponnesianHighlight,
+    color: COLOR_THEME.peloponnesianHighlight,
     coordinate: {
       latitude: 40.818333,
       longitude: 23.84,
@@ -363,7 +363,7 @@ export const BATTLES = [
   },
   {
     title: "Battle of Mantinea",
-    pinColor: COLOR_THEME.peloponnesian,
+    color: COLOR_THEME.peloponnesian,
     coordinate: {
       latitude: 37.617642,
       longitude: 22.392869,
@@ -376,7 +376,7 @@ export const BATTLES = [
   },
   {
     title: "Battle of Hysiae",
-    pinColor: COLOR_THEME.peloponnesianHighlight,
+    color: COLOR_THEME.peloponnesianHighlight,
     coordinate: {
       latitude: 37.519836,
       longitude: 22.585884,
@@ -389,7 +389,7 @@ export const BATTLES = [
   },
   {
     title: "Battle of Orneae",
-    pinColor: COLOR_THEME.delian,
+    color: COLOR_THEME.delian,
     coordinate: {
       latitude: 37.713973,
       longitude: 22.557292,
@@ -402,7 +402,7 @@ export const BATTLES = [
   },
   {
     title: "Siege of Melos",
-    pinColor: COLOR_THEME.delian,
+    color: COLOR_THEME.delian,
     coordinate: {
       latitude: 36.683333,
       longitude: 24.416667,
@@ -415,7 +415,7 @@ export const BATTLES = [
   },
   {
     title: "Sicilian Expedition",
-    pinColor: COLOR_THEME.peloponnesianHighlight,
+    color: COLOR_THEME.peloponnesianHighlight,
     coordinate: {
       latitude: 37.0833,
       longitude: 15.2833,
@@ -430,7 +430,7 @@ export const BATTLES = [
   },
   {
     title: "Battle of Syme",
-    pinColor: COLOR_THEME.peloponnesian,
+    color: COLOR_THEME.peloponnesian,
     coordinate: {
       latitude: 36.583333,
       longitude: 27.833333,
@@ -444,7 +444,7 @@ export const BATTLES = [
   },
   {
     title: "Battle of Eretria",
-    pinColor: COLOR_THEME.peloponnesian,
+    color: COLOR_THEME.peloponnesian,
     coordinate: {
       latitude: 38.3927202,
       longitude: 23.7930669,
@@ -458,7 +458,7 @@ export const BATTLES = [
   },
   {
     title: "Battle of Cynossema",
-    pinColor: COLOR_THEME.delian,
+    color: COLOR_THEME.delian,
     coordinate: {
       latitude: 40.148611,
       longitude: 26.379167,
@@ -471,7 +471,7 @@ export const BATTLES = [
   },
   {
     title: "Battle of Abydos",
-    pinColor: COLOR_THEME.delian,
+    color: COLOR_THEME.delian,
     coordinate: {
       latitude: 40.195278,
       longitude: 26.405,
@@ -485,7 +485,7 @@ export const BATTLES = [
   },
   {
     title: "Battle of Cyzicus",
-    pinColor: COLOR_THEME.delianHighlight,
+    color: COLOR_THEME.delianHighlight,
     coordinate: {
       latitude: 40.38,
       longitude: 27.89,
@@ -499,7 +499,7 @@ export const BATTLES = [
   },
   {
     title: "Battle of Notium",
-    pinColor: COLOR_THEME.peloponnesian,
+    color: COLOR_THEME.peloponnesian,
     coordinate: {
       latitude: 37.992778,
       longitude: 26.8475,
@@ -512,7 +512,7 @@ export const BATTLES = [
   },
   {
     title: "Battle of Mytilene",
-    pinColor: COLOR_THEME.peloponnesian,
+    color: COLOR_THEME.peloponnesian,
     coordinate: {
       latitude: 39.1,
       longitude: 26.55,
@@ -526,7 +526,7 @@ export const BATTLES = [
   },
   {
     title: "Battle of Arginusae",
-    pinColor: COLOR_THEME.delian,
+    color: COLOR_THEME.delian,
     coordinate: {
       latitude: 39.033333,
       longitude: 26.8,
@@ -539,7 +539,7 @@ export const BATTLES = [
   },
   {
     title: "Battle of Aegospotami",
-    pinColor: COLOR_THEME.peloponnesianHighlight,
+    color: COLOR_THEME.peloponnesianHighlight,
     coordinate: {
       latitude: 40.25,
       longitude: 26.55,

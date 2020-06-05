@@ -7,6 +7,7 @@ import Carousel from "react-native-snap-carousel";
 
 import { InitialRegion, Coordinate, City, Battle } from "../utils/types";
 import { MARKER_ICONS } from "../utils/markerIcons";
+import IconMarker from "../components/IconMarker";
 import BottomSheetHeader from "./BottomSheetHeader";
 import CarouselItem from "./CarouselItem";
 
@@ -91,31 +92,27 @@ const Map = ({
         mapType="terrain" // add switch / fallback for iOS
         onRegionChangeComplete={(region) => setRegion(region)}
       >
-        {cities.map(({ title, description, pinColor, coordinate }) => (
+        {cities.map(({ title, description, color, coordinate }) => (
           <Marker
             key={`city_${JSON.stringify(coordinate)}`}
             title={title}
             description={description}
-            pinColor={pinColor}
+            pinColor={color}
             coordinate={coordinate}
             tracksViewChanges={false}
           />
         ))}
 
-        {battles.map(({ title, pinColor, coordinate, type }, index) => (
+        {battles.map(({ title, color, coordinate, type }, index) => (
           <Marker
             key={`battle_${JSON.stringify(coordinate)}`}
             ref={(ref) => (markerRefs[index] = ref)}
             title={title}
             coordinate={coordinate}
+            anchor={{ x: 1, y: 1 }}
             onPress={() => onMarkerPressed(coordinate, index)}
           >
-            <MaterialCommunityIcons
-              name={MARKER_ICONS[type]}
-              size={24}
-              color={pinColor}
-              style={styles.battleMarker}
-            />
+            <IconMarker name={MARKER_ICONS[type]} color={color} />
           </Marker>
         ))}
       </MapView>
@@ -141,14 +138,6 @@ const styles = StyleSheet.create({
   },
   map: {
     ...StyleSheet.absoluteFillObject,
-  },
-  battleMarker: {
-    textShadowColor: "#000",
-    textShadowRadius: 1,
-    textShadowOffset: {
-      width: 1,
-      height: 1,
-    },
   },
   bottomSheetPanel: {
     padding: 10,

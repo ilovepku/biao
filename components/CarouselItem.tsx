@@ -7,7 +7,7 @@ import { Battle } from "../utils/types";
 import { MARKER_ICONS } from "../utils/markerIcons";
 
 const CarouselItem = ({
-  item: { title, pinColor, year, type, location, result, link },
+  item: { title, color, year, type, location, result, link },
 }: {
   item: Battle;
 }) => {
@@ -20,7 +20,7 @@ const CarouselItem = ({
           <MaterialCommunityIcons
             name={MARKER_ICONS[type]}
             size={24}
-            color={pinColor}
+            color={color}
           />
         )}
         right={() => (
