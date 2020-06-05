@@ -6,7 +6,7 @@ import { Card, Title, Paragraph } from "react-native-paper";
 import { Battle } from "../utils/types";
 import { MARKER_ICONS } from "../utils/markerIcons";
 
-const carouselItem = ({
+const CarouselItem = ({
   item: { title, pinColor, year, type, location, result, link },
 }: {
   item: Battle;
@@ -41,4 +41,4 @@ const carouselItem = ({
   );
 };
 
-export default carouselItem;
+export default CarouselItem;

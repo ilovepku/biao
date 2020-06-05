@@ -7,7 +7,8 @@ import Carousel from "react-native-snap-carousel";
 
 import { InitialRegion, Coordinate, City, Battle } from "../utils/types";
 import { MARKER_ICONS } from "../utils/markerIcons";
-import carouselItem from "./CarouselItem";
+import BottomSheetHeader from "./BottomSheetHeader";
+import CarouselItem from "./CarouselItem";
 
 const DEFAULT_LATITUDE_DELTA = 1;
 const DEFAULT_ANIMATE_DURATION = 2000;
@@ -63,24 +64,16 @@ const Map = ({
     markerRefs[index]!.showCallout(); // bad practice, needs future fix
   };
 
-  const bottomSheetContent = () => (
-    <View style={styles.panel}>
+  const BottomSheetContent = () => (
+    <View style={styles.bottomSheetPanel}>
       <Carousel
         ref={carouselRef}
         data={battles}
-        renderItem={carouselItem}
+        renderItem={CarouselItem}
         itemWidth={Math.round(viewport.width * 0.7)} // add itemHeight & sliderHeight for vertical carousel in landscape mode
         sliderWidth={viewport.width}
         onSnapToItem={(index) => onCarouselItemChange(index)}
       />
-    </View>
-  );
-
-  const bottomSheetHeader = () => (
-    <View style={styles.header}>
-      <View style={styles.panelHeader}>
-        <View style={styles.panelHandle} />
-      </View>
     </View>
   );
 
@@ -121,7 +114,7 @@ const Map = ({
               name={MARKER_ICONS[type]}
               size={24}
               color={pinColor}
-              style={styles.icon}
+              style={styles.battleMarker}
             />
           </Marker>
         ))}
@@ -131,8 +124,8 @@ const Map = ({
         ref={bottomSheetRef}
         snapPoints={["30%", "3%", "3%"]}
         initialSnap={1}
-        renderContent={bottomSheetContent}
-        renderHeader={bottomSheetHeader}
+        renderContent={BottomSheetContent}
+        renderHeader={BottomSheetHeader}
         enabledContentGestureInteraction={false}
         onOpenEnd={() =>
           carouselRef.current.currentIndex === 0 && onCarouselItemChange(0)
@@ -149,7 +142,7 @@ const styles = StyleSheet.create({
   map: {
     ...StyleSheet.absoluteFillObject,
   },
-  icon: {
+  battleMarker: {
     textShadowColor: "#000",
     textShadowRadius: 1,
     textShadowOffset: {
@@ -157,26 +150,8 @@ const styles = StyleSheet.create({
       height: 1,
     },
   },
-  header: {
-    backgroundColor: "#f7f5eee8",
-    shadowColor: "#000000",
-    paddingTop: 20,
-    borderTopLeftRadius: 20,
-    borderTopRightRadius: 20,
-  },
-  panelHeader: {
-    alignItems: "center",
-  },
-  panelHandle: {
-    width: 40,
-    height: 8,
-    borderRadius: 4,
-    backgroundColor: "#00000040",
-    marginBottom: 10,
-  },
-  panel: {
-    height: 600,
-    padding: 20,
+  bottomSheetPanel: {
+    padding: 10,
     backgroundColor: "#f7f5eee8",
   },
 });
