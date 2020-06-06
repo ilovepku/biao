@@ -1,15 +1,32 @@
 import React from "react";
-import { StyleSheet, View } from "react-native";
+import { StyleSheet, View, Image } from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
+import getIconPngSource from "../utils/getIconPngSource";
 
-const IconMarker = ({ name, color }: { name: string; color: string }) => (
+const IconMarker = ({
+  name,
+  color = "#c30b82",
+  png = false,
+}: {
+  name: string;
+  color?: string;
+  png?: boolean;
+}) => (
   <View style={[styles.container, { backgroundColor: color }]}>
-    <MaterialCommunityIcons
-      style={styles.icon}
-      name={name}
-      size={16}
-      color={"white"}
-    />
+    {png ? (
+      <Image
+        source={getIconPngSource(name)}
+        fadeDuration={0}
+        style={styles.png}
+      />
+    ) : (
+      <MaterialCommunityIcons
+        style={styles.icon}
+        name={name}
+        size={16}
+        color={"white"}
+      />
+    )}
   </View>
 );
 
@@ -24,6 +41,11 @@ const styles = StyleSheet.create({
     borderColor: "#fff",
     justifyContent: "center",
     alignItems: "center",
+  },
+  png: {
+    width: 12,
+    height: 12,
+    transform: [{ rotate: "-45deg" }],
   },
   icon: {
     transform: [{ rotate: "-45deg" }],

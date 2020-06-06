@@ -1,11 +1,16 @@
 import React, { useState, useRef } from "react";
 import { StyleSheet, Dimensions, View } from "react-native";
-import { MaterialCommunityIcons } from "@expo/vector-icons";
 import MapView, { Marker } from "react-native-maps";
 import BottomSheet from "reanimated-bottom-sheet";
 import Carousel from "react-native-snap-carousel";
 
-import { InitialRegion, Coordinate, City, Battle } from "../utils/types";
+import {
+  InitialRegion,
+  Coordinate,
+  City,
+  Battle,
+  Attraction,
+} from "../utils/types";
 import { MARKER_ICONS } from "../utils/markerIcons";
 import IconMarker from "../components/IconMarker";
 import BottomSheetHeader from "./BottomSheetHeader";
@@ -18,10 +23,12 @@ const Map = ({
   initialRegion: { latitude, longitude, latitudeDelta },
   cities,
   battles,
+  attractions,
 }: {
   initialRegion: InitialRegion;
   cities: City[];
   battles: Battle[];
+  attractions: Attraction[];
 }) => {
   const [viewport, setViewport] = useState(Dimensions.get("window"));
   const aspectRadio = viewport.width / viewport.height;
@@ -122,6 +129,21 @@ const Map = ({
             <IconMarker name={MARKER_ICONS[type]} color={color} />
           </Marker>
         ))}
+
+        {region.latitudeDelta <= 1 &&
+          attractions.map(({ title, coordinate, type }) => (
+            <Marker
+              key={`attraction_${JSON.stringify(coordinate)}`}
+              title={title}
+              coordinate={coordinate}
+              anchor={{ x: 1, y: 1 }}
+              calloutAnchor={{ x: 0, y: 0 }}
+              rotation={45}
+              tracksViewChanges={false}
+            >
+              <IconMarker name={type} png />
+            </Marker>
+          ))}
       </MapView>
 
       <BottomSheet

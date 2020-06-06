@@ -26,3 +26,12 @@ export interface Battle {
   result: string;
   link: string;
 }
+
+export interface Attraction {
+  title: string;
+  description: string;
+  coordinate: Coordinate;
+  type: string;
+  address: string;
+  link: string;
+}
