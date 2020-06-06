@@ -3,6 +3,7 @@ import { StyleSheet, Dimensions, View } from "react-native";
 import MapView, { Marker } from "react-native-maps";
 import BottomSheet from "reanimated-bottom-sheet";
 import Carousel from "react-native-snap-carousel";
+import { FAB } from "react-native-paper";
 
 import {
   InitialRegion,
@@ -59,7 +60,7 @@ const Map = ({
     carouselRef.current && carouselRef.current.snapToItem(index);
   };
 
-  const onCarouselItemChange = (index: number) => {
+  const onCarouselItemActive = (index: number) => {
     mapRef.current &&
       mapRef.current.animateToRegion(
         {
@@ -72,6 +73,17 @@ const Map = ({
     markerRefs[index]!.showCallout(); // bad practice, needs future fix
   };
 
+  const resetToInitialRegion = () => {
+    mapRef.current &&
+      mapRef.current.animateToRegion({
+        latitude,
+        longitude,
+        latitudeDelta,
+        longitudeDelta: latitudeDelta * aspectRadio,
+      });
+    bottomSheetRef.current && bottomSheetRef.current.snapTo(2);
+  };
+
   const BottomSheetContent = () => (
     <View style={styles.bottomSheetPanel}>
       <Carousel
@@ -80,7 +92,7 @@ const Map = ({
         renderItem={CarouselItem}
         itemWidth={Math.round(viewport.width * 0.7)} // add itemHeight & sliderHeight for vertical carousel in landscape mode
         sliderWidth={viewport.width}
-        onSnapToItem={(index) => onCarouselItemChange(index)}
+        onSnapToItem={(index) => onCarouselItemActive(index)}
       />
     </View>
   );
@@ -153,9 +165,16 @@ const Map = ({
         renderContent={BottomSheetContent}
         renderHeader={BottomSheetHeader}
         enabledContentGestureInteraction={false}
-        onOpenEnd={() =>
-          carouselRef.current.currentIndex === 0 && onCarouselItemChange(0)
+        onOpenStart={() =>
+          onCarouselItemActive(carouselRef.current.currentIndex)
         }
+      />
+
+      <FAB
+        style={styles.fab}
+        icon="skip-backward"
+        small
+        onPress={resetToInitialRegion}
       />
     </View>
   );
@@ -171,6 +190,12 @@ const styles = StyleSheet.create({
   bottomSheetPanel: {
     padding: 10,
     backgroundColor: "#f7f5eee8",
+  },
+  fab: {
+    position: "absolute",
+    margin: 16,
+    top: 0,
+    right: 0,
   },
 });
 
