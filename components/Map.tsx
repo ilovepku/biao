@@ -1,11 +1,19 @@
 import React, { useState, useRef } from "react";
 import { StyleSheet, Dimensions, View } from "react-native";
-import MapView, { Marker } from "react-native-maps";
+// @ts-ignore: temp fix for @types/react-native-maps
+import MapView, { Geojson, Marker } from "react-native-maps";
 import BottomSheet from "reanimated-bottom-sheet";
 import Carousel from "react-native-snap-carousel";
 import { FAB } from "react-native-paper";
 
-import { InitialRegion, Coordinate, City, Battle, Attraction } from "..";
+import {
+  InitialRegion,
+  Coordinate,
+  City,
+  Battle,
+  Attraction,
+  GeojsonWrapper,
+} from "..";
 import { MARKER_ICONS } from "../utils/markerIcons";
 import IconMarker from "../components/IconMarker";
 import BottomSheetHeader from "./BottomSheetHeader";
@@ -19,11 +27,13 @@ const Map = ({
   cities,
   battles,
   attractions,
+  geojsons,
 }: {
   initialRegion: InitialRegion;
   cities: City[];
   battles: Battle[];
   attractions: Attraction[];
+  geojsons: GeojsonWrapper[];
 }) => {
   const [viewport, setViewport] = useState(Dimensions.get("window"));
   const aspectRadio = viewport.width / viewport.height;
@@ -105,6 +115,15 @@ const Map = ({
         mapType="terrain" // add switch / fallback for iOS
         onRegionChangeComplete={(region) => setRegion(region)}
       >
+        {geojsons.map(({ name, color, geojson }) => (
+          <Geojson
+            key={`geojson_${name}`}
+            geojson={geojson}
+            fillColor={color}
+            strokeWidth={0}
+          />
+        ))}
+
         {cities.map(({ title, description, color, coordinate }) => (
           <Marker
             key={`city_${JSON.stringify(coordinate)}`}

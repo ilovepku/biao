@@ -35,3 +35,9 @@ export interface Attraction {
   address: string;
   link: string;
 }
+
+export interface GeojsonWrapper {
+  name: string;
+  color: string;
+  geojson: GeoJSON;
+}
