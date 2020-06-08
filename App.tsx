@@ -2,13 +2,12 @@ import React from "react";
 import { StyleSheet, View } from "react-native";
 import * as ScreenOrientation from "expo-screen-orientation";
 
+import { INITIAL_REGION } from "./assets/peloponnesian_war/general";
+import CITIES from "./assets/peloponnesian_war/cities";
+import BATTLES from "./assets/peloponnesian_war/battles";
+import ATTRACTIONS from "./assets/peloponnesian_war/attractions";
+
 import Map from "./components/Map";
-import {
-  INITIAL_REGION,
-  CITIES,
-  BATTLES,
-  ATTRACTIONS,
-} from "./assets/peloponnesian_war";
 
 ScreenOrientation.unlockAsync();
 
