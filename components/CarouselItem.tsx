@@ -3,7 +3,7 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 import * as WebBrowser from "expo-web-browser";
 import { Card, Title, Paragraph } from "react-native-paper";
 
-import { Battle } from "../utils/types";
+import { Battle } from "..";
 import { MARKER_ICONS } from "../utils/markerIcons";
 
 const CarouselItem = ({
@@ -26,7 +26,7 @@ const CarouselItem = ({
         right={() => (
           <MaterialCommunityIcons
             name="wikipedia"
-            size={24} 
+            size={24}
             color="black"
             onPress={() => WebBrowser.openBrowserAsync(link)}
           />

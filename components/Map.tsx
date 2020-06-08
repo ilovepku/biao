@@ -5,13 +5,7 @@ import BottomSheet from "reanimated-bottom-sheet";
 import Carousel from "react-native-snap-carousel";
 import { FAB } from "react-native-paper";
 
-import {
-  InitialRegion,
-  Coordinate,
-  City,
-  Battle,
-  Attraction,
-} from "../utils/types";
+import { InitialRegion, Coordinate, City, Battle, Attraction } from "..";
 import { MARKER_ICONS } from "../utils/markerIcons";
 import IconMarker from "../components/IconMarker";
 import BottomSheetHeader from "./BottomSheetHeader";
