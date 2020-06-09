@@ -1,5 +1,6 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { StyleSheet, Dimensions, View } from "react-native";
+import * as ScreenOrientation from "expo-screen-orientation";
 // @ts-ignore: temp fix for @types/react-native-maps
 import MapView, { Geojson, Marker, LatLng } from "react-native-maps";
 import BottomSheet from "reanimated-bottom-sheet";
@@ -29,6 +30,7 @@ const Map = ({
   attractions: Attraction[];
   geojsons: GeojsonWrapper[];
 }) => {
+  const [orientation, setOrientation] = useState(0);
   const [viewport, setViewport] = useState(Dimensions.get("window"));
   const aspectRadio = viewport.width / viewport.height;
   const [region, setRegion] = useState({
@@ -37,6 +39,16 @@ const Map = ({
     latitudeDelta,
     longitudeDelta: latitudeDelta * aspectRadio,
   });
+
+  useEffect(() => {
+    ScreenOrientation.addOrientationChangeListener(() => {
+      ScreenOrientation.getOrientationAsync().then((orientation) =>
+        setOrientation(orientation)
+      );
+      bottomSheetRef.current && bottomSheetRef.current.snapTo(2);
+    });
+    return () => ScreenOrientation.removeOrientationChangeListeners();
+  }, []);
 
   const mapRef = useRef<MapView>(null);
   const markerRefs: Array<Marker | null> = [];
@@ -54,7 +66,7 @@ const Map = ({
         },
         DEFAULT_ANIMATE_DURATION
       );
-    bottomSheetRef.current && bottomSheetRef.current.snapTo(0);
+    bottomSheetRef.current && bottomSheetRef.current.snapTo(1);
     carouselRef.current && carouselRef.current.snapToItem(index);
   };
 
@@ -83,7 +95,7 @@ const Map = ({
   };
 
   const BottomSheetContent = () => (
-    <View style={styles.bottomSheetPanel}>
+    <View style={[styles.bottomSheetPanel, { height: viewport.height }]}>
       <Carousel
         ref={carouselRef}
         data={battles}
@@ -163,7 +175,7 @@ const Map = ({
             rotation={45}
             tracksViewChanges={false}
           >
-            {region.latitudeDelta <= .25 ? (
+            {region.latitudeDelta <= 0.25 ? (
               <IconMarker name={type} png />
             ) : (
               <MiniMarker />
@@ -173,9 +185,10 @@ const Map = ({
       </MapView>
 
       <BottomSheet
+        key={`orientation-${orientation}`} // temp fix to force rerender after orientation change
         ref={bottomSheetRef}
-        snapPoints={["30%", "3%", "3%"]}
-        initialSnap={1}
+        snapPoints={orientation === 1 ? ["99%", "35%", "3%"] : [200, 200, 25]}
+        initialSnap={2}
         renderContent={BottomSheetContent}
         renderHeader={BottomSheetHeader}
         enabledContentGestureInteraction={false}
@@ -204,6 +217,9 @@ const styles = StyleSheet.create({
   bottomSheetPanel: {
     padding: 10,
     backgroundColor: "#f7f5eee8",
+  },
+  carousel: {
+    // ...StyleSheet.absoluteFillObject,
   },
   fab: {
     position: "absolute",
