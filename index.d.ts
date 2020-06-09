@@ -1,25 +1,22 @@
+import { LatLng } from "react-native-maps";
+
 export interface InitialRegion {
   latitude: number;
   longitude: number;
   latitudeDelta: number;
 }
 
-export interface Coordinate {
-  latitude: number;
-  longitude: number;
-}
-
 export interface City {
   title: string;
   description: string;
   color: string;
-  coordinate: Coordinate;
+  coordinate: LatLng;
 }
 
 export interface Battle {
   title: string;
   color: string;
-  coordinate: Coordinate;
+  coordinate: LatLng;
   year: number;
   type: string;
   location: string;
@@ -30,7 +27,7 @@ export interface Battle {
 export interface Attraction {
   title: string;
   description: string;
-  coordinate: Coordinate;
+  coordinate: LatLng;
   type: string;
   address: string;
   link: string;

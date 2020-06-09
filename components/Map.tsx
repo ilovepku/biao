@@ -1,19 +1,12 @@
 import React, { useState, useRef } from "react";
 import { StyleSheet, Dimensions, View } from "react-native";
 // @ts-ignore: temp fix for @types/react-native-maps
-import MapView, { Geojson, Marker } from "react-native-maps";
+import MapView, { Geojson, Marker, LatLng } from "react-native-maps";
 import BottomSheet from "reanimated-bottom-sheet";
 import Carousel from "react-native-snap-carousel";
 import { FAB } from "react-native-paper";
 
-import {
-  InitialRegion,
-  Coordinate,
-  City,
-  Battle,
-  Attraction,
-  GeojsonWrapper,
-} from "..";
+import { InitialRegion, City, Battle, Attraction, GeojsonWrapper } from "..";
 import { MARKER_ICONS } from "../utils/markerIcons";
 import IconMarker from "../components/IconMarker";
 import BottomSheetHeader from "./BottomSheetHeader";
@@ -50,7 +43,7 @@ const Map = ({
   // @ts-ignore: bad practice, needs future fix
   const carouselRef = useRef<Carousel>(null);
 
-  const onMarkerPressed = (coordinate: Coordinate, index: number) => {
+  const onMarkerPressed = (coordinate: LatLng, index: number) => {
     mapRef.current &&
       mapRef.current.animateToRegion(
         {
