@@ -9,6 +9,7 @@ import { FAB } from "react-native-paper";
 import { InitialRegion, City, Battle, Attraction, GeojsonWrapper } from "..";
 import { MARKER_ICONS } from "../utils/markerIcons";
 import IconMarker from "../components/IconMarker";
+import MiniMarker from "./MiniMarker";
 import BottomSheetHeader from "./BottomSheetHeader";
 import CarouselItem from "./CarouselItem";
 
@@ -117,7 +118,7 @@ const Map = ({
           />
         ))}
 
-        {cities.map(({ title, description, color, coordinate }) => (
+        {/* cities.map(({ title, description, color, coordinate }) => (
           <Marker
             key={`city_${JSON.stringify(coordinate)}`}
             title={title}
@@ -130,7 +131,7 @@ const Map = ({
           >
             <IconMarker name={"home-map-marker"} color={color} />
           </Marker>
-        ))}
+        )) */}
 
         {battles.map(({ title, color, coordinate, type }, index) => (
           <Marker
@@ -144,24 +145,31 @@ const Map = ({
             tracksViewChanges={false}
             onPress={() => onMarkerPressed(coordinate, index)}
           >
-            <IconMarker name={MARKER_ICONS[type]} color={color} />
+            {region.latitudeDelta <= 5.5 ? (
+              <IconMarker name={MARKER_ICONS[type]} color={color} />
+            ) : (
+              <MiniMarker color={color} />
+            )}
           </Marker>
         ))}
 
-        {region.latitudeDelta <= 1 &&
-          attractions.map(({ title, coordinate, type }) => (
-            <Marker
-              key={`attraction_${JSON.stringify(coordinate)}`}
-              title={title}
-              coordinate={coordinate}
-              anchor={{ x: 1, y: 1 }}
-              calloutAnchor={{ x: 0, y: 0 }}
-              rotation={45}
-              tracksViewChanges={false}
-            >
+        {attractions.map(({ title, coordinate, type }) => (
+          <Marker
+            key={`attraction_${JSON.stringify(coordinate)}`}
+            title={title}
+            coordinate={coordinate}
+            anchor={{ x: 1, y: 1 }}
+            calloutAnchor={{ x: 0, y: 0 }}
+            rotation={45}
+            tracksViewChanges={false}
+          >
+            {region.latitudeDelta <= .25 ? (
               <IconMarker name={type} png />
-            </Marker>
-          ))}
+            ) : (
+              <MiniMarker />
+            )}
+          </Marker>
+        ))}
       </MapView>
 
       <BottomSheet
