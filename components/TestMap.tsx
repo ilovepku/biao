@@ -6,7 +6,15 @@ import MapView, { Geojson, Marker, LatLng } from "react-native-maps";
 import { Modalize } from "react-native-modalize";
 import { FAB } from "react-native-paper";
 
-import { InitialRegion, Battle, Attraction, GeojsonWrapper } from "..";
+import {
+  InitialRegion,
+  Battle,
+  Attraction,
+  GeojsonType,
+  GeojsonWrapper,
+  Timeline,
+} from "../types";
+import { Feature } from "geojson";
 import { MARKER_ICONS } from "../utils/markerIcons";
 import IconMarker from "../components/IconMarker";
 import MiniMarker from "./MiniMarker";
@@ -15,19 +23,23 @@ import TabViewModal from "./TabViewModal";
 const DEFAULT_LATITUDE_DELTA = 1;
 const DEFAULT_ANIMATE_DURATION = 2000;
 
-const Map = ({
-  initialRegion: { latitude, longitude, latitudeDelta },
-  // cities,
-  battles,
-  attractions,
-  geojsons,
-}: {
+interface Props {
   initialRegion: InitialRegion;
-  // cities: City[];
+  cities: GeojsonType;
   battles: Battle[];
   attractions: Attraction[];
+  timeline: Timeline;
   geojsons: GeojsonWrapper[];
-}) => {
+}
+
+const Map = ({
+  initialRegion: { latitude, longitude, latitudeDelta },
+  cities,
+  battles,
+  attractions,
+  timeline,
+  geojsons,
+}: Props) => {
   const mapRef = useRef<MapView>(null);
   const markerRefs: Array<Marker | null> = [];
   const modalRef = useRef<Modalize>(null);
@@ -107,7 +119,16 @@ const Map = ({
           />
         ))}
 
-        {battles.map(({ title, color, coordinate, type }, index) => (
+        <Geojson
+          geojson={{
+            ...cities,
+            features: cities.features.filter(
+              (feature: Feature) => feature.properties!.name === "Athens"
+            ),
+          }}
+        />
+
+        {/* battles.map(({ title, color, coordinate, type }, index) => (
           <Marker
             key={`battle_${JSON.stringify(coordinate)}`}
             ref={(ref) => (markerRefs[index] = ref)}
@@ -125,9 +146,9 @@ const Map = ({
               <MiniMarker color={color} />
             )}
           </Marker>
-        ))}
+        )) */}
 
-        {attractions.map(({ title, coordinate, type }) => (
+        {/* attractions.map(({ title, coordinate, type }) => (
           <Marker
             key={`attraction_${JSON.stringify(coordinate)}`}
             title={title}
@@ -143,7 +164,7 @@ const Map = ({
               <MiniMarker />
             )}
           </Marker>
-        ))}
+        )) */}
       </MapView>
 
       <FAB
@@ -160,7 +181,7 @@ const Map = ({
         onPress={handleOpen}
       />
 
-      <TabViewModal ref={modalRef} />
+      <TabViewModal tabRoutes={timeline} ref={modalRef} />
     </View>
   );
 };

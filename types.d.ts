@@ -33,8 +33,21 @@ export interface Attraction {
   link: string;
 }
 
+export type GeojsonType = GeoJSON;
+
 export interface GeojsonWrapper {
   name: string;
   color: string;
-  geojson: GeoJSON;
+  geojson: GeojsonType;
 }
+
+interface TimelineItem {
+  key: string;
+  year: number;
+  type: string;
+  title: string;
+  description: string;
+  locations: string[];
+}
+
+export type Timeline = TimelineItem[];

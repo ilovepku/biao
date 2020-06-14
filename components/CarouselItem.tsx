@@ -3,7 +3,7 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 import * as WebBrowser from "expo-web-browser";
 import { Card, Title, Paragraph } from "react-native-paper";
 
-import { Battle } from "..";
+import { Battle } from "../types";
 import { MARKER_ICONS } from "../utils/markerIcons";
 
 const CarouselItem = ({

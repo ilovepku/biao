@@ -33,7 +33,7 @@
     "type": "revolt",
     "title": "Naxos Revolt from Delian League Put Down",
     "description": "Attempted secession of Naxos from the Delian League. It was defeated and enslaved in 469 BCE.",
-    "labels": ["Naxos"]
+    "locations": ["Naxos"]
   },
   {
     "key": "delian_league_treasury_moved",
@@ -41,6 +41,6 @@
     "type": "diplomacy",
     "title": "Delian League Treasury Moved to Athens",
     "description": "Treasury of Delian League removed from Delos to Athens.",
-    "labels": ["Delos", "Athens"]
+    "locations": ["Delos", "Athens"]
   }
 ]

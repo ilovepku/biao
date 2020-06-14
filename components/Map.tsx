@@ -7,7 +7,7 @@ import BottomSheet from "reanimated-bottom-sheet";
 import Carousel from "react-native-snap-carousel";
 import { FAB } from "react-native-paper";
 
-import { InitialRegion, City, Battle, Attraction, GeojsonWrapper } from "..";
+import { InitialRegion, City, Battle, Attraction, GeojsonWrapper } from "../types";
 import { MARKER_ICONS } from "../utils/markerIcons";
 import IconMarker from "../components/IconMarker";
 import MiniMarker from "./MiniMarker";

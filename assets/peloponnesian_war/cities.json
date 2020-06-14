@@ -1,0 +1,173 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [22.423611, 37.081944]
+      },
+      "properties": {
+        "name": "Sparta",
+        "membership": "peloponnesian",
+        "description": "Leader of the Peloponnesian League"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [22.880192, 37.905346]
+      },
+      "properties": {
+        "name": "Corinth",
+        "membership": "peloponnesian"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [21.37493, 37.89131]
+      },
+      "properties": {
+        "name": "Elis",
+        "membership": "peloponnesian"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [22.4205, 37.455333]
+      },
+      "properties": {
+        "name": "Tegea",
+        "membership": "peloponnesian"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [25.271111, 37.393333]
+      },
+      "properties": {
+        "name": "Delos",
+        "membership": "delian",
+        "description": "After the Persian Wars the island became the natural meeting-ground for the Delian League, founded in 478 BC, the congresses being held in the temple (a separate quarter was reserved for foreigners and the sanctuaries of foreign deities). The League's common treasury was kept here as well until 454 BC when Pericles removed it to Athens."
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [23.72, 37.97]
+      },
+      "properties": {
+        "name": "Athens",
+        "membership": "delian",
+        "description": "Leader of the Delian League"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [23.433333, 37.75]
+      },
+      "properties": {
+        "name": "Aegina",
+        "membership": "delian"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [28.984722, 41.015278]
+      },
+      "properties": {
+        "name": "Byzantium",
+        "membership": "delian"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [26.016667, 38.4]
+      },
+      "properties": {
+        "name": "Chios",
+        "membership": "delian"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [26.28, 39.21]
+      },
+      "properties": {
+        "name": "Lesbos",
+        "membership": "delian"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [28.083333, 36.083333]
+      },
+      "properties": {
+        "name": "Lindos",
+        "membership": "delian"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [25.403889, 37.0875]
+      },
+      "properties": {
+        "name": "Naxos",
+        "membership": "delian"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [25.2, 37.066667]
+      },
+      "properties": {
+        "name": "Paros",
+        "membership": "delian"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [26.833333, 37.75]
+      },
+      "properties": {
+        "name": "Samos",
+        "membership": "delian"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [24.65, 40.683333]
+      },
+      "properties": {
+        "name": "Thasos",
+        "membership": "delian"
+      }
+    }
+  ]
+}
