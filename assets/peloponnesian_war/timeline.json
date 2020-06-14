@@ -1,0 +1,46 @@
+[
+  {
+    "key": "peloponnesian_league_founded",
+    "year": -550,
+    "type": "diplomacy",
+    "title": "Peloponnesian League Founded",
+    "description": "Alliance between Sparta, Corinth, Elis and Tegea which establishes Spartan hegemony over the Peloponnese.",
+    "locations": ["Sparta", "Corinth", "Elis", "Tegea"]
+  },
+  {
+    "key": "delian_league_founded",
+    "year": -478,
+    "type": "diplomacy",
+    "title": "Delian League Founded",
+    "description": "Alliance of Greek city-states led by Athens to liberate eastern Greek cities from Persian rule and as a defence to possible revenge attacks from Persia. The League's name derives from its official meeting place, the island of Delos, where congresses were held and where the treasury stood.",
+    "locations": [
+      "Delos",
+      "Athens",
+      "Aegina",
+      "Byzantium",
+      "Chios",
+      "Lesbos",
+      "Lindos",
+      "Naxos",
+      "Paros",
+      "Samos",
+      "Thasos"
+    ]
+  },
+  {
+    "key": "naxos_revolt",
+    "year": -470,
+    "type": "revolt",
+    "title": "Naxos Revolt from Delian League Put Down",
+    "description": "Attempted secession of Naxos from the Delian League. It was defeated and enslaved in 469 BCE.",
+    "labels": ["Naxos"]
+  },
+  {
+    "key": "delian_league_treasury_moved",
+    "year": -454,
+    "type": "diplomacy",
+    "title": "Delian League Treasury Moved to Athens",
+    "description": "Treasury of Delian League removed from Delos to Athens.",
+    "labels": ["Delos", "Athens"]
+  }
+]

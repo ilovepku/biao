@@ -3,7 +3,7 @@ import { StyleSheet, View } from "react-native";
 import * as ScreenOrientation from "expo-screen-orientation";
 
 import { INITIAL_REGION } from "./assets/peloponnesian_war/general";
-import CITIES from "./assets/peloponnesian_war/cities";
+// import CITIES from "./assets/peloponnesian_war/cities.json";
 import BATTLES from "./assets/peloponnesian_war/battles";
 import ATTRACTIONS from "./assets/peloponnesian_war/attractions";
 
@@ -11,16 +11,16 @@ import delian from "./assets/peloponnesian_war/delian.json";
 import peloponnesian from "./assets/peloponnesian_war/peloponnesian.json";
 import neutral from "./assets/peloponnesian_war/neutral.json";
 
-import Map from "./components/Map";
+import TestMap from "./components/TestMap";
 
 ScreenOrientation.unlockAsync();
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <Map
+      <TestMap
         initialRegion={INITIAL_REGION}
-        cities={CITIES}
+        // cities={CITIES}
         battles={BATTLES}
         attractions={ATTRACTIONS}
         geojsons={[
