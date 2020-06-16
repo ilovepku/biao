@@ -12,107 +12,111 @@ import {
 import EMOJI_MAP from "../assets/emoji_map";
 
 interface Props {
+  snapPoint: number;
   tabRoutes: Timeline;
+  setActiveLocations: Function;
 }
 
-const TabViewModal = forwardRef(({ tabRoutes }: Props, ref: Ref<Modalize>) => {
-  const scrollViewRef = useRef<ScrollView>(null);
-  const scrollY = useRef(new Animated.Value(0)).current;
-  const [index, setIndex] = useState(0);
+const TabViewModal = forwardRef(
+  ({ snapPoint, tabRoutes, setActiveLocations }: Props, ref: Ref<Modalize>) => {
+    const scrollViewRef = useRef<ScrollView>(null);
+    const scrollY = useRef(new Animated.Value(0)).current;
+    const [index, setIndex] = useState(0);
 
-  const handleIndexChange = (i: number) => {
-    const width = 55; // item width
-    const margin = 25; // item margin
-    const x = (width + margin) * i;
+    const handleIndexChange = (i: number) => {
+      const width = 55; // item width
+      const margin = 25; // item margin
+      const x = (width + margin) * i;
 
-    setIndex(i);
+      setIndex(i);
 
-    scrollViewRef.current &&
-      scrollViewRef.current.scrollTo({ x, animated: true });
-  };
+      scrollViewRef.current &&
+        scrollViewRef.current.scrollTo({ x, animated: true });
 
-  const renderTabBar = (
-    <View style={styles.tabbar}>
-      <Animated.View
-        style={[
-          styles.tabbar__wrapper,
-          {
-            transform: [
-              {
-                translateY: scrollY.interpolate({
-                  inputRange: [0, 100],
-                  outputRange: [0, -HEADER_COLLAPSE],
-                  extrapolate: "clamp",
-                }),
-              },
-            ],
-          },
-        ]}
-      >
-        <View style={styles.tabbar__heading}>
-          <Text style={styles.tabbar__headingText}>
-            Timeline of the Peloponnesian War
-          </Text>
-          {/* dynamic name from props */}
-        </View>
+      setActiveLocations(tabRoutes[i].locations);
+    };
 
-        <ScrollView
-          ref={scrollViewRef}
-          style={styles.tabbar__list}
-          contentContainerStyle={styles.tabbar__listContent}
-          showsHorizontalScrollIndicator={false}
-          horizontal={true}
+    const renderTabBar = (
+      <View style={styles.tabbar}>
+        <Animated.View
+          style={[
+            styles.tabbar__wrapper,
+            {
+              transform: [
+                {
+                  translateY: scrollY.interpolate({
+                    inputRange: [0, 100],
+                    outputRange: [0, -HEADER_COLLAPSE],
+                    extrapolate: "clamp",
+                  }),
+                },
+              ],
+            },
+          ]}
         >
-          {tabRoutes.map(({ year, type }, i) => (
-            <TabBarItem
-              key={i}
-              active={index === i}
-              year={year}
-              emoji={EMOJI_MAP[type].emoji}
-              onPress={() => handleIndexChange(i)}
-            />
-          ))}
-        </ScrollView>
-      </Animated.View>
-    </View>
-  );
+          <View style={styles.tabbar__heading}>
+            <Text style={styles.tabbar__headingText}>
+              Timeline of the Peloponnesian War
+            </Text>
+            {/* dynamic name from props */}
+          </View>
 
-  return (
-    <Modalize
-      ref={ref}
-      snapPoint={400}
-      closeSnapPointStraightEnabled={false}
-      HeaderComponent={renderTabBar}
-      modalStyle={{ backgroundColor: "#1a1d21" }}
-      handleStyle={{ width: 35, backgroundColor: "#75777a" }}
-      childrenStyle={{
-        borderTopLeftRadius: 12,
-        borderTopRightRadius: 12,
-        overflow: "hidden",
-      }}
-      scrollViewProps={{
-        onScroll: Animated.event(
-          [{ nativeEvent: { contentOffset: { y: scrollY } } }],
-          {
-            useNativeDriver: true,
-          }
-        ),
-        scrollEventThrottle: 16,
-      }}
-    >
-      <Tabs
-        tabRoutes={tabRoutes}
-        active={index}
-        onIndexChange={handleIndexChange}
-      />
-    </Modalize>
-  );
-});
+          <ScrollView
+            ref={scrollViewRef}
+            style={styles.tabbar__list}
+            contentContainerStyle={styles.tabbar__listContent}
+            showsHorizontalScrollIndicator={false}
+            horizontal={true}
+          >
+            {tabRoutes.map(({ year, type }, i) => (
+              <TabBarItem
+                key={i}
+                active={index === i}
+                year={year}
+                emoji={EMOJI_MAP[type].emoji}
+                onPress={() => handleIndexChange(i)}
+              />
+            ))}
+          </ScrollView>
+        </Animated.View>
+      </View>
+    );
+
+    return (
+      <Modalize
+        ref={ref}
+        scrollViewProps={{
+          onScroll: Animated.event(
+            [{ nativeEvent: { contentOffset: { y: scrollY } } }],
+            {
+              useNativeDriver: true,
+            }
+          ),
+          scrollEventThrottle: 16,
+        }}
+        modalStyle={styles.modal}
+        handleStyle={styles.modal__handle}
+        childrenStyle={styles.modal__children}
+        snapPoint={snapPoint}
+        handlePosition={"inside"}
+        closeSnapPointStraightEnabled={false}
+        withOverlay={false}
+        HeaderComponent={renderTabBar}
+      >
+        <Tabs
+          tabRoutes={tabRoutes}
+          active={index}
+          onIndexChange={handleIndexChange}
+        />
+      </Modalize>
+    );
+  }
+);
 
 const styles = StyleSheet.create({
   tabbar: {
     position: "absolute",
-    top: 0,
+    top: 20,
     left: 0,
     right: 0,
     zIndex: 9000,
@@ -166,6 +170,18 @@ const styles = StyleSheet.create({
     alignItems: "center",
 
     paddingLeft: 20,
+  },
+
+  modal: {
+    backgroundColor: "#1a1d21",
+  },
+
+  modal__handle: { width: 35, backgroundColor: "#75777a" },
+
+  modal__children: {
+    borderTopLeftRadius: 12,
+    borderTopRightRadius: 12,
+    overflow: "hidden",
   },
 });
 

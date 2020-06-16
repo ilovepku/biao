@@ -1,8 +1,7 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { StyleSheet, Dimensions, View } from "react-native";
-// import * as ScreenOrientation from "expo-screen-orientation";
-// @ts-ignore: temp fix for @types/react-native-maps
-import MapView, { Geojson, Marker, LatLng } from "react-native-maps";
+import * as ScreenOrientation from "expo-screen-orientation";
+import MapView, { Marker, LatLng } from "react-native-maps";
 import { Modalize } from "react-native-modalize";
 import { FAB } from "react-native-paper";
 
@@ -18,10 +17,11 @@ import { Feature } from "geojson";
 import { MARKER_ICONS } from "../utils/markerIcons";
 import IconMarker from "../components/IconMarker";
 import MiniMarker from "./MiniMarker";
+import Geojson from "./Geojson";
 import TabViewModal from "./TabViewModal";
 
-const DEFAULT_LATITUDE_DELTA = 1;
-const DEFAULT_ANIMATE_DURATION = 2000;
+const MODAL_HEIGHT_PORTRAIT = 275;
+const MODAL_HEIGHT_LANDSCAPE = 175;
 
 interface Props {
   initialRegion: InitialRegion;
@@ -40,14 +40,12 @@ const Map = ({
   timeline,
   geojsons,
 }: Props) => {
+  const isInitialMount = useRef(true);
   const mapRef = useRef<MapView>(null);
   const markerRefs: Array<Marker | null> = [];
   const modalRef = useRef<Modalize>(null);
-  // const bottomSheetRef = useRef<BottomSheet>(null);
-  // @ts-ignore: bad practice, needs future fix
-  // const carouselRef = useRef<Carousel>(null);
 
-  // const [orientation, setOrientation] = useState(0);
+  const [orientation, setOrientation] = useState(0);
   const [viewport, setViewport] = useState(Dimensions.get("window"));
   const aspectRadio = viewport.width / viewport.height;
   const [region, setRegion] = useState({
@@ -56,33 +54,59 @@ const Map = ({
     latitudeDelta,
     longitudeDelta: latitudeDelta * aspectRadio,
   });
+  const [activeLocations, setActiveLocations] = useState([""]);
 
-  /* useEffect(() => {
+  useEffect(() => {
+    if (isInitialMount.current) {
+      isInitialMount.current = false;
+    } else {
+      mapRef.current &&
+        mapRef.current.fitToCoordinates(
+          activeLocations
+            .map((location) =>
+              cities.features.filter(
+                (feature: Feature) => feature.properties!.name === location
+              )
+            )
+            .flat()
+            .map((feature) => ({
+              latitude: feature.geometry.coordinates[1],
+              longitude: feature.geometry.coordinates[0],
+            })),
+          {
+            edgePadding:
+              orientation === 3 || orientation === 4 // orientation is landscape
+                ? {
+                    top: 100,
+                    right: 100,
+                    bottom: 100 + 2 * MODAL_HEIGHT_LANDSCAPE,
+                    left: 100,
+                  }
+                : {
+                    top: 100,
+                    right: 100,
+                    bottom: 100 + 2 * MODAL_HEIGHT_PORTRAIT,
+                    left: 100,
+                  },
+          }
+        );
+    }
+    return () => {
+      isInitialMount.current = false;
+    };
+  }, [activeLocations]);
+
+  useEffect(() => {
     ScreenOrientation.addOrientationChangeListener(() => {
       ScreenOrientation.getOrientationAsync().then((orientation) =>
         setOrientation(orientation)
       );
-      bottomSheetRef.current && bottomSheetRef.current.snapTo(2);
     });
     return () => ScreenOrientation.removeOrientationChangeListeners();
-  }, []); */
+  }, []);
 
   const handleOpen = () => {
     modalRef.current && modalRef.current.open();
-  };
-
-  const onMarkerPressed = (coordinate: LatLng, index: number) => {
-    mapRef.current &&
-      mapRef.current.animateToRegion(
-        {
-          ...coordinate,
-          latitudeDelta: DEFAULT_LATITUDE_DELTA,
-          longitudeDelta: DEFAULT_LATITUDE_DELTA * aspectRadio,
-        },
-        DEFAULT_ANIMATE_DURATION
-      );
-    // bottomSheetRef.current && bottomSheetRef.current.snapTo(1);
-    // carouselRef.current && carouselRef.current.snapToItem(index);
   };
 
   const resetToInitialRegion = () => {
@@ -93,7 +117,6 @@ const Map = ({
         latitudeDelta,
         longitudeDelta: latitudeDelta * aspectRadio,
       });
-    // bottomSheetRef.current && bottomSheetRef.current.snapTo(2);
   };
 
   return (
@@ -122,8 +145,8 @@ const Map = ({
         <Geojson
           geojson={{
             ...cities,
-            features: cities.features.filter(
-              (feature: Feature) => feature.properties!.name === "Athens"
+            features: cities.features.filter((feature: Feature) =>
+              activeLocations.includes(feature.properties!.name)
             ),
           }}
         />
@@ -181,7 +204,16 @@ const Map = ({
         onPress={handleOpen}
       />
 
-      <TabViewModal tabRoutes={timeline} ref={modalRef} />
+      <TabViewModal
+        snapPoint={
+          orientation === 3 || orientation === 4 // orientation is landscape
+            ? MODAL_HEIGHT_LANDSCAPE
+            : MODAL_HEIGHT_PORTRAIT
+        }
+        tabRoutes={timeline}
+        setActiveLocations={setActiveLocations}
+        ref={modalRef}
+      />
     </View>
   );
 };
