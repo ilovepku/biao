@@ -2,8 +2,8 @@ import React from "react";
 import { StyleSheet, View } from "react-native";
 import * as ScreenOrientation from "expo-screen-orientation";
 
-import { INITIAL_REGION } from "./assets/peloponnesian_war/general";
-import CITIES from "./assets/peloponnesian_war/cities.json";
+import { INITIAL_REGION } from "./assets/peloponnesian_war/settings";
+import LOCATIONS from "./assets/peloponnesian_war/locations.json";
 import BATTLES from "./assets/peloponnesian_war/battles";
 import ATTRACTIONS from "./assets/peloponnesian_war/attractions";
 
@@ -21,7 +21,7 @@ export default function App() {
     <View style={styles.container}>
       <TestMap
         initialRegion={INITIAL_REGION}
-        cities={CITIES}
+        locations={LOCATIONS}
         battles={BATTLES}
         attractions={ATTRACTIONS}
         timeline={timeline}

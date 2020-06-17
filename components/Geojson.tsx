@@ -3,7 +3,7 @@ import { Marker, Polyline, Polygon, LatLng } from "react-native-maps";
 import { Feature } from "geojson";
 import { GeojsonType } from "../types";
 import IconMarker from "./IconMarker";
-import { COLOR_THEME } from "../assets/peloponnesian_war/general";
+import { COLOR_MAP, ICON_MAP } from "../assets/peloponnesian_war/settings";
 
 interface Overlay {
   feature: Feature;
@@ -145,13 +145,13 @@ const Geojson = (props: Props) => {
               rotation={45}
             >
               <IconMarker
-                name={"home-map-marker"}
+                name={ICON_MAP[overlay.feature.properties!.type]}
                 color={
-                  overlay.feature.properties!.description
-                    ? COLOR_THEME[
+                  overlay.feature.properties!.highlight
+                    ? COLOR_MAP[
                         `${overlay.feature.properties!.status}Highlight`
                       ]
-                    : COLOR_THEME[overlay.feature.properties!.status]
+                    : COLOR_MAP[overlay.feature.properties!.status]
                 }
               />
             </Marker>

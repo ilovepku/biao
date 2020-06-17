@@ -139,8 +139,6 @@ const styles = StyleSheet.create({
   },
 
   tabbar__heading: {
-    paddingTop: 9,
-
     height: HEADER_COLLAPSE,
 
     backgroundColor: "#212428",

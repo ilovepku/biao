@@ -4,7 +4,6 @@ import * as ScreenOrientation from "expo-screen-orientation";
 import MapView from "react-native-maps";
 import { Modalize } from "react-native-modalize";
 import { FAB } from "react-native-paper";
-
 import {
   InitialRegion,
   Battle,
@@ -16,26 +15,18 @@ import {
 } from "../types";
 import Geojson from "./Geojson";
 import TabViewModal from "./TabViewModal";
-
-const MODAL_HEIGHT_PORTRAIT = 275;
-const MODAL_HEIGHT_LANDSCAPE = 175;
-
-const EDGE_PADDING_PORTRAIT = {
-  top: 100,
-  right: 100,
-  bottom: 100 + 2 * MODAL_HEIGHT_PORTRAIT,
-  left: 100,
-};
-const EDGE_PADDING_LANDSCAPE = {
-  top: 100,
-  right: 100,
-  bottom: 100 + 2 * MODAL_HEIGHT_LANDSCAPE,
-  left: 100,
-};
+import {
+  DEFAULT_LATITUDE_DELTA,
+  DEFAULT_ANIMATE_DURATION,
+  MODAL_HEIGHT_PORTRAIT,
+  MODAL_HEIGHT_LANDSCAPE,
+  EDGE_PADDING_PORTRAIT,
+  EDGE_PADDING_LANDSCAPE,
+} from "../assets/settings";
 
 interface Props {
   initialRegion: InitialRegion;
-  cities: GeojsonType;
+  locations: GeojsonType;
   battles: Battle[];
   attractions: Attraction[];
   timeline: Timeline;
@@ -44,7 +35,7 @@ interface Props {
 
 const Map = ({
   initialRegion: { latitude, longitude, latitudeDelta },
-  cities,
+  locations,
   battles,
   attractions,
   timeline,
@@ -82,7 +73,7 @@ const Map = ({
       if (activeLocations.length) {
         coordinates = activeLocations
           .map((location) =>
-            cities.features.filter(
+            locations.features.filter(
               (feature: PointFeature) => feature.id === location
             )
           )
@@ -92,18 +83,30 @@ const Map = ({
             longitude: feature.geometry.coordinates[0],
           }));
       } else {
-        coordinates = cities.features.map((feature: PointFeature) => ({
+        coordinates = locations.features.map((feature: PointFeature) => ({
           latitude: feature.geometry.coordinates[1],
           longitude: feature.geometry.coordinates[0],
         }));
       }
-      mapRef.current &&
-        mapRef.current.fitToCoordinates(coordinates, {
-          edgePadding:
-            orientation === 3 || orientation === 4 // orientation is landscape
-              ? EDGE_PADDING_LANDSCAPE
-              : EDGE_PADDING_PORTRAIT,
-        });
+      if (activeLocations.length === 1) {
+        mapRef.current &&
+          mapRef.current.animateToRegion(
+            {
+              ...coordinates[0],
+              latitudeDelta: DEFAULT_LATITUDE_DELTA,
+              longitudeDelta: DEFAULT_LATITUDE_DELTA * aspectRadio,
+            },
+            DEFAULT_ANIMATE_DURATION
+          );
+      } else {
+        mapRef.current &&
+          mapRef.current.fitToCoordinates(coordinates, {
+            edgePadding:
+              orientation === 3 || orientation === 4 // orientation is landscape
+                ? EDGE_PADDING_LANDSCAPE
+                : EDGE_PADDING_PORTRAIT,
+          });
+      }
     }
     return () => {
       isInitialMount.current = false;
@@ -141,12 +144,12 @@ const Map = ({
           />
         ))}
 
-        {!activeLocations.length && <Geojson geojson={cities} />}
+        {!activeLocations.length && <Geojson geojson={locations} />}
 
         <Geojson
           geojson={{
-            ...cities,
-            features: cities.features.filter((feature: PointFeature) =>
+            ...locations,
+            features: locations.features.filter((feature: PointFeature) =>
               activeLocations.includes(feature.id as string)
             ),
           }}

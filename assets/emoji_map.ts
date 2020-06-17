@@ -39,6 +39,14 @@ const EMOJI_MAP: { [index: string]: { name: string; emoji: string } } = {
     name: "War(fare) & Battles",
     emoji: "⚔️",
   },
+  naval: {
+    name: "Naval Battle",
+    emoji: "⚓",
+  },
+  siege: {
+    name: "Siege Battle",
+    emoji: "⚙️",
+  },
 };
 
 export default EMOJI_MAP;
