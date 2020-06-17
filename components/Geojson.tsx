@@ -2,6 +2,8 @@ import React from "react";
 import { Marker, Polyline, Polygon, LatLng } from "react-native-maps";
 import { Feature } from "geojson";
 import { GeojsonType } from "../types";
+import IconMarker from "./IconMarker";
+import { COLOR_THEME } from "../assets/peloponnesian_war/general";
 
 interface Overlay {
   feature: Feature;
@@ -134,9 +136,25 @@ const Geojson = (props: Props) => {
           return (
             <Marker
               key={index}
-              coordinate={overlay.coordinates as LatLng}
+              title={overlay.feature.id as string}
+              description={overlay.feature.properties!.description}
               pinColor={props.color}
-            />
+              coordinate={overlay.coordinates as LatLng}
+              anchor={{ x: 1, y: 1 }}
+              calloutAnchor={{ x: 0, y: 0 }}
+              rotation={45}
+            >
+              <IconMarker
+                name={"home-map-marker"}
+                color={
+                  overlay.feature.properties!.description
+                    ? COLOR_THEME[
+                        `${overlay.feature.properties!.status}Highlight`
+                      ]
+                    : COLOR_THEME[overlay.feature.properties!.status]
+                }
+              />
+            </Marker>
           );
         }
         if (overlay.type === "polygon") {

@@ -4,7 +4,9 @@ export const INITIAL_REGION = {
   latitudeDelta: 5.863403880667256,
 };
 
-export const COLOR_THEME = {
+export const COLOR_THEME: {
+  [key: string]: string;
+} = {
   delian: "teal",
   delianHighlight: "navy",
   peloponnesian: "tomato",

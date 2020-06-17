@@ -3,15 +3,13 @@ import { StyleSheet, View, Image } from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import getIconPngSource from "../utils/getIconPngSource";
 
-const IconMarker = ({
-  name,
-  color = "#c30b82",
-  png = false,
-}: {
+interface Props {
   name: string;
   color?: string;
   png?: boolean;
-}) => (
+}
+
+const IconMarker = ({ name, color = "#c30b82", png = false }: Props) => (
   <View style={[styles.container, { backgroundColor: color }]}>
     {png ? (
       <Image

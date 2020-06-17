@@ -51,3 +51,10 @@ interface TimelineItem {
 }
 
 export type Timeline = TimelineItem[];
+
+export interface PointFeature {
+  id?: string | number;
+  type: "Feature";
+  geometry: { type: "Point"; coordinates: number[] };
+  properties: { [name: string]: any };
+}

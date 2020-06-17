@@ -1,7 +1,7 @@
 import React, { useRef, useState, useEffect } from "react";
 import { StyleSheet, Dimensions, View } from "react-native";
 import * as ScreenOrientation from "expo-screen-orientation";
-import MapView, { Marker, LatLng } from "react-native-maps";
+import MapView from "react-native-maps";
 import { Modalize } from "react-native-modalize";
 import { FAB } from "react-native-paper";
 
@@ -12,16 +12,26 @@ import {
   GeojsonType,
   GeojsonWrapper,
   Timeline,
+  PointFeature,
 } from "../types";
-import { Feature } from "geojson";
-import { MARKER_ICONS } from "../utils/markerIcons";
-import IconMarker from "../components/IconMarker";
-import MiniMarker from "./MiniMarker";
 import Geojson from "./Geojson";
 import TabViewModal from "./TabViewModal";
 
 const MODAL_HEIGHT_PORTRAIT = 275;
 const MODAL_HEIGHT_LANDSCAPE = 175;
+
+const EDGE_PADDING_PORTRAIT = {
+  top: 100,
+  right: 100,
+  bottom: 100 + 2 * MODAL_HEIGHT_PORTRAIT,
+  left: 100,
+};
+const EDGE_PADDING_LANDSCAPE = {
+  top: 100,
+  right: 100,
+  bottom: 100 + 2 * MODAL_HEIGHT_LANDSCAPE,
+  left: 100,
+};
 
 interface Props {
   initialRegion: InitialRegion;
@@ -42,7 +52,6 @@ const Map = ({
 }: Props) => {
   const isInitialMount = useRef(true);
   const mapRef = useRef<MapView>(null);
-  const markerRefs: Array<Marker | null> = [];
   const modalRef = useRef<Modalize>(null);
 
   const [orientation, setOrientation] = useState(0);
@@ -54,47 +63,7 @@ const Map = ({
     latitudeDelta,
     longitudeDelta: latitudeDelta * aspectRadio,
   });
-  const [activeLocations, setActiveLocations] = useState([""]);
-
-  useEffect(() => {
-    if (isInitialMount.current) {
-      isInitialMount.current = false;
-    } else {
-      mapRef.current &&
-        mapRef.current.fitToCoordinates(
-          activeLocations
-            .map((location) =>
-              cities.features.filter(
-                (feature: Feature) => feature.properties!.name === location
-              )
-            )
-            .flat()
-            .map((feature) => ({
-              latitude: feature.geometry.coordinates[1],
-              longitude: feature.geometry.coordinates[0],
-            })),
-          {
-            edgePadding:
-              orientation === 3 || orientation === 4 // orientation is landscape
-                ? {
-                    top: 100,
-                    right: 100,
-                    bottom: 100 + 2 * MODAL_HEIGHT_LANDSCAPE,
-                    left: 100,
-                  }
-                : {
-                    top: 100,
-                    right: 100,
-                    bottom: 100 + 2 * MODAL_HEIGHT_PORTRAIT,
-                    left: 100,
-                  },
-          }
-        );
-    }
-    return () => {
-      isInitialMount.current = false;
-    };
-  }, [activeLocations]);
+  const [activeLocations, setActiveLocations] = useState<string[]>([]);
 
   useEffect(() => {
     ScreenOrientation.addOrientationChangeListener(() => {
@@ -105,27 +74,57 @@ const Map = ({
     return () => ScreenOrientation.removeOrientationChangeListeners();
   }, []);
 
-  const handleOpen = () => {
+  useEffect(() => {
+    if (isInitialMount.current) {
+      isInitialMount.current = false;
+    } else {
+      let coordinates;
+      if (activeLocations.length) {
+        coordinates = activeLocations
+          .map((location) =>
+            cities.features.filter(
+              (feature: PointFeature) => feature.id === location
+            )
+          )
+          .flat()
+          .map((feature) => ({
+            latitude: feature.geometry.coordinates[1],
+            longitude: feature.geometry.coordinates[0],
+          }));
+      } else {
+        coordinates = cities.features.map((feature: PointFeature) => ({
+          latitude: feature.geometry.coordinates[1],
+          longitude: feature.geometry.coordinates[0],
+        }));
+      }
+      mapRef.current &&
+        mapRef.current.fitToCoordinates(coordinates, {
+          edgePadding:
+            orientation === 3 || orientation === 4 // orientation is landscape
+              ? EDGE_PADDING_LANDSCAPE
+              : EDGE_PADDING_PORTRAIT,
+        });
+    }
+    return () => {
+      isInitialMount.current = false;
+    };
+  }, [activeLocations]);
+
+  const handleLayoutChange = () => {
+    setViewport(Dimensions.get("window"));
+  };
+
+  const handleResetCamera = () => {
+    setActiveLocations([]);
+    modalRef.current && modalRef.current.close();
+  };
+
+  const handleOpenModal = () => {
     modalRef.current && modalRef.current.open();
   };
 
-  const resetToInitialRegion = () => {
-    mapRef.current &&
-      mapRef.current.animateToRegion({
-        latitude,
-        longitude,
-        latitudeDelta,
-        longitudeDelta: latitudeDelta * aspectRadio,
-      });
-  };
-
   return (
-    <View
-      style={styles.container}
-      onLayout={() => {
-        setViewport(Dimensions.get("window"));
-      }}
-    >
+    <View style={styles.container} onLayout={handleLayoutChange}>
       <MapView
         style={styles.map}
         ref={mapRef}
@@ -142,66 +141,30 @@ const Map = ({
           />
         ))}
 
+        {!activeLocations.length && <Geojson geojson={cities} />}
+
         <Geojson
           geojson={{
             ...cities,
-            features: cities.features.filter((feature: Feature) =>
-              activeLocations.includes(feature.properties!.name)
+            features: cities.features.filter((feature: PointFeature) =>
+              activeLocations.includes(feature.id as string)
             ),
           }}
         />
-
-        {/* battles.map(({ title, color, coordinate, type }, index) => (
-          <Marker
-            key={`battle_${JSON.stringify(coordinate)}`}
-            ref={(ref) => (markerRefs[index] = ref)}
-            title={title}
-            coordinate={coordinate}
-            anchor={{ x: 1, y: 1 }}
-            calloutAnchor={{ x: 0, y: 0 }}
-            rotation={45}
-            tracksViewChanges={false}
-            onPress={() => onMarkerPressed(coordinate, index)}
-          >
-            {region.latitudeDelta <= 5.5 ? (
-              <IconMarker name={MARKER_ICONS[type]} color={color} />
-            ) : (
-              <MiniMarker color={color} />
-            )}
-          </Marker>
-        )) */}
-
-        {/* attractions.map(({ title, coordinate, type }) => (
-          <Marker
-            key={`attraction_${JSON.stringify(coordinate)}`}
-            title={title}
-            coordinate={coordinate}
-            anchor={{ x: 1, y: 1 }}
-            calloutAnchor={{ x: 0, y: 0 }}
-            rotation={45}
-            tracksViewChanges={false}
-          >
-            {region.latitudeDelta <= 0.25 ? (
-              <IconMarker name={type} png />
-            ) : (
-              <MiniMarker />
-            )}
-          </Marker>
-        )) */}
       </MapView>
 
       <FAB
         style={styles.fab}
         icon="skip-backward"
         small
-        onPress={resetToInitialRegion}
+        onPress={handleResetCamera}
       />
 
       <FAB
         style={styles.fab2}
         icon="skip-backward"
         small
-        onPress={handleOpen}
+        onPress={handleOpenModal}
       />
 
       <TabViewModal
