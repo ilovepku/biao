@@ -49,6 +49,7 @@
     "type": "naval",
     "title": "Battle of Sybota",
     "description": "Stalemate, both Corinth and Corcyra claimed victory",
+    "link": "https://en.wikipedia.org/wiki/Battle_of_Sybota",
     "locations": ["Battle of Sybota"]
   },
   {
@@ -57,6 +58,7 @@
     "type": "siege",
     "title": "Battle of Potidaea",
     "description": "Athenian victory",
+    "link": "https://en.wikipedia.org/wiki/Battle_of_Potidaea",
     "locations": ["Battle of Potidaea"]
   },
   {
@@ -65,6 +67,7 @@
     "type": "war",
     "title": "Battle of Spartolos",
     "description": "Chalcidian victory",
+    "link": "https://en.wikipedia.org/wiki/Battle_of_Spartolos",
     "locations": ["Battle of Spartolos"]
   },
   {
@@ -73,6 +76,7 @@
     "type": "naval",
     "title": "Battle of Rhium",
     "description": "Athenian victory",
+    "link": "https://en.wikipedia.org/wiki/Battle_of_Rhium",
     "locations": ["Battle of Rhium"]
   },
   {
@@ -81,6 +85,7 @@
     "type": "naval",
     "title": "Battle of Naupactus",
     "description": "Athenian victory",
+    "link": "https://en.wikipedia.org/wiki/Battle_of_Naupactus",
     "locations": ["Battle of Naupactus"]
   },
   {
@@ -89,6 +94,7 @@
     "type": "siege",
     "title": "Siege of Plataea",
     "description": "Theban victory, Plataea razed to the ground",
+    "link": "https://en.wikipedia.org/wiki/Siege_of_Plataea",
     "locations": ["Siege of Plataea"]
   },
   {
@@ -97,6 +103,7 @@
     "type": "revolt",
     "title": "Mytilenean revolt",
     "description": "Athenian victory",
+    "link": "https://en.wikipedia.org/wiki/Mytilenean_revolt",
     "locations": ["Mytilenean revolt"]
   },
   {
@@ -105,6 +112,7 @@
     "type": "war",
     "title": "Battle of Tanagra",
     "description": "Athenian victory",
+    "link": "https://en.wikipedia.org/wiki/Battle_of_Tanagra_(426_BC)",
     "locations": ["Battle of Tanagra"]
   },
   {
@@ -113,6 +121,7 @@
     "type": "war",
     "title": "Aetolian campaign",
     "description": "Aetolian victory",
+    "link": "https://en.wikipedia.org/wiki/Aetolian_campaign",
     "locations": ["Aetolian campaign"]
   },
   {
@@ -121,6 +130,7 @@
     "type": "war",
     "title": "Battle of Olpae",
     "description": "Athenian victory",
+    "link": "https://en.wikipedia.org/wiki/Battle_of_Olpae",
     "locations": ["Battle of Olpae"]
   },
   {
@@ -129,6 +139,7 @@
     "type": "war",
     "title": "Battle of Idomene",
     "description": "Athenian Victory",
+    "link": "https://en.wikipedia.org/wiki/Battle_of_Idomene",
     "locations": ["Battle of Idomene"]
   },
   {
@@ -137,6 +148,7 @@
     "type": "war",
     "title": "Battle of Pylos",
     "description": "Athenian victory",
+    "link": "https://en.wikipedia.org/wiki/Battle_of_Pylos",
     "locations": ["Battle of Pylos"]
   },
   {
@@ -145,6 +157,7 @@
     "type": "war",
     "title": "Battle of Sphacteria",
     "description": "Athenian victory",
+    "link": "https://en.wikipedia.org/wiki/Battle_of_Sphacteria",
     "locations": ["Battle of Sphacteria"]
   },
   {
@@ -153,6 +166,7 @@
     "type": "war",
     "title": "Battle of Megara",
     "description": "Athenian victory",
+    "link": "https://en.wikipedia.org/wiki/Battle_of_Megara",
     "locations": ["Battle of Megara"]
   },
   {
@@ -161,6 +175,7 @@
     "type": "war",
     "title": "Battle of Delium",
     "description": "Boeotian victory",
+    "link": "https://en.wikipedia.org/wiki/Battle_of_Delium",
     "locations": ["Battle of Delium"]
   },
   {
@@ -169,6 +184,7 @@
     "type": "war",
     "title": "Battle of Amphipolis",
     "description": "Decisive Spartan victory",
+    "link": "https://en.wikipedia.org/wiki/Battle_of_Amphipolis",
     "locations": ["Battle of Amphipolis"]
   },
   {
@@ -177,6 +193,7 @@
     "type": "war",
     "title": "Battle of Mantinea",
     "description": "Spartan victory",
+    "link": "https://en.wikipedia.org/wiki/Battle_of_Mantinea_(418_BC)",
     "locations": ["Battle of Mantinea"]
   },
   {
@@ -185,6 +202,7 @@
     "type": "siege",
     "title": "Battle of Hysiae",
     "description": "Decisive Spartan victory",
+    "link": "https://en.wikipedia.org/wiki/Battle_of_Hysiae_(417_BC)",
     "locations": ["Battle of Hysiae"]
   },
   {
@@ -193,6 +211,7 @@
     "type": "siege",
     "title": "Battle of Orneae",
     "description": "Athenian/Argive Victory",
+    "link": "https://en.wikipedia.org/wiki/Battle_of_Orneae",
     "locations": ["Battle of Orneae"]
   },
   {
@@ -201,6 +220,7 @@
     "type": "siege",
     "title": "Siege of Melos",
     "description": "Athenian victory",
+    "link": "https://en.wikipedia.org/wiki/Siege_of_Melos",
     "locations": ["Siege of Melos"]
   },
   {
@@ -209,6 +229,7 @@
     "type": "war",
     "title": "Sicilian Expedition",
     "description": "Decisive Spartan/Syracusan victory, Athenian expeditionary force completely destroyed",
+    "link": "https://en.wikipedia.org/wiki/Sicilian_Expedition",
     "locations": ["Sicilian Expedition"]
   },
   {
@@ -217,6 +238,7 @@
     "type": "naval",
     "title": "Battle of Syme",
     "description": "Spartan victory",
+    "link": "https://en.wikipedia.org/wiki/Battle_of_Syme",
     "locations": ["Battle of Syme"]
   },
   {
@@ -225,6 +247,7 @@
     "type": "naval",
     "title": "Battle of Eretria",
     "description": "Spartan victory",
+    "link": "https://en.wikipedia.org/wiki/Battle_of_Eretria",
     "locations": ["Battle of Eretria"]
   },
   {
@@ -233,6 +256,7 @@
     "type": "naval",
     "title": "Battle of Cynossema",
     "description": "Athenian victory",
+    "link": "https://en.wikipedia.org/wiki/Battle_of_Cynossema",
     "locations": ["Battle of Cynossema"]
   },
   {
@@ -241,6 +265,7 @@
     "type": "naval",
     "title": "Battle of Abydos",
     "description": "Athenian victory",
+    "link": "https://en.wikipedia.org/wiki/Battle_of_Abydos",
     "locations": ["Battle of Abydos"]
   },
   {
@@ -249,6 +274,7 @@
     "type": "naval",
     "title": "Battle of Cyzicus",
     "description": "Decisive Athenian victory, Cyzicus and other cities in the region captured by Athens",
+    "link": "https://en.wikipedia.org/wiki/Battle_of_Cyzicus",
     "locations": ["Battle of Cyzicus"]
   },
   {
@@ -257,6 +283,7 @@
     "type": "naval",
     "title": "Battle of Notium",
     "description": "Spartan victory",
+    "link": "https://en.wikipedia.org/wiki/Battle_of_Notium",
     "locations": ["Battle of Notium"]
   },
   {
@@ -265,6 +292,7 @@
     "type": "naval",
     "title": "Battle of Mytilene",
     "description": "Spartan victory",
+    "link": "https://en.wikipedia.org/wiki/Battle_of_Mytilene_(406_BC)",
     "locations": ["Battle of Mytilene"]
   },
   {
@@ -273,6 +301,7 @@
     "type": "naval",
     "title": "Battle of Arginusae",
     "description": "Athenian victory",
+    "link": "https://en.wikipedia.org/wiki/Battle_of_Arginusae",
     "locations": ["Battle of Arginusae"]
   },
   {
@@ -281,6 +310,7 @@
     "type": "naval",
     "title": "Battle of Aegospotami",
     "description": "Decisive Spartan victory: - Athens besieged and then surrendered in March 404 BC, ending the Peloponnesian War",
+    "link": "https://en.wikipedia.org/wiki/Battle_of_Aegospotami",
     "locations": ["Battle of Aegospotami"]
   }
 ]
