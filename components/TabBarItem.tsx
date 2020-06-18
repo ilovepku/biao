@@ -6,7 +6,7 @@ import {
   View,
   StyleSheet,
 } from "react-native";
-import { TAB_BAR_ITEM_WIDTH, TAB_BAR_ITEM_MARGIN } from "../assets/settings";
+import { TAB_BAR_ITEM_WIDTH, TAB_BAR_ITEM_MARGIN } from "../settings";
 
 interface Props {
   active: boolean;

@@ -6,7 +6,7 @@ import TabRoute from "./TabRoute";
 
 const { width } = Dimensions.get("window");
 
-import { HEADER_HEIGHT } from "../assets/settings";
+import { HEADER_HEIGHT } from "../settings";
 
 interface Props {
   tabRoutes: Timeline;

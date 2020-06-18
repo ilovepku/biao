@@ -20,7 +20,7 @@ import {
   MODAL_HEIGHT_LANDSCAPE,
   EDGE_PADDING_PORTRAIT,
   EDGE_PADDING_LANDSCAPE,
-} from "../assets/settings";
+} from "../settings";
 
 interface Props {
   initialRegion: InitialRegion;
