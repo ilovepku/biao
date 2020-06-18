@@ -6,10 +6,8 @@ import { Modalize } from "react-native-modalize";
 import { FAB } from "react-native-paper";
 import {
   InitialRegion,
-  Battle,
   Attraction,
   GeojsonType,
-  GeojsonWrapper,
   Timeline,
   PointFeature,
 } from "../types";
@@ -27,19 +25,17 @@ import {
 interface Props {
   initialRegion: InitialRegion;
   locations: GeojsonType;
-  battles: Battle[];
-  attractions: Attraction[];
+  areas: GeojsonType;
   timeline: Timeline;
-  geojsons: GeojsonWrapper[];
+  attractions: Attraction[];
 }
 
 const Map = ({
   initialRegion: { latitude, longitude, latitudeDelta },
   locations,
-  battles,
-  attractions,
+  areas,
   timeline,
-  geojsons,
+  attractions,
 }: Props) => {
   const isInitialMount = useRef(true);
   const mapRef = useRef<MapView>(null);
@@ -135,14 +131,7 @@ const Map = ({
         mapType="terrain" // add switch / fallback for iOS
         onRegionChangeComplete={(region) => setRegion(region)}
       >
-        {geojsons.map(({ name, color, geojson }) => (
-          <Geojson
-            key={`geojson_${name}`}
-            geojson={geojson}
-            fillColor={color}
-            strokeWidth={0}
-          />
-        ))}
+        <Geojson geojson={areas} strokeWidth={0} />
 
         {!activeLocations.length && <Geojson geojson={locations} />}
 

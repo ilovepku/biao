@@ -9,9 +9,12 @@ export const COLOR_MAP: {
 } = {
   delian: "teal",
   delianHighlight: "navy",
+  delianArea: "rgba(69,102,176,.75)",
   peloponnesian: "tomato",
   peloponnesianHighlight: "red",
+  peloponnesianArea: "rgba(218,76,76,.75)",
   neutral: "gold",
+  neutralArea: "rgba(118,118,118,.75)",
 };
 
 export const ICON_MAP: {

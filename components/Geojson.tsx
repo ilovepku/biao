@@ -164,7 +164,11 @@ const Geojson = (props: Props) => {
               coordinates={overlay.coordinates as LatLng[]}
               holes={overlay.holes as LatLng[][]}
               strokeColor={props.strokeColor}
-              fillColor={props.fillColor}
+              fillColor={
+                props.fillColor
+                  ? props.fillColor
+                  : COLOR_MAP[`${overlay.feature.properties!.status}Area`]
+              }
               strokeWidth={props.strokeWidth}
             />
           );

@@ -35,12 +35,6 @@ export interface Attraction {
 
 export type GeojsonType = GeoJSON;
 
-export interface GeojsonWrapper {
-  name: string;
-  color: string;
-  geojson: GeojsonType;
-}
-
 interface TimelineItem {
   key: string;
   year: number;
