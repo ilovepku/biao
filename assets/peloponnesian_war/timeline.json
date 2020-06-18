@@ -64,7 +64,7 @@
   {
     "key": "battle_of_spartolos",
     "year": -429,
-    "type": "war",
+    "type": "battle",
     "title": "Battle of Spartolos",
     "description": "Chalcidian victory",
     "link": "https://en.wikipedia.org/wiki/Battle_of_Spartolos",
@@ -109,7 +109,7 @@
   {
     "key": "battle_of_tanagra",
     "year": -426,
-    "type": "war",
+    "type": "battle",
     "title": "Battle of Tanagra",
     "description": "Athenian victory",
     "link": "https://en.wikipedia.org/wiki/Battle_of_Tanagra_(426_BC)",
@@ -118,7 +118,7 @@
   {
     "key": "aetolian_campaign",
     "year": -426,
-    "type": "war",
+    "type": "battle",
     "title": "Aetolian campaign",
     "description": "Aetolian victory",
     "link": "https://en.wikipedia.org/wiki/Aetolian_campaign",
@@ -127,7 +127,7 @@
   {
     "key": "battle_of_olpae",
     "year": -426,
-    "type": "war",
+    "type": "battle",
     "title": "Battle of Olpae",
     "description": "Athenian victory",
     "link": "https://en.wikipedia.org/wiki/Battle_of_Olpae",
@@ -136,7 +136,7 @@
   {
     "key": "battle_of_idomene",
     "year": -426,
-    "type": "war",
+    "type": "battle",
     "title": "Battle of Idomene",
     "description": "Athenian Victory",
     "link": "https://en.wikipedia.org/wiki/Battle_of_Idomene",
@@ -145,7 +145,7 @@
   {
     "key": "battle_of_pylos",
     "year": -425,
-    "type": "war",
+    "type": "battle",
     "title": "Battle of Pylos",
     "description": "Athenian victory",
     "link": "https://en.wikipedia.org/wiki/Battle_of_Pylos",
@@ -154,7 +154,7 @@
   {
     "key": "battle_of_sphacteria",
     "year": -425,
-    "type": "war",
+    "type": "battle",
     "title": "Battle of Sphacteria",
     "description": "Athenian victory",
     "link": "https://en.wikipedia.org/wiki/Battle_of_Sphacteria",
@@ -163,7 +163,7 @@
   {
     "key": "battle_of_megara",
     "year": -424,
-    "type": "war",
+    "type": "battle",
     "title": "Battle of Megara",
     "description": "Athenian victory",
     "link": "https://en.wikipedia.org/wiki/Battle_of_Megara",
@@ -172,7 +172,7 @@
   {
     "key": "battle_of_delium",
     "year": -424,
-    "type": "war",
+    "type": "battle",
     "title": "Battle of Delium",
     "description": "Boeotian victory",
     "link": "https://en.wikipedia.org/wiki/Battle_of_Delium",
@@ -181,7 +181,7 @@
   {
     "key": "battle_of_amphipolis",
     "year": -422,
-    "type": "war",
+    "type": "battle",
     "title": "Battle of Amphipolis",
     "description": "Decisive Spartan victory",
     "link": "https://en.wikipedia.org/wiki/Battle_of_Amphipolis",
@@ -190,7 +190,7 @@
   {
     "key": "battle_of_mantinea",
     "year": -418,
-    "type": "war",
+    "type": "battle",
     "title": "Battle of Mantinea",
     "description": "Spartan victory",
     "link": "https://en.wikipedia.org/wiki/Battle_of_Mantinea_(418_BC)",
@@ -226,7 +226,7 @@
   {
     "key": "sicilian_expedition",
     "year": -415,
-    "type": "war",
+    "type": "battle",
     "title": "Sicilian Expedition",
     "description": "Decisive Spartan/Syracusan victory, Athenian expeditionary force completely destroyed",
     "link": "https://en.wikipedia.org/wiki/Sicilian_Expedition",
@@ -309,7 +309,7 @@
     "year": -405,
     "type": "naval",
     "title": "Battle of Aegospotami",
-    "description": "Decisive Spartan victory: - Athens besieged and then surrendered in March 404 BC, ending the Peloponnesian War",
+    "description": "Decisive Spartan victory: - Athens besieged and then surrendered in March 404 BC, ending the Peloponnesian battle",
     "link": "https://en.wikipedia.org/wiki/Battle_of_Aegospotami",
     "locations": ["Battle of Aegospotami"]
   }

@@ -24,3 +24,63 @@ export const HEADER_LIST = 40;
 export const HEADER_HEIGHT = HEADER_LIST + HEADER_COLLAPSE;
 export const TAB_BAR_ITEM_WIDTH = 95;
 export const TAB_BAR_ITEM_MARGIN = 25;
+
+// resouce maps
+export const ICON_MAP: { [key: string]: string } = {
+  city: "home-map-marker",
+  battle: "sword-cross",
+  naval: "ship-wheel",
+  siege: "tower-fire",
+  revolt: "fire",
+};
+
+export const EMOJI_MAP: { [index: string]: { name: string; emoji: string } } = {
+  art: {
+    name: "Arts & Culture",
+    emoji: "🎨",
+  },
+  city: {
+    name: "Cities & Buildings",
+    emoji: "🏛️",
+  },
+  science: {
+    name: "Civilization & Science",
+    emoji: "🧪",
+  },
+  diplomacy: {
+    name: "Diplomacy & Trade",
+    emoji: "🤝",
+  },
+  nature: {
+    name: "Nature & Climate",
+    emoji: "❄️",
+  },
+  philosophy: {
+    name: "Philosophy & Religion",
+    emoji: "📿",
+  },
+  politics: {
+    name: "Politics & Rulers",
+    emoji: "🗳️",
+  },
+  territory: {
+    name: "States & Territories",
+    emoji: "🚩",
+  },
+  revolt: {
+    name: "Revolt & Unrest",
+    emoji: "🔥",
+  },
+  battle: {
+    name: "War(fare) & Battles",
+    emoji: "⚔️",
+  },
+  naval: {
+    name: "Naval Battle",
+    emoji: "⚓",
+  },
+  siege: {
+    name: "Siege Battle",
+    emoji: "⚙️",
+  },
+};

@@ -3,7 +3,8 @@ import { Marker, Polyline, Polygon, LatLng } from "react-native-maps";
 import { Feature } from "geojson";
 import { GeojsonType } from "../types";
 import IconMarker from "./IconMarker";
-import { COLOR_MAP, ICON_MAP } from "../assets/peloponnesian_war/settings";
+import { ICON_MAP } from "../settings";
+import { COLOR_MAP } from "../assets/peloponnesian_war/settings";
 
 interface Overlay {
   feature: Feature;

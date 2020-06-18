@@ -4,7 +4,7 @@ import * as WebBrowser from "expo-web-browser";
 import { Card, Title, Paragraph } from "react-native-paper";
 
 import { Battle } from "../types";
-import { MARKER_ICONS } from "../utils/markerIcons";
+import { ICON_MAP } from "../settings";
 
 const CarouselItem = ({
   item: { title, color, year, type, location, result, link },
@@ -18,7 +18,7 @@ const CarouselItem = ({
         subtitle={year}
         left={() => (
           <MaterialCommunityIcons
-            name={MARKER_ICONS[type]}
+            name={ICON_MAP[type]}
             size={24}
             color={color}
           />

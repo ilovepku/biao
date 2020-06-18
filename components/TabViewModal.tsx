@@ -10,8 +10,8 @@ import {
   HEADER_HEIGHT,
   TAB_BAR_ITEM_WIDTH,
   TAB_BAR_ITEM_MARGIN,
+  EMOJI_MAP,
 } from "../settings";
-import EMOJI_MAP from "../assets/emoji_map";
 
 interface Props {
   snapPoint: number;

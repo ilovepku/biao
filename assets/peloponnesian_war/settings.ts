@@ -16,10 +16,3 @@ export const COLOR_MAP: {
   neutral: "gold",
   neutralArea: "rgba(118,118,118,.75)",
 };
-
-export const ICON_MAP: {
-  [key: string]: string;
-} = {
-  city: "home-map-marker",
-  battle: "sword-cross",
-};
