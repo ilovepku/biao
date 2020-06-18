@@ -8,6 +8,8 @@ import {
   HEADER_COLLAPSE,
   HEADER_LIST,
   HEADER_HEIGHT,
+  TAB_BAR_ITEM_WIDTH,
+  TAB_BAR_ITEM_MARGIN,
 } from "../assets/settings";
 import EMOJI_MAP from "../assets/emoji_map";
 
@@ -24,8 +26,8 @@ const TabViewModal = forwardRef(
     const [index, setIndex] = useState(0);
 
     const handleIndexChange = (i: number) => {
-      const width = 55; // item width
-      const margin = 25; // item margin
+      const width = TAB_BAR_ITEM_WIDTH;
+      const margin = TAB_BAR_ITEM_MARGIN;
       const x = (width + margin) * i;
 
       setIndex(i);

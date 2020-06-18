@@ -6,6 +6,7 @@ import {
   View,
   StyleSheet,
 } from "react-native";
+import { TAB_BAR_ITEM_WIDTH, TAB_BAR_ITEM_MARGIN } from "../assets/settings";
 
 interface Props {
   active: boolean;
@@ -31,9 +32,10 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
 
-    marginRight: 25,
+    marginRight: TAB_BAR_ITEM_MARGIN,
 
     height: "100%",
+    width: TAB_BAR_ITEM_WIDTH,
   },
 
   item__emoji: {
