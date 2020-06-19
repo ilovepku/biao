@@ -2,13 +2,11 @@
   "type": "FeatureCollection",
   "features": [
     {
-      "id": "Sparta",
+      "id": "sparta",
       "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [22.423611, 37.081944]
-      },
+      "geometry": { "type": "Point", "coordinates": [22.423611, 37.081944] },
       "properties": {
+        "name": "Sparta",
         "type": "city",
         "status": "peloponnesian",
         "description": "Leader of the Peloponnesian League",
@@ -16,49 +14,41 @@
       }
     },
     {
-      "id": "Corinth",
+      "id": "corinth",
       "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [22.880192, 37.905346]
-      },
+      "geometry": { "type": "Point", "coordinates": [22.880192, 37.905346] },
       "properties": {
+        "name": "Corinth",
         "type": "city",
         "status": "peloponnesian"
       }
     },
     {
-      "id": "Elis",
+      "id": "elis",
       "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [21.37493, 37.89131]
-      },
+      "geometry": { "type": "Point", "coordinates": [21.37493, 37.89131] },
       "properties": {
+        "name": "Elis",
         "type": "city",
         "status": "peloponnesian"
       }
     },
     {
-      "id": "Tegea",
+      "id": "tegea",
       "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [22.4205, 37.455333]
-      },
+      "geometry": { "type": "Point", "coordinates": [22.4205, 37.455333] },
       "properties": {
+        "name": "Tegea",
         "type": "city",
         "status": "peloponnesian"
       }
     },
     {
-      "id": "Delos",
+      "id": "delos",
       "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [25.271111, 37.393333]
-      },
+      "geometry": { "type": "Point", "coordinates": [25.271111, 37.393333] },
       "properties": {
+        "name": "Delos",
         "type": "city",
         "status": "delian",
         "description": "Initial meeting-ground and treasury for the Delian League",
@@ -66,13 +56,11 @@
       }
     },
     {
-      "id": "Athens",
+      "id": "athens",
       "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [23.72, 37.97]
-      },
+      "geometry": { "type": "Point", "coordinates": [23.72, 37.97] },
       "properties": {
+        "name": "Athens",
         "type": "city",
         "status": "delian",
         "description": "Leader of the Delian League",
@@ -80,304 +68,359 @@
       }
     },
     {
-      "id": "Aegina",
+      "id": "aegina",
       "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [23.433333, 37.75]
-      },
-      "properties": {
-        "type": "city",
-        "status": "delian"
-      }
+      "geometry": { "type": "Point", "coordinates": [23.433333, 37.75] },
+      "properties": { "name": "Aegina", "type": "city", "status": "delian" }
     },
     {
-      "id": "Byzantium",
+      "id": "byzantium",
       "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [28.984722, 41.015278]
-      },
-      "properties": {
-        "type": "city",
-        "status": "delian"
-      }
+      "geometry": { "type": "Point", "coordinates": [28.984722, 41.015278] },
+      "properties": { "name": "Byzantium", "type": "city", "status": "delian" }
     },
     {
-      "id": "Chios",
+      "id": "chios",
       "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [26.016667, 38.4]
-      },
-      "properties": {
-        "type": "city",
-        "status": "delian"
-      }
+      "geometry": { "type": "Point", "coordinates": [26.016667, 38.4] },
+      "properties": { "name": "Chios", "type": "city", "status": "delian" }
     },
     {
-      "id": "Lesbos",
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [26.28, 39.21]
-      },
-      "properties": {
-        "type": "city",
-        "status": "delian"
-      }
-    },
-    {
-      "id": "Lindos",
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [28.083333, 36.083333]
-      },
-      "properties": {
-        "type": "city",
-        "status": "delian"
-      }
-    },
-    {
-      "id": "Naxos",
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [25.403889, 37.0875]
-      },
-      "properties": {
-        "type": "city",
-        "status": "delian"
-      }
-    },
-    {
-      "id": "Paros",
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [25.2, 37.066667]
-      },
-      "properties": {
-        "type": "city",
-        "status": "delian"
-      }
-    },
-    {
-      "id": "Samos",
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [26.833333, 37.75]
-      },
-      "properties": {
-        "type": "city",
-        "status": "delian"
-      }
-    },
-    {
-      "id": "Thasos",
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [24.65, 40.683333]
-      },
-      "properties": {
-        "type": "city",
-        "status": "delian"
-      }
-    },
-    {
-      "id": "Battle of Sybota",
-      "type": "Feature",
-      "geometry": { "type": "Point", "coordinates": [20.2152778, 39.4033333] },
-      "properties": { "type": "battle", "status": "neutral" }
-    },
-    {
-      "id": "Battle of Potidaea",
-      "type": "Feature",
-      "geometry": { "type": "Point", "coordinates": [23.3278, 40.1937] },
-      "properties": { "type": "battle", "status": "delian" }
-    },
-    {
-      "id": "Battle of Spartolos",
-      "type": "Feature",
-      "geometry": { "type": "Point", "coordinates": [23.2954, 40.2832] },
-      "properties": { "type": "battle", "status": "peloponnesian" }
-    },
-    {
-      "id": "Battle of Rhium",
-      "type": "Feature",
-      "geometry": { "type": "Point", "coordinates": [21.783333, 38.3] },
-      "properties": { "type": "battle", "status": "delian" }
-    },
-    {
-      "id": "Battle of Naupactus",
-      "type": "Feature",
-      "geometry": { "type": "Point", "coordinates": [21.830556, 38.393889] },
-      "properties": { "type": "battle", "status": "delian" }
-    },
-    {
-      "id": "Siege of Plataea",
-      "type": "Feature",
-      "geometry": { "type": "Point", "coordinates": [23.273853, 38.219992] },
-      "properties": { "type": "battle", "status": "peloponnesian" }
-    },
-    {
-      "id": "Mytilenean revolt",
+      "id": "lesbos",
       "type": "Feature",
       "geometry": { "type": "Point", "coordinates": [26.28, 39.21] },
-      "properties": { "type": "battle", "status": "delian" }
+      "properties": { "name": "Lesbos", "type": "city", "status": "delian" }
     },
     {
-      "id": "Battle of Tanagra",
+      "id": "lindos",
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [28.083333, 36.083333] },
+      "properties": { "name": "Lindos", "type": "city", "status": "delian" }
+    },
+    {
+      "id": "naxos",
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [25.403889, 37.0875] },
+      "properties": { "name": "Naxos", "type": "city", "status": "delian" }
+    },
+    {
+      "id": "paros",
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [25.2, 37.066667] },
+      "properties": { "name": "Paros", "type": "city", "status": "delian" }
+    },
+    {
+      "id": "samos",
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [26.833333, 37.75] },
+      "properties": { "name": "Samos", "type": "city", "status": "delian" }
+    },
+    {
+      "id": "thasos",
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [24.65, 40.683333] },
+      "properties": { "name": "Thasos", "type": "city", "status": "delian" }
+    },
+    {
+      "id": "battle-of-sybota",
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [20.2152778, 39.4033333] },
+      "properties": {
+        "name": "Battle of Sybota",
+        "type": "battle",
+        "status": "neutral"
+      }
+    },
+    {
+      "id": "battle-of-potidaea",
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [23.3278, 40.1937] },
+      "properties": {
+        "name": "Battle of Potidaea",
+        "type": "battle",
+        "status": "delian"
+      }
+    },
+    {
+      "id": "battle-of-spartolos",
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [23.2954, 40.2832] },
+      "properties": {
+        "name": "Battle of Spartolos",
+        "type": "battle",
+        "status": "peloponnesian"
+      }
+    },
+    {
+      "id": "battle-of-rhium",
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [21.783333, 38.3] },
+      "properties": {
+        "name": "Battle of Rhium",
+        "type": "battle",
+        "status": "delian"
+      }
+    },
+    {
+      "id": "battle-of-naupactus",
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [21.830556, 38.393889] },
+      "properties": {
+        "name": "Battle of Naupactus",
+        "type": "battle",
+        "status": "delian"
+      }
+    },
+    {
+      "id": "siege-of-plataea",
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [23.273853, 38.219992] },
+      "properties": {
+        "name": "Siege of Plataea",
+        "type": "battle",
+        "status": "peloponnesian"
+      }
+    },
+    {
+      "id": "mytilenean-revolt",
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [26.28, 39.21] },
+      "properties": {
+        "name": "Mytilenean revolt",
+        "type": "battle",
+        "status": "delian"
+      }
+    },
+    {
+      "id": "battle-of-tanagra",
       "type": "Feature",
       "geometry": { "type": "Point", "coordinates": [23.533333, 38.316667] },
-      "properties": { "type": "battle", "status": "delian" }
+      "properties": {
+        "name": "Battle of Tanagra",
+        "type": "battle",
+        "status": "delian"
+      }
     },
     {
-      "id": "Aetolian campaign",
+      "id": "aetolian-campaign",
       "type": "Feature",
       "geometry": { "type": "Point", "coordinates": [21.8091625, 38.5054294] },
-      "properties": { "type": "battle", "status": "peloponnesian" }
+      "properties": {
+        "name": "Aetolian campaign",
+        "type": "battle",
+        "status": "peloponnesian"
+      }
     },
     {
-      "id": "Battle of Olpae",
+      "id": "battle-of-olpae",
       "type": "Feature",
       "geometry": { "type": "Point", "coordinates": [21.149835, 38.949996] },
-      "properties": { "type": "battle", "status": "delian" }
+      "properties": {
+        "name": "Battle of Olpae",
+        "type": "battle",
+        "status": "delian"
+      }
     },
     {
-      "id": "Battle of Idomene",
+      "id": "battle-of-idomene",
       "type": "Feature",
       "geometry": { "type": "Point", "coordinates": [21.166667, 38.85] },
-      "properties": { "type": "battle", "status": "delian" }
+      "properties": {
+        "name": "Battle of Idomene",
+        "type": "battle",
+        "status": "delian"
+      }
     },
     {
-      "id": "Battle of Pylos",
+      "id": "battle-of-pylos",
       "type": "Feature",
       "geometry": { "type": "Point", "coordinates": [21.7, 36.916667] },
-      "properties": { "type": "battle", "status": "delian" }
+      "properties": {
+        "name": "Battle of Pylos",
+        "type": "battle",
+        "status": "delian"
+      }
     },
     {
-      "id": "Battle of Sphacteria",
+      "id": "battle-of-sphacteria",
       "type": "Feature",
       "geometry": { "type": "Point", "coordinates": [21.665725, 36.930136] },
-      "properties": { "type": "battle", "status": "delian" }
+      "properties": {
+        "name": "Battle of Sphacteria",
+        "type": "battle",
+        "status": "delian"
+      }
     },
     {
-      "id": "Battle of Megara",
+      "id": "battle-of-megara",
       "type": "Feature",
       "geometry": { "type": "Point", "coordinates": [23.344444, 37.996389] },
-      "properties": { "type": "battle", "status": "delian" }
+      "properties": {
+        "name": "Battle of Megara",
+        "type": "battle",
+        "status": "delian"
+      }
     },
     {
-      "id": "Battle of Delium",
+      "id": "battle-of-delium",
       "type": "Feature",
       "geometry": { "type": "Point", "coordinates": [23.661354, 38.346208] },
-      "properties": { "type": "battle", "status": "peloponnesian" }
+      "properties": {
+        "name": "Battle of Delium",
+        "type": "battle",
+        "status": "peloponnesian"
+      }
     },
     {
-      "id": "Battle of Amphipolis",
+      "id": "battle-of-amphipolis",
       "type": "Feature",
       "geometry": { "type": "Point", "coordinates": [23.84, 40.818333] },
       "properties": {
+        "name": "Battle of Amphipolis",
         "type": "battle",
         "status": "peloponnesian",
         "highlight": true
       }
     },
     {
-      "id": "Battle of Mantinea",
+      "id": "battle-of-mantinea",
       "type": "Feature",
       "geometry": { "type": "Point", "coordinates": [22.392869, 37.617642] },
-      "properties": { "type": "battle", "status": "peloponnesian" }
+      "properties": {
+        "name": "Battle of Mantinea",
+        "type": "battle",
+        "status": "peloponnesian"
+      }
     },
     {
-      "id": "Battle of Hysiae",
+      "id": "battle-of-hysiae",
       "type": "Feature",
       "geometry": { "type": "Point", "coordinates": [22.585884, 37.519836] },
       "properties": {
+        "name": "Battle of Hysiae",
         "type": "battle",
         "status": "peloponnesian",
         "highlight": true
       }
     },
     {
-      "id": "Battle of Orneae",
+      "id": "battle-of-orneae",
       "type": "Feature",
       "geometry": { "type": "Point", "coordinates": [22.557292, 37.713973] },
-      "properties": { "type": "battle", "status": "delian" }
+      "properties": {
+        "name": "Battle of Orneae",
+        "type": "battle",
+        "status": "delian"
+      }
     },
     {
-      "id": "Siege of Melos",
+      "id": "siege-of-melos",
       "type": "Feature",
       "geometry": { "type": "Point", "coordinates": [24.416667, 36.683333] },
-      "properties": { "type": "battle", "status": "delian" }
+      "properties": {
+        "name": "Siege of Melos",
+        "type": "battle",
+        "status": "delian"
+      }
     },
     {
-      "id": "Sicilian Expedition",
+      "id": "sicilian-expedition",
       "type": "Feature",
       "geometry": { "type": "Point", "coordinates": [15.2833, 37.0833] },
       "properties": {
+        "name": "Sicilian Expedition",
         "type": "battle",
         "status": "peloponnesian",
         "highlight": true
       }
     },
     {
-      "id": "Battle of Syme",
+      "id": "battle-of-syme",
       "type": "Feature",
       "geometry": { "type": "Point", "coordinates": [27.833333, 36.583333] },
-      "properties": { "type": "battle", "status": "peloponnesian" }
+      "properties": {
+        "name": "Battle of Syme",
+        "type": "battle",
+        "status": "peloponnesian"
+      }
     },
     {
-      "id": "Battle of Eretria",
+      "id": "battle-of-eretria",
       "type": "Feature",
       "geometry": { "type": "Point", "coordinates": [23.7930669, 38.3927202] },
-      "properties": { "type": "battle", "status": "peloponnesian" }
+      "properties": {
+        "name": "Battle of Eretria",
+        "type": "battle",
+        "status": "peloponnesian"
+      }
     },
     {
-      "id": "Battle of Cynossema",
+      "id": "battle-of-cynossema",
       "type": "Feature",
       "geometry": { "type": "Point", "coordinates": [26.379167, 40.148611] },
-      "properties": { "type": "battle", "status": "delian" }
+      "properties": {
+        "name": "Battle of Cynossema",
+        "type": "battle",
+        "status": "delian"
+      }
     },
     {
-      "id": "Battle of Abydos",
+      "id": "battle-of-abydos",
       "type": "Feature",
       "geometry": { "type": "Point", "coordinates": [26.405, 40.195278] },
-      "properties": { "type": "battle", "status": "delian" }
+      "properties": {
+        "name": "Battle of Abydos",
+        "type": "battle",
+        "status": "delian"
+      }
     },
     {
-      "id": "Battle of Cyzicus",
+      "id": "battle-of-cyzicus",
       "type": "Feature",
       "geometry": { "type": "Point", "coordinates": [27.89, 40.38] },
-      "properties": { "type": "battle", "status": "delian", "highlight": true }
+      "properties": {
+        "name": "Battle of Cyzicus",
+        "type": "battle",
+        "status": "delian",
+        "highlight": true
+      }
     },
     {
-      "id": "Battle of Notium",
+      "id": "battle-of-notium",
       "type": "Feature",
       "geometry": { "type": "Point", "coordinates": [26.8475, 37.992778] },
-      "properties": { "type": "battle", "status": "peloponnesian" }
+      "properties": {
+        "name": "Battle of Notium",
+        "type": "battle",
+        "status": "peloponnesian"
+      }
     },
     {
-      "id": "Battle of Mytilene",
+      "id": "battle-of-mytilene",
       "type": "Feature",
       "geometry": { "type": "Point", "coordinates": [26.55, 39.1] },
-      "properties": { "type": "battle", "status": "peloponnesian" }
+      "properties": {
+        "name": "Battle of Mytilene",
+        "type": "battle",
+        "status": "peloponnesian"
+      }
     },
     {
-      "id": "Battle of Arginusae",
+      "id": "battle-of-arginusae",
       "type": "Feature",
       "geometry": { "type": "Point", "coordinates": [26.8, 39.033333] },
-      "properties": { "type": "battle", "status": "delian" }
+      "properties": {
+        "name": "Battle of Arginusae",
+        "type": "battle",
+        "status": "delian"
+      }
     },
     {
-      "id": "Battle of Aegospotami",
+      "id": "battle-of-aegospotami",
       "type": "Feature",
       "geometry": { "type": "Point", "coordinates": [26.55, 40.25] },
       "properties": {
+        "name": "Battle of Aegospotami",
         "type": "battle",
         "status": "peloponnesian",
         "highlight": true

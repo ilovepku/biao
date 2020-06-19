@@ -5,10 +5,13 @@ import { GeojsonType } from "../types";
 import IconMarker from "./IconMarker";
 import { COLOR_MAP } from "../assets/peloponnesian_war/settings";
 
+type LayeredLatLng = LatLng[] | LatLng[][];
+type Coordinates = LatLng | LayeredLatLng;
+
 interface Overlay {
   feature: Feature;
-  coordinates?: LatLng | LatLng[] | LatLng[][];
-  holes?: LatLng[] | LatLng[][];
+  coordinates?: Coordinates;
+  holes?: LayeredLatLng;
   type?: string;
 }
 
@@ -25,7 +28,6 @@ const makeCoordinates = ({ geometry }: Feature) => {
     case "LineString":
       return [makeLine(geometry.coordinates)];
     case "MultiLineString":
-      return geometry.coordinates.map(makeLine);
     case "Polygon":
       return geometry.coordinates.map(makeLine);
     case "MultiPolygon":
@@ -35,10 +37,7 @@ const makeCoordinates = ({ geometry }: Feature) => {
   }
 };
 
-const makeOverlay = (
-  coordinates: LatLng | LatLng[] | LatLng[][],
-  feature: Feature
-) => {
+const makeOverlay = (coordinates: Coordinates, feature: Feature) => {
   let overlay: Overlay = {
     feature,
   };
@@ -46,9 +45,9 @@ const makeOverlay = (
     (Array.isArray(coordinates) && feature.geometry.type === "Polygon") ||
     feature.geometry.type === "MultiPolygon"
   ) {
-    overlay.coordinates = (coordinates as LatLng[] | LatLng[][])[0];
-    if ((coordinates as LatLng[] | LatLng[][]).length > 1) {
-      overlay.holes = (coordinates as LatLng[] | LatLng[][]).slice(1);
+    overlay.coordinates = (coordinates as LayeredLatLng)[0];
+    if ((coordinates as LayeredLatLng).length > 1) {
+      overlay.holes = (coordinates as LayeredLatLng).slice(1);
     }
   } else {
     overlay.coordinates = coordinates;
@@ -59,62 +58,46 @@ const makeOverlay = (
 export const makeOverlays = (features: Feature[]) => {
   const points = features
     .filter(
-      (f: Feature) =>
-        f.geometry &&
-        (f.geometry.type === "Point" || f.geometry.type === "MultiPoint")
+      ({ geometry: { type } }) => type === "Point" || type === "MultiPoint"
     )
-    .map((feature: Feature) =>
-      (makeCoordinates(feature) as (
-        | LatLng
-        | LatLng[]
-        | LatLng[][]
-      )[]).map((coordinates: LatLng | LatLng[] | LatLng[][]) =>
+    .map((feature) =>
+      (makeCoordinates(feature) as Coordinates[]).map((coordinates) =>
         makeOverlay(coordinates, feature)
       )
     )
     .flat()
-    .map((overlay: Overlay) => ({ ...overlay, type: "point" }));
+    .map((overlay) => ({ ...overlay, type: "point" }));
 
   const lines = features
     .filter(
-      (f) =>
-        f.geometry &&
-        (f.geometry.type === "LineString" ||
-          f.geometry.type === "MultiLineString")
+      ({ geometry: { type } }) =>
+        type === "LineString" || type === "MultiLineString"
     )
     .map((feature) =>
-      (makeCoordinates(feature) as (
-        | LatLng
-        | LatLng[]
-        | LatLng[][]
-      )[]).map((coordinates: LatLng | LatLng[] | LatLng[][]) =>
+      (makeCoordinates(feature) as Coordinates[]).map((coordinates) =>
         makeOverlay(coordinates, feature)
       )
     )
     .flat()
-    .map((overlay: Overlay) => ({ ...overlay, type: "polyline" }));
+    .map((overlay) => ({ ...overlay, type: "polyline" }));
 
   const multipolygons = features
-    .filter((f) => f.geometry && f.geometry.type === "MultiPolygon")
+    .filter((f) => f.geometry.type === "MultiPolygon")
     .map((feature) =>
-      (makeCoordinates(feature) as (
-        | LatLng
-        | LatLng[]
-        | LatLng[][]
-      )[]).map((coordinates: LatLng | LatLng[] | LatLng[][]) =>
+      (makeCoordinates(feature) as Coordinates[]).map((coordinates) =>
         makeOverlay(coordinates, feature)
       )
     )
     .flat();
 
   const polygons = features
-    .filter((f) => f.geometry && f.geometry.type === "Polygon")
+    .filter((f) => f.geometry.type === "Polygon")
     .map((feature) =>
       makeOverlay(makeCoordinates(feature) as LatLng[][], feature)
     )
     .flat()
     .concat(multipolygons)
-    .map((overlay: Overlay) => ({ ...overlay, type: "polygon" }));
+    .map((overlay) => ({ ...overlay, type: "polygon" }));
 
   return points.concat(lines).concat(polygons);
 };
@@ -137,58 +120,59 @@ const Geojson = ({
   const overlays = makeOverlays(geojson.features);
   return (
     <>
-      {overlays.map((overlay: Overlay, index: number) => {
-        if (overlay.type === "point") {
-          return (
-            <Marker
-              key={index}
-              title={overlay.feature.id as string}
-              description={overlay.feature.properties!.description}
-              pinColor={color}
-              coordinate={overlay.coordinates as LatLng}
-              anchor={{ x: 1, y: 1 }}
-              calloutAnchor={{ x: 0, y: 0 }}
-              rotation={45}
-            >
-              <IconMarker
-                name={overlay.feature.properties!.type}
-                png={overlay.feature.properties!.status === "attraction"}
-                color={
-                  overlay.feature.properties!.highlight
-                    ? COLOR_MAP[
-                        `${overlay.feature.properties!.status}Highlight`
-                      ]
-                    : COLOR_MAP[overlay.feature.properties!.status]
+      {overlays.map((overlay, index) => {
+        switch (overlay.type) {
+          case "point":
+            return (
+              <Marker
+                key={index}
+                title={overlay.feature.properties!.name as string}
+                description={overlay.feature.properties!.description}
+                pinColor={color}
+                coordinate={overlay.coordinates as LatLng}
+                anchor={{ x: 1, y: 1 }}
+                calloutAnchor={{ x: 0, y: 0 }}
+                rotation={45}
+              >
+                <IconMarker
+                  name={overlay.feature.properties!.type}
+                  png={overlay.feature.properties!.status === "attraction"}
+                  color={
+                    overlay.feature.properties!.highlight
+                      ? COLOR_MAP[
+                          `${overlay.feature.properties!.status}Highlight`
+                        ]
+                      : COLOR_MAP[overlay.feature.properties!.status]
+                  }
+                />
+              </Marker>
+            );
+          case "polygon":
+            return (
+              <Polygon
+                key={index}
+                coordinates={overlay.coordinates as LatLng[]}
+                holes={overlay.holes as LatLng[][]}
+                strokeColor={strokeColor}
+                fillColor={
+                  fillColor
+                    ? fillColor
+                    : COLOR_MAP[`${overlay.feature.properties!.status}Area`]
                 }
+                strokeWidth={strokeWidth}
               />
-            </Marker>
-          );
-        }
-        if (overlay.type === "polygon") {
-          return (
-            <Polygon
-              key={index}
-              coordinates={overlay.coordinates as LatLng[]}
-              holes={overlay.holes as LatLng[][]}
-              strokeColor={strokeColor}
-              fillColor={
-                fillColor
-                  ? fillColor
-                  : COLOR_MAP[`${overlay.feature.properties!.status}Area`]
-              }
-              strokeWidth={strokeWidth}
-            />
-          );
-        }
-        if (overlay.type === "polyline") {
-          return (
-            <Polyline
-              key={index}
-              coordinates={overlay.coordinates as LatLng[]}
-              strokeColor={strokeColor}
-              strokeWidth={strokeWidth}
-            />
-          );
+            );
+          case "polyline":
+            return (
+              <Polyline
+                key={index}
+                coordinates={overlay.coordinates as LatLng[]}
+                strokeColor={strokeColor}
+                strokeWidth={strokeWidth}
+              />
+            );
+          default:
+            return null;
         }
       })}
     </>
