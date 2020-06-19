@@ -5,17 +5,17 @@ import * as ScreenOrientation from "expo-screen-orientation";
 import { INITIAL_REGION } from "./assets/peloponnesian_war/settings";
 import LOCATIONS from "./assets/peloponnesian_war/locations.json";
 import AREAS from "./assets/peloponnesian_war/areas.json";
-import ATTRACTIONS from "./assets/peloponnesian_war/attractions";
+import ATTRACTIONS from "./assets/peloponnesian_war/attractions.json";
 import TIMELINE from "./assets/peloponnesian_war/timeline.json";
 
-import TestMap from "./components/TestMap";
+import Map from "./components/Map";
 
 ScreenOrientation.unlockAsync();
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <TestMap
+      <Map
         initialRegion={INITIAL_REGION}
         locations={LOCATIONS}
         attractions={ATTRACTIONS}

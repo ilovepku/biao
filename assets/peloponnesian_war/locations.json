@@ -191,7 +191,7 @@
       "id": "Battle of Sybota",
       "type": "Feature",
       "geometry": { "type": "Point", "coordinates": [20.2152778, 39.4033333] },
-      "properties": { "type": "battle", "status": "gold" }
+      "properties": { "type": "battle", "status": "neutral" }
     },
     {
       "id": "Battle of Potidaea",

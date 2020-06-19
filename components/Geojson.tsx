@@ -3,7 +3,6 @@ import { Marker, Polyline, Polygon, LatLng } from "react-native-maps";
 import { Feature } from "geojson";
 import { GeojsonType } from "../types";
 import IconMarker from "./IconMarker";
-import { ICON_MAP } from "../settings";
 import { COLOR_MAP } from "../assets/peloponnesian_war/settings";
 
 interface Overlay {
@@ -17,22 +16,22 @@ const makePoint = (c: number[]) => ({ latitude: c[1], longitude: c[0] });
 
 const makeLine = (l: number[][]) => l.map(makePoint);
 
-const makeCoordinates = (feature: Feature) => {
-  const g = feature.geometry;
-  if (g.type === "Point") {
-    return [makePoint(g.coordinates)];
-  } else if (g.type === "MultiPoint") {
-    return g.coordinates.map(makePoint);
-  } else if (g.type === "LineString") {
-    return [makeLine(g.coordinates)];
-  } else if (g.type === "MultiLineString") {
-    return g.coordinates.map(makeLine);
-  } else if (g.type === "Polygon") {
-    return g.coordinates.map(makeLine);
-  } else if (g.type === "MultiPolygon") {
-    return g.coordinates.map((p) => p.map(makeLine));
-  } else {
-    return [];
+const makeCoordinates = ({ geometry }: Feature) => {
+  switch (geometry.type) {
+    case "Point":
+      return [makePoint(geometry.coordinates)];
+    case "MultiPoint":
+      return geometry.coordinates.map(makePoint);
+    case "LineString":
+      return [makeLine(geometry.coordinates)];
+    case "MultiLineString":
+      return geometry.coordinates.map(makeLine);
+    case "Polygon":
+      return geometry.coordinates.map(makeLine);
+    case "MultiPolygon":
+      return geometry.coordinates.map((p) => p.map(makeLine));
+    default:
+      return [];
   }
 };
 
@@ -128,10 +127,16 @@ interface Props {
   strokeWidth?: number;
 }
 
-const Geojson = (props: Props) => {
-  const overlays = makeOverlays(props.geojson.features);
+const Geojson = ({
+  geojson,
+  color,
+  strokeColor,
+  fillColor,
+  strokeWidth,
+}: Props) => {
+  const overlays = makeOverlays(geojson.features);
   return (
-    <React.Fragment>
+    <>
       {overlays.map((overlay: Overlay, index: number) => {
         if (overlay.type === "point") {
           return (
@@ -139,14 +144,15 @@ const Geojson = (props: Props) => {
               key={index}
               title={overlay.feature.id as string}
               description={overlay.feature.properties!.description}
-              pinColor={props.color}
+              pinColor={color}
               coordinate={overlay.coordinates as LatLng}
               anchor={{ x: 1, y: 1 }}
               calloutAnchor={{ x: 0, y: 0 }}
               rotation={45}
             >
               <IconMarker
-                name={ICON_MAP[overlay.feature.properties!.type]}
+                name={overlay.feature.properties!.type}
+                png={overlay.feature.properties!.status === "attraction"}
                 color={
                   overlay.feature.properties!.highlight
                     ? COLOR_MAP[
@@ -164,13 +170,13 @@ const Geojson = (props: Props) => {
               key={index}
               coordinates={overlay.coordinates as LatLng[]}
               holes={overlay.holes as LatLng[][]}
-              strokeColor={props.strokeColor}
+              strokeColor={strokeColor}
               fillColor={
-                props.fillColor
-                  ? props.fillColor
+                fillColor
+                  ? fillColor
                   : COLOR_MAP[`${overlay.feature.properties!.status}Area`]
               }
-              strokeWidth={props.strokeWidth}
+              strokeWidth={strokeWidth}
             />
           );
         }
@@ -179,13 +185,13 @@ const Geojson = (props: Props) => {
             <Polyline
               key={index}
               coordinates={overlay.coordinates as LatLng[]}
-              strokeColor={props.strokeColor}
-              strokeWidth={props.strokeWidth}
+              strokeColor={strokeColor}
+              strokeWidth={strokeWidth}
             />
           );
         }
       })}
-    </React.Fragment>
+    </>
   );
 };
 

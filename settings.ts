@@ -81,6 +81,6 @@ export const EMOJI_MAP: { [index: string]: { name: string; emoji: string } } = {
   },
   siege: {
     name: "Siege Battle",
-    emoji: "⚙️",
+    emoji: "🛡️",
   },
 };
