@@ -2,7 +2,7 @@
   "type": "FeatureCollection",
   "features": [
     {
-      "id": "Acropolis Museum",
+      "id": "acropolis-museum",
       "type": "Feature",
       "geometry": { "type": "Point", "coordinates": [23.7285227, 37.9684499] },
       "properties": {
@@ -15,7 +15,7 @@
       }
     },
     {
-      "id": "Acropolis of Athens",
+      "id": "acropolis-of-athens",
       "type": "Feature",
       "geometry": { "type": "Point", "coordinates": [23.7257492, 37.9715323] },
       "properties": {
@@ -28,7 +28,7 @@
       }
     },
     {
-      "id": "Ancient Agora of Athens",
+      "id": "ancient-agora-of-athens",
       "type": "Feature",
       "geometry": { "type": "Point", "coordinates": [23.7219486, 37.9746208] },
       "properties": {
@@ -41,7 +41,7 @@
       }
     },
     {
-      "id": "National Archaeological Museum",
+      "id": "national-archaeological-museum",
       "type": "Feature",
       "geometry": {
         "type": "Point",
@@ -57,7 +57,7 @@
       }
     },
     {
-      "id": "Temple of Poseidon",
+      "id": "temple-of-poseidon",
       "type": "Feature",
       "geometry": { "type": "Point", "coordinates": [24.024587, 37.6501925] },
       "properties": {
@@ -70,7 +70,7 @@
       }
     },
     {
-      "id": "Archaeological Museum of Sparta",
+      "id": "archaeological-museum-of-sparta",
       "type": "Feature",
       "geometry": { "type": "Point", "coordinates": [22.4314354, 37.0742171] },
       "properties": {
@@ -83,7 +83,7 @@
       }
     },
     {
-      "id": "The Acropolis of Sparta",
+      "id": "the-acropolis-of-sparta",
       "type": "Feature",
       "geometry": {
         "type": "Point",
@@ -99,7 +99,7 @@
       }
     },
     {
-      "id": "Sanctuary of Artemis Orthia",
+      "id": "sanctuary-of-artemis-orthia",
       "type": "Feature",
       "geometry": { "type": "Point", "coordinates": [22.435114, 37.0828745] },
       "properties": {
@@ -112,7 +112,7 @@
       }
     },
     {
-      "id": "Statue of Leonidas",
+      "id": "statue-of-leonidas",
       "type": "Feature",
       "geometry": { "type": "Point", "coordinates": [22.4284239, 37.0791071] },
       "properties": {
@@ -125,7 +125,7 @@
       }
     },
     {
-      "id": "Portara",
+      "id": "portara",
       "type": "Feature",
       "geometry": { "type": "Point", "coordinates": [25.3723875, 37.1101474] },
       "properties": {
@@ -138,7 +138,7 @@
       }
     },
     {
-      "id": "Archaeological Museum of Thasos",
+      "id": "archaeological-museum-of-thasos",
       "type": "Feature",
       "geometry": { "type": "Point", "coordinates": [24.7119936, 40.7801253] },
       "properties": {
@@ -151,7 +151,7 @@
       }
     },
     {
-      "id": "Archaeological Site of Delos",
+      "id": "archaeological-site-of-delos",
       "type": "Feature",
       "geometry": { "type": "Point", "coordinates": [25.2651134, 37.398929] },
       "properties": {
@@ -164,7 +164,7 @@
       }
     },
     {
-      "id": "Akrokorinthos",
+      "id": "akrokorinthos",
       "type": "Feature",
       "geometry": { "type": "Point", "coordinates": [22.87003, 37.890983] },
       "properties": {
@@ -177,7 +177,7 @@
       }
     },
     {
-      "id": "Archaeological Museum of Thebes",
+      "id": "archaeological-museum-of-thebes",
       "type": "Feature",
       "geometry": { "type": "Point", "coordinates": [23.3172017, 38.3237834] },
       "properties": {
@@ -190,7 +190,7 @@
       }
     },
     {
-      "id": "Archaeological Site of Olympia",
+      "id": "archaeological-site-of-olympia",
       "type": "Feature",
       "geometry": { "type": "Point", "coordinates": [21.6298796, 37.6384588] },
       "properties": {
@@ -203,7 +203,7 @@
       }
     },
     {
-      "id": "Archaeological Museum of Olympia",
+      "id": "archaeological-museum-of-olympia",
       "type": "Feature",
       "geometry": { "type": "Point", "coordinates": [21.629643, 37.643573] },
       "properties": {
@@ -216,7 +216,7 @@
       }
     },
     {
-      "id": "Temple of Apollo Epikourios",
+      "id": "temple-of-apollo-epikourios",
       "type": "Feature",
       "geometry": { "type": "Point", "coordinates": [21.899504, 37.4291164] },
       "properties": {
@@ -229,7 +229,7 @@
       }
     },
     {
-      "id": "Delphi",
+      "id": "delphi",
       "type": "Feature",
       "geometry": { "type": "Point", "coordinates": [22.5009699, 38.4823868] },
       "properties": {
@@ -242,7 +242,7 @@
       }
     },
     {
-      "id": "Delphi Archaeological Museum",
+      "id": "delphi-archaeological-museum",
       "type": "Feature",
       "geometry": { "type": "Point", "coordinates": [22.4997992, 38.4803028] },
       "properties": {

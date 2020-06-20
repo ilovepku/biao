@@ -66,7 +66,11 @@ export const makeOverlays = (features: Feature[]) => {
       )
     )
     .flat()
-    .map((overlay) => ({ ...overlay, type: "point" }));
+    .map((overlay, index) => ({
+      ...overlay,
+      type: "point",
+      key: `${overlay.feature.id}-${index}`,
+    }));
 
   const lines = features
     .filter(
@@ -79,7 +83,11 @@ export const makeOverlays = (features: Feature[]) => {
       )
     )
     .flat()
-    .map((overlay) => ({ ...overlay, type: "polyline" }));
+    .map((overlay, index) => ({
+      ...overlay,
+      type: "polyline",
+      key: `${overlay.feature.id}-${index}`,
+    }));
 
   const multipolygons = features
     .filter((f) => f.geometry.type === "MultiPolygon")
@@ -97,7 +105,11 @@ export const makeOverlays = (features: Feature[]) => {
     )
     .flat()
     .concat(multipolygons)
-    .map((overlay) => ({ ...overlay, type: "polygon" }));
+    .map((overlay, index) => ({
+      ...overlay,
+      type: "polygon",
+      key: `${overlay.feature.id}-${index}`,
+    }));
 
   return points.concat(lines).concat(polygons);
 };
@@ -120,12 +132,12 @@ const Geojson = ({
   const overlays = makeOverlays(geojson.features);
   return (
     <>
-      {overlays.map((overlay, index) => {
+      {overlays.map((overlay) => {
         switch (overlay.type) {
           case "point":
             return (
               <Marker
-                key={index}
+                key={overlay.key}
                 title={overlay.feature.properties!.name as string}
                 description={overlay.feature.properties!.description}
                 pinColor={color}
@@ -150,7 +162,7 @@ const Geojson = ({
           case "polygon":
             return (
               <Polygon
-                key={index}
+                key={overlay.key}
                 coordinates={overlay.coordinates as LatLng[]}
                 holes={overlay.holes as LatLng[][]}
                 strokeColor={strokeColor}
@@ -165,7 +177,7 @@ const Geojson = ({
           case "polyline":
             return (
               <Polyline
-                key={index}
+                key={overlay.key}
                 coordinates={overlay.coordinates as LatLng[]}
                 strokeColor={strokeColor}
                 strokeWidth={strokeWidth}

@@ -2,6 +2,7 @@
   "type": "FeatureCollection",
   "features": [
     {
+      "id": "pella",
       "type": "Feature",
       "properties": {
         "name": "Pella",
@@ -107,6 +108,7 @@
       }
     },
     {
+      "id": "lakonia",
       "type": "Feature",
       "properties": {
         "name": "Lakonia",
@@ -273,6 +275,7 @@
       }
     },
     {
+      "id": "imathia",
       "type": "Feature",
       "properties": {
         "name": "Imathia",
@@ -351,6 +354,7 @@
       }
     },
     {
+      "id": "korinthos",
       "type": "Feature",
       "properties": {
         "name": "Korinthos",
@@ -461,6 +465,7 @@
       }
     },
     {
+      "id": "lefkada",
       "type": "Feature",
       "properties": {
         "name": "Lefkada",
@@ -525,6 +530,7 @@
       }
     },
     {
+      "id": "viotia",
       "type": "Feature",
       "properties": {
         "name": "Viotia",
@@ -650,6 +656,7 @@
       }
     },
     {
+      "id": "ilia",
       "type": "Feature",
       "properties": {
         "name": "Ilia",
@@ -741,6 +748,7 @@
       }
     },
     {
+      "id": "arta",
       "type": "Feature",
       "properties": {
         "name": "Arta",
@@ -833,6 +841,7 @@
       }
     },
     {
+      "id": "thessaloniki",
       "type": "Feature",
       "properties": {
         "name": "Thessaloniki",
@@ -972,6 +981,7 @@
       }
     },
     {
+      "id": "kilkis",
       "type": "Feature",
       "properties": {
         "name": "Kilkis",
@@ -1065,6 +1075,7 @@
       }
     },
     {
+      "id": "mesinia",
       "type": "Feature",
       "properties": {
         "name": "Mesinia",
@@ -1204,6 +1215,7 @@
       }
     },
     {
+      "id": "pieria",
       "type": "Feature",
       "properties": {
         "name": "Pieria",
@@ -1292,6 +1304,7 @@
       }
     },
     {
+      "id": "west-attica",
       "type": "Feature",
       "properties": {
         "name": "West Attica",
@@ -1366,17 +1379,15 @@
       }
     },
     {
+      "id": "west-macedonia",
       "type": "Feature",
-      "properties": { "status": "peloponnesian" },
+      "properties": {
+        "name": "West Macedonia",
+        "name_greek": "Δυτική Μακεδονία",
+        "status": "peloponnesian"
+      },
       "geometry": {
         "type": "MultiPolygon",
-        "properties": {
-          "name": "West Macedonia",
-          "created_at": "2015-06-21T13:29:48Z",
-          "updated_at": "2015-06-22T10:14:55Z",
-          "cartodb_id": 3,
-          "name_greek": "Δυτική Μακεδονία"
-        },
         "coordinates": [
           [
             [
@@ -1650,6 +1661,7 @@
       }
     },
     {
+      "id": "arkadia",
       "type": "Feature",
       "properties": {
         "name": "Arkadia",
@@ -1797,6 +1809,7 @@
       }
     },
     {
+      "id": "fokida",
       "type": "Feature",
       "properties": {
         "name": "Fokida",
@@ -1903,6 +1916,7 @@
       }
     },
     {
+      "id": "evros",
       "type": "Feature",
       "properties": {
         "name": "Evros",
@@ -2054,6 +2068,7 @@
       }
     },
     {
+      "id": "peiraias-and-islands",
       "type": "Feature",
       "properties": {
         "name": "Peiraias and islands",
@@ -2262,6 +2277,7 @@
       }
     },
     {
+      "id": "chalkidiki",
       "type": "Feature",
       "properties": {
         "name": "Chalkidiki",
@@ -2424,6 +2440,7 @@
       }
     },
     {
+      "id": "serres",
       "type": "Feature",
       "properties": {
         "name": "Serres",
@@ -2532,6 +2549,7 @@
       }
     },
     {
+      "id": "evia",
       "type": "Feature",
       "properties": {
         "name": "Evia",
@@ -2778,6 +2796,7 @@
       }
     },
     {
+      "id": "athens",
       "type": "Feature",
       "properties": {
         "name": "Athens",
@@ -2823,6 +2842,7 @@
       }
     },
     {
+      "id": "east-attica",
       "type": "Feature",
       "properties": {
         "name": "East Attica",
@@ -2917,6 +2937,7 @@
       }
     },
     {
+      "id": "rodopi",
       "type": "Feature",
       "properties": {
         "name": "Rodopi",
@@ -3007,6 +3028,7 @@
       }
     },
     {
+      "id": "zakynthos",
       "type": "Feature",
       "properties": {
         "name": "Zakynthos",
@@ -3055,6 +3077,7 @@
       }
     },
     {
+      "id": "kavala",
       "type": "Feature",
       "properties": {
         "name": "Kavala",
@@ -3171,6 +3194,7 @@
       }
     },
     {
+      "id": "agio-oros",
       "type": "Feature",
       "properties": {
         "name": "Agio oros",
@@ -3215,6 +3239,7 @@
       }
     },
     {
+      "id": "xanthi",
       "type": "Feature",
       "properties": {
         "name": "Xanthi",
@@ -3301,6 +3326,7 @@
       }
     },
     {
+      "id": "kerkyra",
       "type": "Feature",
       "properties": {
         "name": "Kerkyra",
@@ -3387,6 +3413,7 @@
       }
     },
     {
+      "id": "aitoloakarnania",
       "type": "Feature",
       "properties": {
         "name": "Aitoloakarnania",
@@ -3561,17 +3588,15 @@
       }
     },
     {
+      "id": "thessaly",
       "type": "Feature",
-      "properties": { "status": "delian" },
+      "properties": {
+        "name": "Thessaly",
+        "name_greek": "Θεσσαλία",
+        "status": "delian"
+      },
       "geometry": {
         "type": "MultiPolygon",
-        "properties": {
-          "name": "Thessaly",
-          "created_at": "2015-06-21T13:29:48Z",
-          "updated_at": "2015-06-22T10:15:05Z",
-          "cartodb_id": 5,
-          "name_greek": "Θεσσαλία"
-        },
         "coordinates": [
           [
             [
@@ -4179,17 +4204,15 @@
       }
     },
     {
+      "id": "north-aegean",
       "type": "Feature",
-      "properties": { "status": "delian" },
+      "properties": {
+        "name": "North Aegean",
+        "name_greek": "Βόρειο Αιγαίο",
+        "status": "delian"
+      },
       "geometry": {
         "type": "MultiPolygon",
-        "properties": {
-          "name": "North Aegean",
-          "created_at": "2015-06-21T13:29:48Z",
-          "updated_at": "2015-06-22T10:15:14Z",
-          "cartodb_id": 6,
-          "name_greek": "Βόρειο Αιγαίο"
-        },
         "coordinates": [
           [
             [
@@ -4748,17 +4771,15 @@
       }
     },
     {
+      "id": "south-aegean",
       "type": "Feature",
-      "properties": { "status": "delian" },
+      "properties": {
+        "name": "South Aegean",
+        "name_greek": "Νότιο Αιγαίο",
+        "status": "delian"
+      },
       "geometry": {
         "type": "MultiPolygon",
-        "properties": {
-          "name": "South Aegean",
-          "created_at": "2015-06-21T13:29:48Z",
-          "updated_at": "2015-06-22T10:15:19Z",
-          "cartodb_id": 7,
-          "name_greek": "Νότιο Αιγαίο"
-        },
         "coordinates": [
           [
             [
@@ -6257,6 +6278,7 @@
       }
     },
     {
+      "id": "muğla",
       "type": "Feature",
       "properties": { "name": "Muğla", "status": "delian" },
       "geometry": {
@@ -6593,6 +6615,7 @@
       }
     },
     {
+      "id": "aydın",
       "type": "Feature",
       "properties": { "name": "Aydın", "status": "delian" },
       "geometry": {
@@ -6703,6 +6726,7 @@
       }
     },
     {
+      "id": "i̇zmir",
       "type": "Feature",
       "properties": { "name": "İzmir", "status": "delian" },
       "geometry": {
@@ -6978,6 +7002,7 @@
       }
     },
     {
+      "id": "çanakkale",
       "type": "Feature",
       "properties": { "name": "Çanakkale", "status": "delian" },
       "geometry": {
@@ -7187,6 +7212,7 @@
       }
     },
     {
+      "id": "balıkesir",
       "type": "Feature",
       "properties": { "name": "Balıkesir", "status": "delian" },
       "geometry": {
@@ -7416,6 +7442,7 @@
       }
     },
     {
+      "id": "bursa",
       "type": "Feature",
       "properties": { "name": "Bursa", "status": "delian" },
       "geometry": {
@@ -7542,6 +7569,7 @@
       }
     },
     {
+      "id": "yalova",
       "type": "Feature",
       "properties": { "name": "Yalova", "status": "delian" },
       "geometry": {
@@ -7586,6 +7614,7 @@
       }
     },
     {
+      "id": "kocaeli",
       "type": "Feature",
       "properties": { "name": "Kocaeli", "status": "delian" },
       "geometry": {
@@ -7693,6 +7722,7 @@
       }
     },
     {
+      "id": "i̇stanbul",
       "type": "Feature",
       "properties": { "name": "İstanbul", "status": "delian" },
       "geometry": {
@@ -7816,6 +7846,7 @@
       }
     },
     {
+      "id": "tekirdağ",
       "type": "Feature",
       "properties": { "name": "Tekirdağ", "status": "delian" },
       "geometry": {
@@ -7913,6 +7944,7 @@
       }
     },
     {
+      "id": "euritania",
       "type": "Feature",
       "properties": {
         "name": "Euritania",
@@ -8002,6 +8034,7 @@
       }
     },
     {
+      "id": "fthiotida",
       "type": "Feature",
       "properties": {
         "name": "Fthiotida",
@@ -8179,6 +8212,7 @@
       }
     },
     {
+      "id": "preveza",
       "type": "Feature",
       "properties": {
         "name": "Preveza",
@@ -8271,6 +8305,7 @@
       }
     },
     {
+      "id": "kefallonia",
       "type": "Feature",
       "properties": {
         "name": "Kefallonia",
@@ -8364,6 +8399,7 @@
       }
     },
     {
+      "id": "argolida",
       "type": "Feature",
       "properties": {
         "name": "Argolida",
@@ -8487,6 +8523,7 @@
       }
     },
     {
+      "id": "thesprotia",
       "type": "Feature",
       "properties": {
         "name": "Thesprotia",
@@ -8574,6 +8611,7 @@
       }
     },
     {
+      "id": "ioannina",
       "type": "Feature",
       "properties": {
         "name": "Ioannina",
@@ -8709,17 +8747,15 @@
       }
     },
     {
+      "id": "crete",
       "type": "Feature",
-      "properties": { "status": "neutral" },
+      "properties": {
+        "name": "Crete",
+        "name_greek": "Κρήτη",
+        "status": "neutral"
+      },
       "geometry": {
         "type": "MultiPolygon",
-        "properties": {
-          "name": "Crete",
-          "created_at": "2015-06-21T13:29:48Z",
-          "updated_at": "2015-06-22T10:15:54Z",
-          "cartodb_id": 12,
-          "name_greek": "Κρήτη"
-        },
         "coordinates": [
           [
             [
@@ -9220,6 +9256,7 @@
       }
     },
     {
+      "id": "achaia",
       "type": "Feature",
       "properties": {
         "name": "Achaia",
@@ -9313,6 +9350,7 @@
       }
     },
     {
+      "id": "napoli",
       "type": "Feature",
       "properties": { "name": "Napoli", "status": "neutral" },
       "geometry": {
@@ -11248,6 +11286,7 @@
       }
     },
     {
+      "id": "calabria",
       "type": "Feature",
       "properties": { "name": "Calabria", "status": "neutral" },
       "geometry": {
@@ -14443,6 +14482,7 @@
       }
     },
     {
+      "id": "matera",
       "type": "Feature",
       "properties": { "name": "Matera", "status": "neutral" },
       "geometry": {
@@ -15797,6 +15837,7 @@
       }
     },
     {
+      "id": "taranto",
       "type": "Feature",
       "properties": { "name": "Taranto", "status": "neutral" },
       "geometry": {
@@ -17201,6 +17242,7 @@
       }
     },
     {
+      "id": "lecce",
       "type": "Feature",
       "properties": { "name": "Lecce", "status": "neutral" },
       "geometry": {
@@ -18571,6 +18613,7 @@
       }
     },
     {
+      "id": "messina",
       "type": "Feature",
       "properties": { "name": "Messina", "status": "neutral" },
       "geometry": {
@@ -21164,6 +21207,7 @@
       }
     },
     {
+      "id": "siracusa",
       "type": "Feature",
       "properties": { "name": "Siracusa", "status": "neutral" },
       "geometry": {
@@ -22774,6 +22818,7 @@
       }
     },
     {
+      "id": "catania",
       "type": "Feature",
       "properties": { "name": "Catania", "status": "neutral" },
       "geometry": {
@@ -24736,6 +24781,7 @@
       }
     },
     {
+      "id": "agrigento",
       "type": "Feature",
       "properties": { "name": "Agrigento", "status": "neutral" },
       "geometry": {
