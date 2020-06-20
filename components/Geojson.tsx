@@ -55,16 +55,17 @@ const makeOverlay = (coordinates: Coordinates, feature: Feature) => {
   return overlay;
 };
 
+const mapFeatureToOverlay = (feature: Feature) =>
+  (makeCoordinates(feature) as Coordinates[]).map((coordinates) =>
+    makeOverlay(coordinates, feature)
+  );
+
 export const makeOverlays = (features: Feature[]) => {
   const points = features
     .filter(
       ({ geometry: { type } }) => type === "Point" || type === "MultiPoint"
     )
-    .map((feature) =>
-      (makeCoordinates(feature) as Coordinates[]).map((coordinates) =>
-        makeOverlay(coordinates, feature)
-      )
-    )
+    .map(mapFeatureToOverlay)
     .flat()
     .map((overlay, index) => ({
       ...overlay,
@@ -77,11 +78,7 @@ export const makeOverlays = (features: Feature[]) => {
       ({ geometry: { type } }) =>
         type === "LineString" || type === "MultiLineString"
     )
-    .map((feature) =>
-      (makeCoordinates(feature) as Coordinates[]).map((coordinates) =>
-        makeOverlay(coordinates, feature)
-      )
-    )
+    .map(mapFeatureToOverlay)
     .flat()
     .map((overlay, index) => ({
       ...overlay,
@@ -91,11 +88,7 @@ export const makeOverlays = (features: Feature[]) => {
 
   const multipolygons = features
     .filter((f) => f.geometry.type === "MultiPolygon")
-    .map((feature) =>
-      (makeCoordinates(feature) as Coordinates[]).map((coordinates) =>
-        makeOverlay(coordinates, feature)
-      )
-    )
+    .map(mapFeatureToOverlay)
     .flat();
 
   const polygons = features
@@ -148,7 +141,6 @@ const Geojson = ({
               >
                 <IconMarker
                   name={overlay.feature.properties!.type}
-                  png={overlay.feature.properties!.status === "attraction"}
                   color={
                     overlay.feature.properties!.highlight
                       ? COLOR_MAP[
@@ -156,6 +148,7 @@ const Geojson = ({
                         ]
                       : COLOR_MAP[overlay.feature.properties!.status]
                   }
+                  png={overlay.feature.properties!.status === "attraction"}
                 />
               </Marker>
             );
