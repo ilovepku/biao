@@ -6,33 +6,6 @@ export interface InitialRegion {
   latitudeDelta: number;
 }
 
-export interface City {
-  title: string;
-  description: string;
-  color: string;
-  coordinate: LatLng;
-}
-
-export interface Battle {
-  title: string;
-  color: string;
-  coordinate: LatLng;
-  year: number;
-  type: string;
-  location: string;
-  result: string;
-  link: string;
-}
-
-export interface Attraction {
-  title: string;
-  description: string;
-  coordinate: LatLng;
-  type: string;
-  address: string;
-  link: string;
-}
-
 export type GeojsonType = GeoJSON;
 
 interface TimelineItem {
