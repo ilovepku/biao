@@ -104,7 +104,7 @@ const TabViewModal = forwardRef(
         closeSnapPointStraightEnabled={false}
         withOverlay={false}
         HeaderComponent={renderTabBar}
-        onOpen={() => handleIndexChange(index)}
+        onOpened={() => handleIndexChange(index)}
         onClosed={() => setActiveLocations([])}
       >
         <Tabs
