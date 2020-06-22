@@ -7,6 +7,7 @@ import { FAB } from "react-native-paper";
 import { InitialRegion, GeojsonType, Timeline, PointFeature } from "../types";
 import Geojson from "./Geojson";
 import TabViewModal from "./TabViewModal";
+import FabGroup from "./FabGroup";
 import {
   DEFAULT_LATITUDE_DELTA,
   MINI_MARKER_LATITUDE_DELTA_THRESHOLD,
@@ -46,6 +47,13 @@ const Map = ({
     longitudeDelta: latitudeDelta * aspectRadio,
   });
   const [activeLocations, setActiveLocations] = useState<string[]>([]);
+  const [markerFilters, setMarkerFilters] = useState<{
+    [index: string]: boolean;
+  }>({
+    attraction: true,
+    battle: true,
+    city: true,
+  });
 
   useEffect(() => {
     ScreenOrientation.addOrientationChangeListener(() => {
@@ -128,13 +136,26 @@ const Map = ({
       >
         <Geojson geojson={areas} strokeWidth={0} />
 
-        <Geojson
-          geojson={attractions}
-          miniIcon={region.latitudeDelta > MINI_MARKER_LATITUDE_DELTA_THRESHOLD}
-        />
+        {markerFilters.attraction && (
+          <Geojson
+            geojson={attractions}
+            miniIcon={
+              region.latitudeDelta > MINI_MARKER_LATITUDE_DELTA_THRESHOLD
+            }
+          />
+        )}
 
         {!activeLocations.length ? (
-          <Geojson geojson={locations} />
+          <Geojson
+            geojson={{
+              ...locations,
+              features: locations.features.filter((feature: PointFeature) =>
+                Object.keys(markerFilters)
+                  .filter((item) => markerFilters[item])
+                  .includes(feature.properties.type)
+              ),
+            }}
+          />
         ) : (
           <Geojson
             geojson={{
@@ -148,17 +169,22 @@ const Map = ({
       </MapView>
 
       <FAB
-        style={styles.fab}
+        style={[styles.fab, styles.fabTopLeft]}
         icon="skip-backward"
         small
         onPress={handleResetCamera}
       />
 
       <FAB
-        style={styles.fab2}
-        icon="skip-backward"
+        style={[styles.fab, styles.fabBottomLeft]}
+        icon="timeline-text"
         small
         onPress={handleOpenModal}
+      />
+
+      <FabGroup
+        markerFilters={markerFilters}
+        setMarkerFilters={setMarkerFilters}
       />
 
       <TabViewModal
@@ -187,15 +213,22 @@ const styles = StyleSheet.create({
   fab: {
     position: "absolute",
     margin: 16,
-    top: 0,
-    right: 0,
+    width: 35,
+    height: 35,
+    zIndex: 0,
+    backgroundColor: "#FFF",
+    justifyContent: "center",
+    alignItems: "center",
   },
 
-  fab2: {
-    position: "absolute",
-    margin: 16,
+  fabTopLeft: {
+    top: 0,
+    left: 0,
+  },
+
+  fabBottomLeft: {
     bottom: 0,
-    right: 0,
+    left: 0,
   },
 });
 
