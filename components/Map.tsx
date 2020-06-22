@@ -4,17 +4,12 @@ import * as ScreenOrientation from "expo-screen-orientation";
 import MapView from "react-native-maps";
 import { Modalize } from "react-native-modalize";
 import { FAB } from "react-native-paper";
-import {
-  InitialRegion,
-  Attraction,
-  GeojsonType,
-  Timeline,
-  PointFeature,
-} from "../types";
+import { InitialRegion, GeojsonType, Timeline, PointFeature } from "../types";
 import Geojson from "./Geojson";
 import TabViewModal from "./TabViewModal";
 import {
   DEFAULT_LATITUDE_DELTA,
+  MINI_MARKER_LATITUDE_DELTA_THRESHOLD,
   DEFAULT_ANIMATE_DURATION,
   MODAL_HEIGHT_PORTRAIT,
   MODAL_HEIGHT_LANDSCAPE,
@@ -133,18 +128,23 @@ const Map = ({
       >
         <Geojson geojson={areas} strokeWidth={0} />
 
-        <Geojson geojson={attractions} />
-
-        {!activeLocations.length && <Geojson geojson={locations} />}
-
         <Geojson
-          geojson={{
-            ...locations,
-            features: locations.features.filter((feature: PointFeature) =>
-              activeLocations.includes(feature.id as string)
-            ),
-          }}
+          geojson={attractions}
+          miniIcon={region.latitudeDelta > MINI_MARKER_LATITUDE_DELTA_THRESHOLD}
         />
+
+        {!activeLocations.length ? (
+          <Geojson geojson={locations} />
+        ) : (
+          <Geojson
+            geojson={{
+              ...locations,
+              features: locations.features.filter((feature: PointFeature) =>
+                activeLocations.includes(feature.id as string)
+              ),
+            }}
+          />
+        )}
       </MapView>
 
       <FAB

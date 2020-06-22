@@ -3,6 +3,7 @@ import { Marker, Polyline, Polygon, LatLng } from "react-native-maps";
 import { Feature } from "geojson";
 import { GeojsonType } from "../types";
 import IconMarker from "./IconMarker";
+import MiniMarker from "./MiniMarker";
 import { COLOR_MAP } from "../assets/peloponnesian_war/settings";
 
 type LayeredLatLng = LatLng[] | LatLng[][];
@@ -113,6 +114,7 @@ interface Props {
   strokeColor?: string;
   fillColor?: string;
   strokeWidth?: number;
+  miniIcon?: boolean;
 }
 
 const Geojson = ({
@@ -121,6 +123,7 @@ const Geojson = ({
   strokeColor,
   fillColor,
   strokeWidth,
+  miniIcon,
 }: Props) => {
   const overlays = makeOverlays(geojson.features);
   return (
@@ -139,17 +142,21 @@ const Geojson = ({
                 calloutAnchor={{ x: 0, y: 0 }}
                 rotation={45}
               >
-                <IconMarker
-                  name={overlay.feature.properties!.type}
-                  color={
-                    overlay.feature.properties!.highlight
-                      ? COLOR_MAP[
-                          `${overlay.feature.properties!.status}Highlight`
-                        ]
-                      : COLOR_MAP[overlay.feature.properties!.status]
-                  }
-                  png={overlay.feature.properties!.status === "attraction"}
-                />
+                {miniIcon ? (
+                  <MiniMarker />
+                ) : (
+                  <IconMarker
+                    name={overlay.feature.properties!.type}
+                    color={
+                      overlay.feature.properties!.highlight
+                        ? COLOR_MAP[
+                            `${overlay.feature.properties!.status}Highlight`
+                          ]
+                        : COLOR_MAP[overlay.feature.properties!.status]
+                    }
+                    png={overlay.feature.properties!.status === "attraction"}
+                  />
+                )}
               </Marker>
             );
           case "polygon":

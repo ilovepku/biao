@@ -1,6 +1,7 @@
 // settings for react-native-maps
 export const DEFAULT_LATITUDE_DELTA = 1;
 export const DEFAULT_ANIMATE_DURATION = 2000;
+export const MINI_MARKER_LATITUDE_DELTA_THRESHOLD = 1;
 
 // settings for react-native-modalize
 export const MODAL_HEIGHT_PORTRAIT = 275;

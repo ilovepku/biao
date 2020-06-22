@@ -1,7 +1,11 @@
 import React from "react";
 import { StyleSheet, View } from "react-native";
 
-const MiniMarker = ({ color = "#c30b82" }: { color?: string }) => (
+interface Props {
+  color?: string;
+}
+
+const MiniMarker = ({ color = "#c30b82" }: Props) => (
   <View style={[styles.miniIcon, { backgroundColor: color }]} />
 );
 
