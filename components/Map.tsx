@@ -1,7 +1,7 @@
 import React, { useRef, useState, useEffect } from "react";
 import { StyleSheet, Dimensions, View } from "react-native";
 import * as ScreenOrientation from "expo-screen-orientation";
-import MapView from "react-native-maps";
+import MapView, { PROVIDER_GOOGLE } from "react-native-maps";
 import { Modalize } from "react-native-modalize";
 import { FAB } from "react-native-paper";
 import { InitialRegion, GeojsonType, Timeline, PointFeature } from "../types";
@@ -128,8 +128,9 @@ const Map = ({
   return (
     <View style={styles.container} onLayout={handleLayoutChange}>
       <MapView
-        style={styles.map}
         ref={mapRef}
+        style={styles.map}
+        provider={PROVIDER_GOOGLE}
         initialRegion={region}
         mapType="terrain" // add switch / fallback for iOS
         onRegionChangeComplete={(region) => setRegion(region)}

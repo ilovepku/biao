@@ -1,3 +1,5 @@
+import { Platform } from "react-native";
+
 // settings for react-native-maps
 export const DEFAULT_LATITUDE_DELTA = 1;
 export const DEFAULT_ANIMATE_DURATION = 2000;
@@ -6,17 +8,18 @@ export const MINI_MARKER_LATITUDE_DELTA_THRESHOLD = 1;
 // settings for react-native-modalize
 export const MODAL_HEIGHT_PORTRAIT = 275;
 export const MODAL_HEIGHT_LANDSCAPE = 125;
+const EDGE_PADDING = Platform.OS === "ios" ? 50 : 100;
 export const EDGE_PADDING_PORTRAIT = {
-  top: 100,
-  right: 100,
-  bottom: 100 + 2 * MODAL_HEIGHT_PORTRAIT,
-  left: 100,
+  top: EDGE_PADDING,
+  right: EDGE_PADDING,
+  bottom: EDGE_PADDING + MODAL_HEIGHT_PORTRAIT,
+  left: EDGE_PADDING,
 };
 export const EDGE_PADDING_LANDSCAPE = {
-  top: 100,
-  right: 100,
-  bottom: 100 + 2 * MODAL_HEIGHT_LANDSCAPE,
-  left: 100,
+  top: EDGE_PADDING,
+  right: EDGE_PADDING,
+  bottom: EDGE_PADDING + MODAL_HEIGHT_LANDSCAPE,
+  left: EDGE_PADDING,
 };
 
 // settings for react-native-tab-view

@@ -1,9 +1,10 @@
 import React from "react";
-import { Marker, Polyline, Polygon, LatLng } from "react-native-maps";
+import { Marker, Polyline, LatLng } from "react-native-maps";
 import { Feature } from "geojson";
 import { GeojsonType } from "../types";
 import IconMarker from "./IconMarker";
 import MiniMarker from "./MiniMarker";
+import CustomPolygon from "./CustomPolygon";
 import { COLOR_MAP } from "../assets/peloponnesian_war/settings";
 
 type LayeredLatLng = LatLng[] | LatLng[][];
@@ -161,7 +162,7 @@ const Geojson = ({
             );
           case "polygon":
             return (
-              <Polygon
+              <CustomPolygon
                 key={overlay.key}
                 coordinates={overlay.coordinates as LatLng[]}
                 holes={overlay.holes as LatLng[][]}
