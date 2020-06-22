@@ -2,16 +2,15 @@ import React from "react";
 import { StyleSheet, View, Image } from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import getIconPngSource from "../utils/getIconPngSource";
+import { ICON_MAP } from "../settings";
 
-const IconMarker = ({
-  name,
-  color = "#c30b82",
-  png = false,
-}: {
+interface Props {
   name: string;
   color?: string;
   png?: boolean;
-}) => (
+}
+
+const IconMarker = ({ name, color, png = false }: Props) => (
   <View style={[styles.container, { backgroundColor: color }]}>
     {png ? (
       <Image
@@ -22,7 +21,7 @@ const IconMarker = ({
     ) : (
       <MaterialCommunityIcons
         style={styles.icon}
-        name={name}
+        name={ICON_MAP[name]}
         size={16}
         color={"white"}
       />

@@ -1,0 +1,316 @@
+[
+  {
+    "key": "peloponnesian-league-founded",
+    "year": -550,
+    "type": "diplomacy",
+    "title": "Peloponnesian League Founded",
+    "description": "Alliance between Sparta, Corinth, Elis and Tegea which establishes Spartan hegemony over the Peloponnese.",
+    "locations": ["sparta", "corinth", "elis", "tegea"]
+  },
+  {
+    "key": "delian-league-founded",
+    "year": -478,
+    "type": "diplomacy",
+    "title": "Delian League Founded",
+    "description": "Alliance of Greek city-states led by Athens to liberate eastern Greek cities from Persian rule and as a defence to possible revenge attacks from Persia. The League's name derives from its official meeting place, the island of Delos, where congresses were held and where the treasury stood.",
+    "locations": [
+      "delos",
+      "athens",
+      "aegina",
+      "byzantium",
+      "chios",
+      "lesbos",
+      "lindos",
+      "naxos",
+      "paros",
+      "samos",
+      "thasos"
+    ]
+  },
+  {
+    "key": "naxos-revolt",
+    "year": -470,
+    "type": "revolt",
+    "title": "Naxos Revolt from Delian League Put Down",
+    "description": "Attempted secession of Naxos from the Delian League. It was defeated and enslaved in 469 BCE.",
+    "locations": ["naxos"]
+  },
+  {
+    "key": "delian-league-treasury-moved",
+    "year": -454,
+    "type": "diplomacy",
+    "title": "Delian League Treasury Moved to Athens",
+    "description": "Treasury of Delian League removed from Delos to Athens.",
+    "locations": ["delos", "athens"]
+  },
+  {
+    "key": "battle-of-sybota",
+    "year": -433,
+    "type": "naval",
+    "title": "Battle of Sybota",
+    "description": "Stalemate, both Corinth and Corcyra claimed victory",
+    "link": "https://en.wikipedia.org/wiki/Battle_of_Sybota",
+    "locations": ["battle-of-sybota"]
+  },
+  {
+    "key": "battle-of-potidaea",
+    "year": -432,
+    "type": "siege",
+    "title": "Battle of Potidaea",
+    "description": "Athenian victory",
+    "link": "https://en.wikipedia.org/wiki/Battle_of_Potidaea",
+    "locations": ["battle-of-potidaea"]
+  },
+  {
+    "key": "battle-of-spartolos",
+    "year": -429,
+    "type": "battle",
+    "title": "Battle of Spartolos",
+    "description": "Chalcidian victory",
+    "link": "https://en.wikipedia.org/wiki/Battle_of_Spartolos",
+    "locations": ["battle-of-spartolos"]
+  },
+  {
+    "key": "battle-of-rhium",
+    "year": -429,
+    "type": "naval",
+    "title": "Battle of Rhium",
+    "description": "Athenian victory",
+    "link": "https://en.wikipedia.org/wiki/Battle_of_Rhium",
+    "locations": ["battle-of-rhium"]
+  },
+  {
+    "key": "battle-of-naupactus",
+    "year": -429,
+    "type": "naval",
+    "title": "Battle of Naupactus",
+    "description": "Athenian victory",
+    "link": "https://en.wikipedia.org/wiki/Battle_of_Naupactus",
+    "locations": ["battle-of-naupactus"]
+  },
+  {
+    "key": "siege-of-plataea",
+    "year": -429,
+    "type": "siege",
+    "title": "Siege of Plataea",
+    "description": "Theban victory, Plataea razed to the ground",
+    "link": "https://en.wikipedia.org/wiki/Siege_of_Plataea",
+    "locations": ["siege-of-plataea"]
+  },
+  {
+    "key": "mytilenean-revolt",
+    "year": -428,
+    "type": "revolt",
+    "title": "Mytilenean revolt",
+    "description": "Athenian victory",
+    "link": "https://en.wikipedia.org/wiki/Mytilenean_revolt",
+    "locations": ["mytilenean-revolt"]
+  },
+  {
+    "key": "battle-of-tanagra",
+    "year": -426,
+    "type": "battle",
+    "title": "Battle of Tanagra",
+    "description": "Athenian victory",
+    "link": "https://en.wikipedia.org/wiki/Battle_of_Tanagra_(426_BC)",
+    "locations": ["battle-of-tanagra"]
+  },
+  {
+    "key": "aetolian-campaign",
+    "year": -426,
+    "type": "battle",
+    "title": "Aetolian campaign",
+    "description": "Aetolian victory",
+    "link": "https://en.wikipedia.org/wiki/Aetolian_campaign",
+    "locations": ["aetolian-campaign"]
+  },
+  {
+    "key": "battle-of-olpae",
+    "year": -426,
+    "type": "battle",
+    "title": "Battle of Olpae",
+    "description": "Athenian victory",
+    "link": "https://en.wikipedia.org/wiki/Battle_of_Olpae",
+    "locations": ["battle-of-olpae"]
+  },
+  {
+    "key": "battle-of-idomene",
+    "year": -426,
+    "type": "battle",
+    "title": "Battle of Idomene",
+    "description": "Athenian Victory",
+    "link": "https://en.wikipedia.org/wiki/Battle_of_Idomene",
+    "locations": ["battle-of-idomene"]
+  },
+  {
+    "key": "battle-of-pylos",
+    "year": -425,
+    "type": "battle",
+    "title": "Battle of Pylos",
+    "description": "Athenian victory",
+    "link": "https://en.wikipedia.org/wiki/Battle_of_Pylos",
+    "locations": ["battle-of-pylos"]
+  },
+  {
+    "key": "battle-of-sphacteria",
+    "year": -425,
+    "type": "battle",
+    "title": "Battle of Sphacteria",
+    "description": "Athenian victory",
+    "link": "https://en.wikipedia.org/wiki/Battle_of_Sphacteria",
+    "locations": ["battle-of-sphacteria"]
+  },
+  {
+    "key": "battle-of-megara",
+    "year": -424,
+    "type": "battle",
+    "title": "Battle of Megara",
+    "description": "Athenian victory",
+    "link": "https://en.wikipedia.org/wiki/Battle_of_Megara",
+    "locations": ["battle-of-megara"]
+  },
+  {
+    "key": "battle-of-delium",
+    "year": -424,
+    "type": "battle",
+    "title": "Battle of Delium",
+    "description": "Boeotian victory",
+    "link": "https://en.wikipedia.org/wiki/Battle_of_Delium",
+    "locations": ["battle-of-delium"]
+  },
+  {
+    "key": "battle-of-amphipolis",
+    "year": -422,
+    "type": "battle",
+    "title": "Battle of Amphipolis",
+    "description": "Decisive Spartan victory",
+    "link": "https://en.wikipedia.org/wiki/Battle_of_Amphipolis",
+    "locations": ["battle-of-amphipolis"]
+  },
+  {
+    "key": "battle-of-mantinea",
+    "year": -418,
+    "type": "battle",
+    "title": "Battle of Mantinea",
+    "description": "Spartan victory",
+    "link": "https://en.wikipedia.org/wiki/Battle_of_Mantinea_(418_BC)",
+    "locations": ["battle-of-mantinea"]
+  },
+  {
+    "key": "battle-of-hysiae",
+    "year": -417,
+    "type": "siege",
+    "title": "Battle of Hysiae",
+    "description": "Decisive Spartan victory",
+    "link": "https://en.wikipedia.org/wiki/Battle_of_Hysiae_(417_BC)",
+    "locations": ["battle-of-hysiae"]
+  },
+  {
+    "key": "battle-of-orneae",
+    "year": -417,
+    "type": "siege",
+    "title": "Battle of Orneae",
+    "description": "Athenian/Argive Victory",
+    "link": "https://en.wikipedia.org/wiki/Battle_of_Orneae",
+    "locations": ["battle-of-orneae"]
+  },
+  {
+    "key": "siege-of-melos",
+    "year": -416,
+    "type": "siege",
+    "title": "Siege of Melos",
+    "description": "Athenian victory",
+    "link": "https://en.wikipedia.org/wiki/Siege_of_Melos",
+    "locations": ["siege-of-melos"]
+  },
+  {
+    "key": "sicilian-expedition",
+    "year": -415,
+    "type": "battle",
+    "title": "Sicilian Expedition",
+    "description": "Decisive Spartan/Syracusan victory, Athenian expeditionary force completely destroyed",
+    "link": "https://en.wikipedia.org/wiki/Sicilian_Expedition",
+    "locations": ["sicilian-expedition"]
+  },
+  {
+    "key": "battle-of-syme",
+    "year": -411,
+    "type": "naval",
+    "title": "Battle of Syme",
+    "description": "Spartan victory",
+    "link": "https://en.wikipedia.org/wiki/Battle_of_Syme",
+    "locations": ["battle-of-syme"]
+  },
+  {
+    "key": "battle-of-eretria",
+    "year": -411,
+    "type": "naval",
+    "title": "Battle of Eretria",
+    "description": "Spartan victory",
+    "link": "https://en.wikipedia.org/wiki/Battle_of_Eretria",
+    "locations": ["battle-of-eretria"]
+  },
+  {
+    "key": "battle-of-cynossema",
+    "year": -411,
+    "type": "naval",
+    "title": "Battle of Cynossema",
+    "description": "Athenian victory",
+    "link": "https://en.wikipedia.org/wiki/Battle_of_Cynossema",
+    "locations": ["battle-of-cynossema"]
+  },
+  {
+    "key": "battle-of-abydos",
+    "year": -411,
+    "type": "naval",
+    "title": "Battle of Abydos",
+    "description": "Athenian victory",
+    "link": "https://en.wikipedia.org/wiki/Battle_of_Abydos",
+    "locations": ["battle-of-abydos"]
+  },
+  {
+    "key": "battle-of-cyzicus",
+    "year": -410,
+    "type": "naval",
+    "title": "Battle of Cyzicus",
+    "description": "Decisive Athenian victory, Cyzicus and other cities in the region captured by Athens",
+    "link": "https://en.wikipedia.org/wiki/Battle_of_Cyzicus",
+    "locations": ["battle-of-cyzicus"]
+  },
+  {
+    "key": "battle-of-notium",
+    "year": -406,
+    "type": "naval",
+    "title": "Battle of Notium",
+    "description": "Spartan victory",
+    "link": "https://en.wikipedia.org/wiki/Battle_of_Notium",
+    "locations": ["battle-of-notium"]
+  },
+  {
+    "key": "battle-of-mytilene",
+    "year": -406,
+    "type": "naval",
+    "title": "Battle of Mytilene",
+    "description": "Spartan victory",
+    "link": "https://en.wikipedia.org/wiki/Battle_of_Mytilene_(406_BC)",
+    "locations": ["battle-of-mytilene"]
+  },
+  {
+    "key": "battle-of-arginusae",
+    "year": -406,
+    "type": "naval",
+    "title": "Battle of Arginusae",
+    "description": "Athenian victory",
+    "link": "https://en.wikipedia.org/wiki/Battle_of_Arginusae",
+    "locations": ["battle-of-arginusae"]
+  },
+  {
+    "key": "battle-of-aegospotami",
+    "year": -405,
+    "type": "naval",
+    "title": "Battle of Aegospotami",
+    "description": "Decisive Spartan victory: - Athens besieged and then surrendered in March 404 BC, ending the Peloponnesian battle",
+    "link": "https://en.wikipedia.org/wiki/Battle_of_Aegospotami",
+    "locations": ["battle-of-aegospotami"]
+  }
+]
