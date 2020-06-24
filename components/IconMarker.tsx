@@ -23,7 +23,7 @@ const IconMarker = ({ name, color, png = false }: Props) => (
         style={styles.icon}
         name={ICON_MAP[name]}
         size={16}
-        color={"white"}
+        color="white"
       />
     )}
   </View>

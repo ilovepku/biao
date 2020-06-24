@@ -1,13 +1,14 @@
 import React, { useRef, useState, useEffect } from "react";
 import { StyleSheet, Dimensions, View } from "react-native";
 import * as ScreenOrientation from "expo-screen-orientation";
-import MapView, { PROVIDER_GOOGLE } from "react-native-maps";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
+import MapView, { PROVIDER_GOOGLE, MapTypes } from "react-native-maps";
 import { Modalize } from "react-native-modalize";
-import { FAB } from "react-native-paper";
+import { Fab, Button } from "native-base";
 import { InitialRegion, GeojsonType, Timeline, PointFeature } from "../types";
 import Geojson from "./Geojson";
 import TabViewModal from "./TabViewModal";
-import FabGroup from "./FabGroup";
+
 import {
   DEFAULT_LATITUDE_DELTA,
   MINI_MARKER_LATITUDE_DELTA_THRESHOLD,
@@ -46,6 +47,8 @@ const Map = ({
     latitudeDelta,
     longitudeDelta: latitudeDelta * aspectRadio,
   });
+  const [fabActive, setFabActive] = useState({ top: false, bottom: false });
+  const [mapType, setMapType] = useState<MapTypes>("terrain");
   const [activeLocations, setActiveLocations] = useState<string[]>([]);
   const [markerFilters, setMarkerFilters] = useState<{
     [index: string]: boolean;
@@ -125,6 +128,13 @@ const Map = ({
     modalRef.current && modalRef.current.open();
   };
 
+  const handleMapTypeChange = (type: string) => {
+    setMarkerFilters({
+      ...markerFilters,
+      [type]: !markerFilters[type],
+    });
+  };
+
   return (
     <View style={styles.container} onLayout={handleLayoutChange}>
       <MapView
@@ -132,7 +142,7 @@ const Map = ({
         style={styles.map}
         provider={PROVIDER_GOOGLE}
         initialRegion={region}
-        mapType="terrain" // add switch / fallback for iOS
+        mapType={mapType} // add switch / fallback for iOS
         onRegionChangeComplete={(region) => setRegion(region)}
       >
         <Geojson geojson={areas} strokeWidth={0} />
@@ -169,24 +179,105 @@ const Map = ({
         )}
       </MapView>
 
-      <FAB
-        style={[styles.fab, styles.fabTopLeft]}
-        icon="skip-backward"
-        small
-        onPress={handleResetCamera}
-      />
+      <Fab style={styles.fab} position="topLeft" onPress={handleResetCamera}>
+        <MaterialCommunityIcons style={styles.fabIcon} name={"skip-backward"} />
+      </Fab>
 
-      <FAB
-        style={[styles.fab, styles.fabBottomLeft]}
-        icon="timeline-text"
-        small
-        onPress={handleOpenModal}
-      />
+      <Fab
+        style={styles.fab}
+        active={fabActive.top}
+        direction="down"
+        position="topRight"
+        onPress={() => setFabActive({ ...fabActive, top: !fabActive.top })}
+      >
+        <MaterialCommunityIcons
+          style={styles.fabIcon}
+          name={"layers-outline"}
+        />
+        <Button
+          style={
+            mapType === "standard" ? [styles.fab, styles.activeFab] : styles.fab
+          }
+          disabled={mapType === "standard"}
+          onPress={() => setMapType("standard")}
+        >
+          <MaterialCommunityIcons name={"map"} size={24} />
+        </Button>
+        <Button
+          style={
+            mapType === "hybrid" ? [styles.fab, styles.activeFab] : styles.fab
+          }
+          disabled={mapType === "hybrid"}
+          onPress={() => setMapType("hybrid")}
+        >
+          <MaterialCommunityIcons name={"satellite"} size={24} />
+        </Button>
+        <Button
+          style={
+            mapType === "terrain" ? [styles.fab, styles.activeFab] : styles.fab
+          }
+          disabled={mapType === "terrain"}
+          onPress={() => setMapType("terrain")}
+        >
+          <MaterialCommunityIcons name={"terrain"} size={24} />
+        </Button>
+        <Button
+          style={
+            mapType === "none" ? [styles.fab, styles.activeFab] : styles.fab
+          }
+          disabled={mapType === "none"}
+          onPress={() => setMapType("none")}
+        >
+          <MaterialCommunityIcons name={"selection-off"} size={24} />
+        </Button>
+      </Fab>
 
-      <FabGroup
-        markerFilters={markerFilters}
-        setMarkerFilters={setMarkerFilters}
-      />
+      <Fab
+        style={styles.fab}
+        active={fabActive.bottom}
+        direction="up"
+        position="bottomRight"
+        onPress={() =>
+          setFabActive({ ...fabActive, bottom: !fabActive.bottom })
+        }
+      >
+        <MaterialCommunityIcons
+          style={styles.fabIcon}
+          name={
+            Object.values(markerFilters).every((item) => item)
+              ? "filter-outline"
+              : "filter"
+          }
+        />
+        <Button style={styles.fab} onPress={() => handleMapTypeChange("city")}>
+          <MaterialCommunityIcons
+            name={markerFilters.city ? "home" : "home-outline"}
+            size={24}
+          />
+        </Button>
+        <Button
+          style={styles.fab}
+          onPress={() => handleMapTypeChange("battle")}
+        >
+          <MaterialCommunityIcons
+            name={markerFilters.battle ? "skull" : "skull-outline"}
+            size={24}
+          />
+        </Button>
+        <Button
+          style={styles.fab}
+          onPress={() => handleMapTypeChange("attraction")}
+        >
+          <MaterialCommunityIcons
+            name={markerFilters.attraction ? "star" : "star-outline"}
+            size={24}
+          />
+        </Button>
+      </Fab>
+
+      <Fab style={styles.fab} position="bottomLeft" onPress={handleOpenModal}>
+        <MaterialCommunityIcons style={styles.fabIcon} name={"timeline-text"} />
+      </Fab>
 
       <TabViewModal
         snapPoint={
@@ -212,24 +303,18 @@ const styles = StyleSheet.create({
   },
 
   fab: {
-    position: "absolute",
-    margin: 16,
-    width: 35,
-    height: 35,
-    zIndex: 0,
     backgroundColor: "#FFF",
-    justifyContent: "center",
-    alignItems: "center",
+    elevation: 0,
   },
 
-  fabTopLeft: {
-    top: 0,
-    left: 0,
+  fabIcon: {
+    color: "#000",
+    fontSize: 36
   },
 
-  fabBottomLeft: {
-    bottom: 0,
-    left: 0,
+  activeFab: {
+    borderWidth: 1,
+    borderColor: "blue",
   },
 });
 
