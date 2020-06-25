@@ -179,9 +179,9 @@ const Map = ({
         )}
       </MapView>
 
-      <Fab style={styles.fab} position="topLeft" onPress={handleResetCamera}>
+      {/* <Fab style={styles.fab} position="topLeft" onPress={handleResetCamera}>
         <MaterialCommunityIcons style={styles.fabIcon} name={"skip-backward"} />
-      </Fab>
+      </Fab> */}
 
       <Fab
         style={styles.fab}
@@ -309,7 +309,7 @@ const styles = StyleSheet.create({
 
   fabIcon: {
     color: "#000",
-    fontSize: 36
+    fontSize: 36,
   },
 
   activeFab: {

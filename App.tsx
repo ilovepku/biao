@@ -1,36 +1,24 @@
 import React from "react";
-import { StyleSheet, View } from "react-native";
-import * as ScreenOrientation from "expo-screen-orientation";
+import { createDrawerNavigator } from "@react-navigation/drawer";
+import { NavigationContainer } from "@react-navigation/native";
 
-import { INITIAL_REGION } from "./assets/peloponnesian_war/settings";
-import LOCATIONS from "./assets/peloponnesian_war/locations.json";
-import AREAS from "./assets/peloponnesian_war/areas.json";
-import ATTRACTIONS from "./assets/peloponnesian_war/attractions.json";
-import TIMELINE from "./assets/peloponnesian_war/timeline.json";
+import MapScreen from "./components/MapScreen";
+import AboutScreen from "./components/AboutScreen";
 
-import Map from "./components/Map";
+export type DrawerParamList = {
+  Map: undefined;
+  About: undefined
+};
 
-ScreenOrientation.unlockAsync();
+const Drawer = createDrawerNavigator<DrawerParamList>();
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Map
-        initialRegion={INITIAL_REGION}
-        locations={LOCATIONS}
-        attractions={ATTRACTIONS}
-        timeline={TIMELINE}
-        areas={AREAS}
-      />
-    </View>
+    <NavigationContainer>
+      <Drawer.Navigator initialRouteName="Map">
+        <Drawer.Screen name="Map" component={MapScreen} />
+        <Drawer.Screen name="About" component={AboutScreen} />
+      </Drawer.Navigator>
+    </NavigationContainer>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-});
