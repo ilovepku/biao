@@ -179,10 +179,6 @@ const Map = ({
         )}
       </MapView>
 
-      {/* <Fab style={styles.fab} position="topLeft" onPress={handleResetCamera}>
-        <MaterialCommunityIcons style={styles.fabIcon} name={"skip-backward"} />
-      </Fab> */}
-
       <Fab
         style={styles.fab}
         active={fabActive.top}
@@ -194,42 +190,23 @@ const Map = ({
           style={styles.fabIcon}
           name={"layers-outline"}
         />
-        <Button
-          style={
-            mapType === "standard" ? [styles.fab, styles.activeFab] : styles.fab
-          }
-          disabled={mapType === "standard"}
-          onPress={() => setMapType("standard")}
-        >
-          <MaterialCommunityIcons name={"map"} size={24} />
-        </Button>
-        <Button
-          style={
-            mapType === "hybrid" ? [styles.fab, styles.activeFab] : styles.fab
-          }
-          disabled={mapType === "hybrid"}
-          onPress={() => setMapType("hybrid")}
-        >
-          <MaterialCommunityIcons name={"satellite"} size={24} />
-        </Button>
-        <Button
-          style={
-            mapType === "terrain" ? [styles.fab, styles.activeFab] : styles.fab
-          }
-          disabled={mapType === "terrain"}
-          onPress={() => setMapType("terrain")}
-        >
-          <MaterialCommunityIcons name={"terrain"} size={24} />
-        </Button>
-        <Button
-          style={
-            mapType === "none" ? [styles.fab, styles.activeFab] : styles.fab
-          }
-          disabled={mapType === "none"}
-          onPress={() => setMapType("none")}
-        >
-          <MaterialCommunityIcons name={"selection-off"} size={24} />
-        </Button>
+        {[
+          { name: "standard", icon: "map" },
+          { name: "hybrid", icon: "satellite" },
+          { name: "terrain", icon: "terrain" },
+          { name: "none", icon: "selection-off" },
+        ].map(({ name, icon }) => (
+          <Button
+            key={`mapType-${name}`}
+            style={
+              mapType === name ? [styles.fab, styles.activeFab] : styles.fab
+            }
+            disabled={mapType === name}
+            onPress={() => setMapType(name as MapTypes)}
+          >
+            <MaterialCommunityIcons name={icon} size={24} />
+          </Button>
+        ))}
       </Fab>
 
       <Fab
@@ -249,30 +226,22 @@ const Map = ({
               : "filter"
           }
         />
-        <Button style={styles.fab} onPress={() => handleMapTypeChange("city")}>
-          <MaterialCommunityIcons
-            name={markerFilters.city ? "home" : "home-outline"}
-            size={24}
-          />
-        </Button>
-        <Button
-          style={styles.fab}
-          onPress={() => handleMapTypeChange("battle")}
-        >
-          <MaterialCommunityIcons
-            name={markerFilters.battle ? "skull" : "skull-outline"}
-            size={24}
-          />
-        </Button>
-        <Button
-          style={styles.fab}
-          onPress={() => handleMapTypeChange("attraction")}
-        >
-          <MaterialCommunityIcons
-            name={markerFilters.attraction ? "star" : "star-outline"}
-            size={24}
-          />
-        </Button>
+        {[
+          { name: "city", icon: "home-outline", iconActive: "home" },
+          { name: "battle", icon: "skull-outline", iconActive: "skull" },
+          { name: "attraction", icon: "star-outline", iconActive: "star" },
+        ].map(({ name, icon, iconActive }) => (
+          <Button
+            key={`filter-${name}`}
+            style={styles.fab}
+            onPress={() => handleMapTypeChange(name)}
+          >
+            <MaterialCommunityIcons
+              name={markerFilters[name] ? iconActive : icon}
+              size={24}
+            />
+          </Button>
+        ))}
       </Fab>
 
       <Fab style={styles.fab} position="bottomLeft" onPress={handleOpenModal}>
@@ -309,7 +278,6 @@ const styles = StyleSheet.create({
 
   fabIcon: {
     color: "#000",
-    fontSize: 36,
   },
 
   activeFab: {

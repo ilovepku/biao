@@ -56,7 +56,6 @@ const styles = StyleSheet.create({
 
   fabIcon: {
     color: "#000",
-    fontSize: 36,
   },
 });
 

@@ -52,7 +52,7 @@ const AboutScreen = ({ navigation }: Props) => (
     <Header>
       <Left>
         <Button transparent onPress={() => navigation.goBack()}>
-          <Ionicons name="ios-arrow-back" size={24} color="white" />
+          <Ionicons name="ios-arrow-back" size={24} color="black" />
         </Button>
       </Left>
       <Body />
@@ -106,7 +106,7 @@ const AboutScreen = ({ navigation }: Props) => (
 
       {LIBRARIES.map(({ name, url }, index, { length }) => (
         <ListItem
-          key={name}
+          key={`library-${name}`}
           icon
           last={index === length - 1}
           onPress={() => {
