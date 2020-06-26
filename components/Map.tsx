@@ -147,7 +147,7 @@ const Map = ({
       >
         <Geojson geojson={areas} strokeWidth={0} />
 
-        {markerFilters.attraction && (
+        {markerFilters.attraction && !activeLocations.length && (
           <Geojson
             geojson={attractions}
             miniIcon={
