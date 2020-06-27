@@ -4,15 +4,15 @@ import { Text, View, Platform, StyleSheet } from "react-native";
 const isAndroid = Platform.OS === "android";
 
 interface Props {
-  route: { title: string; description: string };
+  route: { title: string; subtitle: string; description: string };
 }
 
-const TabRoute = ({ route: { title, description } }: Props) => {
+const TabRoute = ({ route: { title, subtitle, description } }: Props) => {
   return (
     <View style={styles.route}>
       <View style={styles.content__header}>
         <Text style={styles.content__heading}>{title}</Text>
-        {/* <Text style={styles.content__subheading}>{title}</Text> */}
+        <Text style={styles.content__subheading}>{subtitle}</Text>
       </View>
 
       <View style={styles.content__inside}>

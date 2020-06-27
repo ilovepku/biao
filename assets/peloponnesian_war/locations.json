@@ -44,6 +44,47 @@
       }
     },
     {
+      "id": "megara",
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [23.344444, 37.996389] },
+      "properties": {
+        "name": "Megara",
+        "type": "city",
+        "status": "peloponnesian"
+      }
+    },
+    {
+      "id": "vergina",
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [22.316667, 40.483333] },
+      "properties": {
+        "name": "Vergina",
+        "description": "Capital of Macedon",
+        "type": "city",
+        "status": "peloponnesian"
+      }
+    },
+    {
+      "id": "olynthus",
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [23.354, 40.296] },
+      "properties": {
+        "name": "Olynthus",
+        "type": "city",
+        "status": "peloponnesian"
+      }
+    },
+    {
+      "id": "thebes",
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [23.316667, 38.316667] },
+      "properties": {
+        "name": "Thebes",
+        "type": "city",
+        "status": "peloponnesian"
+      }
+    },
+    {
       "id": "delos",
       "type": "Feature",
       "geometry": { "type": "Point", "coordinates": [25.271111, 37.393333] },
@@ -120,6 +161,12 @@
       "type": "Feature",
       "geometry": { "type": "Point", "coordinates": [24.65, 40.683333] },
       "properties": { "name": "Thasos", "type": "city", "status": "delian" }
+    },
+    {
+      "id": "corcyra",
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [19.866667, 39.583333] },
+      "properties": { "name": "Corcyra", "type": "city", "status": "delian" }
     },
     {
       "id": "battle-of-sybota",

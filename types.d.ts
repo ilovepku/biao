@@ -13,6 +13,7 @@ interface TimelineItem {
   year: number;
   type: string;
   title: string;
+  subtitle: string;
   description: string;
   locations: string[];
 }
