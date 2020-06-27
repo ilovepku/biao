@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 import { StyleSheet, View, Image } from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import getIconPngSource from "../utils/getIconPngSource";
@@ -10,7 +10,7 @@ interface Props {
   png?: boolean;
 }
 
-const IconMarker = ({ name, color, png = false }: Props) => (
+const IconMarker = memo(({ name, color, png = false }: Props) => (
   <View style={[styles.container, { backgroundColor: color }]}>
     {png ? (
       <Image
@@ -27,7 +27,7 @@ const IconMarker = ({ name, color, png = false }: Props) => (
       />
     )}
   </View>
-);
+));
 
 const styles = StyleSheet.create({
   container: {

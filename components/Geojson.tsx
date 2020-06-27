@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 import { Marker, Polyline, LatLng } from "react-native-maps";
 import { Feature } from "geojson";
 import { GeojsonType } from "../types";
@@ -118,78 +118,80 @@ interface Props {
   miniIcon?: boolean;
 }
 
-const Geojson = ({
-  geojson,
-  color,
-  strokeColor,
-  fillColor,
-  strokeWidth,
-  miniIcon,
-}: Props) => {
-  const overlays = makeOverlays(geojson.features);
-  return (
-    <>
-      {overlays.map((overlay) => {
-        switch (overlay.type) {
-          case "point":
-            return (
-              <Marker
-                key={overlay.key}
-                title={overlay.feature.properties!.name as string}
-                description={overlay.feature.properties!.description}
-                pinColor={color}
-                coordinate={overlay.coordinates as LatLng}
-                anchor={{ x: 1, y: 1 }}
-                calloutAnchor={{ x: 0, y: 0 }}
-                rotation={45}
-              >
-                {miniIcon ? (
-                  <MiniMarker />
-                ) : (
-                  <IconMarker
-                    name={overlay.feature.properties!.type}
-                    color={
-                      overlay.feature.properties!.highlight
-                        ? COLOR_MAP[
-                            `${overlay.feature.properties!.status}Highlight`
-                          ]
-                        : COLOR_MAP[overlay.feature.properties!.status]
-                    }
-                    png={overlay.feature.properties!.status === "attraction"}
-                  />
-                )}
-              </Marker>
-            );
-          case "polygon":
-            return (
-              <CustomPolygon
-                key={overlay.key}
-                coordinates={overlay.coordinates as LatLng[]}
-                holes={overlay.holes as LatLng[][]}
-                strokeColor={strokeColor}
-                fillColor={
-                  fillColor
-                    ? fillColor
-                    : COLOR_MAP[`${overlay.feature.properties!.status}Area`]
-                }
-                strokeWidth={strokeWidth}
-              />
-            );
-          case "polyline":
-            return (
-              <Polyline
-                key={overlay.key}
-                coordinates={overlay.coordinates as LatLng[]}
-                strokeColor={strokeColor}
-                strokeWidth={strokeWidth}
-              />
-            );
-          default:
-            return null;
-        }
-      })}
-    </>
-  );
-};
+const Geojson = memo(
+  ({
+    geojson,
+    color,
+    strokeColor,
+    fillColor,
+    strokeWidth,
+    miniIcon,
+  }: Props) => {
+    const overlays = makeOverlays(geojson.features);
+    return (
+      <>
+        {overlays.map((overlay) => {
+          switch (overlay.type) {
+            case "point":
+              return (
+                <Marker
+                  key={overlay.key}
+                  title={overlay.feature.properties!.name as string}
+                  description={overlay.feature.properties!.description}
+                  pinColor={color}
+                  coordinate={overlay.coordinates as LatLng}
+                  anchor={{ x: 1, y: 1 }}
+                  calloutAnchor={{ x: 0, y: 0 }}
+                  rotation={45}
+                >
+                  {miniIcon ? (
+                    <MiniMarker />
+                  ) : (
+                    <IconMarker
+                      name={overlay.feature.properties!.type}
+                      color={
+                        overlay.feature.properties!.highlight
+                          ? COLOR_MAP[
+                              `${overlay.feature.properties!.status}Highlight`
+                            ]
+                          : COLOR_MAP[overlay.feature.properties!.status]
+                      }
+                      png={overlay.feature.properties!.status === "attraction"}
+                    />
+                  )}
+                </Marker>
+              );
+            case "polygon":
+              return (
+                <CustomPolygon
+                  key={overlay.key}
+                  coordinates={overlay.coordinates as LatLng[]}
+                  holes={overlay.holes as LatLng[][]}
+                  strokeColor={strokeColor}
+                  fillColor={
+                    fillColor
+                      ? fillColor
+                      : COLOR_MAP[`${overlay.feature.properties!.status}Area`]
+                  }
+                  strokeWidth={strokeWidth}
+                />
+              );
+            case "polyline":
+              return (
+                <Polyline
+                  key={overlay.key}
+                  coordinates={overlay.coordinates as LatLng[]}
+                  strokeColor={strokeColor}
+                  strokeWidth={strokeWidth}
+                />
+              );
+            default:
+              return null;
+          }
+        })}
+      </>
+    );
+  }
+);
 
 export default Geojson;
