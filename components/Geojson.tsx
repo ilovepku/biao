@@ -143,6 +143,7 @@ const Geojson = memo(
                   anchor={{ x: 1, y: 1 }}
                   calloutAnchor={{ x: 0, y: 0 }}
                   rotation={45}
+                  tracksViewChanges={false}
                 >
                   {miniIcon ? (
                     <MiniMarker />
