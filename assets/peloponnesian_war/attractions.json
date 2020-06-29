@@ -83,14 +83,14 @@
       }
     },
     {
-      "id": "the-acropolis-of-sparta",
+      "id": "acropolis-of-sparta",
       "type": "Feature",
       "geometry": {
         "type": "Point",
         "coordinates": [22.4244179, 37.08229860000001]
       },
       "properties": {
-        "name": "The Acropolis of Sparta",
+        "name": "Acropolis of Sparta",
         "type": "ruins",
         "status": "attraction",
         "description": "Remains of the temple of Athena Chalkioikos on the top of the Acropolis and a large Byzantine Basilica dated to the 10th century A.D. On the south side of the acropolis lies an ancient theater dated to the early imperial period. It preserves the orchestra and part of the cavea. Excavations carried out by the British Archaeological School of Athens gave evidence of decorated shops that served people attending theatrical performances.",
@@ -190,7 +190,7 @@
       }
     },
     {
-      "name": "archaeological-site-of-olympia",
+      "id": "archaeological-site-of-olympia",
       "type": "Feature",
       "geometry": { "type": "Point", "coordinates": [21.6298796, 37.6384588] },
       "properties": {
