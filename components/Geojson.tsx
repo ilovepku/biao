@@ -157,7 +157,6 @@ const Geojson = memo(
                             ]
                           : COLOR_MAP[overlay.feature.properties!.status]
                       }
-                      png={overlay.feature.properties!.status === "attraction"}
                     />
                   )}
                 </Marker>

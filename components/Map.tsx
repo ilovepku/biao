@@ -2,16 +2,18 @@ import React, { useRef, useState, useEffect } from "react";
 import { StyleSheet, Dimensions, View } from "react-native";
 import * as ScreenOrientation from "expo-screen-orientation";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
-import MapView, { PROVIDER_GOOGLE, MapTypes } from "react-native-maps";
+import MapView, { PROVIDER_GOOGLE, MapTypes, Marker } from "react-native-maps";
+import ClusteredMapView from "react-native-map-clustering";
 import { Modalize } from "react-native-modalize";
 import { Fab, Button } from "native-base";
 import { InitialRegion, GeojsonType, Timeline, PointFeature } from "../types";
+import { COLOR_MAP } from "../assets/peloponnesian_war/settings";
 import Geojson from "./Geojson";
+import IconMarker from "./IconMarker";
 import TabViewModal from "./TabViewModal";
 
 import {
   DEFAULT_LATITUDE_DELTA,
-  MINI_MARKER_LATITUDE_DELTA_THRESHOLD,
   DEFAULT_ANIMATE_DURATION,
   MODAL_HEIGHT_PORTRAIT,
   MODAL_HEIGHT_LANDSCAPE,
@@ -23,7 +25,6 @@ interface Props {
   initialRegion: InitialRegion;
   locations: GeojsonType;
   areas: GeojsonType;
-  attractions: GeojsonType;
   timeline: Timeline;
 }
 
@@ -31,7 +32,6 @@ const Map = ({
   initialRegion: { latitude, longitude, latitudeDelta },
   locations,
   areas,
-  attractions,
   timeline,
 }: Props) => {
   const isInitialMount = useRef(true);
@@ -53,7 +53,6 @@ const Map = ({
   const [markerFilters, setMarkerFilters] = useState<{
     [index: string]: boolean;
   }>({
-    attraction: true,
     battle: true,
     city: true,
   });
@@ -137,47 +136,56 @@ const Map = ({
 
   return (
     <View style={styles.container} onLayout={handleLayoutChange}>
-      <MapView
+      <ClusteredMapView
         ref={mapRef}
         style={styles.map}
         provider={PROVIDER_GOOGLE}
         initialRegion={region}
         mapType={mapType} // add switch / fallback for iOS
         onRegionChangeComplete={(region) => setRegion(region)}
+        radius={10}
       >
         <Geojson geojson={areas} strokeWidth={0} />
 
-        {markerFilters.attraction && !activeLocations.length && (
-          <Geojson
-            geojson={attractions}
-            miniIcon={
-              region.latitudeDelta > MINI_MARKER_LATITUDE_DELTA_THRESHOLD
-            }
-          />
-        )}
-
-        {!activeLocations.length ? (
-          <Geojson
-            geojson={{
-              ...locations,
-              features: locations.features.filter((feature: PointFeature) =>
-                Object.keys(markerFilters)
+        {locations.features
+          .filter((feature: PointFeature) =>
+            !activeLocations.length
+              ? Object.keys(markerFilters)
                   .filter((item) => markerFilters[item])
                   .includes(feature.properties.type)
-              ),
-            }}
-          />
-        ) : (
-          <Geojson
-            geojson={{
-              ...locations,
-              features: locations.features.filter((feature: PointFeature) =>
-                activeLocations.includes(feature.id as string)
-              ),
-            }}
-          />
-        )}
-      </MapView>
+              : activeLocations.includes(feature.id as string)
+          )
+          .map(
+            ({
+              id,
+              geometry: { coordinates },
+              properties: { name, type, description, highlight, status },
+            }: PointFeature) => (
+              <Marker
+                key={id}
+                title={name}
+                description={description}
+                coordinate={{
+                  latitude: coordinates[1],
+                  longitude: coordinates[0],
+                }}
+                anchor={{ x: 1, y: 1 }}
+                calloutAnchor={{ x: 0, y: 0 }}
+                rotation={45}
+                tracksViewChanges={false}
+              >
+                <IconMarker
+                  name={type}
+                  color={
+                    highlight
+                      ? COLOR_MAP[`${status}Highlight`]
+                      : COLOR_MAP[status]
+                  }
+                />
+              </Marker>
+            )
+          )}
+      </ClusteredMapView>
 
       <Fab
         style={styles.fab}
@@ -229,7 +237,6 @@ const Map = ({
         {[
           { name: "city", icon: "home-outline", iconActive: "home" },
           { name: "battle", icon: "skull-outline", iconActive: "skull" },
-          { name: "attraction", icon: "star-outline", iconActive: "star" },
         ].map(({ name, icon, iconActive }) => (
           <Button
             key={`filter-${name}`}

@@ -8,7 +8,6 @@ import { DrawerParamList } from "../App";
 import { INITIAL_REGION } from "../assets/peloponnesian_war/settings";
 import LOCATIONS from "../assets/peloponnesian_war/locations.json";
 import AREAS from "../assets/peloponnesian_war/areas.json";
-import ATTRACTIONS from "../assets/peloponnesian_war/attractions.json";
 import TIMELINE from "../assets/peloponnesian_war/timeline.json";
 
 import Map from "./Map";
@@ -27,7 +26,6 @@ const MapScreen = ({ navigation }: Props) => {
       <Map
         initialRegion={INITIAL_REGION}
         locations={LOCATIONS}
-        attractions={ATTRACTIONS}
         timeline={TIMELINE}
         areas={AREAS}
       />
