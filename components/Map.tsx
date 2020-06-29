@@ -8,7 +8,7 @@ import { Modalize } from "react-native-modalize";
 import { Fab, Button } from "native-base";
 import { InitialRegion, GeojsonType, Timeline, PointFeature } from "../types";
 import { COLOR_MAP } from "../assets/peloponnesian_war/settings";
-import Geojson from "./Geojson";
+import PolygonGeojson from "./PolygonGeojson";
 import IconMarker from "./IconMarker";
 import TabViewModal from "./TabViewModal";
 
@@ -145,7 +145,7 @@ const Map = ({
         onRegionChangeComplete={(region) => setRegion(region)}
         radius={10}
       >
-        <Geojson geojson={areas} strokeWidth={0} />
+        <PolygonGeojson geojson={areas} strokeWidth={0} />
 
         {locations.features
           .filter((feature: PointFeature) =>
