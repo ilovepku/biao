@@ -58,7 +58,7 @@ const TabViewModal = forwardRef(
         >
           <View style={styles.tabbar__heading}>
             <Text style={styles.tabbar__headingText}>
-              Timeline of the Peloponnesian War (431−404 BC))
+              Timeline of the Peloponnesian War (431−404 BC)
             </Text>
             {/* dynamic name from props */}
           </View>
