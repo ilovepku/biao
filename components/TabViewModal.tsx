@@ -48,7 +48,7 @@ const TabViewModal = forwardRef(
                 {
                   translateY: scrollY.interpolate({
                     inputRange: [0, 100],
-                    outputRange: [0, -HEADER_COLLAPSE],
+                    outputRange: [0, 0],
                     extrapolate: "clamp",
                   }),
                 },
