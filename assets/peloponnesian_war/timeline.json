@@ -91,13 +91,13 @@
     },
     "links": [
       {
-        "name": "Battles of Rhium and Naupactus",
-        "icon": "link",
+        "name": "Battles of Rhium",
+        "icon": "wikipedia-w",
         "url": "https://en.wikipedia.org/wiki/Battle_of_Rhium"
       },
       {
         "name": "Battles of Naupactus",
-        "icon": "link",
+        "icon": "wikipedia-w",
         "url": "https://en.wikipedia.org/wiki/Battle_of_Naupactus"
       }
     ],
@@ -193,9 +193,14 @@
     },
     "links": [
       {
-        "name": "Battles of Pylos and Sphacteria",
+        "name": "Battles of Pylos",
         "icon": "wikipedia-w",
-        "url": "https://www.livius.org/articles/battle/sphacteria/"
+        "url": "https://en.wikipedia.org/wiki/Battle_of_Pylos"
+      },
+      {
+        "name": "Battles of Sphacteria",
+        "icon": "wikipedia-w",
+        "url": "https://en.wikipedia.org/wiki/Battle_of_Sphacteria"
       }
     ],
     "locations": ["battle-of-pylos", "battle-of-sphacteria", "athens", "sparta"]
@@ -273,7 +278,7 @@
     },
     "links": [
       {
-        "name": "Battle of Mantinea (418 BC)",
+        "name": "Battle of Mantinea",
         "icon": "wikipedia-w",
         "url": "https://en.wikipedia.org/wiki/Battle_of_Mantinea_(418_BC)"
       }
@@ -340,9 +345,14 @@
     },
     "links": [
       {
-        "name": "Battles of Cynossema and Abydos",
+        "name": "Battles of Cynossema",
         "icon": "wikipedia-w",
         "url": "https://en.wikipedia.org/wiki/Battle_of_Cynossema"
+      },
+      {
+        "name": "Battle of Abydos",
+        "icon": "wikipedia-w",
+        "url": "https://en.wikipedia.org/wiki/Battle_of_Abydos"
       }
     ],
     "locations": ["battle-of-cynossema", "battle-of-abydos", "athens", "sparta"]
