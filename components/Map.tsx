@@ -1,32 +1,34 @@
 import React, { useRef, useState, useEffect } from "react";
-import { StyleSheet, Dimensions, View } from "react-native";
-import * as ScreenOrientation from "expo-screen-orientation";
+import { StyleSheet, View, Dimensions } from "react-native";
+import { useSelector } from "react-redux";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import MapView, { PROVIDER_GOOGLE, MapTypes, Marker } from "react-native-maps";
 import ClusteredMapView from "react-native-map-clustering";
 import { Modalize } from "react-native-modalize";
 import { Fab, Button } from "native-base";
+
+import { RootState } from "../redux/store";
 import { InitialRegion, GeojsonType, Timeline, PointFeature } from "../types";
+import {
+  DEFAULT_LATITUDE_DELTA,
+  DEFAULT_ANIMATE_DURATION,
+  EDGE_PADDING_PORTRAIT,
+  EDGE_PADDING_LANDSCAPE,
+} from "../settings";
 import { COLOR_MAP } from "../assets/peloponnesian_war/settings";
 import PolygonGeojson from "./PolygonGeojson";
 import IconMarker from "./IconMarker";
 import TabViewModal from "./TabViewModal";
 
-import {
-  DEFAULT_LATITUDE_DELTA,
-  DEFAULT_ANIMATE_DURATION,
-  MODAL_HEIGHT_PORTRAIT,
-  MODAL_HEIGHT_LANDSCAPE,
-  EDGE_PADDING_PORTRAIT,
-  EDGE_PADDING_LANDSCAPE,
-} from "../settings";
+const { width, height } = Dimensions.get("window");
+const aspectRatio = width / height;
 
-interface Props {
+type Props = {
   initialRegion: InitialRegion;
   locations: GeojsonType;
   areas: GeojsonType;
   timeline: Timeline;
-}
+};
 
 const Map = ({
   initialRegion: { latitude, longitude, latitudeDelta },
@@ -34,22 +36,27 @@ const Map = ({
   areas,
   timeline,
 }: Props) => {
+  const { orientation, modalPosition } = useSelector(
+    (state: RootState) => state
+  );
+
   const isInitialMount = useRef(true);
   const mapRef = useRef<MapView>(null);
   const modalRef = useRef<Modalize>(null);
 
-  const [orientation, setOrientation] = useState(0);
-  const [viewport, setViewport] = useState(Dimensions.get("window"));
-  const aspectRadio = viewport.width / viewport.height;
   const [region, setRegion] = useState({
     latitude,
     longitude,
     latitudeDelta,
-    longitudeDelta: latitudeDelta * aspectRadio,
+    longitudeDelta: latitudeDelta * aspectRatio,
   });
-  const [fabActive, setFabActive] = useState({ top: false, bottom: false });
+  // active map type
   const [mapType, setMapType] = useState<MapTypes>("terrain");
+  // active timeline locations
   const [activeLocations, setActiveLocations] = useState<string[]>([]);
+  // active fab popups
+  const [fabActive, setFabActive] = useState({ top: false, bottom: false });
+  // active marker types
   const [markerFilters, setMarkerFilters] = useState<{
     [index: string]: boolean;
   }>({
@@ -57,45 +64,48 @@ const Map = ({
     city: true,
   });
 
+  // persist (initial) modal position after orientation change (top and closed auto kept)
   useEffect(() => {
-    ScreenOrientation.addOrientationChangeListener(() => {
-      ScreenOrientation.getOrientationAsync().then((orientation) =>
-        setOrientation(orientation)
-      );
-    });
-    return () => ScreenOrientation.removeOrientationChangeListeners();
-  }, []);
+    modalPosition === "initial" && modalRef.current && modalRef.current.open();
+  }, [orientation]);
 
+  const handleMapTypeChange = (type: string) => {
+    setMarkerFilters({
+      ...markerFilters,
+      [type]: !markerFilters[type],
+    });
+  };
+
+  const handleOpenModal = () => {
+    modalRef.current && modalRef.current.open();
+  };
+
+  // fit map to active location markers on activeLocations change
   useEffect(() => {
     if (isInitialMount.current) {
       isInitialMount.current = false;
     } else {
-      let coordinates;
+      let features = locations.features;
       if (activeLocations.length) {
-        coordinates = activeLocations
+        features = activeLocations
           .map((location) =>
-            locations.features.filter(
-              (feature: PointFeature) => feature.id === location
-            )
+            features.filter((feature: PointFeature) => feature.id === location)
           )
-          .flat()
-          .map((feature) => ({
-            latitude: feature.geometry.coordinates[1],
-            longitude: feature.geometry.coordinates[0],
-          }));
-      } else {
-        coordinates = locations.features.map((feature: PointFeature) => ({
-          latitude: feature.geometry.coordinates[1],
-          longitude: feature.geometry.coordinates[0],
-        }));
+          .flat();
       }
+      const coordinates = features.map((feature: PointFeature) => ({
+        latitude: feature.geometry.coordinates[1],
+        longitude: feature.geometry.coordinates[0],
+      }));
+
+      // use animateToRegion method instead of fitToCoordinates with only 1 active location to avoid over zooming
       if (activeLocations.length === 1) {
         mapRef.current &&
           mapRef.current.animateToRegion(
             {
               ...coordinates[0],
               latitudeDelta: DEFAULT_LATITUDE_DELTA,
-              longitudeDelta: DEFAULT_LATITUDE_DELTA * aspectRadio,
+              longitudeDelta: DEFAULT_LATITUDE_DELTA * aspectRatio,
             },
             DEFAULT_ANIMATE_DURATION
           );
@@ -114,36 +124,22 @@ const Map = ({
     };
   }, [activeLocations]);
 
-  const handleLayoutChange = () => {
-    setViewport(Dimensions.get("window"));
-  };
-
+  // @TODO: reset map to initialRegion (unused)
   const handleResetCamera = () => {
     setActiveLocations([]);
     modalRef.current && modalRef.current.close();
   };
 
-  const handleOpenModal = () => {
-    modalRef.current && modalRef.current.open();
-  };
-
-  const handleMapTypeChange = (type: string) => {
-    setMarkerFilters({
-      ...markerFilters,
-      [type]: !markerFilters[type],
-    });
-  };
-
   return (
-    <View style={styles.container} onLayout={handleLayoutChange}>
+    <View style={styles.container}>
       <ClusteredMapView
         ref={mapRef}
         style={styles.map}
         provider={PROVIDER_GOOGLE}
         initialRegion={region}
-        mapType={mapType} // add switch / fallback for iOS
+        mapType={mapType}
         onRegionChangeComplete={(region) => setRegion(region)}
-        radius={10}
+        radius={10} // SuperCluster radius
       >
         <PolygonGeojson geojson={areas} strokeWidth={0} />
 
@@ -210,7 +206,10 @@ const Map = ({
               mapType === name ? [styles.fab, styles.activeFab] : styles.fab
             }
             disabled={mapType === name}
-            onPress={() => setMapType(name as MapTypes)}
+            onPress={() => {
+              setMapType(name as MapTypes);
+              setFabActive({ ...fabActive, top: !fabActive.top });
+            }}
           >
             <MaterialCommunityIcons name={icon} size={24} />
           </Button>
@@ -256,11 +255,6 @@ const Map = ({
       </Fab>
 
       <TabViewModal
-        snapPoint={
-          orientation === 3 || orientation === 4 // orientation is landscape
-            ? MODAL_HEIGHT_LANDSCAPE
-            : MODAL_HEIGHT_PORTRAIT
-        }
         tabRoutes={timeline}
         setActiveLocations={setActiveLocations}
         ref={modalRef}

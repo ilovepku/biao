@@ -4,8 +4,6 @@ import { TabView, SceneMap } from "react-native-tab-view";
 import { Timeline } from "../types";
 import TabRoute from "./TabRoute";
 
-const { width } = Dimensions.get("window");
-
 import { HEADER_HEIGHT } from "../settings";
 
 interface Props {
@@ -28,7 +26,7 @@ const Tabs = memo(({ tabRoutes, active, onIndexChange }: Props) => {
       onIndexChange={onIndexChange}
       renderScene={renderScene}
       renderTabBar={() => null}
-      initialLayout={{ width }}
+      initialLayout={{ width: Dimensions.get("window").width }}
       sceneContainerStyle={{ top: HEADER_HEIGHT }}
     />
   );
