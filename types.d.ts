@@ -1,5 +1,10 @@
 import { LatLng } from "react-native-maps";
 
+export type DrawerParamList = {
+  Map: undefined;
+  About: undefined;
+};
+
 export interface InitialRegion {
   latitude: number;
   longitude: number;
@@ -14,7 +19,7 @@ interface TimelineItem {
   type: string;
   title: string;
   subtitle: string;
-  description: string;
+  description: { background: string; events: string; aftermath: string };
   locations: string[];
 }
 

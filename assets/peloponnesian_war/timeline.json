@@ -1,394 +1,440 @@
 [
   {
-    "key": "peloponnesian-league-founded",
-    "year": -550,
-    "type": "diplomacy",
-    "title": "Peloponnesian League Founded",
-    "subtitle": "placeholder",
-    "description": "Alliance between Sparta, Corinth, Elis and Tegea which establishes Spartan hegemony over the Peloponnese.",
-    "locations": ["sparta", "corinth", "elis", "tegea"]
-  },
-  {
-    "key": "delian-league-founded",
-    "year": -478,
-    "type": "diplomacy",
-    "title": "Delian League Founded",
-    "subtitle": "placeholder",
-    "description": "Alliance of Greek city-states led by Athens to liberate eastern Greek cities from Persian rule and as a defence to possible revenge attacks from Persia. The League's name derives from its official meeting place, the island of Delos, where congresses were held and where the treasury stood.",
-    "locations": [
-      "delos",
-      "athens",
-      "aegina",
-      "byzantium",
-      "chios",
-      "lesbos",
-      "lindos",
-      "naxos",
-      "paros",
-      "samos",
-      "thasos"
-    ]
-  },
-  {
-    "key": "naxos-revolt",
-    "year": -470,
-    "type": "revolt",
-    "title": "Naxos Revolt from Delian League Put Down",
-    "subtitle": "placeholder",
-    "description": "Attempted secession of Naxos from the Delian League. It was defeated and enslaved in 469 BCE.",
-    "locations": ["naxos"]
-  },
-  {
-    "key": "delian-league-treasury-moved",
-    "year": -454,
-    "type": "politics",
-    "title": "Delian League Treasury Moved to Athens",
-    "subtitle": "Delian League Treasury Moved to Athens",
-    "description": "Treasury of Delian League removed from Delos to Athens.",
-    "locations": ["delos", "athens"]
-  },
-  {
     "key": "battle-of-sybota",
     "year": -433,
     "type": "naval",
     "title": "Battle of Sybota",
-    "subtitle": "Stalemate, both Corinth and Corcyra claimed victory",
-    "description": "Corinth refuses Spartan arbitration of its dispute with Corcyra; missions of Corinth and Corcyra to Athens; Athens votes defensive alliance (symmachia) with Corcyra; Battle of Sybota: Athenians check Corinthian fleet off Corcyra.",
-    "link": "https://en.wikipedia.org/wiki/Battle_of_Sybota",
-    "locations": ["battle-of-sybota", "corcyra", "athens", "corinth"]
-  },
-  {
-    "key": "megarian_decree",
-    "year": -433,
-    "type": "politics",
-    "title": "Athenian assembly votes Megarian Decree",
-    "subtitle": "Athenian assembly votes Megarian Decree",
-    "description": "Athenian assembly votes Megarian Decree",
-    "link": "https://en.wikipedia.org/wiki/Megarian_decree",
-    "locations": ["athens", "megara"]
+    "subtitle": "Stalemate, both sides claim victory",
+    "description": {
+      "background": "In 435 B.C., a civil war between democrats and oligarchs at Epidamnus, a remote Greek colony on the shores of Epirus, involved the two rivals Corcyra and Corinth in a regional dispute. Corcyra (modern Corfu), a democracy with 120 triremes, had despised Corinth since 664/3 B.C. Now, when Corinth backed the democrats in control of Epidamnus, Corcyra intervened on behalf of the exiled oligarchs, who laid siege to Epidamnus. The Corinthians, after suffering a humiliating naval defeat off Leukimme in 434 B.C., readied a greater fleet to reckon with Corcyra. The Corcyraeans, as neutrals under the Thirty Years' Peace, appealed to Athens for aid. The Athenian assembly, persuaded by Pericles, offered limited defensive assistance in the form of 10 triremes, which proved decisive in preventing the Corinthians from defeating the Corcyraeans in a second naval battle off Sybota in 433 B.C.",
+      "events": "This battle was fought with the Corinthian vessels weighted on the left wing; the opposing Corcyraean right was supported by the Athenian ships; and the various Corinthian allies occupied the center and right. The Athenian ships held back until it appeared that the Corinthians were going to land on Corcyra. Then, for the first time, Athenian and Peloponnesian ships clashed. The Athenians, with their more sophisticated tactics, forced the Corinthians to pull back. In the late afternoon, another squadron of 20 Athenian ships arrived, causing the Corinthians to break off the action. The Corinthians charged Athenians with interfering, while the Athenians maintained that they were merely supporting their ally.",
+      "aftermath": "The Athenians had acted in violation of the spirit of the Thirty Years' Peace, lest the Corcyraean fleet fall into Peloponnesian hands. In so doing, the Athenians enraged the Corinthians, who would next involve Sparta, escalating a conflict in northwest Greece into a general crisis."
+    },
+    "links": [
+      {
+        "name": "Battle of Sybota",
+        "icon": "wikipedia-w",
+        "url": "https://en.wikipedia.org/wiki/Battle_of_Sybota"
+      }
+    ],
+    "locations": [
+      "battle-of-sybota",
+      "epidamnus",
+      "corcyra",
+      "athens",
+      "corinth"
+    ]
   },
   {
     "key": "revolt-of-potidaea",
     "year": -432,
     "type": "revolt",
     "title": "Revolt of Potidaea",
-    "subtitle": "Athenian victory",
-    "description": "Outbreak of the revolt of Potidaea (432−429 B.C.); Olynthus synoecizes Chalcidice and revolts from Athens; King Perdiccas of Macedon and Corinth aids Potidaea.",
-    "link": "https://en.wikipedia.org/wiki/Battle_of_Potidaea",
+    "subtitle": "Athenian victory (429 BC)",
+    "description": {
+      "background": "Although Athens and Corinth clashed over Corcyra in the autumn of 433 B.C., neither side had declared that the Thirty Years' Peace had been violated. The Spartans were not yet involved, and the crisis need not have escalated into a general war. Pericles, however, erred in securing passage of the Megarian Decree (an embargo on Megara) as a warning to Corinth. Corinth responded in the spring of 432. B.C. by backing the rebellion of Potidaea, the Athenian ally in the Chalcidice. Potidaea, a former Corinthian colony, appealed for Spartan assistance. After hearing the appeals of their allies and the explanations of the Athenians, the Spartan assembly voted for war in the summer of 432 B.C. The Spartans offered to desist from war if the Megarian Decree was rescinded. The Athenians responded with offers of arbitration. The Spartans refused to acknowledge parity with Athens, and the Athenians refused to accept a subordinate role.",
+      "events": "In 432 B.C., the Athenians engaged as many as 4,600 hoplites and 100 triremes in a siege of Potidaea. The Potidaeans secretly negotiated with the Corinthians, who sent 2,000 volunteers to assist their colonies. The city of Olynthus, representing a synoecism of a number of towns and villages in the Chalcidice, also rebelled in 432 B.C and sought help from King Perdiccas of Macedon. The siege of Potidaea dragged on into early 429 B.C., when the city finally surrendered.",
+      "aftermath": "Henceforth, Potidaea became an Athenian colony; the city's control of the isthmus to the peninsula of Pallene served as a defense against Macedonian attack. The siege cost the Athenians dearly, in both their financial reserves and in the hoplites lost to the plague. In 429 B.C, the Athenians also sent a force against Olynthus from the fleet, which was ambushed (Battle of Spartolos, 429 BC, Chalcidian victory) and only managed to contain but not defeat Olynthus."
+    },
+    "links": [
+      {
+        "name": "Revolt of Potidaea",
+        "icon": "wikipedia-w",
+        "url": "https://en.wikipedia.org/wiki/Battle_of_Potidaea"
+      },
+      {
+        "name": "Revolt of Spartolos",
+        "icon": "wikipedia-w",
+        "url": "https://en.wikipedia.org/wiki/Battle_of_Spartolos"
+      }
+    ],
     "locations": [
       "battle-of-potidaea",
+      "battle-of-spartolos",
       "athens",
       "olynthus",
       "vergina",
-      "corinth"
+      "corinth",
+      "megara"
     ]
   },
   {
-    "key": "spartan-declaration-of-war-on-athens",
-    "year": -432,
-    "type": "battle",
-    "title": "Spartan declaration of war on Athens",
-    "subtitle": "Outbreak of Peloponnesian War",
-    "description": "Debate in Spartan assembly over war with Athens; Spartan declaration of war on Athens; Peloponnesian League assembly votes war with Athens; Athenian rejection of Spartan ultimatums; outbreak of Peloponnesian War.",
-    "locations": ["sparta", "athens"]
-  },
-  {
-    "key": "first-year-of-the-archidamian-war",
+    "key": "outbreak-of-the-archidamian-war",
     "year": -431,
     "type": "battle",
-    "title": "First year of the Archidamian war",
-    "subtitle": "First year of the Archidamian war",
-    "description": "Abortive Theban attack on Plataea; King Archidamus leads first Peloponnesian invasion of Attica; Athenians under Proteas, Carcinus, and Sophocles attack Peloponnesus.",
+    "title": "Outbreak of the Archidamian War",
+    "subtitle": "Stalemate, peace of Nicias (421 BC)",
+    "description": {
+      "background": "Athenians controlled most of the members of the Delian League. The Peloponnesians controlled all of the Peloponnese and most of the Greek states of central Greece, notably Boeotia. A less-than-stable ally could also be found in Macedon. Outside of the core areas, the Peloponnesians could also summon friends from Italy and Sicily. Pericles was confident that Athens had the financial resources necessary to wage a long war, and he persuaded his fellow citizens to adopt an indirect strategy that involved sacrificing property in the interest of lives. Pericles moved the population of Attica and Athens, perhaps 300,000 people, behind the Long Walls. He then planned to send his fleet to ravage the Peloponnesus, to put down rebellions in the Athenian Empire, to prevent the Spartans from cooperating with the Persians, and to attack Corinthian economic and military interests in northwest Greece. The Peloponnesians, however, had greater numbers and superior hoplites. The Spartan plan was to fight the Athenians for control of the home waters, build up a network of allies to break Corcyra and Athenian friends in the west, and invade Attica and force a hoplite battle.",
+      "events": "In 431 B.C., King Archidamus invaded Attica at the head of the full Peloponnesian levy, to force a decisive hoplite battle. Pericles had anticipated the Spartan strategy. He evacuated the population of Athens behind the Long Walls; Attica was surrendered to repeated ravaging by the Peloponnesian army. In turn, the Athenian fleet of 200 triremes, along with allied contingents, scoured the Peloponnesian shores, sacking towns, destroying port facilities, and interrupting the shipment of foodstuffs from Sicily.",
+      "aftermath": "The Spartans' devastation of the Attic countryside had a harsh economic impact on most Athenians. In 430 B.C., the Athenians, overcrowded within the Long Walls, began to suffer diseases that carried off about 25 percent of the population. Pericles came under severe criticism, was deprived of political office and was fined, and died of disease in 429 B.C.. Meanwhile, the Athenian naval demonstrations in 431/430 B.C. hurt the Peloponnesian League considerably. The situation at sea became so insecure that many shippers dared not sail from Sicily or Italy, and others rerouted their shipments of foodstuffs to Athens. The belligerents found themselves at a stalemate, yet remarkably, neither side felt compelled to negotiate, in spite of the destruction of their vital interests. The commitment to strategies designed to destroy the economic base of the opponent increased the intensity and levels of hatred on both sides."
+    },
+    "links": [
+      {
+        "name": "Outbreak of the Archidamian War",
+        "icon": "link",
+        "url": "https://www.livius.org/sources/content/thucydides-historian/outbreak-of-the-archidamian-war/"
+      }
+    ],
     "locations": ["siege-of-plataea", "thebes", "sparta", "athens"]
   },
   {
-    "key": "funeral-oration-of-pericles",
-    "year": -431,
-    "type": "politics",
-    "title": "Funeral Oration of Pericles",
-    "subtitle": "Funeral Oration of Pericles",
-    "description": "Funeral Oration of Pericles.",
-    "link": "https://en.wikipedia.org/wiki/Pericles%27_Funeral_Oration",
-    "locations": ["athens"]
-  },
-  {
-    "key": "battle-of-spartolos",
-    "year": -429,
-    "type": "battle",
-    "title": "Battle of Spartolos",
-    "subtitle": "placeholder",
-    "description": "Chalcidian victory",
-    "link": "https://en.wikipedia.org/wiki/Battle_of_Spartolos",
-    "locations": ["battle-of-spartolos"]
-  },
-  {
-    "key": "battle-of-rhium",
+    "key": "battles-of-rhium-and-naupactus",
     "year": -429,
     "type": "naval",
-    "title": "Battle of Rhium",
-    "subtitle": "placeholder",
-    "description": "Athenian victory",
-    "link": "https://en.wikipedia.org/wiki/Battle_of_Rhium",
-    "locations": ["battle-of-rhium"]
-  },
-  {
-    "key": "battle-of-naupactus",
-    "year": -429,
-    "type": "naval",
-    "title": "Battle of Naupactus",
-    "subtitle": "placeholder",
-    "description": "Athenian victory",
-    "link": "https://en.wikipedia.org/wiki/Battle_of_Naupactus",
-    "locations": ["battle-of-naupactus"]
+    "title": "Battles of Rhion and Naupactus",
+    "subtitle": "Athenian victory",
+    "description": {
+      "background": "Although Pericles died in the autumn of 429 B.C., he had ceased to direct Athens for nearly a year. The Athenians were left with able generals but no great democratic leader. In a change of strategy, the Athenians escalated operations in northwest Greece—a region dominated by Corinth and vital to the Peloponnesians. In 431 and 430 B.C., huge Athenian fleets scoured the shores of these regions. They won over allies to Athens, giving support to Corcyra, to the Archarnians on the western shores of Greece, and to Amphilochian Argos at the eastern end of the Gulf of Ambracia. In 429 B.C., Athens stationed a detachment of 20 triremes permanently at Naupactus under the command of Phormio. From this position, Phormio was able to stop trade coming in from the west. In response, the Spartans decided to launch a major offensive in western Greece.",
+      "events": "A Peloponnesian army marched into Aetolia, but was driven off by locals using peltast tactics. Meanwhile, a naval force set sail from Sicyon and Corinth to bring reinforcements to the army, but the Athenian squadron under Phormio hit the Peloponnesian force just in front of Naupactus and won a stunning naval victory. The Corinthian commanders adopted a defensive crescent formation, but Phormio encircled their ships with his smaller force, forcing the Peloponnesian ships ever closer together into disarray. The Athenians then rammed several ships and chased the remains of the Corinthian squadron back to Sicyon. Angered, the Spartans launched 77 triremes, intent on destroying the Athenian force in Naupactus to secure the Gulf of Corinth, while Athenians' reinforcements arrived too late and missed the critical engagement. Phormio was forced to engage the fleet of 77 ships with his squadron of 20. Spartan commander Cnemus ordered his ships on the southern shore of the Gulf of Corinth to zero in on the Athenian fleet on the northern shore. The left wing of the Athenian fleet (11 ships) managed to break away and head for Naupactus. The other nine ships were driven up on the shore but were rescued by Messenian hoplites. Cnemus ordered a pursuit of the Athenian ships that had fled for Naupactus. Ten of the ships had made it to the harbor, but one lagged behind. That ship concealed itself behind a cargo vessel before surprising a Peloponnesian ship in pursuit, which was struck broadside and sunk immediately. Phormio took advantage of the resulting loss of cohesion among the Peloponnesians and drove them back to Corinth in disarray.",
+      "aftermath": "The Athenians had beaten back an attack on Amphilochian Argos and had won stunning naval victories in the Gulf of Corinth, gaining the initiative in Northwest Greece. Phormio's victories raised Athenian spirits but did not deal a significant blow against the Peloponnesian navy."
+    },
+    "links": [
+      {
+        "name": "Battles of Rhium",
+        "icon": "wikipedia-w",
+        "url": "https://en.wikipedia.org/wiki/Battle_of_Rhium"
+      },
+      {
+        "name": "Battles of Naupactus",
+        "icon": "wikipedia-w",
+        "url": "https://en.wikipedia.org/wiki/Battle_of_Naupactus"
+      }
+    ],
+    "locations": [
+      "battle-of-rhium",
+      "battle-of-naupactus",
+      "athens",
+      "corinth",
+      "sparta"
+    ]
   },
   {
     "key": "siege-of-plataea",
     "year": -429,
     "type": "siege",
     "title": "Siege of Plataea",
-    "subtitle": "placeholder",
-    "description": "Theban victory, Plataea razed to the ground",
-    "link": "https://en.wikipedia.org/wiki/Siege_of_Plataea",
-    "locations": ["siege-of-plataea"]
+    "subtitle": "Theban victory (427 BC)",
+    "description": {
+      "background": "Plataea, was a border town on the Boeotian side of the frontier with Attica. At the outbreak of the war, the Plataeans had maintained their traditional friendship with Athens. Plataea's independence was seen as an impediment to Theban efforts to unify Boeotia into a federal league. In early 431 B.C., Thebes attempted to take the city in a night attack but failed. Athens realized that Plataea could not be defended. The population was evacuated, leaving about 480 men and 110 women to withstand a potential siege.",
+      "events": "In 429 B.C., the Peloponnesian army began a two-year siege of Plataea. Although those manning the garrison showed great ingenuity in thwarting the Peloponnesians, they were ultimately starved into submission.",
+      "aftermath": "Plataea was razed to the ground. The survivors were executed and the territory was given to Thebes."
+    },
+    "links": [
+      {
+        "name": "Siege of Plataea",
+        "icon": "wikipedia-w",
+        "url": "https://en.wikipedia.org/wiki/Siege_of_Plataea"
+      }
+    ],
+    "locations": ["siege-of-plataea", "thebes", "sparta", "athens"]
   },
   {
     "key": "mytilenean-revolt",
     "year": -428,
     "type": "revolt",
     "title": "Mytilenean revolt",
-    "subtitle": "placeholder",
-    "description": "Athenian victory",
-    "link": "https://en.wikipedia.org/wiki/Mytilenean_revolt",
-    "locations": ["mytilenean-revolt"]
+    "subtitle": "Athenian victory (427 BC)",
+    "description": {
+      "background": "In 428 B.C., Mytilene, the largest of five cities on the isle of Lesbos, revolted from Athens. Mytilene possessed 50 triremes that could block the entrance to the Hellespont. The Mytileneans sent representatives to the Peloponnesians, who realized that such a rebellion could bring down the Athenian Empire. The outbreak of revolts among the cities of the Hellespontine region imperiled the grain trade from the Black Sea and encouraged the Persian satraps to support Sparta. ",
+      "events": "Athens dispatched a fleet of 40 ships and put Mytilene under siege. The Peloponnesians responded with perhaps the most savage invasions of Attica to date. In the spring of 427 B.C., a fleet of 42 triremes under the command of the Spartan Alcidas set sail to relieve Mytilene. Athens imposed a direct war tax (eisphora) on her propertied classes and sent additional forces to augment those besieging Mytilene. Ultimately, the rebellion was put down when dissension arose between upper and lower classes in the city. The Athenians occupied the city, arrested members of the government, and executed the Spartan commander who had slipped in to direct the siege. ",
+      "aftermath": "Mytilene's citizens were barely spared execution after intense debates in Athens. The rebellion, which revealed that Athens was fundamentally unpopular with most of her allies, served as a turning point in the war. The Athenian assembly, having suffered so much, would demand yet more sacrifice from the citizens and more compensation for the war. The aim of war would now have to be the ultimate defeat of Sparta."
+    },
+    "links": [
+      {
+        "name": "Mytilenean revolt",
+        "icon": "wikipedia-w",
+        "url": "https://en.wikipedia.org/wiki/Mytilenean_revolt"
+      }
+    ],
+    "locations": ["mytilenean-revolt", "athens", "mithymna", "tenedos"]
   },
   {
-    "key": "battle-of-tanagra",
+    "key": "battles-of-olpae-and-idomene",
     "year": -426,
     "type": "battle",
-    "title": "Battle of Tanagra",
-    "subtitle": "placeholder",
-    "description": "Athenian victory",
-    "link": "https://en.wikipedia.org/wiki/Battle_of_Tanagra_(426_BC)",
-    "locations": ["battle-of-tanagra"]
+    "title": "Battles of Olpae and Idomene",
+    "subtitle": "Athenian victory",
+    "description": {
+      "background": "The Athenians gained an initiative. They had beaten back an attack on Amphilochian Argos and had won stunning naval victories in the Gulf of Corinth. But Phormio was recalled, and in 428 B.C., the fighting was somewhat desultory. In 426 B.C., a new Athenian general, Demosthenes, was sent west. Demosthenes inherited a strategically favorable situation. The Athenians were in the process of knocking out Corinthian colonies and had numerous allies in northwest Greece. They did not, however, have a commanding position in the western waters. In 426 B.C., the Spartans mounted another operation to take Amphilochian Argos. At the same time, the people of Ambracia, the principal Corinthian colony in the area, sent their hoplites and mercenaries against Amphilochian Argos. These forces took a strategic position to cut off the city and waited for the Peloponnesians to arrive. The Athenians mobilized their own allies, including the Acarnanians, the Amphilochians, and Messenian hoplites. The two armies met in the summer of 426 B.C. to fight the first serious land battle of the Peloponnesian War.",
+      "events": "Demosthenes, with perhaps 2,000 hoplites to the Peloponnesians' 6,000, concentrated most of his forces on his right flank. In doing so, however, he lured the Peloponnesian and Ambracian forces to attack from an unfavorable position. Once they engaged, about 400 Athenians ambushed the Spartans from behind their left flank. The Spartan forces panicked, the commander fell, and the result was a disaster. Cleverly, Demosthenes allowed the Peloponnesians to depart under safe conduct and concentrated his forces against the Ambraciot hoplites. When a second Ambraciot force arrived, Demosthenes again ambushed them in a night attack and wiped them out.",
+      "aftermath": "Ambracia negotiates out of war; Acarnanians capture Corinthian colonies in northwest Greece. By 426 B.C., the major Corinthian colonies Ambracia, Anactorium, and Leucas had fallen into Athenian hands, and Peloponnesian naval and financial resources were compromised. The opening up of the western waters to Athenian control meant that the Athenians not only could interdict trade from the west, but they could also now consider intervening actively in the west. In waging an economic war of attrition, once northwest Greece was secured, Sicily and Italy were Athens's next logical targets. The Athenians had won a decisive strategic victory in the northwest theater of operations. The victory promised to deliver the Athenians an overwhelming advantage in pressing either the war or negotiations. The Athenians, however, could not follow up on this advantage because they were simultaneously fighting in northern Greece and dealing with King Perdiccas II of Macedon."
+    },
+    "links": [
+      {
+        "name": "Battles of Olpae",
+        "icon": "wikipedia-w",
+        "url": "https://en.wikipedia.org/wiki/Battle_of_Olpae"
+      },
+      {
+        "name": "Battles of Idomene",
+        "icon": "wikipedia-w",
+        "url": "https://en.wikipedia.org/wiki/Battle_of_Idomene"
+      }
+    ],
+    "locations": [
+      "battle-of-olpae",
+      "battle-of-idomene",
+      "athens",
+      "sparta",
+      "ambracia"
+    ]
   },
   {
-    "key": "aetolian-campaign",
-    "year": -426,
-    "type": "battle",
-    "title": "Aetolian campaign",
-    "subtitle": "placeholder",
-    "description": "Aetolian victory",
-    "link": "https://en.wikipedia.org/wiki/Aetolian_campaign",
-    "locations": ["aetolian-campaign"]
-  },
-  {
-    "key": "battle-of-olpae",
-    "year": -426,
-    "type": "battle",
-    "title": "Battle of Olpae",
-    "subtitle": "placeholder",
-    "description": "Athenian victory",
-    "link": "https://en.wikipedia.org/wiki/Battle_of_Olpae",
-    "locations": ["battle-of-olpae"]
-  },
-  {
-    "key": "battle-of-idomene",
-    "year": -426,
-    "type": "battle",
-    "title": "Battle of Idomene",
-    "subtitle": "placeholder",
-    "description": "Athenian Victory",
-    "link": "https://en.wikipedia.org/wiki/Battle_of_Idomene",
-    "locations": ["battle-of-idomene"]
-  },
-  {
-    "key": "battle-of-pylos",
+    "key": "battle-of-pylos-and-sphacteria",
     "year": -425,
     "type": "battle",
-    "title": "Battle of Pylos",
-    "subtitle": "placeholder",
-    "description": "Athenian victory",
-    "link": "https://en.wikipedia.org/wiki/Battle_of_Pylos",
-    "locations": ["battle-of-pylos"]
-  },
-  {
-    "key": "battle-of-sphacteria",
-    "year": -425,
-    "type": "battle",
-    "title": "Battle of Sphacteria",
-    "subtitle": "placeholder",
-    "description": "Athenian victory",
-    "link": "https://en.wikipedia.org/wiki/Battle_of_Sphacteria",
-    "locations": ["battle-of-sphacteria"]
+    "title": "Battles of Pylos and Sphacteria",
+    "subtitle": "Athenian victory",
+    "description": {
+      "background": "By 425 B.C., the Spartans and the Athenians were locked in a deadly struggle without prospects of either victory or negotiation. The Spartans had little to show for their efforts except the capture of Plataea in 427 B.C. The Athenians, too, were exhausted. Both sides in the war were searching for a strategy to assure victory. For the Spartans in 427 B.C., that strategy was to resume the invasion of Attica. The Athenians decided to reinforce their positions in Sicily, where they had achieved significant successes against Syracuse. This strategy seemed to promise an opportunity to destroy yet another economic base of the Peloponnesian League. An Athenian fleet was readied in 425 B.C., and Demosthenes joined the expedition to further Athenian strategic interests in western Greece.",
+      "events": "The fleet put into port at Pylos, on the shores of Messenia. A long island, Sphacteria, protected the harbor but allowed two entrances into it. At the north end of the mainland, opposite the island, was a small peninsula, where Demosthenes began to fortify a camp that would protect the northern entrance into the bay. A small garrison was left on the peninsula, and the main fleet sailed off to carry out its other operations. The Spartans, fearing a helot rebellion, broke off operations in Attica, and the Peloponnesian army marched back to Pylos. Naval forces were summoned, and they besieged the fort, located on the northern peninsula enclosing the Bay of Navarino. The Spartans placed a regiment of hoplites on Sphacteria and concentrated their fleet in the bay. The Athenian fleet unexpectedly returned to raise the siege and captured the Spartan triremes on the beaches. The Athenian fleet also cut off a Spartan regiment stationed on the island of Sphacteria, which protected the bay. In the summer of 425 B.C., Sparta offered peace terms for the first time. Nicias, the cautious Athenian senior general who styled himself Pericles's heir, urged peace, but the assembly rejected the terms. Cleon and Demosthenes launched a surprise attack and captured 292 of the Spartans and perioikoi on Sphacteria. Thucydides emphasizes the role of fortune in this episode. A fire broke out on the island and exposed the Spartan position; Demosthenes then coordinated a pre-dawn attack. Eventually, the Spartans were worn down, and those still alive surrendered on terms. ",
+      "aftermath": "This victory stunned the Greek world. For the first time, the Spartans had surrendered. With the prisoners in Athenian hands, the Spartans dared not invade Attica while the Athenians had means to raise tribute and strike a blow against the Spartan alliance. The Athenians tripled the tribute levels and planned bold strokes in the next year."
+    },
+    "links": [
+      {
+        "name": "Battles of Pylos",
+        "icon": "wikipedia-w",
+        "url": "https://en.wikipedia.org/wiki/Battle_of_Pylos"
+      },
+      {
+        "name": "Battles of Sphacteria",
+        "icon": "wikipedia-w",
+        "url": "https://en.wikipedia.org/wiki/Battle_of_Sphacteria"
+      }
+    ],
+    "locations": ["battle-of-pylos", "battle-of-sphacteria", "athens", "sparta"]
   },
   {
     "key": "battle-of-megara",
     "year": -424,
     "type": "battle",
     "title": "Battle of Megara",
-    "subtitle": "placeholder",
-    "description": "Athenian victory",
-    "link": "https://en.wikipedia.org/wiki/Battle_of_Megara",
-    "locations": ["battle-of-megara"]
+    "subtitle": "Stalemate",
+    "description": {
+      "background": "When this period began in early 424 B.C., the Athenians were at a decisive point. They had gained a considerable advantage by capturing the Spartans on the island of Sphacteria and were able to demand increased tribute from their allies. At the same time, the perception in the Greek world was that the Spartans had suffered a major moral defeat: Their men had surrendered. This fact threw into question the Spartan ability to command and to inspire their citizens to make the supreme sacrifice. In 424 B.C., the Athenian assembly was in no mood to reopen negotiations, and the Athenian strategy had changed from attrition to overthrow. The Athenians looked to central Greece, particularly Thebes, and Megara, two regions critical to the Peloponnesian League.",
+      "events": "Early in 424 B.C., the Athenians intended to take Megara by cooperating with democrats who were, at that point, tired of the suffering brought on by war and ready to hand the city over to Athens. Demosthenes and Hipponicus were to sail to Nisea on the Saronic Gulf, the port of Megara. The democrats would take control of the port and their co-conspirators would then open the gates to the main city. The Athenians would occupy the city and effect a change of government. The Athenians secured the port, but a Spartan officer named Brasidas learned of the attack. He managed to mobilize a force of 6,000 Boeotians and other Peloponnesians to block the Athenians' advance into the main city of Megara.",
+      "aftermath": "Athenians were victorious in taking the port, but failed to capture Megara. Demosthenes and Hipponicus had no choice but to retreat to the port; Athenian control there, however, meant that Megara was shut out of the Black Sea trade."
+    },
+    "links": [
+      {
+        "name": "Battle of Megara",
+        "icon": "wikipedia-w",
+        "url": "https://en.wikipedia.org/wiki/Battle_of_Megara"
+      }
+    ],
+    "locations": ["battle-of-megara", "athens", "sparta"]
   },
   {
     "key": "battle-of-delium",
     "year": -424,
     "type": "battle",
     "title": "Battle of Delium",
-    "subtitle": "placeholder",
-    "description": "Boeotian victory",
-    "link": "https://en.wikipedia.org/wiki/Battle_of_Delium",
-    "locations": ["battle-of-delium"]
+    "subtitle": "Boeotian victory",
+    "description": {
+      "background": "The Athenians planned for the summer the second part of the operation after Megara had been secured--a three-pronged attack on Boeotia. Again, the initial hope was that democrats could be enlisted in all the cities of Boeotia, other than Thebes, to cast out their oligarchic governments and secede from the federal league. The three-pronged operation involved two Athenian forces and various exiles operating in the city of Orchomenus in western Boeotia. One Athenian column was to be raised at Naupactus in northwest Greece by Demosthenes. Its plan was to land at a small coastal port, Siphae, on the western shores of Boeotia, and advance to the critical city of Chaeronea. The second column was to advance from a base at Oropus in northeast Attica and fortify a position at the township of Delium. Thus, the Athenians would have two strong positions in Boeotia, which would force Thebes to negotiate.",
+      "events": "The plan completely miscarried. The Thebans learned of the operation, and the rebellions in western Boeotia never took place. When Demosthenes arrived at the shores of Boeotia, a large force of Theban hoplites prevented him from landing. The Athenians under Hipponicus marched into Boeotia and fortified Delium, but on the point of withdrawing they were hit by the full Boeotian levy under a talented Theban general, Pagondas. Pagondas arranged the Boeotian army with a clever weighted wing on his left flank, and they smashed into the Athenian line. The Athenian forces, mostly allies, took heavy casualties, and many were captured.",
+      "aftermath": "The two defeats at Megara and Delium dashed Athenian hopes of achieving quick, decisive victory."
+    },
+    "links": [
+      {
+        "name": "Battle of Delium",
+        "icon": "wikipedia-w",
+        "url": "https://en.wikipedia.org/wiki/Battle_of_Delium"
+      }
+    ],
+    "locations": ["battle-of-delium", "thebes", "athens"]
   },
   {
     "key": "battle-of-amphipolis",
     "year": -422,
     "type": "battle",
     "title": "Battle of Amphipolis",
-    "subtitle": "placeholder",
-    "description": "Decisive Spartan victory",
-    "link": "https://en.wikipedia.org/wiki/Battle_of_Amphipolis",
-    "locations": ["battle-of-amphipolis"]
+    "subtitle": "Decisive Spartan victory",
+    "description": {
+      "background": "As Athenian operations in Megara and Boeotia failed, Brasidas, a veteran Spartan officer, marched a force of mercenaries and freed helots to Macedon, where in alliance with King Perdiccas II he raised new rebellions in the Chalcidice. In a daring winter raid, Brasidas captured Amphipolis, the Athenian bastion on the Strymon River and the base for the mines of Pangaeum. In the spring of 423 B.C., the Athenians reacted promptly. Major forces were mobilized, and Cleon, general for the year, called for harsh measures against the rebels in the Chalcidice. By the end of 423 B.C., at least 100 triremes were operating in the Chalcidice, along with considerable forces from the hoplite levy, the Athenians managed to reestablish most of their positions, while the Spartans realized that Brasidas could not be reinforced.",
+      "events": "In early 422 B.C., the Spartans proposed an armistice, which the Athenians accepted. By the time Brasidas learned that an armistice was in effect, an important city in the Chalcidice had rebelled from Athens. Brasidas received the city, which voided the armistice. Cleon took additional forces back to the Chalcidice and made for the city of Amphipolis. There, Brasidas attacked Cleon's forces and bested the Athenians. Cleon was killed and Brasidas mortally wounded in the fighting. The deaths of Brasidas and Cleon in the summer of 422 B.C. removed the two most senior (and outspoken) commanders in favor of continuing the war.",
+      "aftermath": "The battle at Amphipolis brought home a stark reality to both sides: After 10 years of fighting and ruinous losses sustained by both belligerents, neither state was in a position to destroy the war potential of the other. In the last three and one-half years of fighting, the Spartans had ignited revolts, but held uncontested control of only Amphipolis. The Athenians had failed to gain any significant advantage in central Greece. At this point, both populations were morally and emotionally exhausted. The two leaders, King Pleistoanax in Sparta and Nicias in Athens, moved to conclude the Peace of Nicias in May of 421 B.C. The peace was intended to last for 50 years, and was regarded as a formal alliance between Athens and Sparta."
+    },
+    "links": [
+      {
+        "name": "Battle of Amphipolis",
+        "icon": "wikipedia-w",
+        "url": "https://en.wikipedia.org/wiki/Battle_of_Amphipolis"
+      }
+    ],
+    "locations": ["battle-of-amphipolis", "athens", "sparta"]
   },
   {
     "key": "battle-of-mantinea",
     "year": -418,
     "type": "battle",
-    "title": "Battle of Mantinea",
-    "subtitle": "placeholder",
-    "description": "Spartan victory",
-    "link": "https://en.wikipedia.org/wiki/Battle_of_Mantinea_(418_BC)",
-    "locations": ["battle-of-mantinea"]
-  },
-  {
-    "key": "battle-of-hysiae",
-    "year": -417,
-    "type": "siege",
-    "title": "Battle of Hysiae",
-    "subtitle": "placeholder",
-    "description": "Decisive Spartan victory",
-    "link": "https://en.wikipedia.org/wiki/Battle_of_Hysiae_(417_BC)",
-    "locations": ["battle-of-hysiae"]
-  },
-  {
-    "key": "battle-of-orneae",
-    "year": -417,
-    "type": "siege",
-    "title": "Battle of Orneae",
-    "subtitle": "placeholder",
-    "description": "Athenian/Argive Victory",
-    "link": "https://en.wikipedia.org/wiki/Battle_of_Orneae",
-    "locations": ["battle-of-orneae"]
+    "title": "Battle of Mantinea (418 BC)",
+    "subtitle": "Spartan tactial victory, strategically inconclusive",
+    "description": {
+      "background": "The peace and alliance between Athens and Sparta in 421 B.C. alienated leading members of the Peloponnesian League and, in the opinion of Thucydides, doomed peace in the Greek world. Over the course of 421 B.C., the Corinthians sought to build a new alliance around Argos in the hope of shocking the Spartans into renewing the war. Their efforts failed, but Corinthian diplomatic machinations eroded trust between Athens and Sparta. In 420 B.C., the charismatic Alcibiades challenged Nicias and the peace. At Sparta, two ephors, Cleobulus and Xenares, intrigued to win over the oligarchs of Argos and thus secure a vital ally to renew the war against Athens. Alcibiades outmaneuvered his foes, domestic and foreign, and concluded a defensive alliance between Athens, Argos, Mantinea, and Elis. In 420 B.C. Alcibiades had the Peloponnesian allies and an Athenian assembly, frustrated by broken Spartan promises, ready to fight a decisive hoplite battle. He advocated support of Argos, a democracy bent on avenging past defeats at the hands of Sparta. Nicias stood for peace with Sparta, recovery of Amphipolis, and consolidation of the empire. At Sparta, too, opinions were divided, but few Spartans wished to renew the war unless the Athenians openly violated the oaths of the treaty. In 418 B.C., Mantinea and Argos, supported by Athens, clashed with the Spartans in a battle that was supposed to decide the issue.",
+      "events": "In the summer of 418 B.C., King Agis II was forced to call out the full levy of the Spartan army, as well as their immediate allies. There were probably 10,000 to 12,000 Spartan hoplites, the majority massed in the center and on the right wing of the line. The Argives had also called out their full levy and were supported by Mantinean allies and by an Athenian contingent. The Argives put their main levy in the center and gave the left wing to the Athenians. The Argive forces were massed on the right to overcome the Spartan left. When the battle opened, the Argives swept around the Spartan left, and the Spartans threatened to crush the Argive-Athenian left. Agis realized that as his army drifted to the right, his left wing would become detached, and a gap would open between the left and center. He ordered subordinate officers on the far right to move their regiments into the gap, but they refused. The Mantinean and Argive forces swept into the gap, pushed back the Spartan left, and then, rather than win the battle, decided to sack the Spartan camp. As the center of the Spartan army advanced, the Argives panicked, broke, and ran. The Spartans pursued and killed many of them. The Spartans, who had essentially won in the center, turned on the Argive right flank, which had defeated the Spartan left flank, and massacred the Mantineans.",
+      "aftermath": "The fighting had been tough and the Mantineans lost many men, but most of the Argives escaped and the Athenians withdrew in good order. Politically and diplomatically, the situation had not changed. The second major hoplite battle during the Peloponnesian War, the culmination of about two and one-half years of indecisive fighting and political maneuvering, proved inconclusive strategically."
+    },
+    "links": [
+      {
+        "name": "Battle of Mantinea",
+        "icon": "wikipedia-w",
+        "url": "https://en.wikipedia.org/wiki/Battle_of_Mantinea_(418_BC)"
+      }
+    ],
+    "locations": ["battle-of-mantinea", "sparta", "tegea", "argos", "athens"]
   },
   {
     "key": "siege-of-melos",
     "year": -416,
     "type": "siege",
     "title": "Siege of Melos",
-    "subtitle": "placeholder",
-    "description": "Athenian victory",
-    "link": "https://en.wikipedia.org/wiki/Siege_of_Melos",
-    "locations": ["siege-of-melos"]
+    "subtitle": "Athenian victory",
+    "description": {
+      "background": "After the Battle of Mantinea, Alcibiades found himself in a difficult position. Since 420 B.C., he had advocated overthrowing the Spartans, but now Nicias began to emerge in the assembly and remind the Athenians that the peace was still officially in effect. The Athenians had fought only as proxies or allies to the Argives and remained in alliance with Sparta. At the same time, Athens had other concerns, notably Amphipolis and the Chalcidice, which were still not under their control. By the terms of the Peace of Nicias, Athens had the right to put these areas under its dominion. Thus, Nicias began to urge caution, to back off from confrontation with Sparta. Under these circumstances, the Athenians launched an expedition against the city of Melos, an island polis in the Cyclades, in 416 B.C. Melos was an oligarchy and claimed to be a neutral colony of Sparta. The Athenians sent envoys before the council of Melos, who engaged the Melians in an abstract debate. In Thucydides's dialogue, the Melians appeal to fair play, but the Athenian envoys reply that as the stronger power, their state has the right to prevail over the weaker. The Melians then claim that Sparta will help them, but the Athenians are unimpressed. Finally, the Melians ask why, if their polis is so insignificant, Athens has any interest in it. The Athenians reply that, as a naval power, they cannot allow any state to escape. ",
+      "events": "The Melians rejected the Athenian demands to become an ally of Athens, and were put under siege. The island polis was reduced, and Melos was settled by Athenian colonists.",
+      "aftermath": "The Melian Dialogue, however, brings forth an important point: The arguments made by the envoys were probably repeated by Athenian diplomats and generals throughout the course of the Athenian hegemony, revealing them to be unabashed and shameless imperialists."
+    },
+    "links": [
+      {
+        "name": "Siege of Melos",
+        "icon": "wikipedia-w",
+        "url": "https://en.wikipedia.org/wiki/Siege_of_Melos"
+      }
+    ],
+    "locations": ["siege-of-melos", "athens"]
   },
   {
     "key": "sicilian-expedition",
     "year": -415,
     "type": "battle",
     "title": "Sicilian Expedition",
-    "subtitle": "placeholder",
-    "description": "Decisive Spartan/Syracusan victory, Athenian expeditionary force completely destroyed",
-    "link": "https://en.wikipedia.org/wiki/Sicilian_Expedition",
-    "locations": ["sicilian-expedition"]
+    "subtitle": "Decisive Spartan/Syracusan victory (413 BC)",
+    "description": {
+      "background": "In the winter of 416 B.C., Alcibiades championed the envoys of Segesta, an Athenian ally in Sicily, to intervene against Selinus, a Corinthian colony and friend of Sparta. The Athenians were aware of the power of Syracuse, founded by Corinth in 734 B.C. Dorian, Locrian, and Achaean colonies in southern Italy and Sicily had been linked by kingship, cults, and trade to the Peloponnesian League since the 6th century B.C. Syracuse controlled a rich agricultural hinterland and supplied grain, olive oil, horses, and timber to the Peloponnesus. Syracuse clashed with the Ionian cities of Leontini, Naxos, and Rhegium, which looked to Athens for support. From 427 to 424 B.C., Athenian squadrons intervened in Sicily to prevent aid from reaching the Peloponnesus. With the Peloponnesian theater closed, the Athenians turned to Sicily in 416 B.C. in the hopes of gaining a decisive advantage over Sparta. In 415 B.C., after a heated debate between Alcibiades and Nicias, the Athenian assembly voted to send out the largest overseas expedition since 455 B.C.",
+      "events": "In 415 B.C., Athens voted to send 135 triremes and more than 5,000 hoplites under the generals Alcibiades, Lamachus, and Nicias to assist Segesta against Selinus. The size of the force indicated that their real objective was Syracuse. The Athenians failed to define their priorities well, however, and elected a board of generals who were bound to clash. Nicias, who opposed the expedition, repeatedly urged delay. Alcibiades intrigued to win over Sicelot and Italiot cities, but was recalled to stand trial for impiety at Athens and soon defected to Sparta. Lamachus, the most experienced commander, lacked the prestige of Nicias. Thus the campaigning season of 415 B.C. was wasted on secondary objectives. The Athenians won a battle before Syracuse but withdrew to winter quarters at Catana. In 414 B.C., Lamachus and Nicias returned, surprising the Syracusans. The Athenians fortified a base and put in place siege works to cut off the city. Under Hermocrates, the Syracusans built counter walls to deny the Athenians the Epipolae, the heights overlooking the city. Lamachus fell in one of the skirmishes. Nicias, in sole command, soon lost the initiative. He failed to gain the Epipolae, and he failed to prevent the Spartan officer Gylippus from entering Syracuse with reinforcements. Nicias, rather than abandon the siege and risk prosecution, dishonestly induced the Athenians to vote a second expedition under Demosthenes in 413 B.C. When this force arrived, Nicias was besieged in his camp, and the Syracusans launched a fleet. When a night attack failed to gain the Epipolae, Demosthenes urged withdrawal. Nicias delayed for a month, and the retreat ultimately deteriorated into a rout and the slaughter of the Athenian forces at the Assinarus River.",
+      "aftermath": "The Athenian attack and siege of Syracuse led to Sparta's declaration of war in the summer of 414 B.C.. The Decelean or Ionian War, the third phase of the Peloponnesian War, which lasted from 414 to 404 B.C began. By the end of 413 B.C., the Sicilian expedition ended in a complete catastrophe. Some 160 ships were lost, along with thousands of Athenian soldiers. The magnitude of the defeat stunned the Greek world; suddenly, the initiative had shifted to Sparta, who found themselves in a position to wage war in the Aegean and finally bring down the Athenian Empire. "
+    },
+    "links": [
+      {
+        "name": "Sicilian Expedition",
+        "icon": "wikipedia-w",
+        "url": "https://en.wikipedia.org/wiki/Sicilian_Expedition"
+      }
+    ],
+    "locations": [
+      "sicilian-expedition",
+      "sparta",
+      "corinth",
+      "athens",
+      "segesta"
+    ]
   },
+
   {
-    "key": "battle-of-syme",
+    "key": "battles-of-cynossema-and-abydos",
     "year": -411,
     "type": "naval",
-    "title": "Battle of Syme",
-    "subtitle": "placeholder",
-    "description": "Spartan victory",
-    "link": "https://en.wikipedia.org/wiki/Battle_of_Syme",
-    "locations": ["battle-of-syme"]
-  },
-  {
-    "key": "battle-of-eretria",
-    "year": -411,
-    "type": "naval",
-    "title": "Battle of Eretria",
-    "subtitle": "placeholder",
-    "description": "Spartan victory",
-    "link": "https://en.wikipedia.org/wiki/Battle_of_Eretria",
-    "locations": ["battle-of-eretria"]
-  },
-  {
-    "key": "battle-of-cynossema",
-    "year": -411,
-    "type": "naval",
-    "title": "Battle of Cynossema",
-    "subtitle": "placeholder",
-    "description": "Athenian victory",
-    "link": "https://en.wikipedia.org/wiki/Battle_of_Cynossema",
-    "locations": ["battle-of-cynossema"]
-  },
-  {
-    "key": "battle-of-abydos",
-    "year": -411,
-    "type": "naval",
-    "title": "Battle of Abydos",
-    "subtitle": "placeholder",
-    "description": "Athenian victory",
-    "link": "https://en.wikipedia.org/wiki/Battle_of_Abydos",
-    "locations": ["battle-of-abydos"]
+    "title": "Battles of Cynossema and Abydos",
+    "subtitle": "Athenian victory",
+    "description": {
+      "background": "In 411 B.C., King Agis at Decelea and the Spartan fleet at Miletus waited on Athenian political events in hopes that pro-Spartan oligarchs would betray Athens, while the oligarchic conspirators instigated revolts in the Athenian Empire. But the abortive coup galvanized Athenians into united action: The fleet at Samos recalled Alcibiades from exile and elected him general. Alcibiades adroitly precipitated the downfall of the Four Hundred without a civil war, and he and Thrasybulus cooperated in containing the Spartan fleet at Miletus. The new Spartan navarch, Mindarus, had shifted the theater of operations to the Hellespont in hopes of cutting off the Athenian grain supply. ",
+      "events": "The advance squadron that had arrived some weeks before Mindarus had raised rebellions in Byzantium and other important cities that threatened to interrupt the grain trade. When Mindarus entered the Hellespont, the Athenians had no choice but to follow. They engaged the Spartans at Cynossema and handed them a sharp defeat. The Spartans were driven back to Abydos, and Sestos was secured as an Athenian base.",
+      "aftermath": ""
+    },
+    "links": [
+      {
+        "name": "Battles of Cynossema",
+        "icon": "wikipedia-w",
+        "url": "https://en.wikipedia.org/wiki/Battle_of_Cynossema"
+      },
+      {
+        "name": "Battle of Abydos",
+        "icon": "wikipedia-w",
+        "url": "https://en.wikipedia.org/wiki/Battle_of_Abydos"
+      }
+    ],
+    "locations": ["battle-of-cynossema", "battle-of-abydos", "athens", "sparta"]
   },
   {
     "key": "battle-of-cyzicus",
     "year": -410,
     "type": "naval",
     "title": "Battle of Cyzicus",
-    "subtitle": "placeholder",
-    "description": "Decisive Athenian victory, Cyzicus and other cities in the region captured by Athens",
-    "link": "https://en.wikipedia.org/wiki/Battle_of_Cyzicus",
-    "locations": ["battle-of-cyzicus"]
+    "subtitle": "Decisive Athenian victory",
+    "description": {
+      "background": "",
+      "events": "Alcibiades arrived in the Hellespont in 410 B.C. and, with Thrasybulus, carried out a daring attack on the Peloponnesian fleet, which had moved its base to Cyzicus. As Thrasybulus lured the Peloponnesians out to sea, Alcibiades landed hoplites on shore and quickly captured the Spartan base. He then launched his ships to hit the Peloponnesians in the rear. Most of the 85 Peloponnesian ships were captured, burned, or wrecked.",
+      "aftermath": "Hermocrates rallied many of the survivors, who escaped overland to Persia. When news of the defeat reached Sparta, orders were sent out to rebuild the fleet. In this instance, resources and facilities made available by the Persians made a significant difference in the Spartans' ability to recover. In 410 or early 409 B.C., as this new fleet was under construction, the Spartan government sent an embassy to Athens proposing a cessation of hostilities for 30 years. The Athenian assembly, having just won two smashing naval victories, was in no mood to negotiate, and the Spartans did not offer much in the way of concessions. When the Athenians rejected the treaty, the Spartans had no choice but to redouble their efforts to rebuild their fleet. Between 410 and 408 B.C., Alcibiades and Thrasybulus conducted a stunning series of operations in the Hellespont and northern Aegean waters. Alcibiades used his diplomatic skills and aristocratic contacts to talk rebellious cities into negotiating and, ultimately, returning to the Athenian alliance. By the end of 408 B.C., the strategic advantage in the north Aegean had shifted dramatically to the Athenian side. Meanwhile, the Spartans lost some of their most important naval contingents and perhaps one of the most experienced officers fighting in the Ionian War, Hermocrates, as the Syracusan squadrons had to be recalled to answer new threats to their homeland from Carthage."
+    },
+    "links": [
+      {
+        "name": "Battle of Cyzicus",
+        "icon": "wikipedia-w",
+        "url": "https://en.wikipedia.org/wiki/Battle_of_Cyzicus"
+      }
+    ],
+    "locations": ["battle-of-cyzicus", "athens", "sparta"]
   },
   {
     "key": "battle-of-notium",
     "year": -406,
     "type": "naval",
     "title": "Battle of Notium",
-    "subtitle": "placeholder",
-    "description": "Spartan victory",
-    "link": "https://en.wikipedia.org/wiki/Battle_of_Notium",
-    "locations": ["battle-of-notium"]
-  },
-  {
-    "key": "battle-of-mytilene",
-    "year": -406,
-    "type": "naval",
-    "title": "Battle of Mytilene",
-    "subtitle": "placeholder",
-    "description": "Spartan victory",
-    "link": "https://en.wikipedia.org/wiki/Battle_of_Mytilene_(406_BC)",
-    "locations": ["battle-of-mytilene"]
+    "subtitle": "Spartan victory",
+    "description": {
+      "background": "Between 411 and 407 B.C., the Athenians mounted nothing short of a miraculous recovery. When Alcibiades set sail for Ionia in 406 B.C., the Athenians had every expectation that the success would continue, but they now faced two new opponents. The Persian prince Cyrus the Younger, the second son of Darius II, arrived in Sardis in 407 B.C. with wide powers to coordinate Persian strategy in western Asia Minor. Cyrus anticipated making a bid for his father's throne, and he concluded that a decisive Peloponnesian victory would serve this interest. Cyrus delivered substantial amounts of money to the Peloponnesian fleet; the men received pay raises, and supplies were plentiful. Desertions from the Athenian navy to the Peloponnesian fleet increased. When the new Spartan navarch, Lysander, arrived at Miletus, he quickly grasped the situation and hoped that he could use it to acquire a position of primacy in Sparta. Both Cyrus and Lysander saw victory over the Athenians as an instrument for carrying out their own` political ambitions.",
+      "events": "Cyrus transferred the Peloponnesian base to the then-modest port city of Ephesus. Alcibiades transferred the Athenian base to the port of Colophon at Notium, opposite Ephesus, and left in charge there his senior helmsman, Antiochus. Antiochus had been ordered not to engage in battle, but he was easily lured out to a tactical defeat by Lysander in the summer of 406 B.C. Twenty Athenian ships were captured or damaged.",
+      "aftermath": "The Athenian assembly was angry at Alcibiades for leaving Antiochus in charge. Rather than return to Athens and face charges, Alcibiades chose voluntary exile. Lysander was also recalled to Sparta. His term of office had expired, but unlike Alcibiades, he had ended the year with great credit."
+    },
+    "links": [
+      {
+        "name": "Battle of Notium",
+        "icon": "wikipedia-w",
+        "url": "https://en.wikipedia.org/wiki/Battle_of_Notium"
+      }
+    ],
+    "locations": ["battle-of-notium", "ephesus", "sparta", "athens"]
   },
   {
     "key": "battle-of-arginusae",
     "year": -406,
     "type": "naval",
     "title": "Battle of Arginusae",
-    "subtitle": "placeholder",
-    "description": "Athenian victory",
-    "link": "https://en.wikipedia.org/wiki/Battle_of_Arginusae",
-    "locations": ["battle-of-arginusae"]
+    "subtitle": "Athenian victory",
+    "description": {
+      "background": "The Spartans sent out a new man, Callicratidas, to take over the position of Lysander. Callicratidas had no intention of playing courtier to Cyrus. He removed the Peloponnesian base from Ephesus to Miletus, but Cyrus then withdrew Persian money and provisions. Callicratidas realized that he would have to win a decisive battle before his money and supplies ran out and he lost the loyalty of his men. That battle, at Arginusae, came about late in the year 406 B.C., probably in September or October. At this point, the Spartans had more than 150 ships at sea, at least 120 of which were brought to Arginusae. The Spartans also had many experienced sailors who had defected from the Athenian fleet. In the summer of 406 B.C., the Athenians launched a fleet of 155 ships to break the siege of Mytilene and rescue the fleet there, under the command of Conon. For his part, Callicratidas detached a force to keep Conon trapped in Mytilene.",
+      "events": "The battle took place among the Arginusae islands. The Peloponnesian line extended more than a mile, with the ships intending to use ramming tactics. The Athenians arranged their ships in an unconventional double formation to counter such tactics. The battle was fought all day. Eventually, Callicratidas's right wing was encircled, and some 70 Peloponnesian ships were captured or destroyed; the rest were chased back to Chios. The Athenians had won a spectacular victory, yet some 25 Athenian ships had been damaged. Orders were given for the Athenian survivors to be rescued, but the weather turned foul, and the orders were not carried out. The survivors drowned and the dead were not recovered for burial.",
+      "aftermath": "The Athenians rejoiced at the victory but were enraged at the loss of both the living and the dead. Two of the generals involved chose voluntary exile rather than face charges, but six returned to Athens. In a heated assembly in October 406 B.C., the six generals were tried together and summarily executed. The assembly would soon regret this action."
+    },
+    "links": [
+      {
+        "name": "Battle of Arginusae",
+        "icon": "wikipedia-w",
+        "url": "https://en.wikipedia.org/wiki/Battle_of_Arginusae"
+      }
+    ],
+    "locations": ["battle-of-arginusae", "athens", "sparta"]
   },
   {
     "key": "battle-of-aegospotami",
     "year": -405,
     "type": "naval",
     "title": "Battle of Aegospotami",
-    "subtitle": "placeholder",
-    "description": "Decisive Spartan victory: - Athens besieged and then surrendered in March 404 BC, ending the Peloponnesian battle",
-    "link": "https://en.wikipedia.org/wiki/Battle_of_Aegospotami",
-    "locations": ["battle-of-aegospotami"]
+    "subtitle": "Decisive Spartan victory",
+    "description": {
+      "background": "In 405 B.C., the Spartans offered a peace negotiation, but the Athenians would not negotiate unless their former allies in Ionia were surrendered by Sparta. To continue operations, the Spartans were forced to request money from Cyrus. Lysander was appointed epistoleus, secretary to the navarch, which enabled him to negotiate with Cyrus on behalf of the Spartan government.",
+      "events": "Lysander was able to rebuild the Spartan fleet quickly, and in the summer of 405 B.C. sailed to the Hellespont. The Athenian generals in the region had grown timid and lax, even rejecting the tactical advice of Alcibiades. At Aegospotami, Lysander managed to surprise and capture the Athenian fleet on the beaches.",
+      "aftermath": "Lysander now occupied the grain route, the Hellespont. He then moved through the cities of the Aegean, raising rebellions among various oligarchic factions, installing garrisons, and imposing decarchies--government by the rule of 10 oligarchs. Athens swelled with refugees as Lysander's actions drove colonists back to the city. Athens was also under siege by land and had no choice but to surrender as Lysander prepared to move his fleet against the city. The terms were negotiated by Theramenes, who hoped he could convince the Spartans to spare the city and give the Athenians the chance to live under their traditional constitution, the patrios politeia. Lysander had received the Athenian surrender and believed he had the right to impose the Spartan settlement. The Spartans had fought an extraordinarily long war by Greek standards—27 years—and they had won that war in their opponent's element—at sea. Their victory resulted in the dismantling of the Athenian Empire."
+    },
+    "links": [
+      {
+        "name": "Battle of Aegospotami",
+        "icon": "wikipedia-w",
+        "url": "https://en.wikipedia.org/wiki/Battle_of_Aegospotami"
+      }
+    ],
+    "locations": ["battle-of-aegospotami", "sparta", "athens"]
   }
 ]

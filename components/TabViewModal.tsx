@@ -1,7 +1,11 @@
 import React, { forwardRef, Ref, useRef, useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import { ScrollView, Animated, View, Text, StyleSheet } from "react-native";
 import { Modalize } from "react-native-modalize";
+
 import { Timeline } from "../types";
+import { RootState } from "../redux/store";
+import { updateModalPosition } from "../redux/actions";
 import TabBarItem from "./TabBarItem";
 import Tabs from "./Tabs";
 import {
@@ -11,16 +15,20 @@ import {
   TAB_BAR_ITEM_WIDTH,
   TAB_BAR_ITEM_MARGIN,
   EMOJI_MAP,
+  MODAL_HEIGHT_PORTRAIT,
+  MODAL_HEIGHT_LANDSCAPE,
 } from "../settings";
 
-interface Props {
-  snapPoint: number;
+type Props = {
   tabRoutes: Timeline;
   setActiveLocations: Function;
-}
+};
 
 const TabViewModal = forwardRef(
-  ({ snapPoint, tabRoutes, setActiveLocations }: Props, ref: Ref<Modalize>) => {
+  ({ tabRoutes, setActiveLocations }: Props, ref: Ref<Modalize>) => {
+    const orientation = useSelector((state: RootState) => state.orientation);
+    const dispatch = useDispatch();
+
     const scrollViewRef = useRef<ScrollView>(null);
     const scrollY = useRef(new Animated.Value(0)).current;
     const [index, setIndex] = useState(0);
@@ -48,7 +56,7 @@ const TabViewModal = forwardRef(
                 {
                   translateY: scrollY.interpolate({
                     inputRange: [0, 100],
-                    outputRange: [0, -HEADER_COLLAPSE],
+                    outputRange: [0, 0],
                     extrapolate: "clamp",
                   }),
                 },
@@ -58,7 +66,7 @@ const TabViewModal = forwardRef(
         >
           <View style={styles.tabbar__heading}>
             <Text style={styles.tabbar__headingText}>
-              Timeline of the Peloponnesian War (431−404 BC))
+              Timeline of the Peloponnesian War (431−404 BC)
             </Text>
             {/* dynamic name from props */}
           </View>
@@ -99,13 +107,21 @@ const TabViewModal = forwardRef(
         modalStyle={styles.modal}
         handleStyle={styles.modal__handle}
         childrenStyle={styles.modal__children}
-        snapPoint={snapPoint}
+        snapPoint={
+          orientation === 3 || orientation === 4 // orientation is landscape
+            ? MODAL_HEIGHT_LANDSCAPE
+            : MODAL_HEIGHT_PORTRAIT
+        }
         handlePosition={"inside"}
         closeSnapPointStraightEnabled={false}
         withOverlay={false}
         HeaderComponent={renderTabBar}
         onOpened={() => handleIndexChange(index)}
-        onClosed={() => setActiveLocations([])}
+        onClosed={() => {
+          setActiveLocations([]);
+          dispatch(updateModalPosition("closed"));
+        }}
+        onPositionChange={(position) => dispatch(updateModalPosition(position))}
       >
         <Tabs
           tabRoutes={tabRoutes}

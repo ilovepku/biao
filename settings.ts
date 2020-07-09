@@ -27,7 +27,7 @@ export const EDGE_PADDING_LANDSCAPE = {
 };
 
 // settings for react-native-tab-view
-export const HEADER_COLLAPSE = 18;
+export const HEADER_COLLAPSE = 20;
 export const HEADER_LIST = 40;
 export const HEADER_HEIGHT = HEADER_LIST + HEADER_COLLAPSE;
 export const TAB_BAR_ITEM_WIDTH = 95;

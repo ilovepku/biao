@@ -15,5 +15,4 @@ export const COLOR_MAP: {
   peloponnesianArea: "rgba(218,76,76,.75)",
   neutral: "gold",
   neutralArea: "rgba(118,118,118,.75)",
-  attraction: "#c30b82",
 };

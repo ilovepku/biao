@@ -85,6 +85,26 @@
       }
     },
     {
+      "id": "ambracia",
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [20.987, 39.158] },
+      "properties": {
+        "name": "Ambracia",
+        "type": "city",
+        "status": "peloponnesian"
+      }
+    },
+    {
+      "id": "ephesus",
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [27.341944, 37.941111] },
+      "properties": {
+        "name": "Ephesus",
+        "type": "city",
+        "status": "peloponnesian"
+      }
+    },
+    {
       "id": "delos",
       "type": "Feature",
       "geometry": { "type": "Point", "coordinates": [25.271111, 37.393333] },
@@ -169,6 +189,78 @@
       "properties": { "name": "Corcyra", "type": "city", "status": "delian" }
     },
     {
+      "id": "mithymna",
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [26.166667, 39.366667] },
+      "properties": { "name": "Mithymna", "type": "city", "status": "delian" }
+    },
+    {
+      "id": "tenedos",
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [26.028889, 39.821944] },
+      "properties": { "name": "Tenedos", "type": "city", "status": "delian" }
+    },
+    {
+      "id": "naupactus",
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [21.830556, 38.393889] },
+      "properties": {
+        "name": "Naupactus",
+        "type": "city",
+        "status": "delian"
+      }
+    },
+    {
+      "id": "cephallonia",
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [20.490833, 38.173333] },
+      "properties": {
+        "name": "Cephallonia",
+        "type": "city",
+        "status": "delian"
+      }
+    },
+    {
+      "id": "zacynthus",
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [20.9, 37.783333] },
+      "properties": {
+        "name": "Zacynthus",
+        "type": "city",
+        "status": "delian"
+      }
+    },
+    {
+      "id": "epidamnus",
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [19.45, 41.3167] },
+      "properties": {
+        "name": "Epidamnus",
+        "type": "city",
+        "status": "neutral"
+      }
+    },
+    {
+      "id": "argos",
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [22.716667, 37.616667] },
+      "properties": {
+        "name": "Argos",
+        "type": "city",
+        "status": "neutral"
+      }
+    },
+    {
+      "id": "segesta",
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [12.832222, 37.941389] },
+      "properties": {
+        "name": "Segesta",
+        "type": "city",
+        "status": "neutral"
+      }
+    },
+    {
       "id": "battle-of-sybota",
       "type": "Feature",
       "geometry": { "type": "Point", "coordinates": [20.2152778, 39.4033333] },
@@ -251,7 +343,7 @@
     {
       "id": "aetolian-campaign",
       "type": "Feature",
-      "geometry": { "type": "Point", "coordinates": [21.8091625, 38.5054294] },
+      "geometry": { "type": "Point", "coordinates": [22.169766, 38.490682] },
       "properties": {
         "name": "Aetolian campaign",
         "type": "battle",
@@ -281,7 +373,7 @@
     {
       "id": "battle-of-pylos",
       "type": "Feature",
-      "geometry": { "type": "Point", "coordinates": [21.7, 36.916667] },
+      "geometry": { "type": "Point", "coordinates": [21.658656, 36.952123] },
       "properties": {
         "name": "Battle of Pylos",
         "type": "battle",
@@ -305,7 +397,7 @@
       "properties": {
         "name": "Battle of Megara",
         "type": "battle",
-        "status": "delian"
+        "status": "neutral"
       }
     },
     {
