@@ -15,12 +15,14 @@ import {
   Thumbnail,
 } from "native-base";
 import { DrawerNavigationProp } from "@react-navigation/drawer";
-import { DrawerParamList } from "../App";
+
+import { DrawerParamList } from "../types";
 
 type AboutScreenNavigationProp = DrawerNavigationProp<DrawerParamList, "About">;
 
 const LIBRARIES = [
   { url: "https://github.com/expo/expo", name: "expo" },
+  { url: "https://github.com/reduxjs/redux", name: "redux" },
   {
     url: "https://github.com/react-navigation/react-navigation",
     name: "@react-navigation",
@@ -40,6 +42,10 @@ const LIBRARIES = [
   {
     url: "https://github.com/react-native-community/react-native-tab-view",
     name: "react-native-tab-view",
+  },
+  {
+    url: "https://github.com/venits/react-native-map-clustering",
+    name: "react-native-map-clustering",
   },
 ];
 
@@ -78,7 +84,7 @@ const AboutScreen = ({ navigation }: Props) => (
         <Text>People</Text>
       </ListItem>
       <ListItem
-        avatar
+        thumbnail
         last
         onPress={() => {
           WebBrowser.openBrowserAsync("https://seanlee.netlify.com");
@@ -86,6 +92,7 @@ const AboutScreen = ({ navigation }: Props) => (
       >
         <Left>
           <Thumbnail
+            square
             source={{
               uri:
                 "https://seanlee.netlify.app/static/9b425e213ec5b64cfa3ef8bc2a8e6d7b/69585/profile.png",
