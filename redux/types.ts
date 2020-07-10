@@ -1,8 +1,8 @@
 export const UPDATE_ORIENTATION = "UPDATE_ORIENTATION";
 export const UPDATE_MODAL_POSITION = "UPDATE_MODAL_POSITION";
 
-export type UpdateOrientationPayload = number;
-export type UpdateModalPositionPayload = string;
+export type UpdateOrientationPayload = "portrait" | "landscape";
+export type UpdateModalPositionPayload = "closed" | "initial" | "top";
 
 interface UpdateOrientationAction {
   type: typeof UPDATE_ORIENTATION;

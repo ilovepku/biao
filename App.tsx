@@ -30,9 +30,13 @@ const App = () => {
 
   useEffect(() => {
     ScreenOrientation.addOrientationChangeListener(() => {
-      ScreenOrientation.getOrientationAsync().then((orientation) =>
-        store.dispatch(updateOrientation(orientation))
-      );
+      ScreenOrientation.getOrientationAsync().then((orientation) => {
+        store.dispatch(
+          updateOrientation(
+            orientation === 3 || orientation === 4 ? "landscape" : "portrait"
+          )
+        );
+      });
     });
     return () => ScreenOrientation.removeOrientationChangeListeners();
   }, []);

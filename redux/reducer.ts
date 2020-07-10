@@ -5,7 +5,7 @@ import {
 } from "./types";
 
 const initState = {
-  orientation: 0,
+  orientation: "portrait",
   modalPosition: "closed",
 };
 

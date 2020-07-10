@@ -47,7 +47,14 @@ const TabViewModal = forwardRef(
     };
 
     const renderTabBar = (
-      <View style={styles.tabbar}>
+      <View
+        style={[
+          styles.tabbar,
+          {
+            height: orientation === "landscape" ? HEADER_LIST : HEADER_HEIGHT,
+          },
+        ]}
+      >
         <Animated.View
           style={[
             styles.tabbar__wrapper,
@@ -64,12 +71,14 @@ const TabViewModal = forwardRef(
             },
           ]}
         >
-          <View style={styles.tabbar__heading}>
-            <Text style={styles.tabbar__headingText}>
-              Timeline of the Peloponnesian War (431−404 BC)
-            </Text>
-            {/* dynamic name from props */}
-          </View>
+          {orientation === "portrait" && (
+            <View style={styles.tabbar__heading}>
+              <Text style={styles.tabbar__headingText}>
+                Timeline of the Peloponnesian War (431−404 BC)
+              </Text>
+              {/* dynamic name from props */}
+            </View>
+          )}
 
           <ScrollView
             ref={scrollViewRef}
@@ -108,7 +117,7 @@ const TabViewModal = forwardRef(
         handleStyle={styles.modal__handle}
         childrenStyle={styles.modal__children}
         snapPoint={
-          orientation === 3 || orientation === 4 // orientation is landscape
+          orientation === "landscape"
             ? MODAL_HEIGHT_LANDSCAPE
             : MODAL_HEIGHT_PORTRAIT
         }
@@ -140,8 +149,6 @@ const styles = StyleSheet.create({
     left: 0,
     right: 0,
     zIndex: 9000,
-
-    height: HEADER_HEIGHT,
 
     overflow: "hidden",
 

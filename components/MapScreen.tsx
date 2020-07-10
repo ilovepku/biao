@@ -24,7 +24,7 @@ const MapScreen = ({ navigation }: Props) => {
         initialRegion={INITIAL_REGION}
         areas={AREAS}
         locations={LOCATIONS}
-        timeline={TIMELINE}        
+        timeline={TIMELINE}
       />
       <Fab
         style={styles.fab}
@@ -47,6 +47,7 @@ const styles = StyleSheet.create({
 
   fab: {
     backgroundColor: "#FFF",
+    elevation: 0,
   },
 
   fabIcon: {

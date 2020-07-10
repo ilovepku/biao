@@ -4,6 +4,7 @@ import { ScrollView, StyleSheet, Dimensions } from "react-native";
 import * as WebBrowser from "expo-web-browser";
 import { Card, CardItem, Text, Button, Icon, Left, Body } from "native-base";
 
+import { MODAL_HEIGHT_PORTRAIT, MODAL_HEIGHT_LANDSCAPE } from "../settings";
 import { RootState } from "../redux/store";
 
 type Props = {
@@ -30,11 +31,18 @@ const TabRoute = memo(
       links,
     },
   }: Props) => {
-    const orientation = useSelector((state: RootState) => state.orientation);
+    const { orientation, modalPosition } = useSelector(
+      (state: RootState) => state
+    );
     return (
       <ScrollView
         style={{
-          height: Dimensions.get("window").height * 0.87, // magical number for android landscape
+          height:
+            modalPosition === "initial"
+              ? orientation === "landscape"
+                ? MODAL_HEIGHT_LANDSCAPE
+                : MODAL_HEIGHT_PORTRAIT
+              : Dimensions.get("window").height * 0.87, // magical number for android landscape
         }}
       >
         <Card transparent style={styles.card}>

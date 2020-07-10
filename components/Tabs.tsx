@@ -1,10 +1,12 @@
 import React, { memo } from "react";
+import { useSelector } from "react-redux";
 import { Dimensions } from "react-native";
 import { TabView, SceneMap } from "react-native-tab-view";
 import { Timeline } from "../types";
 import TabRoute from "./TabRoute";
 
-import { HEADER_HEIGHT } from "../settings";
+import { RootState } from "../redux/store";
+import { HEADER_LIST, HEADER_HEIGHT } from "../settings";
 
 interface Props {
   tabRoutes: Timeline;
@@ -13,6 +15,7 @@ interface Props {
 }
 
 const Tabs = memo(({ tabRoutes, active, onIndexChange }: Props) => {
+  const orientation = useSelector((state: RootState) => state.orientation);
   const renderScene = SceneMap(
     tabRoutes.reduce((sceneMap, { key }) => {
       sceneMap[key] = TabRoute;
@@ -27,7 +30,9 @@ const Tabs = memo(({ tabRoutes, active, onIndexChange }: Props) => {
       renderScene={renderScene}
       renderTabBar={() => null}
       initialLayout={{ width: Dimensions.get("window").width }}
-      sceneContainerStyle={{ top: HEADER_HEIGHT }}
+      sceneContainerStyle={{
+        top: orientation === "landscape" ? HEADER_LIST : HEADER_HEIGHT,
+      }}
     />
   );
 });

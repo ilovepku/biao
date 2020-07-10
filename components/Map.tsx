@@ -113,7 +113,7 @@ const Map = ({
         mapRef.current &&
           mapRef.current.fitToCoordinates(coordinates, {
             edgePadding:
-              orientation === 3 || orientation === 4 // orientation is landscape
+              orientation === "landscape"
                 ? EDGE_PADDING_LANDSCAPE
                 : EDGE_PADDING_PORTRAIT,
           });
