@@ -5,12 +5,6 @@ export type DrawerParamList = {
   About: undefined;
 };
 
-export interface InitialRegion {
-  latitude: number;
-  longitude: number;
-  latitudeDelta: number;
-}
-
 export type GeojsonType = GeoJSON;
 
 interface TimelineItem {
@@ -24,10 +18,3 @@ interface TimelineItem {
 }
 
 export type Timeline = TimelineItem[];
-
-export interface PointFeature {
-  id?: string | number;
-  type: "Feature";
-  geometry: { type: "Point"; coordinates: number[] };
-  properties: { [name: string]: any };
-}

@@ -1,6 +1,7 @@
 import React, { memo } from "react";
-import { StyleSheet, View, Image } from "react-native";
+import { StyleSheet, View } from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
+
 import { ICON_MAP } from "../settings";
 
 interface Props {
