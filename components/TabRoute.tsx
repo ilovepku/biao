@@ -1,8 +1,8 @@
 import React, { memo } from "react";
 import { useSelector } from "react-redux";
-import { ScrollView, StyleSheet, Dimensions } from "react-native";
+import { ScrollView, Text, StyleSheet, Dimensions } from "react-native";
 import * as WebBrowser from "expo-web-browser";
-import { Card, CardItem, Text, Button, Icon, Left, Body } from "native-base";
+import { Card, CardItem, Button, Icon, Left, Body } from "native-base";
 
 import { MODAL_HEIGHT_PORTRAIT, MODAL_HEIGHT_LANDSCAPE } from "../settings";
 import { RootState } from "../redux/store";
@@ -51,7 +51,7 @@ const TabRoute = memo(
               <Body>
                 <Text style={styles.content__heading}>{title}</Text>
                 {!!subtitle && (
-                  <Text note style={styles.content__subheading}>
+                  <Text style={styles.content__subheading}>
                     {subtitle}
                   </Text>
                 )}
@@ -61,7 +61,7 @@ const TabRoute = memo(
           {!!background && (
             <CardItem style={styles.transparentBg}>
               <Body>
-                <Text note style={styles.content__subheading}>
+                <Text style={styles.content__subheading}>
                   Background
                 </Text>
                 <Text style={styles.content__paragraph}>{background}</Text>
@@ -72,7 +72,7 @@ const TabRoute = memo(
           <CardItem style={styles.transparentBg}>
             <Body>
               {(!!background || !!aftermath) && (
-                <Text note style={styles.content__subheading}>
+                <Text style={styles.content__subheading}>
                   Events
                 </Text>
               )}
@@ -83,7 +83,7 @@ const TabRoute = memo(
           {!!aftermath && (
             <CardItem style={styles.transparentBg}>
               <Body>
-                <Text note style={styles.content__subheading}>
+                <Text style={styles.content__subheading}>
                   Aftermath
                 </Text>
                 <Text style={styles.content__paragraph}>{aftermath}</Text>
