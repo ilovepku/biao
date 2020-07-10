@@ -24,16 +24,6 @@
       }
     },
     {
-      "id": "elis",
-      "type": "Feature",
-      "geometry": { "type": "Point", "coordinates": [21.37493, 37.89131] },
-      "properties": {
-        "name": "Elis",
-        "type": "city",
-        "status": "peloponnesian"
-      }
-    },
-    {
       "id": "tegea",
       "type": "Feature",
       "geometry": { "type": "Point", "coordinates": [22.4205, 37.455333] },
@@ -105,18 +95,6 @@
       }
     },
     {
-      "id": "delos",
-      "type": "Feature",
-      "geometry": { "type": "Point", "coordinates": [25.271111, 37.393333] },
-      "properties": {
-        "name": "Delos",
-        "type": "city",
-        "status": "delian",
-        "description": "Initial meeting-ground and treasury for the Delian League",
-        "highlight": true
-      }
-    },
-    {
       "id": "athens",
       "type": "Feature",
       "geometry": { "type": "Point", "coordinates": [23.72, 37.97] },
@@ -127,12 +105,6 @@
         "description": "Leader of the Delian League",
         "highlight": true
       }
-    },
-    {
-      "id": "aegina",
-      "type": "Feature",
-      "geometry": { "type": "Point", "coordinates": [23.433333, 37.75] },
-      "properties": { "name": "Aegina", "type": "city", "status": "delian" }
     },
     {
       "id": "byzantium",
@@ -153,34 +125,16 @@
       "properties": { "name": "Lesbos", "type": "city", "status": "delian" }
     },
     {
-      "id": "lindos",
-      "type": "Feature",
-      "geometry": { "type": "Point", "coordinates": [28.083333, 36.083333] },
-      "properties": { "name": "Lindos", "type": "city", "status": "delian" }
-    },
-    {
       "id": "naxos",
       "type": "Feature",
       "geometry": { "type": "Point", "coordinates": [25.403889, 37.0875] },
       "properties": { "name": "Naxos", "type": "city", "status": "delian" }
     },
     {
-      "id": "paros",
-      "type": "Feature",
-      "geometry": { "type": "Point", "coordinates": [25.2, 37.066667] },
-      "properties": { "name": "Paros", "type": "city", "status": "delian" }
-    },
-    {
       "id": "samos",
       "type": "Feature",
       "geometry": { "type": "Point", "coordinates": [26.833333, 37.75] },
       "properties": { "name": "Samos", "type": "city", "status": "delian" }
-    },
-    {
-      "id": "thasos",
-      "type": "Feature",
-      "geometry": { "type": "Point", "coordinates": [24.65, 40.683333] },
-      "properties": { "name": "Thasos", "type": "city", "status": "delian" }
     },
     {
       "id": "corcyra",
@@ -211,26 +165,6 @@
       }
     },
     {
-      "id": "cephallonia",
-      "type": "Feature",
-      "geometry": { "type": "Point", "coordinates": [20.490833, 38.173333] },
-      "properties": {
-        "name": "Cephallonia",
-        "type": "city",
-        "status": "delian"
-      }
-    },
-    {
-      "id": "zacynthus",
-      "type": "Feature",
-      "geometry": { "type": "Point", "coordinates": [20.9, 37.783333] },
-      "properties": {
-        "name": "Zacynthus",
-        "type": "city",
-        "status": "delian"
-      }
-    },
-    {
       "id": "epidamnus",
       "type": "Feature",
       "geometry": { "type": "Point", "coordinates": [19.45, 41.3167] },
@@ -256,6 +190,16 @@
       "geometry": { "type": "Point", "coordinates": [12.832222, 37.941389] },
       "properties": {
         "name": "Segesta",
+        "type": "city",
+        "status": "neutral"
+      }
+    },
+    {
+      "id": "syracuse",
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [15.2875, 37.069167] },
+      "properties": {
+        "name": "Syracuse",
         "type": "city",
         "status": "neutral"
       }
@@ -328,26 +272,6 @@
         "name": "Mytilenean revolt",
         "type": "battle",
         "status": "delian"
-      }
-    },
-    {
-      "id": "battle-of-tanagra",
-      "type": "Feature",
-      "geometry": { "type": "Point", "coordinates": [23.533333, 38.316667] },
-      "properties": {
-        "name": "Battle of Tanagra",
-        "type": "battle",
-        "status": "delian"
-      }
-    },
-    {
-      "id": "aetolian-campaign",
-      "type": "Feature",
-      "geometry": { "type": "Point", "coordinates": [22.169766, 38.490682] },
-      "properties": {
-        "name": "Aetolian campaign",
-        "type": "battle",
-        "status": "peloponnesian"
       }
     },
     {
@@ -432,27 +356,6 @@
       }
     },
     {
-      "id": "battle-of-hysiae",
-      "type": "Feature",
-      "geometry": { "type": "Point", "coordinates": [22.585884, 37.519836] },
-      "properties": {
-        "name": "Battle of Hysiae",
-        "type": "battle",
-        "status": "peloponnesian",
-        "highlight": true
-      }
-    },
-    {
-      "id": "battle-of-orneae",
-      "type": "Feature",
-      "geometry": { "type": "Point", "coordinates": [22.557292, 37.713973] },
-      "properties": {
-        "name": "Battle of Orneae",
-        "type": "battle",
-        "status": "delian"
-      }
-    },
-    {
       "id": "siege-of-melos",
       "type": "Feature",
       "geometry": { "type": "Point", "coordinates": [24.416667, 36.683333] },
@@ -471,26 +374,6 @@
         "type": "battle",
         "status": "peloponnesian",
         "highlight": true
-      }
-    },
-    {
-      "id": "battle-of-syme",
-      "type": "Feature",
-      "geometry": { "type": "Point", "coordinates": [27.833333, 36.583333] },
-      "properties": {
-        "name": "Battle of Syme",
-        "type": "battle",
-        "status": "peloponnesian"
-      }
-    },
-    {
-      "id": "battle-of-eretria",
-      "type": "Feature",
-      "geometry": { "type": "Point", "coordinates": [23.7930669, 38.3927202] },
-      "properties": {
-        "name": "Battle of Eretria",
-        "type": "battle",
-        "status": "peloponnesian"
       }
     },
     {

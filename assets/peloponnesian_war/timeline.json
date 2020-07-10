@@ -355,7 +355,13 @@
         "url": "https://en.wikipedia.org/wiki/Battle_of_Abydos"
       }
     ],
-    "locations": ["battle-of-cynossema", "battle-of-abydos", "athens", "sparta"]
+    "locations": [
+      "battle-of-cynossema",
+      "battle-of-abydos",
+      "athens",
+      "sparta",
+      "byzantium"
+    ]
   },
   {
     "key": "battle-of-cyzicus",
@@ -410,12 +416,22 @@
     },
     "links": [
       {
+        "name": "Battle of Mytilene",
+        "icon": "wikipedia-w",
+        "url": "https://en.wikipedia.org/wiki/Battle_of_Mytilene_(406_BC)"
+      },
+      {
         "name": "Battle of Arginusae",
         "icon": "wikipedia-w",
         "url": "https://en.wikipedia.org/wiki/Battle_of_Arginusae"
       }
     ],
-    "locations": ["battle-of-arginusae", "athens", "sparta"]
+    "locations": [
+      "battle-of-mytilene",
+      "battle-of-arginusae",
+      "athens",
+      "sparta"
+    ]
   },
   {
     "key": "battle-of-aegospotami",
