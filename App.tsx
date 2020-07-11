@@ -1,3 +1,4 @@
+import "react-native-gesture-handler";
 import React, { useEffect } from "react";
 import { Provider } from "react-redux";
 import * as ScreenOrientation from "expo-screen-orientation";
@@ -11,10 +12,10 @@ import MapScreen from "./components/MapScreen";
 import AboutScreen from "./components/AboutScreen";
 
 // @TODO
-import { YellowBox } from "react-native";
+/* import { YellowBox } from "react-native";
 YellowBox.ignoreWarnings([
   "Animated: `useNativeDriver` was not specified. This is a required option and must be explicitly set to `true` or `false`",
-]);
+]); */
 
 ScreenOrientation.unlockAsync();
 
