@@ -1,5 +1,4 @@
 import React from "react";
-import { StyleSheet } from "react-native";
 import * as WebBrowser from "expo-web-browser";
 import { Ionicons } from "@expo/vector-icons";
 import { Octicons } from "@expo/vector-icons";
@@ -102,10 +101,10 @@ const AboutScreen = ({ navigation }: Props) => (
         </Left>
         <Body>
           <Text>Sean Lee</Text>
-          <Text style={styles.note}>seanlee.netlify.com</Text>
+          <Text note>seanlee.netlify.com</Text>
         </Body>
         <Right>
-          <Text style={styles.note}>Creator</Text>
+          <Text note>Creator</Text>
         </Right>
       </ListItem>
       <ListItem itemDivider>
@@ -134,12 +133,5 @@ const AboutScreen = ({ navigation }: Props) => (
     </Content>
   </Container>
 );
-
-const styles = StyleSheet.create({
-  note: {
-    fontSize: 14,
-    color: "#9a9c9d",
-  },
-});
 
 export default AboutScreen;

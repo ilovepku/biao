@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import { StyleSheet, View, Dimensions } from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { DrawerNavigationProp } from "@react-navigation/drawer";
-import { Fab, Button } from "native-base";
+import { Container, Fab, Button } from "native-base";
 import MapView, { PROVIDER_GOOGLE, MapTypes, Marker } from "react-native-maps";
 import ClusteredMapView from "react-native-map-clustering";
 import { Modalize } from "react-native-modalize";
@@ -125,7 +125,7 @@ const MapScreen = ({ navigation }: Props) => {
   }, [activeLocations]);
 
   return (
-    <View style={styles.container}>
+    <Container style={styles.container}>
       <ClusteredMapView
         ref={mapRef}
         style={styles.map}
@@ -261,7 +261,7 @@ const MapScreen = ({ navigation }: Props) => {
         setActiveLocations={setActiveLocations}
         ref={modalRef}
       />
-    </View>
+    </Container>
   );
 };
 

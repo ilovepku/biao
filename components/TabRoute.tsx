@@ -1,8 +1,8 @@
 import React, { memo } from "react";
 import { useSelector } from "react-redux";
-import { ScrollView, Text, StyleSheet, Dimensions } from "react-native";
+import { ScrollView, StyleSheet, Dimensions } from "react-native";
 import * as WebBrowser from "expo-web-browser";
-import { Card, CardItem, Button, Icon, Left, Body } from "native-base";
+import { Card, CardItem, Body, Text, Button, Icon } from "native-base";
 
 import { MODAL_HEIGHT_PORTRAIT, MODAL_HEIGHT_LANDSCAPE } from "../settings";
 import { RootState } from "../redux/store";
@@ -47,23 +47,19 @@ const TabRoute = memo(
       >
         <Card transparent style={styles.card}>
           <CardItem header style={styles.transparentBg}>
-            <Left>
-              <Body>
-                <Text style={styles.content__heading}>{title}</Text>
-                {!!subtitle && (
-                  <Text style={styles.content__subheading}>
-                    {subtitle}
-                  </Text>
-                )}
-              </Body>
-            </Left>
+            <Body>
+              <Text style={styles.content__heading}>{title}</Text>
+              {!!subtitle && (
+                <Text note style={styles.content__subheading}>
+                  {subtitle}
+                </Text>
+              )}
+            </Body>
           </CardItem>
           {!!background && (
             <CardItem style={styles.transparentBg}>
               <Body>
-                <Text style={styles.content__subheading}>
-                  Background
-                </Text>
+                <Text style={styles.content__subheading}>Background</Text>
                 <Text style={styles.content__paragraph}>{background}</Text>
               </Body>
             </CardItem>
@@ -72,7 +68,7 @@ const TabRoute = memo(
           <CardItem style={styles.transparentBg}>
             <Body>
               {(!!background || !!aftermath) && (
-                <Text style={styles.content__subheading}>
+                <Text note style={styles.content__subheading}>
                   Events
                 </Text>
               )}
@@ -83,7 +79,7 @@ const TabRoute = memo(
           {!!aftermath && (
             <CardItem style={styles.transparentBg}>
               <Body>
-                <Text style={styles.content__subheading}>
+                <Text note style={styles.content__subheading}>
                   Aftermath
                 </Text>
                 <Text style={styles.content__paragraph}>{aftermath}</Text>
@@ -93,16 +89,14 @@ const TabRoute = memo(
 
           {links.map(({ name, icon, url }) => (
             <CardItem key={url} style={styles.transparentBg}>
-              <Left>
-                <Button
-                  onPress={() => {
-                    WebBrowser.openBrowserAsync(url);
-                  }}
-                >
-                  <Icon name={icon} type="FontAwesome5" />
-                  <Text>{name}</Text>
-                </Button>
-              </Left>
+              <Button
+                onPress={() => {
+                  WebBrowser.openBrowserAsync(url);
+                }}
+              >
+                <Icon name={icon} type="FontAwesome5" />
+                <Text>{name}</Text>
+              </Button>
             </CardItem>
           ))}
         </Card>
