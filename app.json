@@ -2,11 +2,7 @@
   "expo": {
     "name": "biao",
     "slug": "biao",
-    "platforms": [
-      "ios",
-      "android",
-      "web"
-    ],
+    "platforms": ["ios", "android", "web"],
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -18,14 +14,17 @@
     "updates": {
       "fallbackToCacheTimeout": 0
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true
     },
     "android": {
-      "package": "com.seanlee.biao"
+      "package": "com.seanlee.biao",
+      "config": {
+        "googleMaps": {
+          "apiKey": "AIzaSyBay5Bkct8Xi0WbpKMlO0oYM_Ja6PhawGM"
+        }
+      }
     }
   }
 }
