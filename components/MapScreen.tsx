@@ -1,9 +1,9 @@
 import React, { useRef, useState, useEffect } from "react";
 import { useSelector } from "react-redux";
-import { StyleSheet, View, Dimensions } from "react-native";
+import { StyleSheet, Dimensions } from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { DrawerNavigationProp } from "@react-navigation/drawer";
-import { Container, Fab, Button } from "native-base";
+import { Container, Fab, Button, Text } from "native-base";
 import MapView, { PROVIDER_GOOGLE, MapTypes, Marker } from "react-native-maps";
 import ClusteredMapView from "react-native-map-clustering";
 import { Modalize } from "react-native-modalize";
@@ -69,17 +69,6 @@ const MapScreen = ({ navigation }: Props) => {
     modalPosition === "initial" && modalRef.current && modalRef.current.open();
   }, [orientation]);
 
-  const handleMapTypeChange = (type: string) => {
-    setMarkerFilters({
-      ...markerFilters,
-      [type]: !markerFilters[type],
-    });
-  };
-
-  const handleOpenModal = () => {
-    modalRef.current && modalRef.current.open();
-  };
-
   // fit map to active location markers on activeLocations change
   useEffect(() => {
     if (isInitialMount.current) {
@@ -124,6 +113,22 @@ const MapScreen = ({ navigation }: Props) => {
     };
   }, [activeLocations]);
 
+  const handleMapTypeChange = (type: string) => {
+    setMarkerFilters({
+      ...markerFilters,
+      [type]: !markerFilters[type],
+    });
+  };
+
+  const handleOpenModal = () => {
+    modalRef.current && modalRef.current.open();
+  };
+
+  const handleResetToInitialRegion = () => {
+    setActiveLocations([]);
+    modalRef.current && modalRef.current.close();
+  };
+
   return (
     <Container style={styles.container}>
       <ClusteredMapView
@@ -143,7 +148,10 @@ const MapScreen = ({ navigation }: Props) => {
               ? Object.keys(markerFilters)
                   .filter((item) => markerFilters[item])
                   .includes(feature.properties.type)
-              : activeLocations.includes(feature.id as string)
+              : activeLocations.includes(feature.id as string) &&
+                Object.keys(markerFilters)
+                  .filter((item) => markerFilters[item])
+                  .includes(feature.properties.type)
           )
           .map(
             ({
@@ -179,17 +187,9 @@ const MapScreen = ({ navigation }: Props) => {
 
       <Fab
         style={styles.fab}
-        position="topLeft"
-        onPress={() => navigation.openDrawer()}
-      >
-        <MaterialCommunityIcons style={styles.fabIcon} name={"menu"} />
-      </Fab>
-
-      <Fab
-        style={styles.fab}
         active={fabActive.top}
         direction="down"
-        position="topRight"
+        position="topLeft"
         onPress={() => setFabActive({ ...fabActive, top: !fabActive.top })}
       >
         <MaterialCommunityIcons
@@ -197,32 +197,37 @@ const MapScreen = ({ navigation }: Props) => {
           name={"layers-outline"}
         />
         {[
-          { name: "standard", icon: "map" },
-          { name: "hybrid", icon: "satellite" },
-          { name: "terrain", icon: "terrain" },
-          { name: "none", icon: "selection-off" },
-        ].map(({ name, icon }) => (
+          { name: "standard", label: "Default", icon: "map" },
+          { name: "hybrid", label: "Satellite", icon: "satellite" },
+          { name: "terrain", label: "Terrain", icon: "terrain" },
+        ].map(({ name, label, icon }) => (
           <Button
             key={`mapType-${name}`}
             style={
               mapType === name ? [styles.fab, styles.activeFab] : styles.fab
             }
             disabled={mapType === name}
-            onPress={() => {
-              setMapType(name as MapTypes);
-              setFabActive({ ...fabActive, top: !fabActive.top });
-            }}
+            onPress={() => setMapType(name as MapTypes)}
           >
+            <Text style={[styles.fabLabel, styles.fabLabelLeft]}>{label}</Text>
             <MaterialCommunityIcons name={icon} size={24} />
           </Button>
         ))}
+
+        <Button
+          style={[styles.fab, { marginTop: 15 }]}
+          onPress={handleResetToInitialRegion}
+        >
+          <Text style={[styles.fabLabel, styles.fabLabelLeft]}>RESET</Text>
+          <MaterialCommunityIcons name="restore" size={24} />
+        </Button>
       </Fab>
 
       <Fab
         style={styles.fab}
         active={fabActive.bottom}
-        direction="up"
-        position="bottomRight"
+        direction="down"
+        position="topRight"
         onPress={() =>
           setFabActive({ ...fabActive, bottom: !fabActive.bottom })
         }
@@ -236,14 +241,25 @@ const MapScreen = ({ navigation }: Props) => {
           }
         />
         {[
-          { name: "city", icon: "home-outline", iconActive: "home" },
-          { name: "battle", icon: "skull-outline", iconActive: "skull" },
-        ].map(({ name, icon, iconActive }) => (
+          {
+            name: "city",
+            label: "Cities",
+            icon: "home-outline",
+            iconActive: "home",
+          },
+          {
+            name: "battle",
+            label: "Battles",
+            icon: "skull-outline",
+            iconActive: "skull",
+          },
+        ].map(({ name, label, icon, iconActive }) => (
           <Button
             key={`filter-${name}`}
             style={styles.fab}
             onPress={() => handleMapTypeChange(name)}
           >
+            <Text style={[styles.fabLabel, styles.fabLabelRight]}>{label}</Text>
             <MaterialCommunityIcons
               name={markerFilters[name] ? iconActive : icon}
               size={24}
@@ -252,7 +268,15 @@ const MapScreen = ({ navigation }: Props) => {
         ))}
       </Fab>
 
-      <Fab style={styles.fab} position="bottomLeft" onPress={handleOpenModal}>
+      <Fab
+        style={styles.fab}
+        position="bottomLeft"
+        onPress={() => navigation.openDrawer()}
+      >
+        <MaterialCommunityIcons style={styles.fabIcon} name={"menu"} />
+      </Fab>
+
+      <Fab style={styles.fab} position="bottomRight" onPress={handleOpenModal}>
         <MaterialCommunityIcons style={styles.fabIcon} name={"timeline-text"} />
       </Fab>
 
@@ -280,6 +304,23 @@ const styles = StyleSheet.create({
   fab: {
     backgroundColor: "#FFF",
     elevation: 0,
+    width: 40,
+    height: 40,
+  },
+
+  fabLabel: {
+    position: "absolute",
+    color: "#000",
+    backgroundColor: "#FFF",
+    padding: 2,
+  },
+
+  fabLabelRight: {
+    right: 50,
+  },
+
+  fabLabelLeft: {
+    left: 50,
   },
 
   fabIcon: {
