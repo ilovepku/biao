@@ -65,7 +65,7 @@ const AboutScreen = ({ navigation }: Props) => (
     </Header>
     <Content>
       <ListItem itemDivider>
-        <Text>App</Text>
+        <Text>About BIAO!: History on a Modern Map</Text>
       </ListItem>
       <ListItem icon last>
         <Left>
