@@ -15,7 +15,7 @@ import {
   EDGE_PADDING_PORTRAIT,
   EDGE_PADDING_LANDSCAPE,
 } from "../settings";
-import { COLOR_MAP } from "../assets/peloponnesian_war/settings";
+import { MARKER_COLOR_MAP } from "../assets/peloponnesian_war/settings";
 import { DrawerParamList } from "../types";
 import { RootState } from "../redux/store";
 import LOCATIONS from "../assets/peloponnesian_war/locations.json";
@@ -176,8 +176,8 @@ const MapScreen = ({ navigation }: Props) => {
                   name={type}
                   color={
                     highlight
-                      ? COLOR_MAP[`${status}Highlight`]
-                      : COLOR_MAP[status]
+                      ? MARKER_COLOR_MAP[`${status}Highlight`].color
+                      : MARKER_COLOR_MAP[status].color
                   }
                 />
               </Marker>
@@ -218,7 +218,7 @@ const MapScreen = ({ navigation }: Props) => {
           style={[styles.fab, { marginTop: 15 }]}
           onPress={handleResetToInitialRegion}
         >
-          <Text style={[styles.fabLabel, styles.fabLabelLeft]}>RESET</Text>
+          <Text style={[styles.fabLabel, styles.fabLabelLeft]}>Reset View</Text>
           <MaterialCommunityIcons name="restore" size={24} />
         </Button>
       </Fab>

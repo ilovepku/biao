@@ -12,6 +12,7 @@ import { DrawerParamList } from "./types";
 import { store } from "./redux/store";
 import { updateOrientation } from "./redux/actions";
 import MapScreen from "./components/MapScreen";
+import LegendScreen from "./components/LegendScreen";
 import AboutScreen from "./components/AboutScreen";
 
 // @TODO
@@ -47,6 +48,7 @@ const App = () => {
       <NavigationContainer>
         <Drawer.Navigator initialRouteName="Map">
           <Drawer.Screen name="Map" component={MapScreen} />
+          <Drawer.Screen name="Legend" component={LegendScreen} />
           <Drawer.Screen name="About" component={AboutScreen} />
         </Drawer.Navigator>
       </NavigationContainer>

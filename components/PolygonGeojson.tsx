@@ -3,7 +3,7 @@ import { LatLng } from "react-native-maps";
 import { Feature } from "geojson";
 import { GeojsonType } from "../types";
 import CustomPolygon from "./CustomPolygon";
-import { COLOR_MAP } from "../assets/peloponnesian_war/settings";
+import { AREA_COLOR_MAP } from "../assets/peloponnesian_war/settings";
 
 type LayeredLatLng = LatLng[] | LatLng[][];
 type Coordinates = LatLng | LayeredLatLng;
@@ -100,7 +100,7 @@ const PolygonGeojson = memo(
             fillColor={
               fillColor
                 ? fillColor
-                : COLOR_MAP[`${overlay.feature.properties!.status}Area`]
+                : AREA_COLOR_MAP[overlay.feature.properties!.status].color
             }
             strokeWidth={strokeWidth}
           />

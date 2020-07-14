@@ -2,6 +2,7 @@ import { LatLng } from "react-native-maps";
 
 export type DrawerParamList = {
   Map: undefined;
+  Legend: undefined;
   About: undefined;
 };
 
