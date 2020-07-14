@@ -1,7 +1,7 @@
 export const INITIAL_REGION = {
-  latitude: 38.672085700614446,
-  longitude: 21.590127479285,
-  latitudeDelta: 5.863403880667256,
+  latitude: 37.17615217644666,
+  longitude: 20.915832035243508,
+  latitudeDelta: 12.620493457720851,
 };
 
 export const COLOR_MAP: {
