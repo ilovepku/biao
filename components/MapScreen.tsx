@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import { StyleSheet, Dimensions } from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { DrawerNavigationProp } from "@react-navigation/drawer";
-import { Container, Fab, Button, Text } from "native-base";
+import { Container, View, Text, Fab, Button } from "native-base";
 import MapView, { PROVIDER_GOOGLE, MapTypes, Marker } from "react-native-maps";
 import ClusteredMapView from "react-native-map-clustering";
 import { Modalize } from "react-native-modalize";
@@ -139,6 +139,33 @@ const MapScreen = ({ navigation }: Props) => {
         mapType={mapType}
         onRegionChangeComplete={(region) => setRegion(region)}
         radius={10} // SuperCluster radius
+        renderCluster={({
+          id,
+          geometry: { coordinates },
+          properties: { point_count },
+        }) => (
+          <Marker
+            key={`cluster-${id}`}
+            coordinate={{
+              latitude: coordinates[1],
+              longitude: coordinates[0],
+            }}
+            tracksViewChanges={false}
+          >
+            <View
+              style={[
+                styles.cluster,
+                { width: 16 + 2 * point_count, height: 16 + 2 * point_count },
+              ]}
+            >
+              <Text
+                style={[styles.clusterText, { fontSize: 10 + 2 * point_count }]}
+              >
+                {point_count}
+              </Text>
+            </View>
+          </Marker>
+        )}
       >
         <PolygonGeojson geojson={AREAS} strokeWidth={0} />
 
@@ -186,7 +213,7 @@ const MapScreen = ({ navigation }: Props) => {
       </ClusteredMapView>
 
       <Fab
-        style={styles.fab}
+        style={[styles.fab, styles.fabMain]}
         active={fabActive.top}
         direction="down"
         position="topLeft"
@@ -224,7 +251,7 @@ const MapScreen = ({ navigation }: Props) => {
       </Fab>
 
       <Fab
-        style={styles.fab}
+        style={[styles.fab, styles.fabMain]}
         active={fabActive.bottom}
         direction="down"
         position="topRight"
@@ -269,14 +296,18 @@ const MapScreen = ({ navigation }: Props) => {
       </Fab>
 
       <Fab
-        style={styles.fab}
+        style={[styles.fab, styles.fabMain]}
         position="bottomLeft"
         onPress={() => navigation.openDrawer()}
       >
         <MaterialCommunityIcons style={styles.fabIcon} name={"menu"} />
       </Fab>
 
-      <Fab style={styles.fab} position="bottomRight" onPress={handleOpenModal}>
+      <Fab
+        style={[styles.fab, styles.fabMain]}
+        position="bottomRight"
+        onPress={handleOpenModal}
+      >
         <MaterialCommunityIcons style={styles.fabIcon} name={"timeline-text"} />
       </Fab>
 
@@ -301,11 +332,25 @@ const styles = StyleSheet.create({
     ...StyleSheet.absoluteFillObject,
   },
 
+  cluster: {
+    borderRadius: 50,
+    backgroundColor: "rgba(92, 184, 92, .75)",
+    borderWidth: 1,
+    borderColor: "#fff",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+
+  clusterText: { color: "#FFF" },
+
   fab: {
     backgroundColor: "#FFF",
     elevation: 0,
-    width: 40,
-    height: 40,
+  },
+
+  fabMain: {
+    width: 45,
+    height: 45,
   },
 
   fabLabel: {
