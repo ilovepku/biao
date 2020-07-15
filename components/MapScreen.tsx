@@ -312,7 +312,8 @@ const styles = StyleSheet.create({
     position: "absolute",
     color: "#000",
     backgroundColor: "#FFF",
-    padding: 2,
+    padding: 1,
+    borderRadius: 5,
   },
 
   fabLabelRight: {

@@ -59,7 +59,7 @@ const TabRoute = memo(
           {!!background && (
             <CardItem style={styles.transparentBg}>
               <Body>
-                <Text style={styles.content__subheading}>Background</Text>
+                <Text note style={styles.content__subheading}>Background</Text>
                 <Text style={styles.content__paragraph}>{background}</Text>
               </Body>
             </CardItem>
