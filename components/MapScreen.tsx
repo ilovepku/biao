@@ -100,7 +100,7 @@ const MapScreen = ({ navigation }: Props) => {
   };
 
   const fitMaptoActiveMarkers = () => {
-    // run effect only on updates with mutable ref
+    // run effect only after layout ready
     if (!layoutReady.current) {
       let features = LOCATIONS.features;
       if (activeLocations.length) {
