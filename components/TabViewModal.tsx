@@ -50,11 +50,15 @@ const TabViewModal = forwardRef(
     };
 
     useEffect(() => {
+      // run effect only on updates with mutable ref
       if (isInitialMount.current) {
         isInitialMount.current = false;
       } else {
         handleIndexChange();
       }
+      return () => {
+        isInitialMount.current = false;
+      };
     }, [indexObj]);
 
     const handleModalClose = () => {
