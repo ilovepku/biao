@@ -43,7 +43,7 @@ const MapScreen = ({ navigation }: Props) => {
   const index = useSelector((state: RootState) => state.modalTabIndexObj.index);
   const dispatch = useDispatch();
 
-  const isInitialMount = useRef(true);
+  const layoutReady = useRef(true);
   const mapRef = useRef<MapView>(null);
   const modalRef = useRef<Modalize>(null);
 
@@ -75,16 +75,12 @@ const MapScreen = ({ navigation }: Props) => {
 
   // fit map to markers on active locations change
   useEffect(() => {
-    // run effect only on updates with mutable ref
-    if (isInitialMount.current) {
-      isInitialMount.current = false;
-    } else {
-      fitMaptoActiveMarkers();
-    }
-    return () => {
-      isInitialMount.current = false;
-    };
+    fitMaptoActiveMarkers();
   }, [activeLocations]);
+
+  const handleLayoutReady = () => {
+    layoutReady.current = false;
+  };
 
   const handleMapTypeChange = (type: string) => {
     setMarkerFilters({
@@ -104,38 +100,41 @@ const MapScreen = ({ navigation }: Props) => {
   };
 
   const fitMaptoActiveMarkers = () => {
-    let features = LOCATIONS.features;
-    if (activeLocations.length) {
-      features = activeLocations
-        .map((location) =>
-          features.filter((feature) => feature.id === location)
-        )
-        .flat();
-    }
-    const coordinates = features.map((feature) => ({
-      latitude: feature.geometry.coordinates[1],
-      longitude: feature.geometry.coordinates[0],
-    }));
+    // run effect only on updates with mutable ref
+    if (!layoutReady.current) {
+      let features = LOCATIONS.features;
+      if (activeLocations.length) {
+        features = activeLocations
+          .map((location) =>
+            features.filter((feature) => feature.id === location)
+          )
+          .flat();
+      }
+      const coordinates = features.map((feature) => ({
+        latitude: feature.geometry.coordinates[1],
+        longitude: feature.geometry.coordinates[0],
+      }));
 
-    // use animateToRegion method instead of fitToCoordinates with only 1 active location to avoid over zooming
-    if (activeLocations.length === 1) {
-      mapRef.current &&
-        mapRef.current.animateToRegion(
-          {
-            ...coordinates[0],
-            latitudeDelta: DEFAULT_LATITUDE_DELTA,
-            longitudeDelta: DEFAULT_LATITUDE_DELTA * aspectRatio,
-          },
-          DEFAULT_ANIMATE_DURATION
-        );
-    } else {
-      mapRef.current &&
-        mapRef.current.fitToCoordinates(coordinates, {
-          edgePadding:
-            orientation === "landscape"
-              ? EDGE_PADDING_LANDSCAPE
-              : EDGE_PADDING_PORTRAIT,
-        });
+      // use animateToRegion method instead of fitToCoordinates with only 1 active location to avoid over zooming
+      if (activeLocations.length === 1) {
+        mapRef.current &&
+          mapRef.current.animateToRegion(
+            {
+              ...coordinates[0],
+              latitudeDelta: DEFAULT_LATITUDE_DELTA,
+              longitudeDelta: DEFAULT_LATITUDE_DELTA * aspectRatio,
+            },
+            DEFAULT_ANIMATE_DURATION
+          );
+      } else {
+        mapRef.current &&
+          mapRef.current.fitToCoordinates(coordinates, {
+            edgePadding:
+              orientation === "landscape"
+                ? EDGE_PADDING_LANDSCAPE
+                : EDGE_PADDING_PORTRAIT,
+          });
+      }
     }
   };
 
@@ -144,6 +143,7 @@ const MapScreen = ({ navigation }: Props) => {
       <ClusteredMapView
         ref={mapRef}
         style={styles.map}
+        onLayout={handleLayoutReady}
         provider={PROVIDER_GOOGLE}
         initialRegion={region}
         mapType={mapType}
