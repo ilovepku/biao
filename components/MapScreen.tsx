@@ -1,5 +1,5 @@
 import React, { useRef, useState, useEffect } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { StyleSheet, Dimensions } from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { DrawerNavigationProp } from "@react-navigation/drawer";
@@ -18,6 +18,7 @@ import {
 import { MARKER_COLOR_MAP } from "../assets/peloponnesian_war/settings";
 import { DrawerParamList } from "../types";
 import { RootState } from "../redux/store";
+import { updateModalTabIndexObj } from "../redux/actions";
 import LOCATIONS from "../assets/peloponnesian_war/locations.json";
 import AREAS from "../assets/peloponnesian_war/areas.json";
 import TIMELINE from "../assets/peloponnesian_war/timeline.json";
@@ -39,6 +40,8 @@ const MapScreen = ({ navigation }: Props) => {
   const { orientation, modalPosition } = useSelector(
     (state: RootState) => state
   );
+  const index = useSelector((state: RootState) => state.modalTabIndexObj.index);
+  const dispatch = useDispatch();
 
   const isInitialMount = useRef(true);
   const mapRef = useRef<MapView>(null);
@@ -64,9 +67,14 @@ const MapScreen = ({ navigation }: Props) => {
     city: true,
   });
 
+  const handleOpenModal = (i = index) => {
+    modalRef.current && modalRef.current.open();
+    dispatch(updateModalTabIndexObj({ index: i }));
+  };
+
   // persist (initial) modal position after orientation change (top and closed auto kept)
   useEffect(() => {
-    modalPosition === "initial" && modalRef.current && modalRef.current.open();
+    modalPosition === "initial" && handleOpenModal();
   }, [orientation]);
 
   // fit map to active location markers on activeLocations change
@@ -118,10 +126,6 @@ const MapScreen = ({ navigation }: Props) => {
       ...markerFilters,
       [type]: !markerFilters[type],
     });
-  };
-
-  const handleOpenModal = () => {
-    modalRef.current && modalRef.current.open();
   };
 
   const handleResetToInitialRegion = () => {
@@ -198,6 +202,14 @@ const MapScreen = ({ navigation }: Props) => {
                 calloutAnchor={{ x: 0, y: 0 }}
                 rotation={45}
                 tracksViewChanges={false}
+                onPress={() => {
+                  if (id.indexOf("-") !== -1) {
+                    // @TODO: temp check for timeline event markers
+                    handleOpenModal(
+                      TIMELINE.findIndex((o) => o.locations.includes(id))
+                    );
+                  }
+                }}
               >
                 <IconMarker
                   name={type}

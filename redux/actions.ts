@@ -1,9 +1,11 @@
 import {
-  UPDATE_ORIENTATION,
-  UPDATE_MODAL_POSITION,
   UpdateOrientationPayload,
   UpdateModalPositionPayload,
+  UpdateModalTabIndexObjPayload,
   ActionTypes,
+  UPDATE_ORIENTATION,
+  UPDATE_MODAL_POSITION,
+  UPDATE_MODAL_TAB_INDEX_OBJ,
 } from "./types";
 
 export function updateOrientation(
@@ -20,6 +22,15 @@ export function updateModalPosition(
 ): ActionTypes {
   return {
     type: UPDATE_MODAL_POSITION,
+    payload,
+  };
+}
+
+export function updateModalTabIndexObj(
+  payload: UpdateModalTabIndexObjPayload
+): ActionTypes {
+  return {
+    type: UPDATE_MODAL_TAB_INDEX_OBJ,
     payload,
   };
 }

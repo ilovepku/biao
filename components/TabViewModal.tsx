@@ -1,11 +1,11 @@
-import React, { forwardRef, Ref, useRef, useState } from "react";
+import React, { forwardRef, Ref, useRef, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { ScrollView, Animated, View, Text, StyleSheet } from "react-native";
 import { Modalize } from "react-native-modalize";
 
 import { Timeline } from "../types";
 import { RootState } from "../redux/store";
-import { updateModalPosition } from "../redux/actions";
+import { updateModalPosition, updateModalTabIndexObj } from "../redux/actions";
 import TabBarItem from "./TabBarItem";
 import Tabs from "./Tabs";
 import {
@@ -27,23 +27,39 @@ type Props = {
 const TabViewModal = forwardRef(
   ({ tabRoutes, setActiveLocations }: Props, ref: Ref<Modalize>) => {
     const orientation = useSelector((state: RootState) => state.orientation);
+    const indexObj = useSelector((state: RootState) => state.modalTabIndexObj);
+    const index = indexObj.index;
     const dispatch = useDispatch();
 
+    const isInitialMount = useRef(true);
     const scrollViewRef = useRef<ScrollView>(null);
     const scrollY = useRef(new Animated.Value(0)).current;
-    const [index, setIndex] = useState(0);
 
-    const handleIndexChange = (i: number) => {
+    const animateToTabBarItem = () => {
       const width = TAB_BAR_ITEM_WIDTH;
       const margin = TAB_BAR_ITEM_MARGIN;
-      const x = (width + margin) * i;
-
-      setIndex(i);
+      const x = (width + margin) * index;
 
       scrollViewRef.current &&
         scrollViewRef.current.scrollTo({ x, animated: true });
+    };
 
-      setActiveLocations(tabRoutes[i].locations);
+    const handleIndexChange = () => {
+      setActiveLocations(tabRoutes[index].locations);
+      animateToTabBarItem();
+    };
+
+    useEffect(() => {
+      if (isInitialMount.current) {
+        isInitialMount.current = false;
+      } else {
+        handleIndexChange();
+      }
+    }, [indexObj]);
+
+    const handleModalClose = () => {
+      setActiveLocations([]);
+      dispatch(updateModalPosition("closed"));
     };
 
     const renderTabBar = (
@@ -89,11 +105,11 @@ const TabViewModal = forwardRef(
           >
             {tabRoutes.map(({ year, type }, i) => (
               <TabBarItem
-                key={i}
+                key={`tab-bar-item-${i}`}
                 active={index === i}
                 year={year}
                 emoji={EMOJI_MAP[type].emoji}
-                onPress={() => handleIndexChange(i)}
+                onPress={() => dispatch(updateModalTabIndexObj({ index: i }))}
               />
             ))}
           </ScrollView>
@@ -125,17 +141,13 @@ const TabViewModal = forwardRef(
         closeSnapPointStraightEnabled={false}
         withOverlay={false}
         HeaderComponent={renderTabBar}
-        onOpened={() => handleIndexChange(index)}
-        onClosed={() => {
-          setActiveLocations([]);
-          dispatch(updateModalPosition("closed"));
-        }}
+        onClosed={handleModalClose}
         onPositionChange={(position) => dispatch(updateModalPosition(position))}
       >
         <Tabs
           tabRoutes={tabRoutes}
           active={index}
-          onIndexChange={handleIndexChange}
+          onIndexChange={(i) => dispatch(updateModalTabIndexObj({ index: i }))}
         />
       </Modalize>
     );
