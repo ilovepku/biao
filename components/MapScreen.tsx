@@ -67,54 +67,19 @@ const MapScreen = ({ navigation }: Props) => {
     city: true,
   });
 
-  const handleOpenModal = (i = index) => {
-    modalRef.current && modalRef.current.open();
-    dispatch(updateModalTabIndexObj({ index: i }));
-  };
-
-  // persist (initial) modal position after orientation change (top and closed auto kept)
+  // persist (initial) modal position and refit map to markers after orientation change (top and closed auto kept)
   useEffect(() => {
     modalPosition === "initial" && handleOpenModal();
+    fitMaptoActiveMarkers();
   }, [orientation]);
 
-  // fit map to active location markers on activeLocations change
+  // fit map to markers on active locations change
   useEffect(() => {
+    // run effect only on updates with mutable ref
     if (isInitialMount.current) {
       isInitialMount.current = false;
     } else {
-      let features = LOCATIONS.features;
-      if (activeLocations.length) {
-        features = activeLocations
-          .map((location) =>
-            features.filter((feature) => feature.id === location)
-          )
-          .flat();
-      }
-      const coordinates = features.map((feature) => ({
-        latitude: feature.geometry.coordinates[1],
-        longitude: feature.geometry.coordinates[0],
-      }));
-
-      // use animateToRegion method instead of fitToCoordinates with only 1 active location to avoid over zooming
-      if (activeLocations.length === 1) {
-        mapRef.current &&
-          mapRef.current.animateToRegion(
-            {
-              ...coordinates[0],
-              latitudeDelta: DEFAULT_LATITUDE_DELTA,
-              longitudeDelta: DEFAULT_LATITUDE_DELTA * aspectRatio,
-            },
-            DEFAULT_ANIMATE_DURATION
-          );
-      } else {
-        mapRef.current &&
-          mapRef.current.fitToCoordinates(coordinates, {
-            edgePadding:
-              orientation === "landscape"
-                ? EDGE_PADDING_LANDSCAPE
-                : EDGE_PADDING_PORTRAIT,
-          });
-      }
+      fitMaptoActiveMarkers();
     }
     return () => {
       isInitialMount.current = false;
@@ -131,6 +96,47 @@ const MapScreen = ({ navigation }: Props) => {
   const handleResetToInitialRegion = () => {
     setActiveLocations([]);
     modalRef.current && modalRef.current.close();
+  };
+
+  const handleOpenModal = (i = index) => {
+    modalRef.current && modalRef.current.open();
+    dispatch(updateModalTabIndexObj({ index: i }));
+  };
+
+  const fitMaptoActiveMarkers = () => {
+    let features = LOCATIONS.features;
+    if (activeLocations.length) {
+      features = activeLocations
+        .map((location) =>
+          features.filter((feature) => feature.id === location)
+        )
+        .flat();
+    }
+    const coordinates = features.map((feature) => ({
+      latitude: feature.geometry.coordinates[1],
+      longitude: feature.geometry.coordinates[0],
+    }));
+
+    // use animateToRegion method instead of fitToCoordinates with only 1 active location to avoid over zooming
+    if (activeLocations.length === 1) {
+      mapRef.current &&
+        mapRef.current.animateToRegion(
+          {
+            ...coordinates[0],
+            latitudeDelta: DEFAULT_LATITUDE_DELTA,
+            longitudeDelta: DEFAULT_LATITUDE_DELTA * aspectRatio,
+          },
+          DEFAULT_ANIMATE_DURATION
+        );
+    } else {
+      mapRef.current &&
+        mapRef.current.fitToCoordinates(coordinates, {
+          edgePadding:
+            orientation === "landscape"
+              ? EDGE_PADDING_LANDSCAPE
+              : EDGE_PADDING_PORTRAIT,
+        });
+    }
   };
 
   return (
