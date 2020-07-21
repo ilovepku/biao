@@ -1,124 +1,116 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import { StyleSheet } from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
-import { Ionicons } from "@expo/vector-icons";
-import {
-  Container,
-  Header,
-  Left,
-  Button,
-  Body,
-  Content,
-  ListItem,
-  Text,
-} from "native-base";
-import { DrawerNavigationProp } from "@react-navigation/drawer";
+import { Container, Left, Body, Content, ListItem, Text } from "native-base";
 
-import { DrawerParamList } from "../types";
+import { EMOJI_MAP } from "../settings";
 import {
   AREA_COLOR_MAP,
   MARKER_COLOR_MAP,
 } from "../assets/peloponnesian_war/settings";
-import { EMOJI_MAP } from "../settings";
+import { RootState } from "../redux/store";
 import IconMarker from "./IconMarker";
+import CustomHeader from "./CustomHeader";
 
-type AboutScreenNavigationProp = DrawerNavigationProp<DrawerParamList, "About">;
+const LegendScreen = () => {
+  const { darkMode } = useSelector((state: RootState) => state);
 
-type Props = {
-  navigation: AboutScreenNavigationProp;
+  const ContentStyle = darkMode ? styles.blackContainer : {};
+  const DividerStyle = darkMode ? styles.darkContainer : {};
+  const TextStyle = darkMode ? styles.lightText : {};
+
+  return (
+    <Container>
+      <CustomHeader title={"Legend"} />
+      <Content style={ContentStyle}>
+        <ListItem style={DividerStyle} itemDivider>
+          <Text style={TextStyle}>Area Fill Colors:</Text>
+        </ListItem>
+        {Object.keys(AREA_COLOR_MAP).map((key, index, array) => (
+          <ListItem
+            key={`legend-area-${key}`}
+            icon
+            last={index === array.length - 1}
+          >
+            <Left>
+              <MaterialCommunityIcons
+                name="square"
+                size={24}
+                color={AREA_COLOR_MAP[key].color}
+              />
+            </Left>
+            <Body>
+              <Text style={TextStyle}>{AREA_COLOR_MAP[key].name}</Text>
+            </Body>
+          </ListItem>
+        ))}
+
+        <ListItem style={DividerStyle} itemDivider>
+          <Text style={TextStyle}>City Markers:</Text>
+        </ListItem>
+        {Object.keys(MARKER_COLOR_MAP).map((key, index, array) => (
+          <ListItem
+            key={`legend-marker-city-${key}`}
+            icon
+            last={index === array.length - 1}
+          >
+            <Left style={styles.marker}>
+              <IconMarker name="city" color={MARKER_COLOR_MAP[key].color} />
+            </Left>
+            <Body>
+              <Text style={TextStyle}>{MARKER_COLOR_MAP[key].city}</Text>
+            </Body>
+          </ListItem>
+        ))}
+
+        <ListItem style={DividerStyle} itemDivider>
+          <Text style={TextStyle}>Battle Markers:</Text>
+        </ListItem>
+        {Object.keys(MARKER_COLOR_MAP).map((key, index, array) => (
+          <ListItem
+            key={`legend-marker-battle-${key}`}
+            icon
+            last={index === array.length - 1}
+          >
+            <Left style={styles.marker}>
+              <IconMarker name="battle" color={MARKER_COLOR_MAP[key].color} />
+            </Left>
+            <Body>
+              <Text style={TextStyle}>{MARKER_COLOR_MAP[key].battle}</Text>
+            </Body>
+          </ListItem>
+        ))}
+
+        <ListItem style={DividerStyle} itemDivider>
+          <Text style={TextStyle}>Timeline Icons:</Text>
+        </ListItem>
+        {Object.keys(EMOJI_MAP).map((key, index, array) => (
+          <ListItem
+            key={`legend-timeline-icon-${key}`}
+            icon
+            last={index === array.length - 1}
+          >
+            <Left>
+              <Text style={TextStyle}>{EMOJI_MAP[key].emoji}</Text>
+            </Left>
+            <Body>
+              <Text style={TextStyle}>{EMOJI_MAP[key].name}</Text>
+            </Body>
+          </ListItem>
+        ))}
+      </Content>
+    </Container>
+  );
 };
 
-const LegendScreen = ({ navigation }: Props) => (
-  <Container>
-    <Header>
-      <Left>
-        <Button transparent onPress={() => navigation.goBack()}>
-          <Ionicons name="ios-arrow-back" size={24} color="black" />
-        </Button>
-      </Left>
-      <Body />
-    </Header>
-    <Content>
-      <ListItem itemDivider>
-        <Text>Area Fill Colors:</Text>
-      </ListItem>
-      {Object.keys(AREA_COLOR_MAP).map((key, index, array) => (
-        <ListItem
-          key={`legend-area-${key}`}
-          icon
-          last={index === array.length - 1}
-        >
-          <Left>
-            <MaterialCommunityIcons
-              name="square"
-              size={24}
-              color={AREA_COLOR_MAP[key].color}
-            />
-          </Left>
-          <Body>
-            <Text>{AREA_COLOR_MAP[key].name}</Text>
-          </Body>
-        </ListItem>
-      ))}
-
-      <ListItem itemDivider>
-        <Text>City Markers:</Text>
-      </ListItem>
-      {Object.keys(MARKER_COLOR_MAP).map((key, index, array) => (
-        <ListItem
-          key={`legend-marker-city-${key}`}
-          icon
-          last={index === array.length - 1}
-        >
-          <Left style={styles.marker}>
-            <IconMarker name="city" color={MARKER_COLOR_MAP[key].color} />
-          </Left>
-          <Body>
-            <Text>{MARKER_COLOR_MAP[key].city}</Text>
-          </Body>
-        </ListItem>
-      ))}
-
-      <ListItem itemDivider>
-        <Text>Battle Markers:</Text>
-      </ListItem>
-      {Object.keys(MARKER_COLOR_MAP).map((key, index, array) => (
-        <ListItem
-          key={`legend-marker-battle-${key}`}
-          icon
-          last={index === array.length - 1}
-        >
-          <Left style={styles.marker}>
-            <IconMarker name="battle" color={MARKER_COLOR_MAP[key].color} />
-          </Left>
-          <Body>
-            <Text>{MARKER_COLOR_MAP[key].battle}</Text>
-          </Body>
-        </ListItem>
-      ))}
-
-      <ListItem itemDivider>
-        <Text>Timeline Icons:</Text>
-      </ListItem>
-      {Object.keys(EMOJI_MAP).map((key, index, array) => (
-        <ListItem
-          key={`legend-timeline-icon-${key}`}
-          icon
-          last={index === array.length - 1}
-        >
-          <Left>
-            <Text>{EMOJI_MAP[key].emoji}</Text>
-          </Left>
-          <Body>
-            <Text>{EMOJI_MAP[key].name}</Text>
-          </Body>
-        </ListItem>
-      ))}
-    </Content>
-  </Container>
-);
-
 const styles = StyleSheet.create({
+  blackContainer: { backgroundColor: "#000" },
+
+  darkContainer: { backgroundColor: "#1a1d21" },
+
+  lightText: { color: "#fff" },
+
   marker: {
     transform: [{ rotate: "45deg" }],
   },

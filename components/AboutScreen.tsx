@@ -1,24 +1,21 @@
 import React from "react";
+import { useSelector } from "react-redux";
+import { StyleSheet } from "react-native";
 import * as WebBrowser from "expo-web-browser";
-import { Ionicons } from "@expo/vector-icons";
-import { Octicons } from "@expo/vector-icons";
 import {
   Container,
-  Header,
   Left,
-  Button,
+  Right,
+  Icon,
   Body,
   Content,
   ListItem,
   Text,
-  Right,
   Thumbnail,
 } from "native-base";
-import { DrawerNavigationProp } from "@react-navigation/drawer";
 
-import { DrawerParamList } from "../types";
-
-type AboutScreenNavigationProp = DrawerNavigationProp<DrawerParamList, "About">;
+import { RootState } from "../redux/store";
+import CustomHeader from "./CustomHeader";
 
 const LIBRARIES = [
   { url: "https://github.com/expo/expo", name: "expo" },
@@ -49,89 +46,88 @@ const LIBRARIES = [
   },
 ];
 
-type Props = {
-  navigation: AboutScreenNavigationProp;
-};
+const AboutScreen = () => {
+  const { darkMode } = useSelector((state: RootState) => state);
 
-const AboutScreen = ({ navigation }: Props) => (
-  <Container>
-    <Header>
-      <Left>
-        <Button transparent onPress={() => navigation.goBack()}>
-          <Ionicons name="ios-arrow-back" size={24} color="black" />
-        </Button>
-      </Left>
-      <Body />
-    </Header>
-    <Content>
-      <ListItem itemDivider>
-        <Text>About BIAO!: History on a Modern Map</Text>
-      </ListItem>
-      <ListItem icon last>
-        <Left>
-          <Button>
-            <Octicons name="versions" color="white" />
-          </Button>
-        </Left>
-        <Body>
-          <Text>Version</Text>
-        </Body>
-        <Right>
-          <Text>1.0</Text>
-        </Right>
-      </ListItem>
-      <ListItem itemDivider>
-        <Text>People</Text>
-      </ListItem>
-      <ListItem
-        thumbnail
-        last
-        onPress={() => {
-          WebBrowser.openBrowserAsync("https://seanlee.netlify.com");
-        }}
-      >
-        <Left>
-          <Thumbnail
-            square
-            source={{
-              uri:
-                "https://seanlee.netlify.app/static/9b425e213ec5b64cfa3ef8bc2a8e6d7b/69585/profile.png",
-            }}
-          />
-        </Left>
-        <Body>
-          <Text>Sean Lee</Text>
-          <Text note>seanlee.netlify.com</Text>
-        </Body>
-        <Right>
-          <Text note>Creator</Text>
-        </Right>
-      </ListItem>
-      <ListItem itemDivider>
-        <Text>Third-party projects that helped</Text>
-      </ListItem>
+  const handleOpenPortfolio = () => {
+    WebBrowser.openBrowserAsync("https://seanlee.netlify.com");
+  };
 
-      {LIBRARIES.map(({ name, url }, index, { length }) => (
-        <ListItem
-          key={`library-${name}`}
-          icon
-          last={index === length - 1}
-          onPress={() => {
-            WebBrowser.openBrowserAsync(url);
-          }}
-        >
+  const ContentStyle = darkMode ? styles.blackContainer : {};
+  const DividerStyle = darkMode ? styles.darkContainer : {};
+  const TextStyle = darkMode ? styles.lightText : {};
+
+  return (
+    <Container>
+      <CustomHeader title={"About"} />
+      <Content style={ContentStyle}>
+        <ListItem style={DividerStyle} itemDivider>
+          <Text style={TextStyle}>BIAO!: History Atlas</Text>
+        </ListItem>
+        <ListItem icon last>
           <Left>
-            <Button>
-              <Octicons name="mark-github" color="white" />
-            </Button>
+            <Icon style={TextStyle} type="Octicons" name="versions" />
           </Left>
           <Body>
-            <Text>{name}</Text>
+            <Text style={TextStyle}>Version</Text>
           </Body>
+          <Right>
+            <Text>1.0</Text>
+          </Right>
         </ListItem>
-      ))}
-    </Content>
-  </Container>
-);
+        <ListItem style={DividerStyle} itemDivider>
+          <Text style={TextStyle}>People</Text>
+        </ListItem>
+        <ListItem thumbnail last onPress={handleOpenPortfolio}>
+          <Left>
+            <Thumbnail
+              square
+              source={{
+                uri:
+                  "https://seanlee.netlify.app/static/9b425e213ec5b64cfa3ef8bc2a8e6d7b/69585/profile.png",
+              }}
+            />
+          </Left>
+          <Body>
+            <Text style={TextStyle}>Sean Lee</Text>
+            <Text note>seanlee.netlify.com</Text>
+          </Body>
+          <Right>
+            <Text note>Creator</Text>
+          </Right>
+        </ListItem>
+        <ListItem style={DividerStyle} itemDivider>
+          <Text style={TextStyle}>Third-party projects that helped</Text>
+        </ListItem>
+
+        {LIBRARIES.map(({ name, url }, index, { length }) => (
+          <ListItem
+            key={`library-${name}`}
+            icon
+            last={index === length - 1}
+            onPress={() => {
+              WebBrowser.openBrowserAsync(url);
+            }}
+          >
+            <Left>
+              <Icon style={TextStyle} type="FontAwesome" name="github" />
+            </Left>
+            <Body>
+              <Text style={TextStyle}>{name}</Text>
+            </Body>
+          </ListItem>
+        ))}
+      </Content>
+    </Container>
+  );
+};
+
+const styles = StyleSheet.create({
+  blackContainer: { backgroundColor: "#000" },
+
+  darkContainer: { backgroundColor: "#1a1d21" },
+
+  lightText: { color: "#fff" },
+});
 
 export default AboutScreen;
