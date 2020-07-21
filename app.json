@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "BIAO!: History on a Modern Map",
+    "name": "BIAO!: History Atlas",
     "slug": "biao",
     "platforms": ["ios", "android", "web"],
     "version": "1.0.0",

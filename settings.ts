@@ -30,8 +30,8 @@ export const EDGE_PADDING_LANDSCAPE = {
 export const HEADER_COLLAPSE = 20;
 export const HEADER_LIST = 40;
 export const HEADER_HEIGHT = HEADER_LIST + HEADER_COLLAPSE;
-export const TAB_BAR_ITEM_WIDTH = 95;
-export const TAB_BAR_ITEM_MARGIN = 25;
+export const TAB_BAR_ITEM_WIDTH = 100;
+export const TAB_BAR_ITEM_MARGIN = 20;
 
 // resouce maps
 export const ICON_MAP: { [key: string]: string } = {
@@ -43,10 +43,6 @@ export const ICON_MAP: { [key: string]: string } = {
 };
 
 export const EMOJI_MAP: { [index: string]: { name: string; emoji: string } } = {
-  revolt: {
-    name: "Revolt",
-    emoji: "🔥",
-  },
   battle: {
     name: "Land Battle",
     emoji: "⚔️",
@@ -54,6 +50,10 @@ export const EMOJI_MAP: { [index: string]: { name: string; emoji: string } } = {
   naval: {
     name: "Naval Battle",
     emoji: "⚓",
+  },
+  revolt: {
+    name: "Revolt",
+    emoji: "🔥",
   },
   siege: {
     name: "Siege",
