@@ -1,25 +1,20 @@
 import "react-native-gesture-handler";
 import React, { useEffect } from "react";
 import { Provider } from "react-redux";
-import { View, StyleSheet } from "react-native";
+import { StyleSheet } from "react-native";
 import * as ScreenOrientation from "expo-screen-orientation";
 import { useFonts } from "expo-font";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import { NavigationContainer } from "@react-navigation/native";
-import { Spinner } from "native-base";
+import { Container, Spinner } from "native-base";
 
 import { DrawerParamList } from "./types";
 import { store } from "./redux/store";
 import { updateOrientation } from "./redux/actions";
+import DrawerContent from "./components/DrawerContent";
 import MapScreen from "./components/MapScreen";
 import LegendScreen from "./components/LegendScreen";
 import AboutScreen from "./components/AboutScreen";
-
-// @TODO
-import { YellowBox } from "react-native";
-YellowBox.ignoreWarnings([
-  "Animated: `useNativeDriver` was not specified. This is a required option and must be explicitly set to `true` or `false`",
-]);
 
 ScreenOrientation.unlockAsync();
 
@@ -46,7 +41,10 @@ const App = () => {
   return loaded ? (
     <Provider store={store}>
       <NavigationContainer>
-        <Drawer.Navigator initialRouteName="Map">
+        <Drawer.Navigator
+          initialRouteName="Map"
+          drawerContent={(props) => <DrawerContent {...props} />}
+        >
           <Drawer.Screen name="Map" component={MapScreen} />
           <Drawer.Screen name="Legend" component={LegendScreen} />
           <Drawer.Screen name="About" component={AboutScreen} />
@@ -54,9 +52,9 @@ const App = () => {
       </NavigationContainer>
     </Provider>
   ) : (
-    <View style={styles.container}>
+    <Container style={styles.container}>
       <Spinner />
-    </View>
+    </Container>
   );
 };
 

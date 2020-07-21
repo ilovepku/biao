@@ -4,33 +4,32 @@ import {
   UpdateModalTabIndexObjPayload,
   ActionTypes,
   UPDATE_ORIENTATION,
+  TOGGLE_DARK_MODE,
   UPDATE_MODAL_POSITION,
   UPDATE_MODAL_TAB_INDEX_OBJ,
 } from "./types";
 
-export function updateOrientation(
+export const updateOrientation = (
   payload: UpdateOrientationPayload
-): ActionTypes {
-  return {
-    type: UPDATE_ORIENTATION,
-    payload,
-  };
-}
+): ActionTypes => ({
+  type: UPDATE_ORIENTATION,
+  payload,
+});
 
-export function updateModalPosition(
+export const toggleDarkMode = () => ({
+  type: TOGGLE_DARK_MODE,
+});
+
+export const updateModalPosition = (
   payload: UpdateModalPositionPayload
-): ActionTypes {
-  return {
-    type: UPDATE_MODAL_POSITION,
-    payload,
-  };
-}
+): ActionTypes => ({
+  type: UPDATE_MODAL_POSITION,
+  payload,
+});
 
-export function updateModalTabIndexObj(
+export const updateModalTabIndexObj = (
   payload: UpdateModalTabIndexObjPayload
-): ActionTypes {
-  return {
-    type: UPDATE_MODAL_TAB_INDEX_OBJ,
-    payload,
-  };
-}
+): ActionTypes => ({
+  type: UPDATE_MODAL_TAB_INDEX_OBJ,
+  payload,
+});
