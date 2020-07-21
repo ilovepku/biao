@@ -1,6 +1,7 @@
 import React, { forwardRef, Ref, useRef, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { ScrollView, Animated, View, Text, StyleSheet } from "react-native";
+import { ScrollView, Animated, View, StyleSheet } from "react-native";
+import { Container, Text } from "native-base";
 import { Modalize } from "react-native-modalize";
 
 import { Timeline } from "../types";
@@ -26,9 +27,10 @@ type Props = {
 
 const TabViewModal = forwardRef(
   ({ tabRoutes, setActiveLocations }: Props, ref: Ref<Modalize>) => {
-    const orientation = useSelector((state: RootState) => state.orientation);
-    const indexObj = useSelector((state: RootState) => state.modalTabIndexObj);
-    const index = indexObj.index;
+    const { orientation, darkMode, modalTabIndexObj } = useSelector(
+      (state: RootState) => state
+    );
+    const index = modalTabIndexObj.index;
     const dispatch = useDispatch();
 
     const isInitialMount = useRef(true);
@@ -59,15 +61,23 @@ const TabViewModal = forwardRef(
       return () => {
         isInitialMount.current = false;
       };
-    }, [indexObj]);
+    }, [modalTabIndexObj]);
 
     const handleModalClose = () => {
       setActiveLocations([]);
       dispatch(updateModalPosition("closed"));
     };
 
+    const TabbarHeadingContainer = darkMode
+      ? styles.tabbar__heading__darkContainer
+      : {};
+
+    const TabbarListContainer = darkMode
+      ? styles.tabbar__list__darkContainer
+      : {};
+
     const renderTabBar = (
-      <View
+      <Container
         style={[
           styles.tabbar,
           {
@@ -76,33 +86,30 @@ const TabViewModal = forwardRef(
         ]}
       >
         <Animated.View
-          style={[
-            styles.tabbar__wrapper,
-            {
-              transform: [
-                {
-                  translateY: scrollY.interpolate({
-                    inputRange: [0, 100],
-                    outputRange: [0, 0],
-                    extrapolate: "clamp",
-                  }),
-                },
-              ],
-            },
-          ]}
+          style={{
+            transform: [
+              {
+                translateY: scrollY.interpolate({
+                  inputRange: [0, 100],
+                  outputRange: [0, 0],
+                  extrapolate: "clamp",
+                }),
+              },
+            ],
+          }}
         >
           {orientation === "portrait" && (
-            <View style={styles.tabbar__heading}>
-              <Text style={styles.tabbar__headingText}>
+            <View style={[styles.tabbar__heading, TabbarHeadingContainer]}>
+              <Text note style={styles.tabbar__headingText}>
                 Timeline of the Peloponnesian War (431−404 BC)
               </Text>
-              {/* dynamic name from props */}
+              {/* @TODO: dynamic name from props */}
             </View>
           )}
 
           <ScrollView
             ref={scrollViewRef}
-            style={styles.tabbar__list}
+            style={[styles.tabbar__list, TabbarListContainer]}
             contentContainerStyle={styles.tabbar__listContent}
             showsHorizontalScrollIndicator={false}
             horizontal={true}
@@ -118,8 +125,10 @@ const TabViewModal = forwardRef(
             ))}
           </ScrollView>
         </Animated.View>
-      </View>
+      </Container>
     );
+
+    const ContainerStyle = darkMode ? styles.darkContainer : {};
 
     return (
       <Modalize
@@ -133,9 +142,8 @@ const TabViewModal = forwardRef(
           ),
           scrollEventThrottle: 16,
         }}
-        modalStyle={styles.modal}
+        modalStyle={ContainerStyle}
         handleStyle={styles.modal__handle}
-        childrenStyle={styles.modal__children}
         snapPoint={
           orientation === "landscape"
             ? MODAL_HEIGHT_LANDSCAPE
@@ -159,70 +167,42 @@ const TabViewModal = forwardRef(
 );
 
 const styles = StyleSheet.create({
+  darkContainer: { backgroundColor: "#1a1d21" },
+
+  modal__handle: { backgroundColor: "#75777a" },
+
   tabbar: {
     position: "absolute",
     top: 20,
-    left: 0,
-    right: 0,
-    zIndex: 9000,
-
-    overflow: "hidden",
-
-    borderTopLeftRadius: 12,
-    borderTopRightRadius: 12,
-  },
-
-  tabbar__wrapper: {
-    position: "absolute",
-
-    width: "100%",
-    height: "100%",
+    zIndex: 1,
   },
 
   tabbar__heading: {
     height: HEADER_COLLAPSE,
-
-    backgroundColor: "#212428",
   },
+
+  tabbar__heading__darkContainer: { backgroundColor: "#212428" },
 
   tabbar__headingText: {
     marginLeft: 20,
-
     fontSize: 12,
-    letterSpacing: 0.25,
     textTransform: "uppercase",
-
-    color: "#d1d2d2",
   },
 
   tabbar__list: {
     height: HEADER_LIST,
-
-    borderTopColor: "#313437",
     borderTopWidth: 1,
-    borderBottomColor: "#313437",
     borderBottomWidth: 1,
+  },
 
+  tabbar__list__darkContainer: {
+    borderTopColor: "#313437",
+    borderBottomColor: "#313437",
     backgroundColor: "#1a1d21",
   },
 
   tabbar__listContent: {
-    flexDirection: "row",
-    alignItems: "center",
-
     paddingLeft: 20,
-  },
-
-  modal: {
-    backgroundColor: "#1a1d21",
-  },
-
-  modal__handle: { width: 35, backgroundColor: "#75777a" },
-
-  modal__children: {
-    borderTopLeftRadius: 12,
-    borderTopRightRadius: 12,
-    overflow: "hidden",
   },
 });
 

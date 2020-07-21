@@ -1,12 +1,11 @@
 import React, { useRef, useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { StyleSheet, Dimensions } from "react-native";
-import { MaterialCommunityIcons } from "@expo/vector-icons";
-import { DrawerNavigationProp } from "@react-navigation/drawer";
-import { Container, View, Text, Fab, Button } from "native-base";
+import { useNavigation } from "@react-navigation/native";
 import MapView, { PROVIDER_GOOGLE, MapTypes, Marker } from "react-native-maps";
 import ClusteredMapView from "react-native-map-clustering";
 import { Modalize } from "react-native-modalize";
+import { Container, View, Text, Fab, Icon, Button } from "native-base";
 
 import { INITIAL_REGION } from "../assets/peloponnesian_war/settings";
 import {
@@ -16,7 +15,6 @@ import {
   EDGE_PADDING_LANDSCAPE,
 } from "../settings";
 import { MARKER_COLOR_MAP } from "../assets/peloponnesian_war/settings";
-import { DrawerParamList } from "../types";
 import { RootState } from "../redux/store";
 import { updateModalTabIndexObj } from "../redux/actions";
 import LOCATIONS from "../assets/peloponnesian_war/locations.json";
@@ -30,18 +28,15 @@ const { width, height } = Dimensions.get("window");
 const aspectRatio = width / height;
 const { latitude, longitude, latitudeDelta } = INITIAL_REGION;
 
-type MapScreenNavigationProp = DrawerNavigationProp<DrawerParamList, "Map">;
-
-type Props = {
-  navigation: MapScreenNavigationProp;
-};
-
-const MapScreen = ({ navigation }: Props) => {
-  const { orientation, modalPosition } = useSelector(
-    (state: RootState) => state
-  );
-  const index = useSelector((state: RootState) => state.modalTabIndexObj.index);
+const MapScreen = () => {
+  const {
+    orientation,
+    darkMode,
+    modalPosition,
+    modalTabIndexObj: { index },
+  } = useSelector((state: RootState) => state);
   const dispatch = useDispatch();
+  const navigation = useNavigation();
 
   const layoutReady = useRef(true);
   const mapRef = useRef<MapView>(null);
@@ -54,11 +49,14 @@ const MapScreen = ({ navigation }: Props) => {
     longitudeDelta: latitudeDelta * aspectRatio,
   });
   // active map type
-  const [mapType, setMapType] = useState<MapTypes>("terrain");
+  const [mapType, setMapType] = useState<MapTypes>("hybrid");
   // active timeline locations
   const [activeLocations, setActiveLocations] = useState<string[]>([]);
   // active fab popups
-  const [fabActive, setFabActive] = useState({ top: false, bottom: false });
+  const [fabActive, setFabActive] = useState({
+    topLeft: false,
+    topRight: false,
+  });
   // active marker types
   const [markerFilters, setMarkerFilters] = useState<{
     [index: string]: boolean;
@@ -94,9 +92,20 @@ const MapScreen = ({ navigation }: Props) => {
     modalRef.current && modalRef.current.close();
   };
 
+  const handleToggleTopLeftFab = () =>
+    setFabActive({ ...fabActive, topLeft: !fabActive.topLeft });
+
+  const handleToggleTopRightFab = () =>
+    setFabActive({ ...fabActive, topRight: !fabActive.topRight });
+
   const handleOpenModal = (i = index) => {
     modalRef.current && modalRef.current.open();
     dispatch(updateModalTabIndexObj({ index: i }));
+  };
+
+  const handleOpenDrawer = () => {
+    // @ts-ignore: temp fix
+    navigation.openDrawer();
   };
 
   const fitMaptoActiveMarkers = () => {
@@ -138,8 +147,18 @@ const MapScreen = ({ navigation }: Props) => {
     }
   };
 
+  const ThemeStyle = darkMode
+    ? [styles.blackContainer, styles.whiteText]
+    : [styles.whiteContainer, styles.darkText];
+
+  const ContainerStyle = darkMode
+    ? styles.blackContainer
+    : styles.whiteContainer;
+
+  const TextSytle = darkMode ? styles.whiteText : styles.darkText;
+
   return (
-    <Container style={styles.container}>
+    <Container>
       <ClusteredMapView
         ref={mapRef}
         style={styles.map}
@@ -230,104 +249,132 @@ const MapScreen = ({ navigation }: Props) => {
           )}
       </ClusteredMapView>
 
-      <Fab
-        style={[styles.fab, styles.fabMain]}
-        active={fabActive.top}
-        direction="down"
-        position="topLeft"
-        onPress={() => setFabActive({ ...fabActive, top: !fabActive.top })}
-      >
-        <MaterialCommunityIcons
-          style={styles.fabIcon}
-          name={"layers-outline"}
-        />
-        {[
-          { name: "standard", label: "Default", icon: "map" },
-          { name: "hybrid", label: "Satellite", icon: "satellite" },
-          { name: "terrain", label: "Terrain", icon: "terrain" },
-        ].map(({ name, label, icon }) => (
-          <Button
-            key={`mapType-${name}`}
-            style={
-              mapType === name ? [styles.fab, styles.activeFab] : styles.fab
-            }
-            disabled={mapType === name}
-            onPress={() => setMapType(name as MapTypes)}
+      {modalPosition !== "top" && (
+        <>
+          <Fab
+            style={[styles.fabSmall, ContainerStyle]}
+            active={fabActive.topLeft}
+            direction="down"
+            position="topLeft"
+            onPress={handleToggleTopLeftFab}
           >
-            <Text style={[styles.fabLabel, styles.fabLabelLeft]}>{label}</Text>
-            <MaterialCommunityIcons name={icon} size={24} />
-          </Button>
-        ))}
-
-        <Button
-          style={[styles.fab, { marginTop: 15 }]}
-          onPress={handleResetToInitialRegion}
-        >
-          <Text style={[styles.fabLabel, styles.fabLabelLeft]}>Reset View</Text>
-          <MaterialCommunityIcons name="restore" size={24} />
-        </Button>
-      </Fab>
-
-      <Fab
-        style={[styles.fab, styles.fabMain]}
-        active={fabActive.bottom}
-        direction="down"
-        position="topRight"
-        onPress={() =>
-          setFabActive({ ...fabActive, bottom: !fabActive.bottom })
-        }
-      >
-        <MaterialCommunityIcons
-          style={styles.fabIcon}
-          name={
-            Object.values(markerFilters).every((item) => item)
-              ? "filter-outline"
-              : "filter"
-          }
-        />
-        {[
-          {
-            name: "city",
-            label: "Cities",
-            icon: "home-outline",
-            iconActive: "home",
-          },
-          {
-            name: "battle",
-            label: "Battles",
-            icon: "skull-outline",
-            iconActive: "skull",
-          },
-        ].map(({ name, label, icon, iconActive }) => (
-          <Button
-            key={`filter-${name}`}
-            style={styles.fab}
-            onPress={() => handleMapTypeChange(name)}
-          >
-            <Text style={[styles.fabLabel, styles.fabLabelRight]}>{label}</Text>
-            <MaterialCommunityIcons
-              name={markerFilters[name] ? iconActive : icon}
-              size={24}
+            <Icon
+              style={TextSytle}
+              type="MaterialCommunityIcons"
+              name="layers-outline"
             />
-          </Button>
-        ))}
-      </Fab>
+            {[
+              { name: "standard", label: "Default", icon: "map" },
+              { name: "hybrid", label: "Satellite", icon: "satellite" },
+              { name: "terrain", label: "Terrain", icon: "terrain" },
+            ].map(({ name, label, icon }) => (
+              <Button
+                key={`mapType-${name}`}
+                style={[
+                  mapType === name ? styles.activeFab : {},
+                  ContainerStyle,
+                ]}
+                disabled={mapType === name}
+                onPress={() => setMapType(name as MapTypes)}
+              >
+                <Text
+                  style={[styles.fabLabel, styles.fabLabelLeft, ThemeStyle]}
+                >
+                  {label}
+                </Text>
+                <Icon
+                  style={TextSytle}
+                  type="MaterialCommunityIcons"
+                  name={icon}
+                />
+              </Button>
+            ))}
 
-      <Fab
-        style={[styles.fab, styles.fabMain]}
-        position="bottomLeft"
-        onPress={() => navigation.openDrawer()}
-      >
-        <MaterialCommunityIcons style={styles.fabIcon} name={"menu"} />
-      </Fab>
+            <Button
+              style={[styles.fabExtraButton, ContainerStyle]}
+              onPress={handleResetToInitialRegion}
+            >
+              <Text style={[styles.fabLabel, styles.fabLabelLeft, ThemeStyle]}>
+                Reset View
+              </Text>
+              <Icon
+                style={TextSytle}
+                type="MaterialCommunityIcons"
+                name="restore"
+              />
+            </Button>
+          </Fab>
 
-      <Fab
-        style={[styles.fab, styles.fabMain]}
-        position="bottomRight"
-        onPress={handleOpenModal}
-      >
-        <MaterialCommunityIcons style={styles.fabIcon} name={"timeline-text"} />
-      </Fab>
+          <Fab
+            style={[styles.fabSmall, ContainerStyle]}
+            active={fabActive.topRight}
+            direction="down"
+            position="topRight"
+            onPress={handleToggleTopRightFab}
+          >
+            <Icon
+              style={TextSytle}
+              type="MaterialCommunityIcons"
+              name={
+                Object.values(markerFilters).every((item) => item)
+                  ? "filter-outline"
+                  : "filter"
+              }
+            />
+            {[
+              {
+                name: "city",
+                label: "Cities",
+                icon: "home-outline",
+                iconActive: "home",
+              },
+              {
+                name: "battle",
+                label: "Battles",
+                icon: "skull-outline",
+                iconActive: "skull",
+              },
+            ].map(({ name, label, icon, iconActive }) => (
+              <Button
+                key={`filter-${name}`}
+                style={ContainerStyle}
+                onPress={() => handleMapTypeChange(name)}
+              >
+                <Text
+                  style={[styles.fabLabel, styles.fabLabelRight, ThemeStyle]}
+                >
+                  {label}
+                </Text>
+                <Icon
+                  style={TextSytle}
+                  type="MaterialCommunityIcons"
+                  name={markerFilters[name] ? iconActive : icon}
+                />
+              </Button>
+            ))}
+          </Fab>
+        </>
+      )}
+
+      {modalPosition === "closed" && (
+        <>
+          <Fab
+            style={[styles.fabSmall, ContainerStyle]}
+            position="bottomLeft"
+            onPress={handleOpenDrawer}
+          >
+            <Icon style={TextSytle} type="MaterialCommunityIcons" name="menu" />
+          </Fab>
+
+          <Fab
+            style={styles.fabBig}
+            position="bottomRight"
+            onPress={handleOpenModal}
+          >
+            <Icon type="MaterialCommunityIcons" name="timeline-text-outline" />
+          </Fab>
+        </>
+      )}
 
       <TabViewModal
         tabRoutes={TIMELINE}
@@ -339,16 +386,17 @@ const MapScreen = ({ navigation }: Props) => {
 };
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-
   map: {
     ...StyleSheet.absoluteFillObject,
   },
+
+  blackContainer: { backgroundColor: "#000" },
+
+  whiteContainer: { backgroundColor: "#fff" },
+
+  darkText: { color: "#121212" },
+
+  whiteText: { color: "#fff" },
 
   cluster: {
     borderRadius: 50,
@@ -359,22 +407,27 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
 
-  clusterText: { color: "#FFF" },
-
-  fab: {
-    backgroundColor: "#FFF",
-    elevation: 0,
+  clusterText: {
+    color: "#FFF",
   },
 
-  fabMain: {
+  fabSmall: {
     width: 45,
     height: 45,
   },
 
+  fabBig: {
+    width: 50,
+    height: 50,
+    backgroundColor: "#1b74ea",
+  },
+
+  fabExtraButton: {
+    marginTop: 15,
+  },
+
   fabLabel: {
     position: "absolute",
-    color: "#000",
-    backgroundColor: "#FFF",
     padding: 1,
     borderRadius: 5,
   },
@@ -387,13 +440,9 @@ const styles = StyleSheet.create({
     left: 50,
   },
 
-  fabIcon: {
-    color: "#000",
-  },
-
   activeFab: {
-    borderWidth: 1,
-    borderColor: "blue",
+    borderWidth: 2,
+    borderColor: "#007aff",
   },
 });
 

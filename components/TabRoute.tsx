@@ -9,6 +9,7 @@ import { RootState } from "../redux/store";
 
 type Props = {
   route: {
+    key: string;
     title: string;
     subtitle: string;
     description: { background: string; events: string; aftermath: string };
@@ -25,15 +26,20 @@ type Props = {
 const TabRoute = memo(
   ({
     route: {
+      key,
       title,
       subtitle,
       description: { background, events, aftermath },
       links,
     },
   }: Props) => {
-    const { orientation, modalPosition } = useSelector(
+    const { orientation, darkMode, modalPosition } = useSelector(
       (state: RootState) => state
     );
+
+    const ContainerStyle = darkMode ? styles.darkContainer : {};
+    const TextStyle = darkMode ? styles.lightText : {};
+
     return (
       <ScrollView
         style={{
@@ -46,55 +52,41 @@ const TabRoute = memo(
         }}
       >
         <Card transparent style={styles.card}>
-          <CardItem header style={styles.transparentBg}>
+          <CardItem header style={ContainerStyle}>
             <Body>
-              <Text style={styles.content__heading}>{title}</Text>
-              {!!subtitle && (
-                <Text note style={styles.content__subheading}>
-                  {subtitle}
-                </Text>
-              )}
-            </Body>
-          </CardItem>
-          {!!background && (
-            <CardItem style={styles.transparentBg}>
-              <Body>
-                <Text note style={styles.content__subheading}>Background</Text>
-                <Text style={styles.content__paragraph}>{background}</Text>
-              </Body>
-            </CardItem>
-          )}
-
-          <CardItem style={styles.transparentBg}>
-            <Body>
-              {(!!background || !!aftermath) && (
-                <Text note style={styles.content__subheading}>
-                  Events
-                </Text>
-              )}
-              <Text style={styles.content__paragraph}>{events}</Text>
+              <Text style={[styles.content__heading, TextStyle]}>{title}</Text>
+              {!!subtitle && <Text note>{subtitle}</Text>}
             </Body>
           </CardItem>
 
-          {!!aftermath && (
-            <CardItem style={styles.transparentBg}>
-              <Body>
-                <Text note style={styles.content__subheading}>
-                  Aftermath
-                </Text>
-                <Text style={styles.content__paragraph}>{aftermath}</Text>
-              </Body>
-            </CardItem>
+          {[
+            { title: "Background", content: background },
+            { title: "Events", content: events },
+            { title: "Aftermath", content: aftermath },
+          ].map(
+            ({ title, content }) =>
+              !!content && (
+                <CardItem key={`${key}-${title}`} style={ContainerStyle}>
+                  <Body>
+                    <Text note>{title}</Text>
+                    <Text style={[styles.content__paragraph, TextStyle]}>
+                      {content}
+                    </Text>
+                  </Body>
+                </CardItem>
+              )
           )}
 
           {links.map(({ name, icon, url }) => (
-            <CardItem key={url} style={styles.transparentBg}>
+            <CardItem key={url} style={ContainerStyle}>
               <Button
+                style={styles.content__button}
+                iconLeft
                 onPress={() => {
                   WebBrowser.openBrowserAsync(url);
                 }}
               >
-                <Icon name={icon} type="FontAwesome5" />
+                <Icon type="FontAwesome5" name={icon} />
                 <Text>{name}</Text>
               </Button>
             </CardItem>
@@ -106,29 +98,24 @@ const TabRoute = memo(
 );
 
 const styles = StyleSheet.create({
+  darkContainer: { backgroundColor: "#1a1d21" },
+
+  lightText: { color: "#d1d2d2" },
+
   card: { paddingTop: 12, paddingBottom: 50 },
 
   content__heading: {
-    marginBottom: 2,
-
     fontSize: 20,
-    fontWeight: "600",
-    color: "#d1d2d2",
-  },
-
-  content__subheading: {
-    color: "#9a9c9d",
   },
 
   content__paragraph: {
     fontSize: 15,
-    fontWeight: "200",
+
     lineHeight: 22,
-    color: "#666",
   },
 
-  transparentBg: {
-    backgroundColor: "#1a1d21",
+  content__button: {
+    borderRadius: 50,
   },
 });
 
