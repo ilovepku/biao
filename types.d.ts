@@ -8,7 +8,7 @@ export type DrawerParamList = {
 
 export type GeojsonType = GeoJSON;
 
-interface TimelineItem {
+type TimelineItem = {
   key: string;
   year: number;
   type: string;
@@ -16,6 +16,6 @@ interface TimelineItem {
   subtitle: string;
   description: { background: string; events: string; aftermath: string };
   locations: string[];
-}
+};
 
 export type Timeline = TimelineItem[];

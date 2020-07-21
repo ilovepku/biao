@@ -30,8 +30,8 @@ export const EDGE_PADDING_LANDSCAPE = {
 export const HEADER_COLLAPSE = 20;
 export const HEADER_LIST = 40;
 export const HEADER_HEIGHT = HEADER_LIST + HEADER_COLLAPSE;
-export const TAB_BAR_ITEM_WIDTH = 95;
-export const TAB_BAR_ITEM_MARGIN = 25;
+export const TAB_BAR_ITEM_WIDTH = 100;
+export const TAB_BAR_ITEM_MARGIN = 20;
 
 // resouce maps
 export const ICON_MAP: { [key: string]: string } = {

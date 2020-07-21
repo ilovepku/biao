@@ -59,26 +59,6 @@
     ]
   },
   {
-    "key": "outbreak-of-the-archidamian-war",
-    "year": -431,
-    "type": "battle",
-    "title": "Outbreak of the Archidamian War",
-    "subtitle": "Stalemate, peace of Nicias (421 BC)",
-    "description": {
-      "background": "Athenians controlled most of the members of the Delian League. The Peloponnesians controlled all of the Peloponnese and most of the Greek states of central Greece, notably Boeotia. A less-than-stable ally could also be found in Macedon. Outside of the core areas, the Peloponnesians could also summon friends from Italy and Sicily. Pericles was confident that Athens had the financial resources necessary to wage a long war, and he persuaded his fellow citizens to adopt an indirect strategy that involved sacrificing property in the interest of lives. Pericles moved the population of Attica and Athens, perhaps 300,000 people, behind the Long Walls. He then planned to send his fleet to ravage the Peloponnesus, to put down rebellions in the Athenian Empire, to prevent the Spartans from cooperating with the Persians, and to attack Corinthian economic and military interests in northwest Greece. The Peloponnesians, however, had greater numbers and superior hoplites. The Spartan plan was to fight the Athenians for control of the home waters, build up a network of allies to break Corcyra and Athenian friends in the west, and invade Attica and force a hoplite battle.",
-      "events": "In 431 B.C., King Archidamus invaded Attica at the head of the full Peloponnesian levy, to force a decisive hoplite battle. Pericles had anticipated the Spartan strategy. He evacuated the population of Athens behind the Long Walls; Attica was surrendered to repeated ravaging by the Peloponnesian army. In turn, the Athenian fleet of 200 triremes, along with allied contingents, scoured the Peloponnesian shores, sacking towns, destroying port facilities, and interrupting the shipment of foodstuffs from Sicily.",
-      "aftermath": "The Spartans' devastation of the Attic countryside had a harsh economic impact on most Athenians. In 430 B.C., the Athenians, overcrowded within the Long Walls, began to suffer diseases that carried off about 25 percent of the population. Pericles came under severe criticism, was deprived of political office and was fined, and died of disease in 429 B.C.. Meanwhile, the Athenian naval demonstrations in 431/430 B.C. hurt the Peloponnesian League considerably. The situation at sea became so insecure that many shippers dared not sail from Sicily or Italy, and others rerouted their shipments of foodstuffs to Athens. The belligerents found themselves at a stalemate, yet remarkably, neither side felt compelled to negotiate, in spite of the destruction of their vital interests. The commitment to strategies designed to destroy the economic base of the opponent increased the intensity and levels of hatred on both sides."
-    },
-    "links": [
-      {
-        "name": "Outbreak of the Archidamian War",
-        "icon": "link",
-        "url": "https://www.livius.org/sources/content/thucydides-historian/outbreak-of-the-archidamian-war/"
-      }
-    ],
-    "locations": ["siege-of-plataea", "thebes", "sparta", "athens"]
-  },
-  {
     "key": "battles-of-rhium-and-naupactus",
     "year": -429,
     "type": "naval",

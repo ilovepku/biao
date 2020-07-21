@@ -8,12 +8,12 @@ import { AREA_COLOR_MAP } from "../assets/peloponnesian_war/settings";
 type LayeredLatLng = LatLng[] | LatLng[][];
 type Coordinates = LatLng | LayeredLatLng;
 
-interface Overlay {
+type Overlay = {
   feature: Feature;
   coordinates?: Coordinates;
   holes?: LayeredLatLng;
   type?: string;
-}
+};
 
 const makePoint = (c: number[]) => ({ latitude: c[1], longitude: c[0] });
 
@@ -77,14 +77,14 @@ export const makeOverlays = (features: Feature[]) => {
   return polygons;
 };
 
-interface Props {
+type Props = {
   geojson: GeojsonType;
   color?: string;
   strokeColor?: string;
   fillColor?: string;
   strokeWidth?: number;
   miniIcon?: boolean;
-}
+};
 
 const PolygonGeojson = memo(
   ({ geojson, strokeColor, fillColor, strokeWidth }: Props) => {
