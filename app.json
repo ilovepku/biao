@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "BIAO!: History Atlas",
+    "name": "BIAO! StoryMap",
     "slug": "biao",
     "platforms": ["ios", "android", "web"],
     "version": "1.0.0",

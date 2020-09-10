@@ -25,10 +25,6 @@ const LIBRARIES = [
     name: "@react-navigation",
   },
   {
-    url: "https://github.com/GeekyAnts/NativeBase",
-    name: "native-base",
-  },
-  {
     url: "https://github.com/react-native-community/react-native-maps",
     name: "react-native-maps",
   },
@@ -43,6 +39,10 @@ const LIBRARIES = [
   {
     url: "https://github.com/venits/react-native-map-clustering",
     name: "react-native-map-clustering",
+  },
+  {
+    url: "https://github.com/GeekyAnts/NativeBase",
+    name: "native-base",
   },
 ];
 
@@ -62,7 +62,7 @@ const AboutScreen = () => {
       <CustomHeader title={"About"} />
       <Content style={ContentStyle}>
         <ListItem style={DividerStyle} itemDivider>
-          <Text style={TextStyle}>BIAO!: History Atlas</Text>
+          <Text style={TextStyle}>BIAO! StoryMap</Text>
         </ListItem>
         <ListItem icon last>
           <Left>

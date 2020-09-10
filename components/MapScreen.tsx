@@ -423,7 +423,7 @@ const styles = StyleSheet.create({
   },
 
   fabExtraButton: {
-    marginTop: 15,
+    marginTop: 10,
   },
 
   fabLabel: {
