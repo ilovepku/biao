@@ -2,27 +2,30 @@
 
 * * *
 
-**BIAO! StoryMap** is a free, open-source app to help people follow stories that highlight the locations of a series of events.
+**BIAO! StoryMap** is a free, open-source app to help history lovers follow stories that highlight the locations of a series of events.
 
-[![Expo](https://img.shields.io/github/package-json/dependency-version/ilovepku/biao/expo)](https://github.com/expo/expo/blob/master/CHANGELOG.md) [![React Navigation](https://img.shields.io/github/package-json/dependency-version/ilovepku/biao/react-native-maps?color=%236b52ae)](https://github.com/react-native-maps/react-native-maps/blob/master/CHANGELOG.md) [![React Navigation](https://img.shields.io/github/package-json/dependency-version/ilovepku/biao/@react-navigation/native?color=%236b52ae)](https://github.com/react-navigation/react-navigation/blob/main/packages/native/CHANGELOG.md) [![Redux](https://img.shields.io/github/package-json/dependency-version/ilovepku/biao/redux?color=%23593d88)](https://github.com/reduxjs/redux/blob/master/CHANGELOG.md) [![React Native Modalize](https://img.shields.io/github/package-json/dependency-version/ilovepku/biao/react-native-modalize?color=%23D64292)](https://github.com/jeremybarbet/react-native-modalize/releases) [![NativeBase](https://img.shields.io/github/package-json/dependency-version/ilovepku/biao/native-base?color=%2300c497)](https://docs.nativebase.io/docs/release-notes/Release.html)
+Now with the Peloponnesian War only, more contents coming soon.
 
+[![Expo](https://img.shields.io/github/package-json/dependency-version/ilovepku/biao/expo)](https://github.com/expo/expo/blob/master/CHANGELOG.md) [![React Navigation](https://img.shields.io/github/package-json/dependency-version/ilovepku/biao/react-native-maps?color=%23f4b400)](https://github.com/react-native-maps/react-native-maps/blob/master/CHANGELOG.md) [![React Navigation](https://img.shields.io/github/package-json/dependency-version/ilovepku/biao/@react-navigation/native?color=%236b52ae)](https://github.com/react-navigation/react-navigation/blob/main/packages/native/CHANGELOG.md) [![Redux](https://img.shields.io/github/package-json/dependency-version/ilovepku/biao/redux?color=%23593d88)](https://github.com/reduxjs/redux/releases) [![React Native Modalize](https://img.shields.io/github/package-json/dependency-version/ilovepku/biao/react-native-modalize?color=%23D64292)](https://github.com/jeremybarbet/react-native-modalize/releases) [![NativeBase](https://img.shields.io/github/package-json/dependency-version/ilovepku/biao/native-base?color=%2300c497)](https://docs.nativebase.io/docs/release-notes/Release.html)
+
+- **Supported iOS versions**: 10.0+
 - **Supported Android versions**: 5.0+
 
 # Features
-- Stream and play audio of selected speech from a wide and ever-expanding repertoire
-- Scroll through the full transcript of a speech
-- Filter through speeches with either speaker, category, or keyword search
-- Add chosen speeches to playlist
-- Mark favourite speeches
-- Control the player from notification and lock screen
-- Jump around easily with fast forward/rewind or the slider
-- Cache streamed audio for offline play (Android only now)
+- Overall mode: view all interesting locations (battles/cities), areas of control, etc. at once, with the help of marker clustering to improve visibility and performance
+- Timeline mode: swipe left and right to move through individual event abstracts in a time sequence, while following their locations and participants in zoomed-in, tracking view
+- Drag drawer to full screen to read about specific event details with relevant links for even more information
+- Modern interactive maps and related features (w/ Google Maps API): switch between satellite/terrain/roadmap views, filter different types of markers
+- Using standard GeoJSON geographic data format
+- Map legends
+- Landscape mode
+- Dark mode
 
 # Planned features
-- Playback speed controlling
-- Background information on speeches
-- Highlighting of transcript synced with playing progress (major)
-- Repeatable segment, automatic segmentation (major)
+- Move dataset from local to cloud (major)
+- Add more dataset (major)
+- Dynamic areas (major)
+- Tools for dataset adding and editing (major)
 
 # Building the applications
 
@@ -38,13 +41,18 @@ Before doing anything else, from the root of the project, run:
   
 ## Testing the application
 
-First you need to setup React Native to build projects with native code. For this, follow the instructions on the [Get Started](https://facebook.github.io/react-native/docs/getting-started.html) tutorial, in the "React Native CLI Quickstart" tab.
-
 Then:
 
 	npm run android
+or
+
+	npm run ios
   
-Normally the bundler should start automatically with the application. If it doesn't, run `npm start`.
+The Expo packager will show, and you can either:
+
+- install the Expo app, scan the displayed QR code, and run the app on your mobile phone directly.
+- open the Android simulator.
+- open the iOS simulator.
 
 # Donations
 
