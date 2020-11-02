@@ -4,7 +4,7 @@
 
 **BIAO! StoryMap** is a free, open-source app to help history lovers follow stories that highlight the locations of a series of events.
 
-Now with the Peloponnesian War only, more contents coming soon.
+Now with dataset of the Peloponnesian War only. More contents coming soon!
 
 [![Expo](https://img.shields.io/github/package-json/dependency-version/ilovepku/biao/expo)](https://github.com/expo/expo/blob/master/CHANGELOG.md) [![React Navigation](https://img.shields.io/github/package-json/dependency-version/ilovepku/biao/react-native-maps?color=%23f4b400)](https://github.com/react-native-maps/react-native-maps/blob/master/CHANGELOG.md) [![React Navigation](https://img.shields.io/github/package-json/dependency-version/ilovepku/biao/@react-navigation/native?color=%236b52ae)](https://github.com/react-navigation/react-navigation/blob/main/packages/native/CHANGELOG.md) [![Redux](https://img.shields.io/github/package-json/dependency-version/ilovepku/biao/redux?color=%23593d88)](https://github.com/reduxjs/redux/releases) [![React Native Modalize](https://img.shields.io/github/package-json/dependency-version/ilovepku/biao/react-native-modalize?color=%23D64292)](https://github.com/jeremybarbet/react-native-modalize/releases) [![NativeBase](https://img.shields.io/github/package-json/dependency-version/ilovepku/biao/native-base?color=%2300c497)](https://docs.nativebase.io/docs/release-notes/Release.html)
 
