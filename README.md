@@ -11,6 +11,14 @@ Now with dataset of the Peloponnesian War only. More contents coming soon!
 - **Supported iOS versions**: 10.0+
 - **Supported Android versions**: 5.0+
 
+<p float="left">
+  <img src="https://seanlee.netlify.app/static/984cdcf952d1025c2225de06a214a1ad/ee604/timeline.png" alt="timeline" width="250">
+  <img src="https://seanlee.netlify.app/static/e8ee4146ce8f8f0223d68d6d755ff8b7/ee604/details.png" alt="details" width="250">
+  <img src="https://seanlee.netlify.app/static/18a54903e7e0b32622eee6dd8b4be6b8/ee604/strategic.png" alt="strategic" width="250">
+  <img src="https://seanlee.netlify.app/static/5fb68ac002ed44b43efb2348882c72b8/ee604/legends.png" alt="legends" width="250">
+  <img src="https://seanlee.netlify.app/static/31e38d38e70aaf27c855e175853ef20d/ee604/landscape.png" alt="landscape" width="250">
+</p>
+
 # Features
 - Overall mode: view all interesting locations (battles/cities), areas of control, etc. at once, with the help of marker clustering to improve visibility and performance
 - Timeline mode: swipe left and right to move through individual event abstracts in a time sequence, while following their locations and participants in zoomed-in, tracking view
