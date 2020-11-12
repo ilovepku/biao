@@ -30,10 +30,7 @@ Now with dataset of the Peloponnesian War only. More contents coming soon!
 - Dark mode
 
 # Planned features
-- Move dataset from local to cloud (major)
-- Add more dataset (major)
-- Dynamic areas (major)
-- Tools for dataset adding and editing (major)
+See project [Triage](https://github.com/ilovepku/biao/projects/1) for priorities and [Kanban](https://github.com/ilovepku/biao/projects/2) for progress.
 
 # Building the applications
 
