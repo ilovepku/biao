@@ -1,4 +1,4 @@
-[![Sponsor on GitHub](https://img.shields.io/badge/Sponsor-on%20GitHub-blueviolet)](https://github.com/sponsors/ilovepku) [![Donate via PayPal](https://img.shields.io/badge/Donate-via%20PayPal-%230d3685)](https://www.paypal.com/donate?hosted_button_id=EMK52WJM37KWY)
+[![Sponsor on GitHub](https://img.shields.io/badge/Sponsor-on%20GitHub-blueviolet)](https://github.com/sponsors/ilovepku) [![Donate via PayPal](https://img.shields.io/badge/Donate-via%20PayPal-%230d3685)](https://www.paypal.com/donate?hosted_button_id=EMK52WJM37KWY) [![Buy me a coffee](https://img.shields.io/badge/Buy%20me-a%20coffee-%23ff5f5f)](https://www.buymeacoffee.com/seanlee)
 
 * * *
 
@@ -74,6 +74,12 @@ To donate via PayPal, please follow this link:
 Or follow this link to become a GitHub Sponsor:
 
 [![Sponsor on GitHub](https://img.shields.io/badge/Sponsor-on%20GitHub-blueviolet)](https://github.com/sponsors/ilovepku)
+
+## Buy me a coffee
+
+Or follow this link to buy me a coffee:
+
+[![Buy me a coffee](https://img.shields.io/badge/Buy%20me-a%20coffee-%23ff5f5f)](https://www.buymeacoffee.com/seanlee)
 
 # Contributing
 
