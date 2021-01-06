@@ -6280,7 +6280,7 @@
     {
       "id": "muğla",
       "type": "Feature",
-      "properties": { "name": "Muğla", "status": "delian" },
+      "properties": {"name": "Muğla", "status": "delian"},
       "geometry": {
         "type": "MultiPolygon",
         "coordinates": [
@@ -6617,7 +6617,7 @@
     {
       "id": "aydın",
       "type": "Feature",
-      "properties": { "name": "Aydın", "status": "delian" },
+      "properties": {"name": "Aydın", "status": "delian"},
       "geometry": {
         "type": "Polygon",
         "coordinates": [
@@ -6728,7 +6728,7 @@
     {
       "id": "i̇zmir",
       "type": "Feature",
-      "properties": { "name": "İzmir", "status": "delian" },
+      "properties": {"name": "İzmir", "status": "delian"},
       "geometry": {
         "type": "MultiPolygon",
         "coordinates": [
@@ -7004,7 +7004,7 @@
     {
       "id": "çanakkale",
       "type": "Feature",
-      "properties": { "name": "Çanakkale", "status": "delian" },
+      "properties": {"name": "Çanakkale", "status": "delian"},
       "geometry": {
         "type": "MultiPolygon",
         "coordinates": [
@@ -7214,7 +7214,7 @@
     {
       "id": "balıkesir",
       "type": "Feature",
-      "properties": { "name": "Balıkesir", "status": "delian" },
+      "properties": {"name": "Balıkesir", "status": "delian"},
       "geometry": {
         "type": "MultiPolygon",
         "coordinates": [
@@ -7444,7 +7444,7 @@
     {
       "id": "bursa",
       "type": "Feature",
-      "properties": { "name": "Bursa", "status": "delian" },
+      "properties": {"name": "Bursa", "status": "delian"},
       "geometry": {
         "type": "MultiPolygon",
         "coordinates": [
@@ -7571,7 +7571,7 @@
     {
       "id": "yalova",
       "type": "Feature",
-      "properties": { "name": "Yalova", "status": "delian" },
+      "properties": {"name": "Yalova", "status": "delian"},
       "geometry": {
         "type": "Polygon",
         "coordinates": [
@@ -7616,7 +7616,7 @@
     {
       "id": "kocaeli",
       "type": "Feature",
-      "properties": { "name": "Kocaeli", "status": "delian" },
+      "properties": {"name": "Kocaeli", "status": "delian"},
       "geometry": {
         "type": "Polygon",
         "coordinates": [
@@ -7724,7 +7724,7 @@
     {
       "id": "i̇stanbul",
       "type": "Feature",
-      "properties": { "name": "İstanbul", "status": "delian" },
+      "properties": {"name": "İstanbul", "status": "delian"},
       "geometry": {
         "type": "MultiPolygon",
         "coordinates": [
@@ -7848,7 +7848,7 @@
     {
       "id": "tekirdağ",
       "type": "Feature",
-      "properties": { "name": "Tekirdağ", "status": "delian" },
+      "properties": {"name": "Tekirdağ", "status": "delian"},
       "geometry": {
         "type": "Polygon",
         "coordinates": [
@@ -9352,7 +9352,7 @@
     {
       "id": "napoli",
       "type": "Feature",
-      "properties": { "name": "Napoli", "status": "neutral" },
+      "properties": {"name": "Napoli", "status": "neutral"},
       "geometry": {
         "type": "MultiPolygon",
         "coordinates": [
@@ -11288,7 +11288,7 @@
     {
       "id": "calabria",
       "type": "Feature",
-      "properties": { "name": "Calabria", "status": "neutral" },
+      "properties": {"name": "Calabria", "status": "neutral"},
       "geometry": {
         "type": "MultiPolygon",
         "coordinates": [
@@ -14484,7 +14484,7 @@
     {
       "id": "matera",
       "type": "Feature",
-      "properties": { "name": "Matera", "status": "neutral" },
+      "properties": {"name": "Matera", "status": "neutral"},
       "geometry": {
         "type": "MultiPolygon",
         "coordinates": [
@@ -15839,7 +15839,7 @@
     {
       "id": "taranto",
       "type": "Feature",
-      "properties": { "name": "Taranto", "status": "neutral" },
+      "properties": {"name": "Taranto", "status": "neutral"},
       "geometry": {
         "type": "MultiPolygon",
         "coordinates": [
@@ -17244,7 +17244,7 @@
     {
       "id": "lecce",
       "type": "Feature",
-      "properties": { "name": "Lecce", "status": "neutral" },
+      "properties": {"name": "Lecce", "status": "neutral"},
       "geometry": {
         "type": "MultiPolygon",
         "coordinates": [
@@ -18615,7 +18615,7 @@
     {
       "id": "messina",
       "type": "Feature",
-      "properties": { "name": "Messina", "status": "neutral" },
+      "properties": {"name": "Messina", "status": "neutral"},
       "geometry": {
         "type": "MultiPolygon",
         "coordinates": [
@@ -21209,7 +21209,7 @@
     {
       "id": "siracusa",
       "type": "Feature",
-      "properties": { "name": "Siracusa", "status": "neutral" },
+      "properties": {"name": "Siracusa", "status": "neutral"},
       "geometry": {
         "type": "MultiPolygon",
         "coordinates": [
@@ -22820,7 +22820,7 @@
     {
       "id": "catania",
       "type": "Feature",
-      "properties": { "name": "Catania", "status": "neutral" },
+      "properties": {"name": "Catania", "status": "neutral"},
       "geometry": {
         "type": "MultiPolygon",
         "coordinates": [
@@ -24783,7 +24783,7 @@
     {
       "id": "agrigento",
       "type": "Feature",
-      "properties": { "name": "Agrigento", "status": "neutral" },
+      "properties": {"name": "Agrigento", "status": "neutral"},
       "geometry": {
         "type": "MultiPolygon",
         "coordinates": [

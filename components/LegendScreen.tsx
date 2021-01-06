@@ -1,28 +1,28 @@
-import React from "react";
-import { useSelector } from "react-redux";
-import { StyleSheet } from "react-native";
-import { MaterialCommunityIcons } from "@expo/vector-icons";
-import { Container, Left, Body, Content, ListItem, Text } from "native-base";
+import React from 'react'
+import {useSelector} from 'react-redux'
+import {StyleSheet} from 'react-native'
+import {MaterialCommunityIcons} from '@expo/vector-icons'
+import {Container, Left, Body, Content, ListItem, Text} from 'native-base'
 
-import { EMOJI_MAP } from "../settings";
+import {EMOJI_MAP} from '../settings'
 import {
   AREA_COLOR_MAP,
   MARKER_COLOR_MAP,
-} from "../assets/peloponnesian_war/settings";
-import { RootState } from "../redux/store";
-import IconMarker from "./IconMarker";
-import CustomHeader from "./CustomHeader";
+} from '../assets/peloponnesian_war/settings'
+import {RootState} from '../redux/store'
+import IconMarker from './IconMarker'
+import CustomHeader from './CustomHeader'
 
 const LegendScreen = () => {
-  const { darkMode } = useSelector((state: RootState) => state);
+  const {darkMode} = useSelector((state: RootState) => state)
 
-  const ContentStyle = darkMode ? styles.blackContainer : {};
-  const DividerStyle = darkMode ? styles.darkContainer : {};
-  const TextStyle = darkMode ? styles.lightText : {};
+  const ContentStyle = darkMode ? styles.blackContainer : {}
+  const DividerStyle = darkMode ? styles.darkContainer : {}
+  const TextStyle = darkMode ? styles.lightText : {}
 
   return (
     <Container>
-      <CustomHeader title={"Legend"} />
+      <CustomHeader title={'Legend'} />
       <Content style={ContentStyle}>
         <ListItem style={DividerStyle} itemDivider>
           <Text style={TextStyle}>Area Fill Colors:</Text>
@@ -101,19 +101,19 @@ const LegendScreen = () => {
         ))}
       </Content>
     </Container>
-  );
-};
+  )
+}
 
 const styles = StyleSheet.create({
-  blackContainer: { backgroundColor: "#000" },
+  blackContainer: {backgroundColor: '#000'},
 
-  darkContainer: { backgroundColor: "#1a1d21" },
+  darkContainer: {backgroundColor: '#1a1d21'},
 
-  lightText: { color: "#fff" },
+  lightText: {color: '#fff'},
 
   marker: {
-    transform: [{ rotate: "45deg" }],
+    transform: [{rotate: '45deg'}],
   },
-});
+})
 
-export default LegendScreen;
+export default LegendScreen

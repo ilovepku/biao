@@ -1,16 +1,16 @@
-import React, { memo } from "react";
-import { View, StyleSheet } from "react-native";
-import { MaterialCommunityIcons } from "@expo/vector-icons";
+import React, {memo} from 'react'
+import {View, StyleSheet} from 'react-native'
+import {MaterialCommunityIcons} from '@expo/vector-icons'
 
-import { ICON_MAP } from "../settings";
+import {ICON_MAP} from '../settings'
 
 type Props = {
-  name: string;
-  color?: string;
-};
+  name: string
+  color?: string
+}
 
-const IconMarker = memo(({ name, color }: Props) => (
-  <View style={[styles.container, { backgroundColor: color }]}>
+const IconMarker = memo(({name, color}: Props) => (
+  <View style={[styles.container, {backgroundColor: color}]}>
     <MaterialCommunityIcons
       style={styles.icon}
       name={ICON_MAP[name]}
@@ -18,7 +18,7 @@ const IconMarker = memo(({ name, color }: Props) => (
       color="#fff"
     />
   </View>
-));
+))
 
 const styles = StyleSheet.create({
   container: {
@@ -28,13 +28,13 @@ const styles = StyleSheet.create({
     borderTopRightRadius: 50,
     borderBottomLeftRadius: 50,
     borderWidth: 1,
-    borderColor: "#fff",
-    justifyContent: "center",
-    alignItems: "center",
+    borderColor: '#fff',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   icon: {
-    transform: [{ rotate: "-45deg" }],
+    transform: [{rotate: '-45deg'}],
   },
-});
+})
 
-export default IconMarker;
+export default IconMarker

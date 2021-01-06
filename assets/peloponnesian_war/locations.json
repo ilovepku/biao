@@ -4,7 +4,7 @@
     {
       "id": "sparta",
       "type": "Feature",
-      "geometry": { "type": "Point", "coordinates": [22.423611, 37.081944] },
+      "geometry": {"type": "Point", "coordinates": [22.423611, 37.081944]},
       "properties": {
         "name": "Sparta",
         "type": "city",
@@ -16,7 +16,7 @@
     {
       "id": "corinth",
       "type": "Feature",
-      "geometry": { "type": "Point", "coordinates": [22.880192, 37.905346] },
+      "geometry": {"type": "Point", "coordinates": [22.880192, 37.905346]},
       "properties": {
         "name": "Corinth",
         "type": "city",
@@ -26,7 +26,7 @@
     {
       "id": "tegea",
       "type": "Feature",
-      "geometry": { "type": "Point", "coordinates": [22.4205, 37.455333] },
+      "geometry": {"type": "Point", "coordinates": [22.4205, 37.455333]},
       "properties": {
         "name": "Tegea",
         "type": "city",
@@ -36,7 +36,7 @@
     {
       "id": "megara",
       "type": "Feature",
-      "geometry": { "type": "Point", "coordinates": [23.344444, 37.996389] },
+      "geometry": {"type": "Point", "coordinates": [23.344444, 37.996389]},
       "properties": {
         "name": "Megara",
         "type": "city",
@@ -46,7 +46,7 @@
     {
       "id": "vergina",
       "type": "Feature",
-      "geometry": { "type": "Point", "coordinates": [22.316667, 40.483333] },
+      "geometry": {"type": "Point", "coordinates": [22.316667, 40.483333]},
       "properties": {
         "name": "Vergina",
         "description": "Capital of Macedon",
@@ -57,7 +57,7 @@
     {
       "id": "olynthus",
       "type": "Feature",
-      "geometry": { "type": "Point", "coordinates": [23.354, 40.296] },
+      "geometry": {"type": "Point", "coordinates": [23.354, 40.296]},
       "properties": {
         "name": "Olynthus",
         "type": "city",
@@ -67,7 +67,7 @@
     {
       "id": "thebes",
       "type": "Feature",
-      "geometry": { "type": "Point", "coordinates": [23.316667, 38.316667] },
+      "geometry": {"type": "Point", "coordinates": [23.316667, 38.316667]},
       "properties": {
         "name": "Thebes",
         "type": "city",
@@ -77,7 +77,7 @@
     {
       "id": "ambracia",
       "type": "Feature",
-      "geometry": { "type": "Point", "coordinates": [20.987, 39.158] },
+      "geometry": {"type": "Point", "coordinates": [20.987, 39.158]},
       "properties": {
         "name": "Ambracia",
         "type": "city",
@@ -87,7 +87,7 @@
     {
       "id": "ephesus",
       "type": "Feature",
-      "geometry": { "type": "Point", "coordinates": [27.341944, 37.941111] },
+      "geometry": {"type": "Point", "coordinates": [27.341944, 37.941111]},
       "properties": {
         "name": "Ephesus",
         "type": "city",
@@ -97,7 +97,7 @@
     {
       "id": "athens",
       "type": "Feature",
-      "geometry": { "type": "Point", "coordinates": [23.72, 37.97] },
+      "geometry": {"type": "Point", "coordinates": [23.72, 37.97]},
       "properties": {
         "name": "Athens",
         "type": "city",
@@ -109,55 +109,55 @@
     {
       "id": "byzantium",
       "type": "Feature",
-      "geometry": { "type": "Point", "coordinates": [28.984722, 41.015278] },
-      "properties": { "name": "Byzantium", "type": "city", "status": "delian" }
+      "geometry": {"type": "Point", "coordinates": [28.984722, 41.015278]},
+      "properties": {"name": "Byzantium", "type": "city", "status": "delian"}
     },
     {
       "id": "chios",
       "type": "Feature",
-      "geometry": { "type": "Point", "coordinates": [26.016667, 38.4] },
-      "properties": { "name": "Chios", "type": "city", "status": "delian" }
+      "geometry": {"type": "Point", "coordinates": [26.016667, 38.4]},
+      "properties": {"name": "Chios", "type": "city", "status": "delian"}
     },
     {
       "id": "lesbos",
       "type": "Feature",
-      "geometry": { "type": "Point", "coordinates": [26.28, 39.21] },
-      "properties": { "name": "Lesbos", "type": "city", "status": "delian" }
+      "geometry": {"type": "Point", "coordinates": [26.28, 39.21]},
+      "properties": {"name": "Lesbos", "type": "city", "status": "delian"}
     },
     {
       "id": "naxos",
       "type": "Feature",
-      "geometry": { "type": "Point", "coordinates": [25.403889, 37.0875] },
-      "properties": { "name": "Naxos", "type": "city", "status": "delian" }
+      "geometry": {"type": "Point", "coordinates": [25.403889, 37.0875]},
+      "properties": {"name": "Naxos", "type": "city", "status": "delian"}
     },
     {
       "id": "samos",
       "type": "Feature",
-      "geometry": { "type": "Point", "coordinates": [26.833333, 37.75] },
-      "properties": { "name": "Samos", "type": "city", "status": "delian" }
+      "geometry": {"type": "Point", "coordinates": [26.833333, 37.75]},
+      "properties": {"name": "Samos", "type": "city", "status": "delian"}
     },
     {
       "id": "corcyra",
       "type": "Feature",
-      "geometry": { "type": "Point", "coordinates": [19.866667, 39.583333] },
-      "properties": { "name": "Corcyra", "type": "city", "status": "delian" }
+      "geometry": {"type": "Point", "coordinates": [19.866667, 39.583333]},
+      "properties": {"name": "Corcyra", "type": "city", "status": "delian"}
     },
     {
       "id": "mithymna",
       "type": "Feature",
-      "geometry": { "type": "Point", "coordinates": [26.166667, 39.366667] },
-      "properties": { "name": "Mithymna", "type": "city", "status": "delian" }
+      "geometry": {"type": "Point", "coordinates": [26.166667, 39.366667]},
+      "properties": {"name": "Mithymna", "type": "city", "status": "delian"}
     },
     {
       "id": "tenedos",
       "type": "Feature",
-      "geometry": { "type": "Point", "coordinates": [26.028889, 39.821944] },
-      "properties": { "name": "Tenedos", "type": "city", "status": "delian" }
+      "geometry": {"type": "Point", "coordinates": [26.028889, 39.821944]},
+      "properties": {"name": "Tenedos", "type": "city", "status": "delian"}
     },
     {
       "id": "naupactus",
       "type": "Feature",
-      "geometry": { "type": "Point", "coordinates": [21.830556, 38.393889] },
+      "geometry": {"type": "Point", "coordinates": [21.830556, 38.393889]},
       "properties": {
         "name": "Naupactus",
         "type": "city",
@@ -167,7 +167,7 @@
     {
       "id": "epidamnus",
       "type": "Feature",
-      "geometry": { "type": "Point", "coordinates": [19.45, 41.3167] },
+      "geometry": {"type": "Point", "coordinates": [19.45, 41.3167]},
       "properties": {
         "name": "Epidamnus",
         "type": "city",
@@ -177,7 +177,7 @@
     {
       "id": "argos",
       "type": "Feature",
-      "geometry": { "type": "Point", "coordinates": [22.716667, 37.616667] },
+      "geometry": {"type": "Point", "coordinates": [22.716667, 37.616667]},
       "properties": {
         "name": "Argos",
         "type": "city",
@@ -187,7 +187,7 @@
     {
       "id": "segesta",
       "type": "Feature",
-      "geometry": { "type": "Point", "coordinates": [12.832222, 37.941389] },
+      "geometry": {"type": "Point", "coordinates": [12.832222, 37.941389]},
       "properties": {
         "name": "Segesta",
         "type": "city",
@@ -197,7 +197,7 @@
     {
       "id": "syracuse",
       "type": "Feature",
-      "geometry": { "type": "Point", "coordinates": [15.2875, 37.069167] },
+      "geometry": {"type": "Point", "coordinates": [15.2875, 37.069167]},
       "properties": {
         "name": "Syracuse",
         "type": "city",
@@ -207,7 +207,7 @@
     {
       "id": "battle-of-sybota",
       "type": "Feature",
-      "geometry": { "type": "Point", "coordinates": [20.2152778, 39.4033333] },
+      "geometry": {"type": "Point", "coordinates": [20.2152778, 39.4033333]},
       "properties": {
         "name": "Battle of Sybota",
         "type": "battle",
@@ -217,7 +217,7 @@
     {
       "id": "battle-of-potidaea",
       "type": "Feature",
-      "geometry": { "type": "Point", "coordinates": [23.3278, 40.1937] },
+      "geometry": {"type": "Point", "coordinates": [23.3278, 40.1937]},
       "properties": {
         "name": "Battle of Potidaea",
         "type": "battle",
@@ -227,7 +227,7 @@
     {
       "id": "battle-of-spartolos",
       "type": "Feature",
-      "geometry": { "type": "Point", "coordinates": [23.2954, 40.2832] },
+      "geometry": {"type": "Point", "coordinates": [23.2954, 40.2832]},
       "properties": {
         "name": "Battle of Spartolos",
         "type": "battle",
@@ -237,7 +237,7 @@
     {
       "id": "battle-of-rhium",
       "type": "Feature",
-      "geometry": { "type": "Point", "coordinates": [21.783333, 38.3] },
+      "geometry": {"type": "Point", "coordinates": [21.783333, 38.3]},
       "properties": {
         "name": "Battle of Rhium",
         "type": "battle",
@@ -247,7 +247,7 @@
     {
       "id": "battle-of-naupactus",
       "type": "Feature",
-      "geometry": { "type": "Point", "coordinates": [21.830556, 38.393889] },
+      "geometry": {"type": "Point", "coordinates": [21.830556, 38.393889]},
       "properties": {
         "name": "Battle of Naupactus",
         "type": "battle",
@@ -257,7 +257,7 @@
     {
       "id": "siege-of-plataea",
       "type": "Feature",
-      "geometry": { "type": "Point", "coordinates": [23.273853, 38.219992] },
+      "geometry": {"type": "Point", "coordinates": [23.273853, 38.219992]},
       "properties": {
         "name": "Siege of Plataea",
         "type": "battle",
@@ -267,7 +267,7 @@
     {
       "id": "mytilenean-revolt",
       "type": "Feature",
-      "geometry": { "type": "Point", "coordinates": [26.28, 39.21] },
+      "geometry": {"type": "Point", "coordinates": [26.28, 39.21]},
       "properties": {
         "name": "Mytilenean revolt",
         "type": "battle",
@@ -277,7 +277,7 @@
     {
       "id": "battle-of-olpae",
       "type": "Feature",
-      "geometry": { "type": "Point", "coordinates": [21.149835, 38.949996] },
+      "geometry": {"type": "Point", "coordinates": [21.149835, 38.949996]},
       "properties": {
         "name": "Battle of Olpae",
         "type": "battle",
@@ -287,7 +287,7 @@
     {
       "id": "battle-of-idomene",
       "type": "Feature",
-      "geometry": { "type": "Point", "coordinates": [21.166667, 38.85] },
+      "geometry": {"type": "Point", "coordinates": [21.166667, 38.85]},
       "properties": {
         "name": "Battle of Idomene",
         "type": "battle",
@@ -297,7 +297,7 @@
     {
       "id": "battle-of-pylos",
       "type": "Feature",
-      "geometry": { "type": "Point", "coordinates": [21.658656, 36.952123] },
+      "geometry": {"type": "Point", "coordinates": [21.658656, 36.952123]},
       "properties": {
         "name": "Battle of Pylos",
         "type": "battle",
@@ -307,7 +307,7 @@
     {
       "id": "battle-of-sphacteria",
       "type": "Feature",
-      "geometry": { "type": "Point", "coordinates": [21.665725, 36.930136] },
+      "geometry": {"type": "Point", "coordinates": [21.665725, 36.930136]},
       "properties": {
         "name": "Battle of Sphacteria",
         "type": "battle",
@@ -317,7 +317,7 @@
     {
       "id": "battle-of-megara",
       "type": "Feature",
-      "geometry": { "type": "Point", "coordinates": [23.344444, 37.996389] },
+      "geometry": {"type": "Point", "coordinates": [23.344444, 37.996389]},
       "properties": {
         "name": "Battle of Megara",
         "type": "battle",
@@ -327,7 +327,7 @@
     {
       "id": "battle-of-delium",
       "type": "Feature",
-      "geometry": { "type": "Point", "coordinates": [23.661354, 38.346208] },
+      "geometry": {"type": "Point", "coordinates": [23.661354, 38.346208]},
       "properties": {
         "name": "Battle of Delium",
         "type": "battle",
@@ -337,7 +337,7 @@
     {
       "id": "battle-of-amphipolis",
       "type": "Feature",
-      "geometry": { "type": "Point", "coordinates": [23.84, 40.818333] },
+      "geometry": {"type": "Point", "coordinates": [23.84, 40.818333]},
       "properties": {
         "name": "Battle of Amphipolis",
         "type": "battle",
@@ -348,7 +348,7 @@
     {
       "id": "battle-of-mantinea",
       "type": "Feature",
-      "geometry": { "type": "Point", "coordinates": [22.392869, 37.617642] },
+      "geometry": {"type": "Point", "coordinates": [22.392869, 37.617642]},
       "properties": {
         "name": "Battle of Mantinea",
         "type": "battle",
@@ -358,7 +358,7 @@
     {
       "id": "siege-of-melos",
       "type": "Feature",
-      "geometry": { "type": "Point", "coordinates": [24.416667, 36.683333] },
+      "geometry": {"type": "Point", "coordinates": [24.416667, 36.683333]},
       "properties": {
         "name": "Siege of Melos",
         "type": "battle",
@@ -368,7 +368,7 @@
     {
       "id": "sicilian-expedition",
       "type": "Feature",
-      "geometry": { "type": "Point", "coordinates": [15.2833, 37.0833] },
+      "geometry": {"type": "Point", "coordinates": [15.2833, 37.0833]},
       "properties": {
         "name": "Sicilian Expedition",
         "type": "battle",
@@ -379,7 +379,7 @@
     {
       "id": "battle-of-cynossema",
       "type": "Feature",
-      "geometry": { "type": "Point", "coordinates": [26.379167, 40.148611] },
+      "geometry": {"type": "Point", "coordinates": [26.379167, 40.148611]},
       "properties": {
         "name": "Battle of Cynossema",
         "type": "battle",
@@ -389,7 +389,7 @@
     {
       "id": "battle-of-abydos",
       "type": "Feature",
-      "geometry": { "type": "Point", "coordinates": [26.405, 40.195278] },
+      "geometry": {"type": "Point", "coordinates": [26.405, 40.195278]},
       "properties": {
         "name": "Battle of Abydos",
         "type": "battle",
@@ -399,7 +399,7 @@
     {
       "id": "battle-of-cyzicus",
       "type": "Feature",
-      "geometry": { "type": "Point", "coordinates": [27.89, 40.38] },
+      "geometry": {"type": "Point", "coordinates": [27.89, 40.38]},
       "properties": {
         "name": "Battle of Cyzicus",
         "type": "battle",
@@ -410,7 +410,7 @@
     {
       "id": "battle-of-notium",
       "type": "Feature",
-      "geometry": { "type": "Point", "coordinates": [26.8475, 37.992778] },
+      "geometry": {"type": "Point", "coordinates": [26.8475, 37.992778]},
       "properties": {
         "name": "Battle of Notium",
         "type": "battle",
@@ -420,7 +420,7 @@
     {
       "id": "battle-of-mytilene",
       "type": "Feature",
-      "geometry": { "type": "Point", "coordinates": [26.55, 39.1] },
+      "geometry": {"type": "Point", "coordinates": [26.55, 39.1]},
       "properties": {
         "name": "Battle of Mytilene",
         "type": "battle",
@@ -430,7 +430,7 @@
     {
       "id": "battle-of-arginusae",
       "type": "Feature",
-      "geometry": { "type": "Point", "coordinates": [26.8, 39.033333] },
+      "geometry": {"type": "Point", "coordinates": [26.8, 39.033333]},
       "properties": {
         "name": "Battle of Arginusae",
         "type": "battle",
@@ -440,7 +440,7 @@
     {
       "id": "battle-of-aegospotami",
       "type": "Feature",
-      "geometry": { "type": "Point", "coordinates": [26.55, 40.25] },
+      "geometry": {"type": "Point", "coordinates": [26.55, 40.25]},
       "properties": {
         "name": "Battle of Aegospotami",
         "type": "battle",

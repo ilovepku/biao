@@ -1,27 +1,27 @@
-import React, { memo } from "react";
-import { useSelector } from "react-redux";
-import { ScrollView, StyleSheet, Dimensions } from "react-native";
-import * as WebBrowser from "expo-web-browser";
-import { Card, CardItem, Body, Text, Button, Icon } from "native-base";
+import React, {memo} from 'react'
+import {useSelector} from 'react-redux'
+import {ScrollView, StyleSheet, Dimensions} from 'react-native'
+import * as WebBrowser from 'expo-web-browser'
+import {Card, CardItem, Body, Text, Button, Icon} from 'native-base'
 
-import { MODAL_HEIGHT_PORTRAIT, MODAL_HEIGHT_LANDSCAPE } from "../settings";
-import { RootState } from "../redux/store";
+import {MODAL_HEIGHT_PORTRAIT, MODAL_HEIGHT_LANDSCAPE} from '../settings'
+import {RootState} from '../redux/store'
 
 type Props = {
   route: {
-    key: string;
-    title: string;
-    subtitle: string;
-    description: { background: string; events: string; aftermath: string };
+    key: string
+    title: string
+    subtitle: string
+    description: {background: string; events: string; aftermath: string}
     links: [
       {
-        name: string;
-        icon: string;
-        url: string;
-      }
-    ];
-  };
-};
+        name: string
+        icon: string
+        url: string
+      },
+    ]
+  }
+}
 
 const TabRoute = memo(
   ({
@@ -29,26 +29,26 @@ const TabRoute = memo(
       key,
       title,
       subtitle,
-      description: { background, events, aftermath },
+      description: {background, events, aftermath},
       links,
     },
   }: Props) => {
-    const { orientation, darkMode, modalPosition } = useSelector(
-      (state: RootState) => state
-    );
+    const {orientation, darkMode, modalPosition} = useSelector(
+      (state: RootState) => state,
+    )
 
-    const ContainerStyle = darkMode ? styles.darkContainer : {};
-    const TextStyle = darkMode ? styles.lightText : {};
+    const ContainerStyle = darkMode ? styles.darkContainer : {}
+    const TextStyle = darkMode ? styles.lightText : {}
 
     return (
       <ScrollView
         style={{
           height:
-            modalPosition === "initial"
-              ? orientation === "landscape"
+            modalPosition === 'initial'
+              ? orientation === 'landscape'
                 ? MODAL_HEIGHT_LANDSCAPE
                 : MODAL_HEIGHT_PORTRAIT
-              : Dimensions.get("window").height * 0.87, // magical number for android landscape
+              : Dimensions.get('window').height * 0.87, // magical number for android landscape
         }}
       >
         <Card transparent style={styles.card}>
@@ -60,11 +60,11 @@ const TabRoute = memo(
           </CardItem>
 
           {[
-            { title: "Background", content: background },
-            { title: "Events", content: events },
-            { title: "Aftermath", content: aftermath },
+            {title: 'Background', content: background},
+            {title: 'Events', content: events},
+            {title: 'Aftermath', content: aftermath},
           ].map(
-            ({ title, content }) =>
+            ({title, content}) =>
               !!content && (
                 <CardItem key={`${key}-${title}`} style={ContainerStyle}>
                   <Body>
@@ -74,16 +74,16 @@ const TabRoute = memo(
                     </Text>
                   </Body>
                 </CardItem>
-              )
+              ),
           )}
 
-          {links.map(({ name, icon, url }) => (
+          {links.map(({name, icon, url}) => (
             <CardItem key={url} style={ContainerStyle}>
               <Button
                 style={styles.content__button}
                 iconLeft
                 onPress={() => {
-                  WebBrowser.openBrowserAsync(url);
+                  WebBrowser.openBrowserAsync(url)
                 }}
               >
                 <Icon type="FontAwesome5" name={icon} />
@@ -93,16 +93,16 @@ const TabRoute = memo(
           ))}
         </Card>
       </ScrollView>
-    );
-  }
-);
+    )
+  },
+)
 
 const styles = StyleSheet.create({
-  darkContainer: { backgroundColor: "#1a1d21" },
+  darkContainer: {backgroundColor: '#1a1d21'},
 
-  lightText: { color: "#d1d2d2" },
+  lightText: {color: '#d1d2d2'},
 
-  card: { paddingTop: 12, paddingBottom: 50 },
+  card: {paddingTop: 12, paddingBottom: 50},
 
   content__heading: {
     fontSize: 20,
@@ -117,6 +117,6 @@ const styles = StyleSheet.create({
   content__button: {
     borderRadius: 50,
   },
-});
+})
 
-export default TabRoute;
+export default TabRoute

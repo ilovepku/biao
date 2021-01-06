@@ -4,28 +4,28 @@ import {
   TOGGLE_DARK_MODE,
   UPDATE_MODAL_POSITION,
   UPDATE_MODAL_TAB_INDEX_OBJ,
-} from "./types";
+} from './types'
 
 const initState = {
-  orientation: "portrait",
+  orientation: 'portrait',
   darkMode: false,
-  modalPosition: "closed",
-  modalTabIndexObj: { index: 0 },
-};
+  modalPosition: 'closed',
+  modalTabIndexObj: {index: 0},
+}
 
 const reducer = (state = initState, action: ActionTypes) => {
   switch (action.type) {
     case UPDATE_ORIENTATION:
-      return { ...state, orientation: action.payload };
+      return {...state, orientation: action.payload}
     case TOGGLE_DARK_MODE:
-      return { ...state, darkMode: !state.darkMode };
+      return {...state, darkMode: !state.darkMode}
     case UPDATE_MODAL_POSITION:
-      return { ...state, modalPosition: action.payload };
+      return {...state, modalPosition: action.payload}
     case UPDATE_MODAL_TAB_INDEX_OBJ:
-      return { ...state, modalTabIndexObj: action.payload };
+      return {...state, modalTabIndexObj: action.payload}
     default:
-      return state;
+      return state
   }
-};
+}
 
-export default reducer;
+export default reducer

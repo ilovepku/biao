@@ -1,128 +1,126 @@
-import React, { useRef, useState, useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { StyleSheet, Dimensions } from "react-native";
-import { useNavigation } from "@react-navigation/native";
-import MapView, { PROVIDER_GOOGLE, MapTypes, Marker } from "react-native-maps";
-import ClusteredMapView from "react-native-map-clustering";
-import { Modalize } from "react-native-modalize";
-import { Container, View, Text, Fab, Icon, Button } from "native-base";
+import React, {useRef, useState, useEffect} from 'react'
+import {useSelector, useDispatch} from 'react-redux'
+import {StyleSheet, Dimensions} from 'react-native'
+import {useNavigation} from '@react-navigation/native'
+import MapView, {PROVIDER_GOOGLE, MapTypes, Marker} from 'react-native-maps'
+import ClusteredMapView from 'react-native-map-clustering'
+import {Modalize} from 'react-native-modalize'
+import {Container, View, Text, Fab, Icon, Button} from 'native-base'
 
-import { INITIAL_REGION } from "../assets/peloponnesian_war/settings";
+import {INITIAL_REGION} from '../assets/peloponnesian_war/settings'
 import {
   DEFAULT_LATITUDE_DELTA,
   DEFAULT_ANIMATE_DURATION,
   EDGE_PADDING_PORTRAIT,
   EDGE_PADDING_LANDSCAPE,
-} from "../settings";
-import { MARKER_COLOR_MAP } from "../assets/peloponnesian_war/settings";
-import { RootState } from "../redux/store";
-import { updateModalTabIndexObj } from "../redux/actions";
-import LOCATIONS from "../assets/peloponnesian_war/locations.json";
-import AREAS from "../assets/peloponnesian_war/areas.json";
-import TIMELINE from "../assets/peloponnesian_war/timeline.json";
-import PolygonGeojson from "./PolygonGeojson";
-import IconMarker from "./IconMarker";
-import TabViewModal from "./TabViewModal";
+} from '../settings'
+import {MARKER_COLOR_MAP} from '../assets/peloponnesian_war/settings'
+import {RootState} from '../redux/store'
+import {updateModalTabIndexObj} from '../redux/actions'
+import LOCATIONS from '../assets/peloponnesian_war/locations.json'
+import AREAS from '../assets/peloponnesian_war/areas.json'
+import TIMELINE from '../assets/peloponnesian_war/timeline.json'
+import PolygonGeojson from './PolygonGeojson'
+import IconMarker from './IconMarker'
+import TabViewModal from './TabViewModal'
 
-const { width, height } = Dimensions.get("window");
-const aspectRatio = width / height;
-const { latitude, longitude, latitudeDelta } = INITIAL_REGION;
+const {width, height} = Dimensions.get('window')
+const aspectRatio = width / height
+const {latitude, longitude, latitudeDelta} = INITIAL_REGION
 
 const MapScreen = () => {
   const {
     orientation,
     darkMode,
     modalPosition,
-    modalTabIndexObj: { index },
-  } = useSelector((state: RootState) => state);
-  const dispatch = useDispatch();
-  const navigation = useNavigation();
+    modalTabIndexObj: {index},
+  } = useSelector((state: RootState) => state)
+  const dispatch = useDispatch()
+  const navigation = useNavigation()
 
-  const layoutReady = useRef(true);
-  const mapRef = useRef<MapView>(null);
-  const modalRef = useRef<Modalize>(null);
+  const layoutReady = useRef(true)
+  const mapRef = useRef<MapView>(null)
+  const modalRef = useRef<Modalize>(null)
 
   const [region, setRegion] = useState({
     latitude,
     longitude,
     latitudeDelta,
     longitudeDelta: latitudeDelta * aspectRatio,
-  });
+  })
   // active map type
-  const [mapType, setMapType] = useState<MapTypes>("hybrid");
+  const [mapType, setMapType] = useState<MapTypes>('hybrid')
   // active timeline locations
-  const [activeLocations, setActiveLocations] = useState<string[]>([]);
+  const [activeLocations, setActiveLocations] = useState<string[]>([])
   // active fab popups
   const [fabActive, setFabActive] = useState({
     topLeft: false,
     topRight: false,
-  });
+  })
   // active marker types
   const [markerFilters, setMarkerFilters] = useState<{
-    [index: string]: boolean;
+    [index: string]: boolean
   }>({
     battle: true,
     city: true,
-  });
+  })
 
   // persist (initial) modal position and refit map to markers after orientation change (top and closed auto kept)
   useEffect(() => {
-    modalPosition === "initial" && handleOpenModal();
-    fitMaptoActiveMarkers();
-  }, [orientation]);
+    modalPosition === 'initial' && handleOpenModal()
+    fitMaptoActiveMarkers()
+  }, [orientation])
 
   // fit map to markers on active locations change
   useEffect(() => {
-    fitMaptoActiveMarkers();
-  }, [activeLocations]);
+    fitMaptoActiveMarkers()
+  }, [activeLocations])
 
   const handleLayoutReady = () => {
-    layoutReady.current = false;
-  };
+    layoutReady.current = false
+  }
 
   const handleMapTypeChange = (type: string) => {
     setMarkerFilters({
       ...markerFilters,
       [type]: !markerFilters[type],
-    });
-  };
+    })
+  }
 
   const handleResetToInitialRegion = () => {
-    setActiveLocations([]);
-    modalRef.current && modalRef.current.close();
-  };
+    setActiveLocations([])
+    modalRef.current && modalRef.current.close()
+  }
 
   const handleToggleTopLeftFab = () =>
-    setFabActive({ ...fabActive, topLeft: !fabActive.topLeft });
+    setFabActive({...fabActive, topLeft: !fabActive.topLeft})
 
   const handleToggleTopRightFab = () =>
-    setFabActive({ ...fabActive, topRight: !fabActive.topRight });
+    setFabActive({...fabActive, topRight: !fabActive.topRight})
 
   const handleOpenModal = (i = index) => {
-    modalRef.current && modalRef.current.open();
-    dispatch(updateModalTabIndexObj({ index: i }));
-  };
+    modalRef.current && modalRef.current.open()
+    dispatch(updateModalTabIndexObj({index: i}))
+  }
 
   const handleOpenDrawer = () => {
     // @ts-ignore: temp fix
-    navigation.openDrawer();
-  };
+    navigation.openDrawer()
+  }
 
   const fitMaptoActiveMarkers = () => {
     // run effect only after layout ready
     if (!layoutReady.current) {
-      let features = LOCATIONS.features;
+      let features = LOCATIONS.features
       if (activeLocations.length) {
         features = activeLocations
-          .map((location) =>
-            features.filter((feature) => feature.id === location)
-          )
-          .flat();
+          .map(location => features.filter(feature => feature.id === location))
+          .flat()
       }
-      const coordinates = features.map((feature) => ({
+      const coordinates = features.map(feature => ({
         latitude: feature.geometry.coordinates[1],
         longitude: feature.geometry.coordinates[0],
-      }));
+      }))
 
       // use animateToRegion method instead of fitToCoordinates with only 1 active location to avoid over zooming
       if (activeLocations.length === 1) {
@@ -133,29 +131,29 @@ const MapScreen = () => {
               latitudeDelta: DEFAULT_LATITUDE_DELTA,
               longitudeDelta: DEFAULT_LATITUDE_DELTA * aspectRatio,
             },
-            DEFAULT_ANIMATE_DURATION
-          );
+            DEFAULT_ANIMATE_DURATION,
+          )
       } else {
         mapRef.current &&
           mapRef.current.fitToCoordinates(coordinates, {
             edgePadding:
-              orientation === "landscape"
+              orientation === 'landscape'
                 ? EDGE_PADDING_LANDSCAPE
                 : EDGE_PADDING_PORTRAIT,
-          });
+          })
       }
     }
-  };
+  }
 
   const ThemeStyle = darkMode
     ? [styles.blackContainer, styles.whiteText]
-    : [styles.whiteContainer, styles.darkText];
+    : [styles.whiteContainer, styles.darkText]
 
   const ContainerStyle = darkMode
     ? styles.blackContainer
-    : styles.whiteContainer;
+    : styles.whiteContainer
 
-  const TextSytle = darkMode ? styles.whiteText : styles.darkText;
+  const TextSytle = darkMode ? styles.whiteText : styles.darkText
 
   return (
     <Container>
@@ -166,12 +164,12 @@ const MapScreen = () => {
         provider={PROVIDER_GOOGLE}
         initialRegion={region}
         mapType={mapType}
-        onRegionChangeComplete={(region) => setRegion(region)}
+        onRegionChangeComplete={region => setRegion(region)}
         radius={10} // SuperCluster radius
         renderCluster={({
           id,
-          geometry: { coordinates },
-          properties: { point_count },
+          geometry: {coordinates},
+          properties: {point_count},
         }) => (
           <Marker
             key={`cluster-${id}`}
@@ -184,11 +182,11 @@ const MapScreen = () => {
             <View
               style={[
                 styles.cluster,
-                { width: 16 + 2 * point_count, height: 16 + 2 * point_count },
+                {width: 16 + 2 * point_count, height: 16 + 2 * point_count},
               ]}
             >
               <Text
-                style={[styles.clusterText, { fontSize: 10 + 2 * point_count }]}
+                style={[styles.clusterText, {fontSize: 10 + 2 * point_count}]}
               >
                 {point_count}
               </Text>
@@ -199,21 +197,21 @@ const MapScreen = () => {
         <PolygonGeojson geojson={AREAS} strokeWidth={0} />
 
         {LOCATIONS.features
-          .filter((feature) =>
+          .filter(feature =>
             !activeLocations.length
               ? Object.keys(markerFilters)
-                  .filter((item) => markerFilters[item])
+                  .filter(item => markerFilters[item])
                   .includes(feature.properties.type)
               : activeLocations.includes(feature.id as string) &&
                 Object.keys(markerFilters)
-                  .filter((item) => markerFilters[item])
-                  .includes(feature.properties.type)
+                  .filter(item => markerFilters[item])
+                  .includes(feature.properties.type),
           )
           .map(
             ({
               id,
-              geometry: { coordinates },
-              properties: { name, type, description, highlight, status },
+              geometry: {coordinates},
+              properties: {name, type, description, highlight, status},
             }) => (
               <Marker
                 key={id}
@@ -223,16 +221,16 @@ const MapScreen = () => {
                   latitude: coordinates[1],
                   longitude: coordinates[0],
                 }}
-                anchor={{ x: 1, y: 1 }}
-                calloutAnchor={{ x: 0, y: 0 }}
+                anchor={{x: 1, y: 1}}
+                calloutAnchor={{x: 0, y: 0}}
                 rotation={45}
                 tracksViewChanges={false}
                 onPress={() => {
-                  if (id.indexOf("-") !== -1) {
+                  if (id.indexOf('-') !== -1) {
                     // @TODO: temp check for timeline event markers
                     handleOpenModal(
-                      TIMELINE.findIndex((o) => o.locations.includes(id))
-                    );
+                      TIMELINE.findIndex(o => o.locations.includes(id)),
+                    )
                   }
                 }}
               >
@@ -245,11 +243,11 @@ const MapScreen = () => {
                   }
                 />
               </Marker>
-            )
+            ),
           )}
       </ClusteredMapView>
 
-      {modalPosition !== "top" && (
+      {modalPosition !== 'top' && (
         <>
           <Fab
             style={[styles.fabSmall, ContainerStyle]}
@@ -264,10 +262,10 @@ const MapScreen = () => {
               name="layers-outline"
             />
             {[
-              { name: "standard", label: "Default", icon: "map" },
-              { name: "hybrid", label: "Satellite", icon: "satellite" },
-              { name: "terrain", label: "Terrain", icon: "terrain" },
-            ].map(({ name, label, icon }) => (
+              {name: 'standard', label: 'Default', icon: 'map'},
+              {name: 'hybrid', label: 'Satellite', icon: 'satellite'},
+              {name: 'terrain', label: 'Terrain', icon: 'terrain'},
+            ].map(({name, label, icon}) => (
               <Button
                 key={`mapType-${name}`}
                 style={[
@@ -316,25 +314,25 @@ const MapScreen = () => {
               style={TextSytle}
               type="MaterialCommunityIcons"
               name={
-                Object.values(markerFilters).every((item) => item)
-                  ? "filter-outline"
-                  : "filter"
+                Object.values(markerFilters).every(item => item)
+                  ? 'filter-outline'
+                  : 'filter'
               }
             />
             {[
               {
-                name: "city",
-                label: "Cities",
-                icon: "home-outline",
-                iconActive: "home",
+                name: 'city',
+                label: 'Cities',
+                icon: 'home-outline',
+                iconActive: 'home',
               },
               {
-                name: "battle",
-                label: "Battles",
-                icon: "skull-outline",
-                iconActive: "skull",
+                name: 'battle',
+                label: 'Battles',
+                icon: 'skull-outline',
+                iconActive: 'skull',
               },
-            ].map(({ name, label, icon, iconActive }) => (
+            ].map(({name, label, icon, iconActive}) => (
               <Button
                 key={`filter-${name}`}
                 style={ContainerStyle}
@@ -356,7 +354,7 @@ const MapScreen = () => {
         </>
       )}
 
-      {modalPosition === "closed" && (
+      {modalPosition === 'closed' && (
         <>
           <Fab
             style={[styles.fabSmall, ContainerStyle]}
@@ -382,33 +380,33 @@ const MapScreen = () => {
         ref={modalRef}
       />
     </Container>
-  );
-};
+  )
+}
 
 const styles = StyleSheet.create({
   map: {
     ...StyleSheet.absoluteFillObject,
   },
 
-  blackContainer: { backgroundColor: "#000" },
+  blackContainer: {backgroundColor: '#000'},
 
-  whiteContainer: { backgroundColor: "#fff" },
+  whiteContainer: {backgroundColor: '#fff'},
 
-  darkText: { color: "#121212" },
+  darkText: {color: '#121212'},
 
-  whiteText: { color: "#fff" },
+  whiteText: {color: '#fff'},
 
   cluster: {
     borderRadius: 50,
-    backgroundColor: "rgba(92, 184, 92, .75)",
+    backgroundColor: 'rgba(92, 184, 92, .75)',
     borderWidth: 1,
-    borderColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
+    borderColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 
   clusterText: {
-    color: "#FFF",
+    color: '#FFF',
   },
 
   fabSmall: {
@@ -419,7 +417,7 @@ const styles = StyleSheet.create({
   fabBig: {
     width: 50,
     height: 50,
-    backgroundColor: "#1b74ea",
+    backgroundColor: '#1b74ea',
   },
 
   fabExtraButton: {
@@ -427,7 +425,7 @@ const styles = StyleSheet.create({
   },
 
   fabLabel: {
-    position: "absolute",
+    position: 'absolute',
     padding: 1,
     borderRadius: 5,
   },
@@ -442,8 +440,8 @@ const styles = StyleSheet.create({
 
   activeFab: {
     borderWidth: 2,
-    borderColor: "#007aff",
+    borderColor: '#007aff',
   },
-});
+})
 
-export default MapScreen;
+export default MapScreen
