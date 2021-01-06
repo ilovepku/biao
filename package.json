@@ -15,7 +15,7 @@
     "expo-font": "~8.4.0",
     "expo-screen-orientation": "~2.1.0",
     "expo-web-browser": "~8.6.0",
-    "native-base": "^2.13.13",
+    "native-base": "^2.15.0",
     "react": "16.13.1",
     "react-dom": "16.13.1",
     "react-native": "https://github.com/expo/react-native/archive/sdk-40.0.1.tar.gz",
