@@ -8,10 +8,10 @@ import {EMOJI_MAP} from '../settings'
 import {
   AREA_COLOR_MAP,
   MARKER_COLOR_MAP,
-} from '../assets/peloponnesian_war/settings'
+} from '../../assets/peloponnesian_war/settings'
 import {RootState} from '../redux/store'
-import IconMarker from './IconMarker'
-import CustomHeader from './CustomHeader'
+import IconMarker from '../components/IconMarker'
+import CustomHeader from '../components/CustomHeader'
 
 const LegendScreen = () => {
   const {darkMode} = useSelector((state: RootState) => state)

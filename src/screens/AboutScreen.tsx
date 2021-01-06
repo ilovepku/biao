@@ -15,7 +15,7 @@ import {
 } from 'native-base'
 
 import {RootState} from '../redux/store'
-import CustomHeader from './CustomHeader'
+import CustomHeader from '../components/CustomHeader'
 
 const LIBRARIES = [
   {url: 'https://github.com/expo/expo', name: 'expo'},

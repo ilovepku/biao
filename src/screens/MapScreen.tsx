@@ -7,22 +7,24 @@ import ClusteredMapView from 'react-native-map-clustering'
 import {Modalize} from 'react-native-modalize'
 import {Container, View, Text, Fab, Icon, Button} from 'native-base'
 
-import {INITIAL_REGION} from '../assets/peloponnesian_war/settings'
+import {
+  INITIAL_REGION,
+  MARKER_COLOR_MAP,
+} from '../../assets/peloponnesian_war/settings'
 import {
   DEFAULT_LATITUDE_DELTA,
   DEFAULT_ANIMATE_DURATION,
   EDGE_PADDING_PORTRAIT,
   EDGE_PADDING_LANDSCAPE,
 } from '../settings'
-import {MARKER_COLOR_MAP} from '../assets/peloponnesian_war/settings'
 import {RootState} from '../redux/store'
 import {updateModalTabIndexObj} from '../redux/actions'
-import LOCATIONS from '../assets/peloponnesian_war/locations.json'
-import AREAS from '../assets/peloponnesian_war/areas.json'
-import TIMELINE from '../assets/peloponnesian_war/timeline.json'
-import PolygonGeojson from './PolygonGeojson'
-import IconMarker from './IconMarker'
-import TabViewModal from './TabViewModal'
+import LOCATIONS from '../../assets/peloponnesian_war/locations.json'
+import AREAS from '../../assets/peloponnesian_war/areas.json'
+import TIMELINE from '../../assets/peloponnesian_war/timeline.json'
+import PolygonGeojson from '../components/PolygonGeojson'
+import IconMarker from '../components/IconMarker'
+import TabViewModal from '../components/TabViewModal'
 
 const {width, height} = Dimensions.get('window')
 const aspectRatio = width / height

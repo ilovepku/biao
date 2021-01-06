@@ -1,9 +1,9 @@
 import React, {memo} from 'react'
 import {LatLng} from 'react-native-maps'
 import {Feature} from 'geojson'
-import {GeojsonType} from '../types'
+import {GeojsonType} from '../types.d'
 import CustomPolygon from './CustomPolygon'
-import {AREA_COLOR_MAP} from '../assets/peloponnesian_war/settings'
+import {AREA_COLOR_MAP} from '../../assets/peloponnesian_war/settings'
 
 type LayeredLatLng = LatLng[] | LatLng[][]
 type Coordinates = LatLng | LayeredLatLng

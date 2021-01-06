@@ -4,7 +4,7 @@ import {Dimensions} from 'react-native'
 import {TabView, SceneMap} from 'react-native-tab-view'
 
 import {RootState} from '../redux/store'
-import {Timeline} from '../types'
+import {Timeline} from '../types.d'
 import {HEADER_LIST, HEADER_HEIGHT} from '../settings'
 import TabRoute from './TabRoute'
 

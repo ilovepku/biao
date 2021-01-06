@@ -8,13 +8,13 @@ import {createDrawerNavigator} from '@react-navigation/drawer'
 import {NavigationContainer} from '@react-navigation/native'
 import {Container, Spinner} from 'native-base'
 
-import {DrawerParamList} from './types'
-import {store} from './redux/store'
-import {updateOrientation} from './redux/actions'
-import DrawerContent from './components/DrawerContent'
-import MapScreen from './components/MapScreen'
-import LegendScreen from './components/LegendScreen'
-import AboutScreen from './components/AboutScreen'
+import {DrawerParamList} from './src/types.d'
+import {store} from './src/redux/store'
+import {updateOrientation} from './src/redux/actions'
+import DrawerContent from './src/components/DrawerContent'
+import MapScreen from './src/screens/MapScreen'
+import LegendScreen from './src/screens/LegendScreen'
+import AboutScreen from './src/screens/AboutScreen'
 
 // @TODO
 /* import { YellowBox } from "react-native";

@@ -4,7 +4,7 @@ import {ScrollView, Animated, View, StyleSheet} from 'react-native'
 import {Container, Text} from 'native-base'
 import {Modalize} from 'react-native-modalize'
 
-import {Timeline} from '../types'
+import {Timeline} from '../types.d'
 import {RootState} from '../redux/store'
 import {updateModalPosition, updateModalTabIndexObj} from '../redux/actions'
 import TabBarItem from './TabBarItem'
