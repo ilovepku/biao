@@ -33,8 +33,15 @@ export const HEADER_HEIGHT = HEADER_LIST + HEADER_COLLAPSE
 export const TAB_BAR_ITEM_WIDTH = 100
 export const TAB_BAR_ITEM_MARGIN = 20
 
+type IconName =
+  | 'home-map-marker'
+  | 'sword-cross'
+  | 'ship-wheel'
+  | 'tower-fire'
+  | 'fire'
+
 // resouce maps
-export const ICON_MAP: {[key: string]: string} = {
+export const ICON_MAP: {[key: string]: IconName} = {
   city: 'home-map-marker',
   battle: 'sword-cross',
   naval: 'ship-wheel',
