@@ -1,7 +1,8 @@
-import React, {useRef, useState, useEffect} from 'react'
+import React, {useRef, useState, useCallback, useEffect} from 'react'
 import {useSelector, useDispatch} from 'react-redux'
 import {StyleSheet, Dimensions} from 'react-native'
 import {useNavigation} from '@react-navigation/native'
+import {DrawerNavigationProp} from '@react-navigation/drawer'
 import MapView, {PROVIDER_GOOGLE, MapTypes, Marker} from 'react-native-maps'
 import ClusteredMapView from 'react-native-map-clustering'
 import {Modalize} from 'react-native-modalize'
@@ -30,7 +31,9 @@ const {width, height} = Dimensions.get('window')
 const aspectRatio = width / height
 const {latitude, longitude, latitudeDelta} = INITIAL_REGION
 
-const MapScreen = () => {
+type DrawerParamList = Record<string, never>
+
+const MapScreen: React.FunctionComponent = () => {
   const {
     orientation,
     darkMode,
@@ -38,13 +41,13 @@ const MapScreen = () => {
     modalTabIndexObj: {index},
   } = useSelector((state: RootState) => state)
   const dispatch = useDispatch()
-  const navigation = useNavigation()
+  const navigation = useNavigation<DrawerNavigationProp<DrawerParamList>>()
 
   const layoutReady = useRef(true)
   const mapRef = useRef<MapView>(null)
   const modalRef = useRef<Modalize>(null)
 
-  const [region, setRegion] = useState({
+  const [currRegion, setCurrRegion] = useState({
     latitude,
     longitude,
     latitudeDelta,
@@ -67,17 +70,6 @@ const MapScreen = () => {
     city: true,
   })
 
-  // persist (initial) modal position and refit map to markers after orientation change (top and closed auto kept)
-  useEffect(() => {
-    modalPosition === 'initial' && handleOpenModal()
-    fitMaptoActiveMarkers()
-  }, [orientation])
-
-  // fit map to markers on active locations change
-  useEffect(() => {
-    fitMaptoActiveMarkers()
-  }, [activeLocations])
-
   const handleLayoutReady = () => {
     layoutReady.current = false
   }
@@ -91,7 +83,7 @@ const MapScreen = () => {
 
   const handleResetToInitialRegion = () => {
     setActiveLocations([])
-    modalRef.current && modalRef.current.close()
+    if (modalRef.current) modalRef.current.close()
   }
 
   const handleToggleTopLeftFab = () =>
@@ -100,20 +92,22 @@ const MapScreen = () => {
   const handleToggleTopRightFab = () =>
     setFabActive({...fabActive, topRight: !fabActive.topRight})
 
-  const handleOpenModal = (i = index) => {
-    modalRef.current && modalRef.current.open()
-    dispatch(updateModalTabIndexObj({index: i}))
-  }
+  const handleOpenModal = useCallback(
+    (i = index) => {
+      if (modalRef.current) modalRef.current.open()
+      dispatch(updateModalTabIndexObj({index: i}))
+    },
+    [dispatch, index],
+  )
 
   const handleOpenDrawer = () => {
-    // @ts-ignore: temp fix
     navigation.openDrawer()
   }
 
-  const fitMaptoActiveMarkers = () => {
+  const fitMaptoActiveMarkers = useCallback(() => {
     // run effect only after layout ready
     if (!layoutReady.current) {
-      let features = LOCATIONS.features
+      let {features} = LOCATIONS
       if (activeLocations.length) {
         features = activeLocations
           .map(location => features.filter(feature => feature.id === location))
@@ -126,7 +120,7 @@ const MapScreen = () => {
 
       // use animateToRegion method instead of fitToCoordinates with only 1 active location to avoid over zooming
       if (activeLocations.length === 1) {
-        mapRef.current &&
+        if (mapRef.current)
           mapRef.current.animateToRegion(
             {
               ...coordinates[0],
@@ -135,17 +129,27 @@ const MapScreen = () => {
             },
             DEFAULT_ANIMATE_DURATION,
           )
-      } else {
-        mapRef.current &&
-          mapRef.current.fitToCoordinates(coordinates, {
-            edgePadding:
-              orientation === 'landscape'
-                ? EDGE_PADDING_LANDSCAPE
-                : EDGE_PADDING_PORTRAIT,
-          })
       }
+      if (mapRef.current)
+        mapRef.current.fitToCoordinates(coordinates, {
+          edgePadding:
+            orientation === 'landscape'
+              ? EDGE_PADDING_LANDSCAPE
+              : EDGE_PADDING_PORTRAIT,
+        })
     }
-  }
+  }, [activeLocations, orientation])
+
+  // persist (initial) modal position and refit map to markers after orientation change (top and closed auto kept)
+  useEffect(() => {
+    if (modalPosition === 'initial') handleOpenModal()
+    fitMaptoActiveMarkers()
+  }, [orientation, fitMaptoActiveMarkers, handleOpenModal, modalPosition])
+
+  // fit map to markers on active locations change
+  useEffect(() => {
+    fitMaptoActiveMarkers()
+  }, [activeLocations, fitMaptoActiveMarkers])
 
   const ThemeStyle = darkMode
     ? [styles.blackContainer, styles.whiteText]
@@ -164,14 +168,14 @@ const MapScreen = () => {
         style={styles.map}
         onLayout={handleLayoutReady}
         provider={PROVIDER_GOOGLE}
-        initialRegion={region}
+        initialRegion={currRegion}
         mapType={mapType}
-        onRegionChangeComplete={region => setRegion(region)}
+        onRegionChangeComplete={region => setCurrRegion(region)}
         radius={10} // SuperCluster radius
         renderCluster={({
           id,
           geometry: {coordinates},
-          properties: {point_count},
+          properties: {point_count: pointCount},
         }) => (
           <Marker
             key={`cluster-${id}`}
@@ -184,13 +188,13 @@ const MapScreen = () => {
             <View
               style={[
                 styles.cluster,
-                {width: 16 + 2 * point_count, height: 16 + 2 * point_count},
+                {width: 16 + 2 * pointCount, height: 16 + 2 * pointCount},
               ]}
             >
               <Text
-                style={[styles.clusterText, {fontSize: 10 + 2 * point_count}]}
+                style={[styles.clusterText, {fontSize: 10 + 2 * pointCount}]}
               >
-                {point_count}
+                {pointCount}
               </Text>
             </View>
           </Marker>
