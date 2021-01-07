@@ -6,7 +6,7 @@ import {ICON_MAP} from '../settings'
 
 type Props = {
   name: string
-  color?: string
+  color: string
 }
 
 const IconMarker = memo(({name, color}: Props) => (
