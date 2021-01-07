@@ -1,8 +1,7 @@
 import React, {memo} from 'react'
-import {LatLng} from 'react-native-maps'
+import {LatLng, Polygon} from 'react-native-maps'
 import {Feature} from 'geojson'
 import {GeojsonType} from '../types.d'
-import CustomPolygon from './CustomPolygon'
 import {AREA_COLOR_MAP} from '../../assets/peloponnesian_war/settings'
 
 type LayeredLatLng = LatLng[] | LatLng[][]
@@ -94,7 +93,7 @@ const PolygonGeojson: React.FunctionComponent<Props> = memo(
     return (
       <>
         {overlays.map(overlay => (
-          <CustomPolygon
+          <Polygon
             key={overlay.key}
             coordinates={overlay.coordinates as LatLng[]}
             holes={overlay.holes as LatLng[][]}
