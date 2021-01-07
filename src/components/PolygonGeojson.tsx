@@ -8,11 +8,16 @@ import {AREA_COLOR_MAP} from '../../assets/peloponnesian_war/settings'
 type LayeredLatLng = LatLng[] | LatLng[][]
 type Coordinates = LatLng | LayeredLatLng
 
-type Overlay = {
+interface Overlay {
   feature: Feature
   coordinates?: Coordinates
   holes?: LayeredLatLng
   type?: string
+}
+
+interface IPolygon extends Overlay {
+  type: string
+  key: string
 }
 
 const makePoint = (c: number[]) => ({latitude: c[1], longitude: c[0]})
@@ -31,11 +36,12 @@ const makeCoordinates = ({geometry}: Feature) => {
 }
 
 const makeOverlay = (coordinates: Coordinates, feature: Feature) => {
-  let overlay: Overlay = {
+  const overlay: Overlay = {
     feature,
   }
 
-  overlay.coordinates = (coordinates as LayeredLatLng)[0]
+  const [firstSetOfCoordinates] = coordinates as LayeredLatLng
+  overlay.coordinates = firstSetOfCoordinates
   if ((coordinates as LayeredLatLng).length > 1) {
     overlay.holes = (coordinates as LayeredLatLng).slice(1)
   }
@@ -46,7 +52,7 @@ const makeOverlay = (coordinates: Coordinates, feature: Feature) => {
     holes:
       (coordinates as LayeredLatLng).length > 1
         ? (coordinates as LayeredLatLng).slice(1)
-        : null,
+        : undefined,
   }
 }
 
@@ -55,7 +61,7 @@ const mapFeatureToOverlay = (feature: Feature) =>
     makeOverlay(coordinates, feature),
   )
 
-export const makeOverlays = (features: Feature[]) => {
+export const makeOverlays = (features: Feature[]): IPolygon[] => {
   const multipolygons = features
     .filter(f => f.geometry.type === 'MultiPolygon')
     .map(mapFeatureToOverlay)
@@ -79,15 +85,11 @@ export const makeOverlays = (features: Feature[]) => {
 
 type Props = {
   geojson: GeojsonType
-  color?: string
-  strokeColor?: string
-  fillColor?: string
   strokeWidth?: number
-  miniIcon?: boolean
 }
 
-const PolygonGeojson = memo(
-  ({geojson, strokeColor, fillColor, strokeWidth}: Props) => {
+const PolygonGeojson: React.FunctionComponent<Props> = memo(
+  ({geojson, strokeWidth}: Props) => {
     const overlays = makeOverlays(geojson.features)
     return (
       <>
@@ -96,11 +98,10 @@ const PolygonGeojson = memo(
             key={overlay.key}
             coordinates={overlay.coordinates as LatLng[]}
             holes={overlay.holes as LatLng[][]}
-            strokeColor={strokeColor}
             fillColor={
-              fillColor
-                ? fillColor
-                : AREA_COLOR_MAP[overlay.feature.properties!.status].color
+              overlay.feature.properties
+                ? AREA_COLOR_MAP[overlay.feature.properties.status].color
+                : '#000'
             }
             strokeWidth={strokeWidth}
           />
@@ -109,5 +110,9 @@ const PolygonGeojson = memo(
     )
   },
 )
+
+PolygonGeojson.defaultProps = {
+  strokeWidth: 0,
+}
 
 export default PolygonGeojson
