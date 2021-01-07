@@ -11,7 +11,7 @@ import {Container, ListItem, Left, Text, Right, Switch} from 'native-base'
 import {RootState} from '../redux/store'
 import {toggleDarkMode} from '../redux/actions'
 
-const DrawerContent = (props: DrawerContentComponentProps) => {
+const DrawerContent: React.FunctionComponent<DrawerContentComponentProps> = props => {
   const {darkMode} = useSelector((state: RootState) => state)
   const dispatch = useDispatch()
 
@@ -23,8 +23,10 @@ const DrawerContent = (props: DrawerContentComponentProps) => {
 
   return (
     <Container>
+      {/* eslint-disable react/jsx-props-no-spreading */}
       <DrawerContentScrollView style={ContainerStyle} {...props}>
-        <DrawerItemList inactiveTintColor={'#a7a7a7'} {...props} />
+        <DrawerItemList inactiveTintColor="#a7a7a7" {...props} />
+        {/* eslint-enable react/jsx-props-no-spreading */}
       </DrawerContentScrollView>
 
       <ListItem style={ContainerStyle} noIndent last>
