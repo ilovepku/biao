@@ -43,12 +43,12 @@ const TabRoute = memo(
     return (
       <ScrollView
         style={{
-          height:
-            modalPosition === 'initial'
-              ? orientation === 'landscape'
-                ? MODAL_HEIGHT_LANDSCAPE
-                : MODAL_HEIGHT_PORTRAIT
-              : Dimensions.get('window').height * 0.87, // magical number for android landscape
+          height: (() => {
+            if (modalPosition !== 'initial')
+              return Dimensions.get('window').height * 0.87 // magical number for android landscape
+            if (orientation === 'landscape') return MODAL_HEIGHT_LANDSCAPE
+            return MODAL_HEIGHT_PORTRAIT
+          })(),
         }}
       >
         <Card transparent style={styles.card}>
@@ -60,15 +60,15 @@ const TabRoute = memo(
           </CardItem>
 
           {[
-            {title: 'Background', content: background},
-            {title: 'Events', content: events},
-            {title: 'Aftermath', content: aftermath},
+            {name: 'Background', content: background},
+            {name: 'Events', content: events},
+            {name: 'Aftermath', content: aftermath},
           ].map(
-            ({title, content}) =>
+            ({name, content}) =>
               !!content && (
-                <CardItem key={`${key}-${title}`} style={ContainerStyle}>
+                <CardItem key={`${key}-${name}`} style={ContainerStyle}>
                   <Body>
-                    <Text note>{title}</Text>
+                    <Text note>{name}</Text>
                     <Text style={[styles.content__paragraph, TextStyle]}>
                       {content}
                     </Text>

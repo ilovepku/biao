@@ -46,7 +46,7 @@ const LIBRARIES = [
   },
 ]
 
-const AboutScreen = () => {
+const AboutScreen: React.FunctionComponent = () => {
   const {darkMode} = useSelector((state: RootState) => state)
 
   const handleOpenPortfolio = () => {
@@ -59,7 +59,7 @@ const AboutScreen = () => {
 
   return (
     <Container>
-      <CustomHeader title={'About'} />
+      <CustomHeader title="About" />
       <Content style={ContentStyle}>
         <ListItem style={DividerStyle} itemDivider>
           <Text style={TextStyle}>BIAO! StoryMap</Text>
