@@ -1,4 +1,12 @@
-import React, {forwardRef, Ref, useRef, useEffect} from 'react'
+import React, {
+  Dispatch,
+  SetStateAction,
+  forwardRef,
+  Ref,
+  useRef,
+  useCallback,
+  useEffect,
+} from 'react'
 import {useSelector, useDispatch} from 'react-redux'
 import {ScrollView, Animated, View, StyleSheet} from 'react-native'
 import {Container, Text} from 'native-base'
@@ -22,7 +30,7 @@ import {
 
 type Props = {
   tabRoutes: Timeline
-  setActiveLocations: Function
+  setActiveLocations: Dispatch<SetStateAction<string[]>>
 }
 
 const TabViewModal = forwardRef(
@@ -30,26 +38,26 @@ const TabViewModal = forwardRef(
     const {orientation, darkMode, modalTabIndexObj} = useSelector(
       (state: RootState) => state,
     )
-    const index = modalTabIndexObj.index
+    const {index} = modalTabIndexObj
     const dispatch = useDispatch()
 
     const isInitialMount = useRef(true)
     const scrollViewRef = useRef<ScrollView>(null)
     const scrollY = useRef(new Animated.Value(0)).current
 
-    const animateToTabBarItem = () => {
+    const animateToTabBarItem = useCallback(() => {
       const width = TAB_BAR_ITEM_WIDTH
       const margin = TAB_BAR_ITEM_MARGIN
       const x = (width + margin) * index
 
-      scrollViewRef.current &&
+      if (scrollViewRef.current)
         scrollViewRef.current.scrollTo({x, animated: true})
-    }
+    }, [index])
 
-    const handleIndexChange = () => {
+    const handleIndexChange = useCallback(() => {
       setActiveLocations(tabRoutes[index].locations)
       animateToTabBarItem()
-    }
+    }, [animateToTabBarItem, index, setActiveLocations, tabRoutes])
 
     useEffect(() => {
       // run effect only on updates with mutable ref
@@ -61,7 +69,7 @@ const TabViewModal = forwardRef(
       return () => {
         isInitialMount.current = false
       }
-    }, [modalTabIndexObj])
+    }, [modalTabIndexObj, handleIndexChange])
 
     const handleModalClose = () => {
       setActiveLocations([])
@@ -112,11 +120,11 @@ const TabViewModal = forwardRef(
             style={[styles.tabbar__list, TabbarListContainer]}
             contentContainerStyle={styles.tabbar__listContent}
             showsHorizontalScrollIndicator={false}
-            horizontal={true}
+            horizontal
           >
-            {tabRoutes.map(({year, type}, i) => (
+            {tabRoutes.map(({key, year, type}, i) => (
               <TabBarItem
-                key={`tab-bar-item-${i}`}
+                key={`${key}-tabBarItem`}
                 active={index === i}
                 year={year}
                 emoji={EMOJI_MAP[type].emoji}
@@ -149,7 +157,7 @@ const TabViewModal = forwardRef(
             ? MODAL_HEIGHT_LANDSCAPE
             : MODAL_HEIGHT_PORTRAIT
         }
-        handlePosition={'inside'}
+        handlePosition="inside"
         closeSnapPointStraightEnabled={false}
         withOverlay={false}
         HeaderComponent={renderTabBar}

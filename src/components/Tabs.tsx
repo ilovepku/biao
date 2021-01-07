@@ -18,7 +18,9 @@ const Tabs = memo(({tabRoutes, active, onIndexChange}: Props) => {
   const {orientation} = useSelector((state: RootState) => state)
   const renderScene = SceneMap(
     tabRoutes.reduce((sceneMap, {key}) => {
+      /* eslint-disable no-param-reassign */
       sceneMap[key] = TabRoute
+      /* eslint-enable no-param-reassign */
       return sceneMap
     }, {} as {[index: string]: typeof TabRoute}),
   )
