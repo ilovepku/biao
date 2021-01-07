@@ -16,7 +16,7 @@ export const updateOrientation = (
   payload,
 })
 
-export const toggleDarkMode = () => ({
+export const toggleDarkMode = (): ActionTypes => ({
   type: TOGGLE_DARK_MODE,
 })
 

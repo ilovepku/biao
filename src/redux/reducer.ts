@@ -6,6 +6,13 @@ import {
   UPDATE_MODAL_TAB_INDEX_OBJ,
 } from './types'
 
+type State = {
+  orientation: string
+  darkMode: boolean
+  modalPosition: string
+  modalTabIndexObj: {index: number}
+}
+
 const initState = {
   orientation: 'portrait',
   darkMode: false,
@@ -13,7 +20,7 @@ const initState = {
   modalTabIndexObj: {index: 0},
 }
 
-const reducer = (state = initState, action: ActionTypes) => {
+const reducer = (state = initState, action: ActionTypes): State => {
   switch (action.type) {
     case UPDATE_ORIENTATION:
       return {...state, orientation: action.payload}
