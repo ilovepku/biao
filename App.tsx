@@ -16,19 +16,15 @@ import MapScreen from './src/screens/MapScreen'
 import LegendScreen from './src/screens/LegendScreen'
 import AboutScreen from './src/screens/AboutScreen'
 
-// @TODO
-/* import { YellowBox } from "react-native";
-YellowBox.ignoreWarnings([
-  "Animated: `useNativeDriver` was not specified. This is a required option and must be explicitly set to `true` or `false`",
-]); */
-
 ScreenOrientation.unlockAsync()
 
 const Drawer = createDrawerNavigator<DrawerParamList>()
 
-const App = () => {
+const App: React.FunctionComponent = () => {
   const [loaded] = useFonts({
+    /* eslint-disable global-require */
     Roboto_medium: require('native-base/Fonts/Roboto_medium.ttf'),
+    /* eslint-enable global-require */
   })
 
   useEffect(() => {
@@ -47,10 +43,12 @@ const App = () => {
   return loaded ? (
     <Provider store={store}>
       <NavigationContainer>
+        {/* eslint-disable react/jsx-props-no-spreading */}
         <Drawer.Navigator
           initialRouteName="Map"
           drawerContent={props => <DrawerContent {...props} />}
         >
+          {/* eslint-enable react/jsx-props-no-spreading */}
           <Drawer.Screen name="Map" component={MapScreen} />
           <Drawer.Screen name="Legend" component={LegendScreen} />
           <Drawer.Screen name="About" component={AboutScreen} />
