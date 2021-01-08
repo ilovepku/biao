@@ -9,7 +9,7 @@ type Props = {
 
 type DrawerParamList = Record<string, never>
 
-const CustomHeader: React.FunctionComponent<Props> = ({title}: Props) => {
+const CustomHeader: React.FC<Props> = ({title}: Props) => {
   const navigation = useNavigation<DrawerNavigationProp<DrawerParamList>>()
 
   const handleGoBack = () => {

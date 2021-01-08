@@ -33,7 +33,7 @@ const {latitude, longitude, latitudeDelta} = INITIAL_REGION
 
 type DrawerParamList = Record<string, never>
 
-const MapScreen: React.FunctionComponent = () => {
+const MapScreen: React.FC = () => {
   const {
     orientation,
     darkMode,

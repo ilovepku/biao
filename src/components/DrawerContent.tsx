@@ -11,7 +11,7 @@ import {Container, ListItem, Left, Text, Right, Switch} from 'native-base'
 import {RootState} from '../redux/store'
 import {toggleDarkMode} from '../redux/actions'
 
-const DrawerContent: React.FunctionComponent<DrawerContentComponentProps> = props => {
+const DrawerContent: React.FC<DrawerContentComponentProps> = props => {
   const {darkMode} = useSelector((state: RootState) => state)
   const dispatch = useDispatch()
 

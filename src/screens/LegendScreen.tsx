@@ -13,7 +13,7 @@ import {RootState} from '../redux/store'
 import IconMarker from '../components/IconMarker'
 import CustomHeader from '../components/CustomHeader'
 
-const LegendScreen: React.FunctionComponent = () => {
+const LegendScreen: React.FC = () => {
   const {darkMode} = useSelector((state: RootState) => state)
 
   const ContentStyle = darkMode ? styles.blackContainer : {}

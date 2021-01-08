@@ -46,7 +46,7 @@ const LIBRARIES = [
   },
 ]
 
-const AboutScreen: React.FunctionComponent = () => {
+const AboutScreen: React.FC = () => {
   const {darkMode} = useSelector((state: RootState) => state)
 
   const handleOpenPortfolio = () => {

@@ -87,7 +87,7 @@ type Props = {
   strokeWidth?: number
 }
 
-const PolygonGeojson: React.FunctionComponent<Props> = memo(
+const PolygonGeojson: React.FC<Props> = memo(
   ({geojson, strokeWidth}: Props) => {
     const overlays = makeOverlays(geojson.features)
     return (

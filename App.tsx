@@ -20,7 +20,7 @@ ScreenOrientation.unlockAsync()
 
 const Drawer = createDrawerNavigator<DrawerParamList>()
 
-const App: React.FunctionComponent = () => {
+const App: React.FC = () => {
   const [loaded] = useFonts({
     // eslint-disable-next-line global-require
     Roboto_medium: require('native-base/Fonts/Roboto_medium.ttf'),
