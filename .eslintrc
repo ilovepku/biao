@@ -8,7 +8,7 @@
     },
     "project": "./tsconfig.json"
   },
-  "plugins": ["@typescript-eslint/eslint-plugin"],
+  "plugins": ["@typescript-eslint/eslint-plugin", "jest"],
   "extends": [
     "eslint:recommended",
     "airbnb",
@@ -16,13 +16,14 @@
     "plugin:@typescript-eslint/eslint-recommended",
     "plugin:@typescript-eslint/recommended",
     "eslint-config-prettier",
-    "eslint-config-prettier/@typescript-eslint"
+    "eslint-config-prettier/@typescript-eslint",
+    "plugin:jest/recommended"
   ],
   "rules": {
     "strict": ["error", "never"],
     "react/jsx-filename-extension": [
       1,
-      { "extensions": [".js", ".jsx", "ts", "tsx"] }
+      {"extensions": [".js", ".jsx", "ts", "tsx"]}
     ],
     "no-use-before-define": "off",
     "import/extensions": [
