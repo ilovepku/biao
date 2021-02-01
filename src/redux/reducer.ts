@@ -13,7 +13,7 @@ type State = {
   modalTabIndexObj: {index: number}
 }
 
-const initState = {
+export const initState = {
   orientation: 'portrait',
   darkMode: false,
   modalPosition: 'closed',
