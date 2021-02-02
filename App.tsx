@@ -1,26 +1,18 @@
 import 'react-native-gesture-handler'
-import React, {useEffect} from 'react'
+import React, {FC, useEffect} from 'react'
 import {Provider} from 'react-redux'
 import {StyleSheet} from 'react-native'
 import * as ScreenOrientation from 'expo-screen-orientation'
 import {useFonts} from 'expo-font'
-import {createDrawerNavigator} from '@react-navigation/drawer'
-import {NavigationContainer} from '@react-navigation/native'
 import {Container, Spinner} from 'native-base'
 
-import {DrawerParamList} from './src/types.d'
 import {store} from './src/redux/store'
 import {updateOrientation} from './src/redux/actions'
-import DrawerContent from './src/components/DrawerContent'
-import MapScreen from './src/screens/MapScreen'
-import LegendScreen from './src/screens/LegendScreen'
-import AboutScreen from './src/screens/AboutScreen'
+import Navigation from './src/navigation'
 
 ScreenOrientation.unlockAsync()
 
-const Drawer = createDrawerNavigator<DrawerParamList>()
-
-const App: React.FC = () => {
+const App: FC = () => {
   const [loaded] = useFonts({
     // eslint-disable-next-line global-require
     Roboto_medium: require('native-base/Fonts/Roboto_medium.ttf'),
@@ -41,17 +33,7 @@ const App: React.FC = () => {
 
   return loaded ? (
     <Provider store={store}>
-      <NavigationContainer>
-        <Drawer.Navigator
-          initialRouteName="Map"
-          // eslint-disable-next-line react/jsx-props-no-spreading
-          drawerContent={props => <DrawerContent {...props} />}
-        >
-          <Drawer.Screen name="Map" component={MapScreen} />
-          <Drawer.Screen name="Legend" component={LegendScreen} />
-          <Drawer.Screen name="About" component={AboutScreen} />
-        </Drawer.Navigator>
-      </NavigationContainer>
+      <Navigation />
     </Provider>
   ) : (
     <Container style={styles.container}>
