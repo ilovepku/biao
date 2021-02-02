@@ -76,18 +76,18 @@ const TabViewModal = forwardRef(
       dispatch(updateModalPosition('closed'))
     }
 
-    const TabbarHeadingContainer = darkMode
-      ? styles.tabbar__heading__darkContainer
+    const TabBarHeadingContainer = darkMode
+      ? styles.tabBar__heading__darkContainer
       : {}
 
-    const TabbarListContainer = darkMode
-      ? styles.tabbar__list__darkContainer
+    const TabBarListContainer = darkMode
+      ? styles.tabBar__list__darkContainer
       : {}
 
     const renderTabBar = (
       <Container
         style={[
-          styles.tabbar,
+          styles.tabBar,
           {
             height: orientation === 'landscape' ? HEADER_LIST : HEADER_HEIGHT,
           },
@@ -107,8 +107,8 @@ const TabViewModal = forwardRef(
           }}
         >
           {orientation === 'portrait' && (
-            <View style={[styles.tabbar__heading, TabbarHeadingContainer]}>
-              <Text note style={styles.tabbar__headingText}>
+            <View style={[styles.tabBar__heading, TabBarHeadingContainer]}>
+              <Text note style={styles.tabBar__headingText}>
                 Timeline of the Peloponnesian War (431−404 BC)
               </Text>
               {/* @TODO: dynamic name from props */}
@@ -117,8 +117,8 @@ const TabViewModal = forwardRef(
 
           <ScrollView
             ref={scrollViewRef}
-            style={[styles.tabbar__list, TabbarListContainer]}
-            contentContainerStyle={styles.tabbar__listContent}
+            style={[styles.tabBar__list, TabBarListContainer]}
+            contentContainerStyle={styles.tabBar__listContent}
             showsHorizontalScrollIndicator={false}
             horizontal
           >
@@ -179,37 +179,37 @@ const styles = StyleSheet.create({
 
   modal__handle: {backgroundColor: '#75777a'},
 
-  tabbar: {
+  tabBar: {
     position: 'absolute',
     top: 20,
     zIndex: 1,
   },
 
-  tabbar__heading: {
+  tabBar__heading: {
     height: HEADER_COLLAPSE,
   },
 
-  tabbar__heading__darkContainer: {backgroundColor: '#212428'},
+  tabBar__heading__darkContainer: {backgroundColor: '#212428'},
 
-  tabbar__headingText: {
+  tabBar__headingText: {
     marginLeft: 20,
     fontSize: 12,
     textTransform: 'uppercase',
   },
 
-  tabbar__list: {
+  tabBar__list: {
     height: HEADER_LIST,
     borderTopWidth: 1,
     borderBottomWidth: 1,
   },
 
-  tabbar__list__darkContainer: {
+  tabBar__list__darkContainer: {
     borderTopColor: '#313437',
     borderBottomColor: '#313437',
     backgroundColor: '#1a1d21',
   },
 
-  tabbar__listContent: {
+  tabBar__listContent: {
     paddingLeft: 20,
   },
 })

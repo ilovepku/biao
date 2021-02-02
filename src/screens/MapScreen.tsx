@@ -104,7 +104,7 @@ const MapScreen: React.FC = () => {
     navigation.openDrawer()
   }
 
-  const fitMaptoActiveMarkers = useCallback(() => {
+  const fitMapToActiveMarkers = useCallback(() => {
     // run effect only after layout ready
     if (!layoutReady.current) {
       let {features} = LOCATIONS
@@ -143,13 +143,13 @@ const MapScreen: React.FC = () => {
   // persist (initial) modal position and refit map to markers after orientation change (top and closed auto kept)
   useEffect(() => {
     if (modalPosition === 'initial') handleOpenModal()
-    fitMaptoActiveMarkers()
-  }, [orientation, fitMaptoActiveMarkers, handleOpenModal, modalPosition])
+    fitMapToActiveMarkers()
+  }, [orientation, fitMapToActiveMarkers, handleOpenModal, modalPosition])
 
   // fit map to markers on active locations change
   useEffect(() => {
-    fitMaptoActiveMarkers()
-  }, [activeLocations, fitMaptoActiveMarkers])
+    fitMapToActiveMarkers()
+  }, [activeLocations, fitMapToActiveMarkers])
 
   const ThemeStyle = darkMode
     ? [styles.blackContainer, styles.whiteText]
@@ -159,7 +159,7 @@ const MapScreen: React.FC = () => {
     ? styles.blackContainer
     : styles.whiteContainer
 
-  const TextSytle = darkMode ? styles.whiteText : styles.darkText
+  const TextStyle = darkMode ? styles.whiteText : styles.darkText
 
   return (
     <Container>
@@ -263,7 +263,7 @@ const MapScreen: React.FC = () => {
             onPress={handleToggleTopLeftFab}
           >
             <Icon
-              style={TextSytle}
+              style={TextStyle}
               type="MaterialCommunityIcons"
               name="layers-outline"
             />
@@ -287,7 +287,7 @@ const MapScreen: React.FC = () => {
                   {label}
                 </Text>
                 <Icon
-                  style={TextSytle}
+                  style={TextStyle}
                   type="MaterialCommunityIcons"
                   name={icon}
                 />
@@ -302,7 +302,7 @@ const MapScreen: React.FC = () => {
                 Reset View
               </Text>
               <Icon
-                style={TextSytle}
+                style={TextStyle}
                 type="MaterialCommunityIcons"
                 name="restore"
               />
@@ -317,7 +317,7 @@ const MapScreen: React.FC = () => {
             onPress={handleToggleTopRightFab}
           >
             <Icon
-              style={TextSytle}
+              style={TextStyle}
               type="MaterialCommunityIcons"
               name={
                 Object.values(markerFilters).every(item => item)
@@ -350,7 +350,7 @@ const MapScreen: React.FC = () => {
                   {label}
                 </Text>
                 <Icon
-                  style={TextSytle}
+                  style={TextStyle}
                   type="MaterialCommunityIcons"
                   name={markerFilters[name] ? iconActive : icon}
                 />
@@ -367,7 +367,7 @@ const MapScreen: React.FC = () => {
             position="bottomLeft"
             onPress={handleOpenDrawer}
           >
-            <Icon style={TextSytle} type="MaterialCommunityIcons" name="menu" />
+            <Icon style={TextStyle} type="MaterialCommunityIcons" name="menu" />
           </Fab>
 
           <Fab

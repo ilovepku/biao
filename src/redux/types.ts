@@ -31,4 +31,3 @@ export type ActionTypes =
   | ToggleDarkModeAction
   | UpdateModalPositionAction
   | UpdateModalTabIndexAction
-  | Record<string, never>

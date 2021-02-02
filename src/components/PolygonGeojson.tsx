@@ -61,7 +61,7 @@ const mapFeatureToOverlay = (feature: Feature) =>
   )
 
 export const makeOverlays = (features: Feature[]): IPolygon[] => {
-  const multipolygons = features
+  const multiPolygons = features
     .filter(f => f.geometry.type === 'MultiPolygon')
     .map(mapFeatureToOverlay)
     .flat()
@@ -72,7 +72,7 @@ export const makeOverlays = (features: Feature[]): IPolygon[] => {
       makeOverlay(makeCoordinates(feature) as LatLng[][], feature),
     )
     .flat()
-    .concat(multipolygons)
+    .concat(multiPolygons)
     .map((overlay, index) => ({
       ...overlay,
       type: 'polygon',

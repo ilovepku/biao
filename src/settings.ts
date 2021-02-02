@@ -40,7 +40,7 @@ type IconName =
   | 'tower-fire'
   | 'fire'
 
-// resouce maps
+// resource maps
 export const ICON_MAP: {[key: string]: IconName} = {
   city: 'home-map-marker',
   battle: 'sword-cross',
