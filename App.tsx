@@ -8,7 +8,7 @@ import {Container, Spinner} from 'native-base'
 
 import {store} from './src/redux/store'
 import {updateOrientation} from './src/redux/actions'
-import Navigation from './src/navigation'
+import Navigation from './src/navigation/Navigation'
 
 ScreenOrientation.unlockAsync()
 
