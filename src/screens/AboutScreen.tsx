@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {FC} from 'react'
 import {useSelector} from 'react-redux'
 import {StyleSheet} from 'react-native'
 import * as WebBrowser from 'expo-web-browser'
@@ -17,37 +17,16 @@ import {
 import {RootState} from '../redux/store'
 import CustomHeader from '../components/CustomHeader'
 
-const LIBRARIES = [
-  {url: 'https://github.com/expo/expo', name: 'expo'},
-  {url: 'https://github.com/reduxjs/redux', name: 'redux'},
-  {
-    url: 'https://github.com/react-navigation/react-navigation',
-    name: '@react-navigation',
-  },
-  {
-    url: 'https://github.com/react-native-community/react-native-maps',
-    name: 'react-native-maps',
-  },
-  {
-    url: 'https://github.com/jeremybarbet/react-native-modalize',
-    name: 'react-native-modalize',
-  },
-  {
-    url: 'https://github.com/react-native-community/react-native-tab-view',
-    name: 'react-native-tab-view',
-  },
-  {
-    url: 'https://github.com/venits/react-native-map-clustering',
-    name: 'react-native-map-clustering',
-  },
-  {
-    url: 'https://github.com/GeekyAnts/NativeBase',
-    name: 'native-base',
-  },
-]
-
-const AboutScreen: React.FC = () => {
+const AboutScreen: FC = () => {
   const {darkMode} = useSelector((state: RootState) => state)
+
+  const handleOpenProjectIntro = () => {
+    WebBrowser.openBrowserAsync('https://seanlee.netlify.app/portfolio/biao')
+  }
+
+  const handleOpenGitHubRepo = () => {
+    WebBrowser.openBrowserAsync('https://github.com/ilovepku/biao')
+  }
 
   const handleOpenPortfolio = () => {
     WebBrowser.openBrowserAsync('https://seanlee.netlify.com')
@@ -75,6 +54,31 @@ const AboutScreen: React.FC = () => {
             <Text>1.0</Text>
           </Right>
         </ListItem>
+
+        <ListItem style={DividerStyle} itemDivider>
+          <Text style={TextStyle}>Support</Text>
+        </ListItem>
+        <ListItem icon last onPress={handleOpenProjectIntro}>
+          <Left>
+            <Icon style={TextStyle} type="Octicons" name="info" />
+          </Left>
+          <Body>
+            <Text style={TextStyle}>Project introduction</Text>
+          </Body>
+        </ListItem>
+
+        <ListItem style={DividerStyle} itemDivider>
+          <Text style={TextStyle}>Third-party projects that helped</Text>
+        </ListItem>
+        <ListItem icon last onPress={handleOpenGitHubRepo}>
+          <Left>
+            <Icon style={TextStyle} type="FontAwesome" name="github" />
+          </Left>
+          <Body>
+            <Text style={TextStyle}>Source code</Text>
+          </Body>
+        </ListItem>
+
         <ListItem style={DividerStyle} itemDivider>
           <Text style={TextStyle}>People</Text>
         </ListItem>
@@ -96,27 +100,6 @@ const AboutScreen: React.FC = () => {
             <Text note>Creator</Text>
           </Right>
         </ListItem>
-        <ListItem style={DividerStyle} itemDivider>
-          <Text style={TextStyle}>Third-party projects that helped</Text>
-        </ListItem>
-
-        {LIBRARIES.map(({name, url}, index, {length}) => (
-          <ListItem
-            key={`library-${name}`}
-            icon
-            last={index === length - 1}
-            onPress={() => {
-              WebBrowser.openBrowserAsync(url)
-            }}
-          >
-            <Left>
-              <Icon style={TextStyle} type="FontAwesome" name="github" />
-            </Left>
-            <Body>
-              <Text style={TextStyle}>{name}</Text>
-            </Body>
-          </ListItem>
-        ))}
       </Content>
     </Container>
   )

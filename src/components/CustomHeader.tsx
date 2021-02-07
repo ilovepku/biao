@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {FC} from 'react'
 import {useNavigation} from '@react-navigation/native'
 import {DrawerNavigationProp} from '@react-navigation/drawer'
 import {Header, Title, Left, Right, Button, Icon, Body} from 'native-base'
@@ -9,7 +9,7 @@ type Props = {
 
 type DrawerParamList = Record<string, never>
 
-const CustomHeader: React.FC<Props> = ({title}: Props) => {
+const CustomHeader: FC<Props> = ({title}: Props) => {
   const navigation = useNavigation<DrawerNavigationProp<DrawerParamList>>()
 
   const handleGoBack = () => {
