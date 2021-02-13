@@ -43,19 +43,19 @@
     "redux": "^4.0.5"
   },
   "devDependencies": {
-    "@babel/core": "^7.12.13",
+    "@babel/core": "^7.12.16",
     "@testing-library/jest-native": "^3.4.3",
     "@testing-library/react-native": "^7.1.0",
     "@types/geojson": "^7946.0.7",
     "@types/jest": "^26.0.20",
     "@types/react": "~16.9.35",
-    "@types/react-native": "^0.63.48",
+    "@types/react-native": "^0.63.49",
     "@types/react-native-maps": "^0.24.0",
     "@types/react-redux": "^7.1.16",
-    "@typescript-eslint/eslint-plugin": "^4.14.0",
-    "@typescript-eslint/parser": "^4.14.0",
+    "@typescript-eslint/eslint-plugin": "^4.15.0",
+    "@typescript-eslint/parser": "^4.15.0",
     "babel-preset-expo": "8.3.0",
-    "eslint": "^7.18.0",
+    "eslint": "^7.20.0",
     "eslint-config-airbnb": "^18.2.1",
     "eslint-config-prettier": "^7.2.0",
     "eslint-plugin-import": "^2.22.1",
@@ -68,7 +68,7 @@
     "npm-run-all": "^4.1.5",
     "prettier": "^2.2.1",
     "react-test-renderer": "^17.0.1",
-    "typescript": "~4.0.0"
+    "typescript": "^4.0.7"
   },
   "private": true
 }
