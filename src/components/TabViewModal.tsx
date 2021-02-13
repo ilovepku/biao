@@ -33,146 +33,145 @@ type Props = {
   setActiveLocations: Dispatch<SetStateAction<string[]>>
 }
 
-const TabViewModal = forwardRef(
-  ({tabRoutes, setActiveLocations}: Props, ref: Ref<Modalize>) => {
-    const {orientation, darkMode, modalTabIndexObj} = useSelector(
-      (state: RootState) => state,
-    )
-    const {index} = modalTabIndexObj
-    const dispatch = useDispatch()
+const TabViewModal = (
+  {tabRoutes, setActiveLocations}: Props,
+  ref: Ref<Modalize>,
+) => {
+  const {orientation, darkMode, modalTabIndexObj} = useSelector(
+    (state: RootState) => state,
+  )
+  const {index} = modalTabIndexObj
+  const dispatch = useDispatch()
 
-    const isInitialMount = useRef(true)
-    const scrollViewRef = useRef<ScrollView>(null)
-    const scrollY = useRef(new Animated.Value(0)).current
+  const isInitialMount = useRef(true)
+  const scrollViewRef = useRef<ScrollView>(null)
+  const scrollY = useRef(new Animated.Value(0)).current
 
-    const animateToTabBarItem = useCallback(() => {
-      const width = TAB_BAR_ITEM_WIDTH
-      const margin = TAB_BAR_ITEM_MARGIN
-      const x = (width + margin) * index
+  const animateToTabBarItem = useCallback(() => {
+    const width = TAB_BAR_ITEM_WIDTH
+    const margin = TAB_BAR_ITEM_MARGIN
+    const x = (width + margin) * index
 
-      if (scrollViewRef.current)
-        scrollViewRef.current.scrollTo({x, animated: true})
-    }, [index])
+    if (scrollViewRef.current)
+      scrollViewRef.current.scrollTo({x, animated: true})
+  }, [index])
 
-    const handleIndexChange = useCallback(() => {
-      setActiveLocations(tabRoutes[index].locations)
-      animateToTabBarItem()
-    }, [animateToTabBarItem, index, setActiveLocations, tabRoutes])
+  const handleIndexChange = useCallback(() => {
+    setActiveLocations(tabRoutes[index].locations)
+    animateToTabBarItem()
+  }, [animateToTabBarItem, index, setActiveLocations, tabRoutes])
 
-    useEffect(() => {
-      // run effect only on updates with mutable ref
-      if (isInitialMount.current) {
-        isInitialMount.current = false
-      } else {
-        handleIndexChange()
-      }
-      return () => {
-        isInitialMount.current = false
-      }
-    }, [modalTabIndexObj, handleIndexChange])
-
-    const handleModalClose = () => {
-      setActiveLocations([])
-      dispatch(updateModalPosition('closed'))
+  useEffect(() => {
+    // run effect only on updates with mutable ref
+    if (isInitialMount.current) {
+      isInitialMount.current = false
+    } else {
+      handleIndexChange()
     }
+    return () => {
+      isInitialMount.current = false
+    }
+  }, [modalTabIndexObj, handleIndexChange])
 
-    const TabBarHeadingContainer = darkMode
-      ? styles.tabBar__heading__darkContainer
-      : {}
+  const handleModalClose = () => {
+    setActiveLocations([])
+    dispatch(updateModalPosition('closed'))
+  }
 
-    const TabBarListContainer = darkMode
-      ? styles.tabBar__list__darkContainer
-      : {}
+  const TabBarHeadingContainer = darkMode
+    ? styles.tabBar__heading__darkContainer
+    : {}
 
-    const renderTabBar = (
-      <Container
-        style={[
-          styles.tabBar,
-          {
-            height: orientation === 'landscape' ? HEADER_LIST : HEADER_HEIGHT,
-          },
-        ]}
-      >
-        <Animated.View
-          style={{
-            transform: [
-              {
-                translateY: scrollY.interpolate({
-                  inputRange: [0, 100],
-                  outputRange: [0, 0],
-                  extrapolate: 'clamp',
-                }),
-              },
-            ],
-          }}
-        >
-          {orientation === 'portrait' && (
-            <View style={[styles.tabBar__heading, TabBarHeadingContainer]}>
-              <Text note style={styles.tabBar__headingText}>
-                Timeline of the Peloponnesian War (431−404 BC)
-              </Text>
-              {/* @TODO: dynamic name from props */}
-            </View>
-          )}
+  const TabBarListContainer = darkMode ? styles.tabBar__list__darkContainer : {}
 
-          <ScrollView
-            ref={scrollViewRef}
-            style={[styles.tabBar__list, TabBarListContainer]}
-            contentContainerStyle={styles.tabBar__listContent}
-            showsHorizontalScrollIndicator={false}
-            horizontal
-          >
-            {tabRoutes.map(({key, year, type}, i) => (
-              <TabBarItem
-                key={`${key}-tabBarItem`}
-                active={index === i}
-                year={year}
-                emoji={EMOJI_MAP[type].emoji}
-                onPress={() => dispatch(updateModalTabIndexObj({index: i}))}
-              />
-            ))}
-          </ScrollView>
-        </Animated.View>
-      </Container>
-    )
-
-    const ContainerStyle = darkMode ? styles.darkContainer : {}
-
-    return (
-      <Modalize
-        ref={ref}
-        scrollViewProps={{
-          onScroll: Animated.event(
-            [{nativeEvent: {contentOffset: {y: scrollY}}}],
+  const renderTabBar = (
+    <Container
+      style={[
+        styles.tabBar,
+        {
+          height: orientation === 'landscape' ? HEADER_LIST : HEADER_HEIGHT,
+        },
+      ]}
+    >
+      <Animated.View
+        style={{
+          transform: [
             {
-              useNativeDriver: true,
+              translateY: scrollY.interpolate({
+                inputRange: [0, 100],
+                outputRange: [0, 0],
+                extrapolate: 'clamp',
+              }),
             },
-          ),
-          scrollEventThrottle: 16,
+          ],
         }}
-        modalStyle={ContainerStyle}
-        handleStyle={styles.modal__handle}
-        snapPoint={
-          orientation === 'landscape'
-            ? MODAL_HEIGHT_LANDSCAPE
-            : MODAL_HEIGHT_PORTRAIT
-        }
-        handlePosition="inside"
-        closeSnapPointStraightEnabled={false}
-        withOverlay={false}
-        HeaderComponent={renderTabBar}
-        onClosed={handleModalClose}
-        onPositionChange={position => dispatch(updateModalPosition(position))}
       >
-        <Tabs
-          tabRoutes={tabRoutes}
-          active={index}
-          onIndexChange={i => dispatch(updateModalTabIndexObj({index: i}))}
-        />
-      </Modalize>
-    )
-  },
-)
+        {orientation === 'portrait' && (
+          <View style={[styles.tabBar__heading, TabBarHeadingContainer]}>
+            <Text note style={styles.tabBar__headingText}>
+              Timeline of the Peloponnesian War (431−404 BC)
+            </Text>
+            {/* @TODO: dynamic name from props */}
+          </View>
+        )}
+
+        <ScrollView
+          ref={scrollViewRef}
+          style={[styles.tabBar__list, TabBarListContainer]}
+          contentContainerStyle={styles.tabBar__listContent}
+          showsHorizontalScrollIndicator={false}
+          horizontal
+        >
+          {tabRoutes.map(({key, year, type}, i) => (
+            <TabBarItem
+              key={`${key}-tabBarItem`}
+              active={index === i}
+              year={year}
+              emoji={EMOJI_MAP[type].emoji}
+              onPress={() => dispatch(updateModalTabIndexObj({index: i}))}
+            />
+          ))}
+        </ScrollView>
+      </Animated.View>
+    </Container>
+  )
+
+  const ContainerStyle = darkMode ? styles.darkContainer : {}
+
+  return (
+    <Modalize
+      ref={ref}
+      scrollViewProps={{
+        onScroll: Animated.event(
+          [{nativeEvent: {contentOffset: {y: scrollY}}}],
+          {
+            useNativeDriver: true,
+          },
+        ),
+        scrollEventThrottle: 16,
+      }}
+      modalStyle={ContainerStyle}
+      handleStyle={styles.modal__handle}
+      snapPoint={
+        orientation === 'landscape'
+          ? MODAL_HEIGHT_LANDSCAPE
+          : MODAL_HEIGHT_PORTRAIT
+      }
+      handlePosition="inside"
+      closeSnapPointStraightEnabled={false}
+      withOverlay={false}
+      HeaderComponent={renderTabBar}
+      onClosed={handleModalClose}
+      onPositionChange={position => dispatch(updateModalPosition(position))}
+    >
+      <Tabs
+        tabRoutes={tabRoutes}
+        active={index}
+        onIndexChange={i => dispatch(updateModalTabIndexObj({index: i}))}
+      />
+    </Modalize>
+  )
+}
 
 const styles = StyleSheet.create({
   darkContainer: {backgroundColor: '#1a1d21'},
@@ -214,4 +213,4 @@ const styles = StyleSheet.create({
   },
 })
 
-export default TabViewModal
+export default forwardRef(TabViewModal)
