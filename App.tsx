@@ -1,23 +1,18 @@
 import 'react-native-gesture-handler'
 import React, {FC, useEffect} from 'react'
-import {Provider} from 'react-redux'
-import {StyleSheet} from 'react-native'
+import {Provider as StoreProvider} from 'react-redux'
+import {ApolloProvider} from '@apollo/client'
+import {Provider as PaperProvider} from 'react-native-paper'
 import * as ScreenOrientation from 'expo-screen-orientation'
-import {useFonts} from 'expo-font'
-import {Container, Spinner} from 'native-base'
 
 import {store} from './src/redux/store'
 import {updateOrientation} from './src/redux/actions'
+import client from './src/graphql/client'
 import Navigation from './src/navigation/Navigation'
 
 ScreenOrientation.unlockAsync()
 
 const App: FC = () => {
-  const [loaded] = useFonts({
-    // eslint-disable-next-line global-require
-    Roboto_medium: require('native-base/Fonts/Roboto_medium.ttf'),
-  })
-
   useEffect(() => {
     ScreenOrientation.addOrientationChangeListener(() => {
       ScreenOrientation.getOrientationAsync().then(orientation => {
@@ -31,23 +26,15 @@ const App: FC = () => {
     return () => ScreenOrientation.removeOrientationChangeListeners()
   }, [])
 
-  return loaded ? (
-    <Provider store={store}>
-      <Navigation />
-    </Provider>
-  ) : (
-    <Container style={styles.container}>
-      <Spinner />
-    </Container>
+  return (
+    <StoreProvider store={store}>
+      <ApolloProvider client={client}>
+        <PaperProvider>
+          <Navigation />
+        </PaperProvider>
+      </ApolloProvider>
+    </StoreProvider>
   )
 }
-
-const styles = StyleSheet.create({
-  container: {
-    ...StyleSheet.absoluteFillObject,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-})
 
 export default App

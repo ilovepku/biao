@@ -1,7 +1,6 @@
 import React, {memo} from 'react'
 import {LatLng, Polygon} from 'react-native-maps'
-import {Feature} from 'geojson'
-import {GeojsonType} from '../types.d'
+import {FeatureCollection, Feature} from 'geojson'
 import {AREA_COLOR_MAP} from '../../assets/peloponnesian_war/settings'
 
 type LayeredLatLng = LatLng[] | LatLng[][]
@@ -83,7 +82,7 @@ export const makeOverlays = (features: Feature[]): IPolygon[] => {
 }
 
 type Props = {
-  geojson: GeojsonType
+  geojson: FeatureCollection
   strokeWidth?: number
 }
 

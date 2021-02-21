@@ -4,7 +4,11 @@ export type DrawerParamList = {
   About: undefined
 }
 
-export type GeojsonType = GeoJSON
+interface Location extends Feature {
+  id: string
+  geometry: Point
+  properties: GeoJsonProperties
+}
 
 type TimelineItem = {
   key: string
