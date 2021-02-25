@@ -7,7 +7,7 @@ import ClusteredMapView from 'react-native-map-clustering'
 import {Modalize} from 'react-native-modalize'
 
 import {Feature} from 'geojson'
-import {Location, TimelineItem} from '../types.d'
+import {MapDetails, Location, TimelineItem} from '../types.d'
 import {
   INITIAL_REGION,
   MARKER_COLOR_MAP,
@@ -37,24 +37,17 @@ const MapScreen: FC = () => {
 
   const modalRef = useRef<Modalize>(null)
 
+  const [mapType, setMapType] = useState<MapTypes>('hybrid')
+  const [mapDetails, setMapDetails] = useState<MapDetails>({})
   const [currRegion, setCurrRegion] = useState({
     latitude,
     longitude,
     latitudeDelta,
     longitudeDelta: latitudeDelta * aspectRatio,
   })
-  // active map type
-  const [mapType] = useState<MapTypes>('hybrid')
+
   // active timeline locations
   const [activeLocations] = useState<string[]>([])
-
-  // active marker types
-  const [markerFilters] = useState<{
-    [index: string]: boolean
-  }>({
-    battle: true,
-    city: true,
-  })
 
   const handleOpenModal = useCallback(
     (i = index) => {
@@ -66,6 +59,12 @@ const MapScreen: FC = () => {
 
   return (
     <>
+      <FABMenu
+        mapType={mapType}
+        setMapType={setMapType}
+        mapDetails={mapDetails}
+        setMapDetails={setMapDetails}
+      />
       <ClusteredMapView
         style={styles.map} // Preventing 'Error using newLatLngBounds(LatLngBounds, int): Map size can’t be 0. Most likely, layout has not yet occurred for the map view.'
         provider={PROVIDER_GOOGLE}
@@ -97,12 +96,12 @@ const MapScreen: FC = () => {
           JSON.parse(data.stories_by_pk.locations[0].geojson)
             .features.filter((feature: Feature) =>
               !activeLocations.length
-                ? Object.keys(markerFilters)
-                    .filter(item => markerFilters[item])
+                ? Object.keys(mapDetails)
+                    .filter(item => mapDetails[item])
                     .includes(feature.properties?.type)
                 : activeLocations.includes(feature.id as string) &&
-                  Object.keys(markerFilters)
-                    .filter(item => markerFilters[item])
+                  Object.keys(mapDetails)
+                    .filter(item => mapDetails[item])
                     .includes(feature.properties?.type),
             )
             .map(
@@ -148,8 +147,6 @@ const MapScreen: FC = () => {
               ),
             )}
       </ClusteredMapView>
-
-      <FABMenu />
     </>
   )
 }

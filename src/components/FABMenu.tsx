@@ -1,21 +1,28 @@
-import React, {FC, useState} from 'react'
+import React, {Dispatch, SetStateAction, FC, useState} from 'react'
 import {View, StyleSheet} from 'react-native'
-import {Portal, Menu, FAB, Chip, Divider} from 'react-native-paper'
+import {MapTypes} from 'react-native-maps'
+import {Portal, Menu, FAB, Chip} from 'react-native-paper'
+
+import {MapDetails} from '../types.d'
+
+type Props = {
+  mapType: MapTypes
+  setMapType: Dispatch<SetStateAction<MapTypes>>
+  mapDetails: MapDetails
+  setMapDetails: Dispatch<SetStateAction<MapDetails>>
+}
 
 type MenuVisibility = {
   [key: string]: boolean | undefined
 }
 
-type MapType = 'standard' | 'hybrid' | 'terrain'
-
-type MapFilters = {
-  [key: string]: boolean | undefined
-}
-
-const FABMenu: FC = () => {
+const FABMenu: FC<Props> = ({
+  mapType,
+  setMapType,
+  mapDetails,
+  setMapDetails,
+}: Props) => {
   const [visible, setVisible] = useState<MenuVisibility>({})
-  const [mapType, setMapType] = useState<MapType>('hybrid')
-  const [mapFilters, setMapFilters] = useState<MapFilters>({})
 
   const toggleMenu = (name: string) => () => {
     setVisible({...visible, [name]: !visible[name]})
@@ -23,10 +30,10 @@ const FABMenu: FC = () => {
 
   const getMenuVisible = (name: string) => !!visible[name]
 
-  const toggleMapFilters = (name: string) => () =>
-    setMapFilters({...mapFilters, [name]: !mapFilters[name]})
+  const toggleMapDetails = (name: string) => () =>
+    setMapDetails({...mapDetails, [name]: !mapDetails[name]})
 
-  const getMapFilter = (name: string) => !!mapFilters[name]
+  const getMapFilter = (name: string) => !!mapDetails[name]
 
   return (
     <Portal>
@@ -40,17 +47,19 @@ const FABMenu: FC = () => {
           </View>
         }
       >
+        <Menu.Item title="Map Type" style={{padding: 0}} />
         <View style={styles.chipRow}>
           {[
-            {name: 'terrain', title: 'Terrain', icon: 'terrain'},
-            {name: 'hybrid', title: 'Satellite', icon: 'satellite'},
             {name: 'standard', title: 'Default', icon: 'map'},
+            {name: 'hybrid', title: 'Satellite', icon: 'satellite'},
+            {name: 'terrain', title: 'Terrain', icon: 'terrain'},
           ].map(({name, title, icon}) => (
             <Chip
               key={`mapType-${name}`}
               selected={name === mapType}
+              mode="outlined"
               icon={icon}
-              onPress={() => setMapType(name as MapType)}
+              onPress={() => setMapType(name as MapTypes)}
               style={styles.chip}
             >
               {title}
@@ -58,14 +67,13 @@ const FABMenu: FC = () => {
           ))}
         </View>
 
-        <Divider />
-
+        <Menu.Item title="Map Detail" />
         <View style={styles.chipRow}>
           {[
             {
-              name: 'naval-battles',
-              title: 'Naval Battles',
-              icon: 'ship-wheel',
+              name: 'cites',
+              title: 'Cities',
+              icon: 'home',
             },
             {
               name: 'land-battles',
@@ -73,21 +81,22 @@ const FABMenu: FC = () => {
               icon: 'sword-cross',
             },
             {
+              name: 'naval-battles',
+              title: 'Naval Battles',
+              icon: 'ship-wheel',
+            },
+            {
               name: 'sieges',
               title: 'Sieges',
               icon: 'wall',
-            },
-            {
-              name: 'cites',
-              title: 'Cities',
-              icon: 'home',
             },
           ].map(({name, title, icon}) => (
             <Chip
               key={`mapFilter-${name}`}
               selected={getMapFilter(name)}
+              mode="outlined"
               icon={icon}
-              onPress={toggleMapFilters(name)}
+              onPress={toggleMapDetails(name)}
               style={styles.chip}
             >
               {title}
@@ -112,7 +121,7 @@ const styles = StyleSheet.create({
   },
   chipRow: {
     justifyContent: 'center',
-    flexDirection: 'row-reverse',
+    flexDirection: 'row',
     flexWrap: 'wrap',
   },
   chip: {

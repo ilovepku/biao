@@ -4,6 +4,10 @@ export type DrawerParamList = {
   About: undefined
 }
 
+export type MapDetails = {
+  [key: string]: boolean | undefined
+}
+
 interface Location extends Feature {
   id: string
   geometry: Point
