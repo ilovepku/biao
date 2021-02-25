@@ -2,7 +2,7 @@ import 'react-native-gesture-handler'
 import React, {FC, useEffect} from 'react'
 import {Provider as StoreProvider} from 'react-redux'
 import {ApolloProvider} from '@apollo/client'
-import {Provider as PaperProvider} from 'react-native-paper'
+import {Provider as PaperProvider, Portal} from 'react-native-paper'
 import * as ScreenOrientation from 'expo-screen-orientation'
 
 import {store} from './src/redux/store'
@@ -30,7 +30,9 @@ const App: FC = () => {
     <StoreProvider store={store}>
       <ApolloProvider client={client}>
         <PaperProvider>
-          <Navigation />
+          <Portal.Host>
+            <Navigation />
+          </Portal.Host>
         </PaperProvider>
       </ApolloProvider>
     </StoreProvider>

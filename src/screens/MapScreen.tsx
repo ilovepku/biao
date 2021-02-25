@@ -18,6 +18,7 @@ import storyQuery from '../graphql/queries/storyQuery'
 import ClusteredMarker from '../components/ClusteredMarker'
 import PolygonGeojson from '../components/PolygonGeojson'
 import IconMarker from '../components/IconMarker'
+import FABMenu from '../components/FABMenu'
 
 const {width, height} = Dimensions.get('window')
 const aspectRatio = width / height
@@ -64,88 +65,92 @@ const MapScreen: FC = () => {
   )
 
   return (
-    <ClusteredMapView
-      style={styles.map} // Preventing 'Error using newLatLngBounds(LatLngBounds, int): Map size can’t be 0. Most likely, layout has not yet occurred for the map view.'
-      provider={PROVIDER_GOOGLE}
-      initialRegion={currRegion}
-      mapType={mapType}
-      onRegionChangeComplete={region => setCurrRegion(region)}
-      radius={10} // SuperCluster radius
-      renderCluster={({
-        id,
-        geometry: {coordinates},
-        properties: {point_count: pointCount},
-      }) => (
-        <ClusteredMarker
-          key={`cluster-${id}`}
-          coordinates={coordinates}
-          pointCount={pointCount}
-        />
-      )}
-    >
-      {!loading && !error && (
-        <PolygonGeojson
-          geojson={JSON.parse(data.stories_by_pk.areas[0].geojson)}
-          strokeWidth={0}
-        />
-      )}
+    <>
+      <ClusteredMapView
+        style={styles.map} // Preventing 'Error using newLatLngBounds(LatLngBounds, int): Map size can’t be 0. Most likely, layout has not yet occurred for the map view.'
+        provider={PROVIDER_GOOGLE}
+        initialRegion={currRegion}
+        mapType={mapType}
+        onRegionChangeComplete={region => setCurrRegion(region)}
+        radius={10} // SuperCluster radius
+        renderCluster={({
+          id,
+          geometry: {coordinates},
+          properties: {point_count: pointCount},
+        }) => (
+          <ClusteredMarker
+            key={`cluster-${id}`}
+            coordinates={coordinates}
+            pointCount={pointCount}
+          />
+        )}
+      >
+        {!loading && !error && (
+          <PolygonGeojson
+            geojson={JSON.parse(data.stories_by_pk.areas[0].geojson)}
+            strokeWidth={0}
+          />
+        )}
 
-      {!loading &&
-        !error &&
-        JSON.parse(data.stories_by_pk.locations[0].geojson)
-          .features.filter((feature: Feature) =>
-            !activeLocations.length
-              ? Object.keys(markerFilters)
-                  .filter(item => markerFilters[item])
-                  .includes(feature.properties?.type)
-              : activeLocations.includes(feature.id as string) &&
-                Object.keys(markerFilters)
-                  .filter(item => markerFilters[item])
-                  .includes(feature.properties?.type),
-          )
-          .map(
-            ({
-              id,
-              geometry: {coordinates},
-              properties: {name, type, description, highlight, status},
-            }: Location) => (
-              <Marker
-                key={id}
-                title={name}
-                description={description}
-                coordinate={{
-                  latitude: coordinates[1],
-                  longitude: coordinates[0],
-                }}
-                anchor={{x: 1, y: 1}}
-                calloutAnchor={{x: 0, y: 0}}
-                rotation={45}
-                tracksViewChanges={false}
-                onPress={() => {
-                  if (id.indexOf('-') !== -1) {
-                    // @TODO: temp check for timeline event markers
-                    handleOpenModal(
-                      JSON.parse(
-                        data.stories_by_pk.timelines[0].json,
-                      ).findIndex((o: TimelineItem) =>
-                        o.locations.includes(id),
-                      ),
-                    )
-                  }
-                }}
-              >
-                <IconMarker
-                  name={type}
-                  color={
-                    highlight
-                      ? MARKER_COLOR_MAP[`${status}Highlight`].color
-                      : MARKER_COLOR_MAP[status].color
-                  }
-                />
-              </Marker>
-            ),
-          )}
-    </ClusteredMapView>
+        {!loading &&
+          !error &&
+          JSON.parse(data.stories_by_pk.locations[0].geojson)
+            .features.filter((feature: Feature) =>
+              !activeLocations.length
+                ? Object.keys(markerFilters)
+                    .filter(item => markerFilters[item])
+                    .includes(feature.properties?.type)
+                : activeLocations.includes(feature.id as string) &&
+                  Object.keys(markerFilters)
+                    .filter(item => markerFilters[item])
+                    .includes(feature.properties?.type),
+            )
+            .map(
+              ({
+                id,
+                geometry: {coordinates},
+                properties: {name, type, description, highlight, status},
+              }: Location) => (
+                <Marker
+                  key={id}
+                  title={name}
+                  description={description}
+                  coordinate={{
+                    latitude: coordinates[1],
+                    longitude: coordinates[0],
+                  }}
+                  anchor={{x: 1, y: 1}}
+                  calloutAnchor={{x: 0, y: 0}}
+                  rotation={45}
+                  tracksViewChanges={false}
+                  onPress={() => {
+                    if (id.indexOf('-') !== -1) {
+                      // @TODO: temp check for timeline event markers
+                      handleOpenModal(
+                        JSON.parse(
+                          data.stories_by_pk.timelines[0].json,
+                        ).findIndex((o: TimelineItem) =>
+                          o.locations.includes(id),
+                        ),
+                      )
+                    }
+                  }}
+                >
+                  <IconMarker
+                    name={type}
+                    color={
+                      highlight
+                        ? MARKER_COLOR_MAP[`${status}Highlight`].color
+                        : MARKER_COLOR_MAP[status].color
+                    }
+                  />
+                </Marker>
+              ),
+            )}
+      </ClusteredMapView>
+
+      <FABMenu />
+    </>
   )
 }
 
