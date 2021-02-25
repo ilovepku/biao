@@ -8,10 +8,10 @@
   },
   "plugins": ["jest"],
   "extends": [
-    "eslint:recommended",
     "airbnb",
     "airbnb/hooks",
-    "eslint-config-prettier",
+    "prettier",
+    "prettier/react",
     "plugin:jest/recommended"
   ],
   "rules": {
