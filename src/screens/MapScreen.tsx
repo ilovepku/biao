@@ -38,7 +38,12 @@ const MapScreen: FC = () => {
   const modalRef = useRef<Modalize>(null)
 
   const [mapType, setMapType] = useState<MapTypes>('hybrid')
-  const [mapDetails, setMapDetails] = useState<MapDetails>({})
+  const [mapDetails, setMapDetails] = useState<MapDetails>({
+    city: true,
+    battle: true,
+    naval: true,
+    siege: true,
+  })
   const [currRegion, setCurrRegion] = useState({
     latitude,
     longitude,
@@ -96,13 +101,9 @@ const MapScreen: FC = () => {
           JSON.parse(data.stories_by_pk.locations[0].geojson)
             .features.filter((feature: Feature) =>
               !activeLocations.length
-                ? Object.keys(mapDetails)
-                    .filter(item => mapDetails[item])
-                    .includes(feature.properties?.type)
+                ? !!mapDetails[feature.properties?.type]
                 : activeLocations.includes(feature.id as string) &&
-                  Object.keys(mapDetails)
-                    .filter(item => mapDetails[item])
-                    .includes(feature.properties?.type),
+                  !!mapDetails[feature.properties?.type],
             )
             .map(
               ({

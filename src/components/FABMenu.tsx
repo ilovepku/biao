@@ -12,42 +12,34 @@ type Props = {
   setMapDetails: Dispatch<SetStateAction<MapDetails>>
 }
 
-type MenuVisibility = {
-  [key: string]: boolean | undefined
-}
-
 const FABMenu: FC<Props> = ({
   mapType,
   setMapType,
   mapDetails,
   setMapDetails,
 }: Props) => {
-  const [visible, setVisible] = useState<MenuVisibility>({})
+  const [visible, setVisible] = useState(false)
 
-  const toggleMenu = (name: string) => () => {
-    setVisible({...visible, [name]: !visible[name]})
-  }
+  const toggleMenu = () => setVisible(!visible)
 
-  const getMenuVisible = (name: string) => !!visible[name]
+  const toggleMapType = (name: MapTypes) => () => setMapType(name)
 
   const toggleMapDetails = (name: string) => () =>
     setMapDetails({...mapDetails, [name]: !mapDetails[name]})
-
-  const getMapFilter = (name: string) => !!mapDetails[name]
 
   return (
     <Portal>
       <Menu
         style={styles.menu}
-        visible={getMenuVisible('menu2')}
-        onDismiss={toggleMenu('menu2')}
+        visible={visible}
+        onDismiss={toggleMenu}
         anchor={
           <View style={styles.fabContainer}>
-            <FAB small icon="layers-outline" onPress={toggleMenu('menu2')} />
+            <FAB small icon="layers-outline" onPress={toggleMenu} />
           </View>
         }
       >
-        <Menu.Item title="Map Type" style={{padding: 0}} />
+        <Menu.Item title="Map Type" />
         <View style={styles.chipRow}>
           {[
             {name: 'standard', title: 'Default', icon: 'map'},
@@ -59,7 +51,7 @@ const FABMenu: FC<Props> = ({
               selected={name === mapType}
               mode="outlined"
               icon={icon}
-              onPress={() => setMapType(name as MapTypes)}
+              onPress={toggleMapType(name as MapTypes)}
               style={styles.chip}
             >
               {title}
@@ -71,29 +63,29 @@ const FABMenu: FC<Props> = ({
         <View style={styles.chipRow}>
           {[
             {
-              name: 'cites',
+              name: 'city',
               title: 'Cities',
               icon: 'home',
             },
             {
-              name: 'land-battles',
+              name: 'battle',
               title: 'Land Battles',
               icon: 'sword-cross',
             },
             {
-              name: 'naval-battles',
+              name: 'naval',
               title: 'Naval Battles',
               icon: 'ship-wheel',
             },
             {
-              name: 'sieges',
+              name: 'siege',
               title: 'Sieges',
               icon: 'wall',
             },
           ].map(({name, title, icon}) => (
             <Chip
-              key={`mapFilter-${name}`}
-              selected={getMapFilter(name)}
+              key={`mapDetail-${name}`}
+              selected={!!mapDetails[name]}
               mode="outlined"
               icon={icon}
               onPress={toggleMapDetails(name)}
