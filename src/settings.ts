@@ -1,5 +1,34 @@
 import {Platform} from 'react-native'
 
+export const MAP_TYPES = [
+  {name: 'standard', title: 'Default', icon: 'map'},
+  {name: 'hybrid', title: 'Satellite', icon: 'satellite'},
+  {name: 'terrain', title: 'Terrain', icon: 'terrain'},
+]
+
+export const MAP_DETAILS = [
+  {
+    name: 'city',
+    title: 'Cities',
+    icon: 'home',
+  },
+  {
+    name: 'battle',
+    title: 'Land Battles',
+    icon: 'sword-cross',
+  },
+  {
+    name: 'naval',
+    title: 'Naval Battles',
+    icon: 'ship-wheel',
+  },
+  {
+    name: 'siege',
+    title: 'Sieges',
+    icon: 'wall',
+  },
+]
+
 // settings for react-native-maps
 export const DEFAULT_LATITUDE_DELTA = 1
 export const DEFAULT_ANIMATE_DURATION = 2000
