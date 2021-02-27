@@ -2,18 +2,18 @@ import React, {memo} from 'react'
 import {View, StyleSheet} from 'react-native'
 import {MaterialCommunityIcons} from '@expo/vector-icons'
 
-import {ICON_MAP} from '../settings'
+import {MAP_DETAIL_ICON} from '../settings'
 
 type Props = {
-  name: string
+  type: string
   color: string
 }
 
-const IconMarker = memo(({name, color}: Props) => (
+const IconMarker = memo(({type, color}: Props) => (
   <View style={[styles.container, {backgroundColor: color}]}>
     <MaterialCommunityIcons
       style={styles.icon}
-      name={ICON_MAP[name]}
+      name={MAP_DETAIL_ICON[type]}
       size={16}
       color="#fff"
     />

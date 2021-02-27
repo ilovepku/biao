@@ -8,26 +8,36 @@ export const MAP_TYPES = [
 
 export const MAP_DETAILS = [
   {
-    name: 'city',
-    title: 'Cities',
-    icon: 'home',
-  },
-  {
     name: 'battle',
     title: 'Land Battles',
-    icon: 'sword-cross',
   },
   {
     name: 'naval',
     title: 'Naval Battles',
-    icon: 'ship-wheel',
   },
   {
     name: 'siege',
     title: 'Sieges',
-    icon: 'wall',
+  },
+  {
+    name: 'revolt',
+    title: 'Revolts',
+  },
+  {
+    name: 'city',
+    title: 'Cities',
   },
 ]
+
+type ICON_TYPES = 'sword-cross' | 'ship-wheel' | 'wall' | 'fire' | 'home-group'
+
+export const MAP_DETAIL_ICON: {[key: string]: ICON_TYPES} = {
+  battle: 'sword-cross',
+  naval: 'ship-wheel',
+  siege: 'wall',
+  revolt: 'fire',
+  city: 'home-group',
+}
 
 // settings for react-native-maps
 export const DEFAULT_LATITUDE_DELTA = 1
@@ -61,22 +71,6 @@ export const HEADER_LIST = 40
 export const HEADER_HEIGHT = HEADER_LIST + HEADER_COLLAPSE
 export const TAB_BAR_ITEM_WIDTH = 100
 export const TAB_BAR_ITEM_MARGIN = 20
-
-type IconName =
-  | 'home-map-marker'
-  | 'sword-cross'
-  | 'ship-wheel'
-  | 'tower-fire'
-  | 'fire'
-
-// resource maps
-export const ICON_MAP: {[key: string]: IconName} = {
-  city: 'home-map-marker',
-  battle: 'sword-cross',
-  naval: 'ship-wheel',
-  siege: 'tower-fire',
-  revolt: 'fire',
-}
 
 export const EMOJI_MAP: {[index: string]: {name: string; emoji: string}} = {
   battle: {

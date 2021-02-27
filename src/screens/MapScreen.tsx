@@ -5,8 +5,8 @@ import {useQuery} from '@apollo/client'
 import {PROVIDER_GOOGLE, MapTypes, Marker} from 'react-native-maps'
 import ClusteredMapView from 'react-native-map-clustering'
 import {Modalize} from 'react-native-modalize'
-
 import {Feature} from 'geojson'
+
 import {MapDetails, Location, TimelineItem} from '../types.d'
 import {
   INITIAL_REGION,
@@ -39,10 +39,10 @@ const MapScreen: FC = () => {
 
   const [mapType, setMapType] = useState<MapTypes>('hybrid')
   const [mapDetails, setMapDetails] = useState<MapDetails>({
-    city: true,
     battle: true,
     naval: true,
     siege: true,
+    revolt: true,
   })
   const [currRegion, setCurrRegion] = useState({
     latitude,
@@ -137,7 +137,7 @@ const MapScreen: FC = () => {
                   }}
                 >
                   <IconMarker
-                    name={type}
+                    type={type}
                     color={
                       highlight
                         ? MARKER_COLOR_MAP[`${status}Highlight`].color

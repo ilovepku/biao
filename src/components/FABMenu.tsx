@@ -3,7 +3,7 @@ import {View, StyleSheet} from 'react-native'
 import {MapTypes} from 'react-native-maps'
 import {Portal, Menu, FAB, Chip} from 'react-native-paper'
 
-import {MAP_TYPES, MAP_DETAILS} from '../settings'
+import {MAP_TYPES, MAP_DETAILS, MAP_DETAIL_ICON} from '../settings'
 import {MapDetails} from '../types.d'
 
 type Props = {
@@ -58,12 +58,12 @@ const FABMenu: FC<Props> = ({
 
         <Menu.Item title="Map Detail" />
         <View style={styles.chipRow}>
-          {MAP_DETAILS.map(({name, title, icon}) => (
+          {MAP_DETAILS.map(({name, title}) => (
             <Chip
               key={`mapDetail-${name}`}
               selected={!!mapDetails[name]}
               mode="outlined"
-              icon={icon}
+              icon={MAP_DETAIL_ICON[name]}
               onPress={toggleMapDetails(name)}
               style={styles.chip}
             >
