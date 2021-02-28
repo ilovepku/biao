@@ -19,6 +19,7 @@ import ClusteredMarker from '../components/ClusteredMarker'
 import PolygonGeojson from '../components/PolygonGeojson'
 import IconMarker from '../components/IconMarker'
 import FABMenu from '../components/FABMenu'
+import TabViewBottomSheet from '../components/TabViewBottomSheet'
 
 const {width, height} = Dimensions.get('window')
 const aspectRatio = width / height
@@ -70,6 +71,7 @@ const MapScreen: FC = () => {
         mapDetails={mapDetails}
         setMapDetails={setMapDetails}
       />
+      <TabViewBottomSheet />
       <ClusteredMapView
         style={styles.map} // Preventing 'Error using newLatLngBounds(LatLngBounds, int): Map size can’t be 0. Most likely, layout has not yet occurred for the map view.'
         provider={PROVIDER_GOOGLE}
